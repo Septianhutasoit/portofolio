@@ -14,6 +14,9 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
+    <!-- Devicon (WAJIB buat ikon skills) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
     <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
@@ -141,6 +144,11 @@
             background: #38bdf8;
         }
 
+        /* Biar scroll ke #skills/#portfolio gak ketiban navbar fixed */
+        section[id] {
+            scroll-margin-top: 96px;
+        }
+
         .glass-nav {
             background: radial-gradient(circle at top, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 0.96));
             backdrop-filter: blur(24px);
@@ -220,6 +228,51 @@
             .portfolio-img {
                 animation-duration: 32s;
             }
+        }
+
+        /* ===== SKILL CARDS (mirip tampilan gambar) ===== */
+        .skill-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.25rem;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            background: radial-gradient(circle at top, rgba(30, 64, 175, 0.16), rgba(15, 23, 42, 0.95));
+            box-shadow: 0 18px 55px rgba(15, 23, 42, 0.9);
+            transition: transform .45s ease, border-color .45s ease, box-shadow .45s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            border-color: rgba(56, 189, 248, 0.55);
+            box-shadow: 0 26px 80px rgba(15, 23, 42, 0.95);
+        }
+
+        .skill-glow {
+            position: absolute;
+            inset: -60px;
+            background: radial-gradient(circle, rgba(56, 189, 248, .18), transparent 55%);
+            opacity: 0;
+            transition: opacity .5s ease;
+            pointer-events: none;
+        }
+
+        .skill-card:hover .skill-glow {
+            opacity: 1;
+        }
+
+        .skill-icon {
+            width: 84px;
+            height: 84px;
+            display: grid;
+            place-items: center;
+            border-radius: 1.25rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .skill-icon i {
+            font-size: 56px;
+            line-height: 1;
         }
     </style>
 </head>
@@ -302,8 +355,9 @@
     <!-- MOBILE MENU -->
     <div id="mobileMenu"
         class="fixed inset-0 bg-bgDark/98 backdrop-blur-xl z-50 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center">
-        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-3xl text-white"><i
-                class="fas fa-times"></i></button>
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-3xl text-white">
+            <i class="fas fa-times"></i>
+        </button>
         <div class="flex flex-col space-y-6 text-center">
             <a href="#home" onclick="toggleMenu()" class="text-2xl font-bold text-white hover:text-primary">Beranda</a>
             <a href="#portfolio" onclick="toggleMenu()"
@@ -345,8 +399,8 @@
                 <p class="text-sm sm:text-base text-slate-400 mb-7 max-w-xl leading-relaxed">
                     Saya <span class="text-white font-semibold">Septian Hutasoit</span>,
                     <span class="text-slate-100 font-semibold">Fullstack Developer & UI/UX Designer</span> yang fokus
-                    bikin produk
-                    digital dari sisi arsitektur backend sampai tampilan yang enak dipakai manusia normal, bukan cuma
+                    bikin produk digital dari sisi arsitektur backend sampai tampilan yang enak dipakai manusia normal,
+                    bukan cuma
                     buat demo.
                 </p>
 
@@ -397,8 +451,9 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
                 <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Tech Stack</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">Fullstack & <span
-                        class="text-gradient">Product Stack</span></h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">
+                    Fullstack & <span class="text-gradient">Product Stack</span>
+                </h2>
                 <p class="text-slate-400 text-sm sm:text-base mt-3 max-w-xl mx-auto">
                     Tumpukan teknologi yang biasa saya pakai buat ngembangin produk end-to-end: dari API, database,
                     sampai interface.
@@ -406,8 +461,8 @@
             </div>
 
             <div id="cards-container"
-                class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 max-w-5xl mx-auto">
-                <!-- isi skill kamu boleh taruh di sini -->
+                class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 max-w-5xl mx-auto">
+                <!-- isi skill dirender JS -->
             </div>
         </div>
     </section>
@@ -421,14 +476,14 @@
                     <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Selected
                         Projects</span>
                     <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">End-to-End <span
-                            class="text-gradient">Product Work</span></h2>
+                            class="text-gradient">Product
+                            Work</span></h2>
                     <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-xl">
                         Proyek yang nunjukin cara ngerangkai backend, frontend, dan UX jadi satu alur yang masuk akal.
                     </p>
                 </div>
             </div>
 
-            <!-- grid projects DINAMIS dari data -->
             <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"></div>
         </div>
     </section>
@@ -472,18 +527,21 @@
 
             <div class="flex justify-center gap-5 mt-10">
                 <a href="https://www.instagram.com/tianhts_/"
-                    class="text-slate-400 hover:text-white text-xl transition-colors"><i
-                        class="fab fa-instagram"></i></a>
+                    class="text-slate-400 hover:text-white text-xl transition-colors">
+                    <i class="fab fa-instagram"></i>
+                </a>
                 <a href="https://www.linkedin.com/in/septian-a-hutasoit/"
-                    class="text-slate-400 hover:text-white text-xl transition-colors"><i
-                        class="fab fa-linkedin"></i></a>
+                    class="text-slate-400 hover:text-white text-xl transition-colors">
+                    <i class="fab fa-linkedin"></i>
+                </a>
                 <a href="https://github.com/Septianhutasoit"
-                    class="text-slate-400 hover:text-white text-xl transition-colors"><i class="fab fa-github"></i></a>
+                    class="text-slate-400 hover:text-white text-xl transition-colors">
+                    <i class="fab fa-github"></i>
+                </a>
             </div>
 
             <form action="https://formspree.io/f/FORM_ID_KAMU" method="POST"
                 class="mt-8 max-w-xl mx-auto text-left bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6">
-
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="text-slate-300 text-xs">Nama</label>
@@ -589,7 +647,8 @@
 
                     <div id="mCertText" class="mt-auto hidden">
                         <p class="text-[11px] text-slate-500 italic mt-4">Klik gambar untuk melihat sertifikat dalam
-                            ukuran lebih besar.</p>
+                            ukuran lebih
+                            besar.</p>
                     </div>
                 </div>
 
@@ -599,10 +658,11 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
         AOS.init({ duration: 1100, once: true, offset: 80 });
 
-        // ====== ICON MAP + HELPERS ======
+        // ====== ICON MAP + HELPERS (buat tags/badges di project modal) ======
         const ICONS = {
             laravel: { cls: "fa-brands fa-laravel", color: "text-red-400" },
             php: { cls: "fa-brands fa-php", color: "text-indigo-300" },
@@ -611,13 +671,15 @@
             react: { cls: "fa-brands fa-react", color: "text-cyan-300" },
             redux: { cls: "fa-solid fa-circle-nodes", color: "text-violet-300" },
             node: { cls: "fa-brands fa-node-js", color: "text-green-400" },
-            tailwind: { cls: "fa-brands fa-css3-alt", color: "text-sky-400" }, // fallback
+            tailwind: { cls: "fa-solid fa-wand-magic-sparkles", color: "text-sky-300" },
             api: { cls: "fa-solid fa-plug", color: "text-teal-300" },
             github: { cls: "fa-brands fa-github", color: "text-slate-200" },
             i18n: { cls: "fa-solid fa-language", color: "text-amber-300" },
             product: { cls: "fa-solid fa-box", color: "text-violet-300" },
             ecommerce: { cls: "fa-solid fa-cart-shopping", color: "text-amber-200" },
             web: { cls: "fa-solid fa-globe", color: "text-slate-200" },
+            next: { cls: "fa-solid fa-layer-group", color: "text-slate-200" },
+            express: { cls: "fa-solid fa-bolt", color: "text-slate-200" },
         };
 
         function normKey(t) {
@@ -634,6 +696,8 @@
             if (key.includes("redux")) return ICONS.redux;
             if (key.includes("node")) return ICONS.node;
             if (key.includes("tailwind")) return ICONS.tailwind;
+            if (key.includes("next")) return ICONS.next;
+            if (key.includes("express")) return ICONS.express;
             if (key.includes("rest") || key.includes("api")) return ICONS.api;
             if (key.includes("github")) return ICONS.github;
             if (key.includes("multi") || key.includes("bahasa") || key.includes("i18n")) return ICONS.i18n;
@@ -643,7 +707,62 @@
             return { cls: "fa-solid fa-code", color: "text-slate-300" };
         }
 
-        // ====== DATA ======
+        // ===== SKILLS (DEVICON) =====
+        const skillsData = [
+            // Core FE
+            { name: "HTML5", icon: "devicon-html5-plain colored" },
+            { name: "CSS3", icon: "devicon-css3-plain colored" },
+            { name: "JavaScript", icon: "devicon-javascript-plain colored" },
+            { name: "TypeScript", icon: "devicon-typescript-plain colored" },
+            { name: "React", icon: "devicon-react-original colored" },
+            { name: "Next.js", icon: "devicon-nextjs-original" },
+            { name: "Tailwind", icon: "devicon-tailwindcss-original colored" },
+            { name: "Bootstrap", icon: "devicon-bootstrap-plain colored" },
+
+            // Backend
+            { name: "Node.js", icon: "devicon-nodejs-plain colored" },
+            { name: "Express.js", icon: "devicon-express-original" },
+            { name: "Laravel", icon: "devicon-laravel-original colored" },
+            { name: "PHP", icon: "devicon-php-plain colored" },
+
+            // Database
+            { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
+            { name: "MySQL", icon: "devicon-mysql-plain colored" },
+            { name: "MongoDB", icon: "devicon-mongodb-plain colored" },
+
+            // CMS
+            { name: "WordPress", icon: "devicon-wordpress-plain colored" },
+
+            // Programming
+            { name: "Java", icon: "devicon-java-plain colored" },
+            { name: "C", icon: "devicon-c-plain colored" },
+
+            // Tools
+            { name: "Git", icon: "devicon-git-plain colored" },
+            { name: "Docker", icon: "devicon-docker-plain colored" },
+            { name: "Figma", icon: "devicon-figma-plain colored" },
+        ];
+
+        function renderSkills() {
+            const cardsContainer = document.getElementById("cards-container");
+            if (!cardsContainer) return;
+
+            cardsContainer.innerHTML = skillsData.map((s, i) => `
+        <div class="skill-card p-6 sm:p-7 flex flex-col items-center justify-center text-center min-h-[170px] sm:min-h-[185px]"
+             data-aos="zoom-in" data-aos-delay="${60 + i * 20}">
+          <div class="skill-glow"></div>
+
+          <div class="skill-icon mb-4">
+            <i class="${s.icon}"></i>
+          </div>
+
+          <p class="text-white font-semibold text-base sm:text-lg">${s.name}</p>
+          <p class="text-[11px] text-slate-500 mt-1">Stack</p>
+        </div>
+      `).join("");
+        }
+
+        // ====== DATA PROJECTS ======
         const projectsData = [
             {
                 cardTitle: "Nauli Dental Care",
@@ -666,7 +785,7 @@
                 cover: "assets/img/frontend.png",
                 images: ["assets/img/frontend.png", "assets/img/backend.png"],
                 desc: "Platform e-commerce dengan manajemen produk, cart real-time, dan integrasi payment gateway.",
-                tags: ["React", "Redux", "Node.js", "REST API"],
+                tags: ["React", "Redux", "Node.js", "Express.js", "REST API"],
                 badges: ["Product"],
                 github: "https://github.com/Septianhutasoit/NAMA_REPO_2",
                 demo: ""
@@ -762,8 +881,6 @@
             if (!currentImages.length) return;
             currentImgIndex = (i + currentImages.length) % currentImages.length;
             mImage.src = encodeURI(currentImages[currentImgIndex]);
-
-            // fallback kalau file gambar salah
             mImage.onerror = () => { mImage.src = "assets/img/placeholder.png"; };
 
             if (imgDots) {
@@ -875,45 +992,6 @@
             }, 250);
             document.body.style.overflow = 'auto';
         }
-        const skillsData = [
-                { name: "JavaScript", iconClass: "devicon-javascript-plain colored" },
-                { name: "React", iconClass: "devicon-react-original colored" },
-                { name: "Node.js", iconClass: "devicon-nodejs-plain colored" },
-                { name: "HTML5", iconClass: "devicon-html5-plain colored" },
-
-                { name: "CSS3", iconClass: "devicon-css3-plain colored" },
-                { name: "Bootstrap", iconClass: "devicon-bootstrap-plain colored" },
-                { name: "TypeScript", iconClass: "devicon-typescript-plain colored" },
-                { name: "PHP", iconClass: "devicon-php-plain colored" },
-
-                { name: "Laravel", iconClass: "devicon-laravel-original colored" },
-                { name: "Python", iconClass: "devicon-python-plain colored" },
-                { name: "MongoDB", iconClass: "devicon-mongodb-plain colored" },
-                { name: "MySQL", iconClass: "devicon-mysql-plain colored" },
-
-                { name: "PostgreSQL", iconClass: "devicon-postgresql-plain colored" },
-                { name: "Git", iconClass: "devicon-git-plain colored" },
-                { name: "Figma", iconClass: "devicon-figma-plain colored" },
-                { name: "Docker", iconClass: "devicon-docker-plain colored" },
-            ];
-
-            const cardsContainer = document.getElementById("cards-container");
-
-            function renderSkills() {
-                if (!cardsContainer) return;
-
-                cardsContainer.innerHTML = skillsData.map((s) => `
-        <div class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col items-center justify-center text-center min-h-[150px] sm:min-h-[170px]">
-          <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center">
-            <i class="${s.iconClass}" style="font-size: 64px;"></i>
-          </div>
-          <p class="mt-4 text-white font-semibold text-base sm:text-lg">${s.name}</p>
-        </div>
-      `).join("");
-            }
-
-            document.addEventListener("DOMContentLoaded", renderSkills);
-
 
         // ====== RENDER PROJECTS (DINAMIS) ======
         function renderProjects() {
@@ -925,15 +1003,15 @@
                 const topBadges = (p.badges || []).slice(0, 2).map(b => {
                     const ic = getIcon(b);
                     return `<span class="inline-flex items-center gap-2 px-3 py-1 bg-black/60 backdrop-blur-md border border-white/15 rounded-full text-[11px] font-semibold text-slate-100">
-                    <i class="${ic.cls} ${ic.color}"></i>${b}
-                  </span>`;
+              <i class="${ic.cls} ${ic.color}"></i>${b}
+            </span>`;
                 }).join("");
 
                 const tagIcons = (p.tags || []).slice(0, 3).map(t => {
                     const ic = getIcon(t);
                     return `<span class="inline-flex items-center gap-2 text-[12px] text-slate-300 bg-white/5 px-3 py-1 rounded-full border border-white/10">
-                    <i class="${ic.cls} ${ic.color}"></i>${t}
-                  </span>`;
+              <i class="${ic.cls} ${ic.color}"></i>${t}
+            </span>`;
                 }).join("");
 
                 return `
@@ -997,6 +1075,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            renderSkills();
             renderProjects();
             renderCertificates();
 
