@@ -706,51 +706,43 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    ript src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Init AOS sekali aja
         AOS.init({ duration: 1100, once: true, offset: 80 });
-
-        // ====== FALLBACK IMAGE ======
-        // Bikin file ini ya: assets/img/placeholder.png
-        const FALLBACK_IMG = "assets/img/placeholder.png";
 
         // ====== DATA ======
         const projectsData = [
             {
                 title: "Pembangunan Website klinik Nauli Dental Care",
                 subtitle: "Web App • Fullstack",
-                images: ["assets/img/AI.png", "assets/img/frontend.png", "assets/img/backend.png"],
+                images: [
+                    "assets/img/AI.png",
+                    "assets/img/frontend.png",
+                    "assets/img/backend.png"
+                ],
                 desc: "Website klinik untuk booking dan informasi layanan. Fokus pada UX dan backend rapi.",
                 tags: ["Laravel", "MySQL", "Tailwind", "GitHub"],
                 github: "https://github.com/Septianhutasoit/NAMA_REPO_1",
-                demo: ""
+                demo: "" // isi kalau ada link live, misal: https://namadomain.vercel.app
             },
             {
                 title: "Website Aksara Batak",
                 subtitle: "Informasi",
-                // FIX: koma antar string WAJIB
                 images: [
                     "assets/img/Home.png",
-                    "assets/img/Fitur.png",
-                    "assets/img/bahasa.png",
-                    "assets/img/Tentang.png",
-                    "assets/img/mengenal aksara.png",
-                    "assets/img/visualisasi.png",
-                    "assets/img/kuis.png",
-                    "assets/img/kuis2.png"
+                    "assets/img/Fitur.png"
                 ],
-                // desc kamu sebelumnya gak nyambung (e-commerce). Ini gue betulin biar konsisten.
-                desc: "Website informasi/pembelajaran Aksara Batak dengan halaman fitur, visualisasi, dan kuis.",
-                tags: ["HTML", "CSS", "JavaScript"],
+                desc: "Platform e-commerce dengan manajemen produk, cart real-time, dan integrasi payment gateway.",
+                tags: ["React", "Redux", "Node.js", "Stripe API"],
                 github: "https://github.com/Septianhutasoit/NAMA_REPO_2",
                 demo: ""
             },
             {
                 title: "Travel Booking",
                 subtitle: "Web App",
-                images: ["assets/img/backend.png"],
-                desc: "Aplikasi booking dengan filter & integrasi API pihak ketiga.",
+                images: [
+                    "assets/img/backend.png"
+                ],
+                desc: "Aplikasi booking dengan filter, rute, dan integrasi API pihak ketiga.",
                 tags: ["Laravel", "MySQL", "REST API"],
                 github: "https://github.com/Septianhutasoit/NAMA_REPO_3",
                 demo: ""
@@ -769,34 +761,28 @@
         ];
 
         // ====== MODAL ELEMENTS ======
-        const modal = document.getElementById("universalModal");
-        const backdrop = document.getElementById("modalBackdrop");
-        const content = document.getElementById("modalContent");
+        const modal = document.getElementById('universalModal');
+        const backdrop = document.getElementById('modalBackdrop');
+        const content = document.getElementById('modalContent');
 
-        const mImage = document.getElementById("mImage");
-        const mTitle = document.getElementById("mTitle");
-        const mSubtitle = document.getElementById("mSubtitle");
-        const mDesc = document.getElementById("mDesc");
-        const mTagsGroup = document.getElementById("mTagsGroup");
-        const mTags = document.getElementById("mTags");
-        const mActions = document.getElementById("mActions");
-        const mCertText = document.getElementById("mCertText");
+        const mImage = document.getElementById('mImage');
+        const mTitle = document.getElementById('mTitle');
+        const mSubtitle = document.getElementById('mSubtitle');
+        const mDesc = document.getElementById('mDesc');
+        const mTagsGroup = document.getElementById('mTagsGroup');
+        const mTags = document.getElementById('mTags');
+        const mActions = document.getElementById('mActions');
+        const mCertText = document.getElementById('mCertText');
 
-        const imgPrev = document.getElementById("imgPrev");
-        const imgNext = document.getElementById("imgNext");
-        const imgDots = document.getElementById("imgDots");
+        const imgPrev = document.getElementById('imgPrev');
+        const imgNext = document.getElementById('imgNext');
+        const imgDots = document.getElementById('imgDots');
 
-        const mDemo = document.getElementById("mDemo");
-        const mCode = document.getElementById("mCode");
+        const mDemo = document.getElementById('mDemo');
+        const mCode = document.getElementById('mCode');
 
         let currentImages = [];
         let currentImgIndex = 0;
-
-        // fallback kalau modal image gagal load
-        mImage.addEventListener("error", () => {
-            if (mImage.src.includes(FALLBACK_IMG)) return;
-            mImage.src = FALLBACK_IMG;
-        });
 
         function renderDots() {
             if (!imgDots) return;
@@ -804,9 +790,7 @@
             currentImages.forEach((_, i) => {
                 const dot = document.createElement("button");
                 dot.type = "button";
-                dot.className =
-                    "w-2 h-2 rounded-full transition-all " +
-                    (i === currentImgIndex ? "bg-white" : "bg-white/30");
+                dot.className = "w-2 h-2 rounded-full transition-all " + (i === currentImgIndex ? "bg-white" : "bg-white/30");
                 dot.addEventListener("click", (e) => {
                     e.stopPropagation();
                     setModalImage(i);
@@ -816,18 +800,13 @@
         }
 
         function setModalImage(i) {
-            if (!currentImages.length) {
-                mImage.src = FALLBACK_IMG;
-                return;
-            }
+            if (!currentImages.length) return;
             currentImgIndex = (i + currentImages.length) % currentImages.length;
             mImage.src = encodeURI(currentImages[currentImgIndex]);
 
             if (imgDots) {
                 [...imgDots.children].forEach((dot, idx) => {
-                    dot.className =
-                        "w-2 h-2 rounded-full transition-all " +
-                        (idx === currentImgIndex ? "bg-white" : "bg-white/30");
+                    dot.className = "w-2 h-2 rounded-full transition-all " + (idx === currentImgIndex ? "bg-white" : "bg-white/30");
                 });
             }
         }
@@ -836,7 +815,6 @@
             e.stopPropagation();
             setModalImage(currentImgIndex - 1);
         });
-
         imgNext?.addEventListener("click", (e) => {
             e.stopPropagation();
             setModalImage(currentImgIndex + 1);
@@ -846,33 +824,32 @@
             let data;
 
             // reset states
-            mTagsGroup.classList.add("hidden");
-            mActions.classList.add("hidden");
-            mCertText.classList.add("hidden");
+            mTagsGroup.classList.add('hidden');
+            mActions.classList.add('hidden');
+            mCertText.classList.add('hidden');
 
-            imgPrev?.classList.add("hidden");
-            imgNext?.classList.add("hidden");
-            imgDots?.classList.add("hidden");
+            imgPrev?.classList.add('hidden');
+            imgNext?.classList.add('hidden');
+            imgDots?.classList.add('hidden');
 
-            if (type === "project") {
+            if (type === 'project') {
                 data = projectsData[index];
-                if (!data) return;
 
                 // tags
-                mTagsGroup.classList.remove("hidden");
-                mTags.innerHTML = "";
-                (data.tags || []).forEach((tag) => {
-                    const span = document.createElement("span");
-                    span.className =
-                        "px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-[11px] text-slate-300";
+                mTagsGroup.classList.remove('hidden');
+                mTags.innerHTML = '';
+                (data.tags || []).forEach(tag => {
+                    const span = document.createElement('span');
+                    span.className = "px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-[11px] text-slate-300";
                     span.textContent = tag;
                     mTags.appendChild(span);
                 });
 
                 // actions
-                mActions.classList.remove("hidden");
+                mActions.classList.remove('hidden');
                 mCode.href = data.github || "https://github.com/Septianhutasoit";
 
+                // demo optional
                 if (data.demo && data.demo.trim() !== "") {
                     mDemo.href = data.demo;
                     mDemo.classList.remove("hidden");
@@ -882,115 +859,114 @@
                 }
 
                 // images
-                currentImages = Array.isArray(data.images) ? data.images : [];
+                currentImages = (data.images && data.images.length) ? data.images : [];
                 currentImgIndex = 0;
                 renderDots();
                 setModalImage(0);
 
                 if (currentImages.length > 1) {
-                    imgPrev?.classList.remove("hidden");
-                    imgNext?.classList.remove("hidden");
-                    imgDots?.classList.remove("hidden");
+                    imgPrev?.classList.remove('hidden');
+                    imgNext?.classList.remove('hidden');
+                    imgDots?.classList.remove('hidden');
                 }
-            }
 
-            if (type === "cert") {
+            } else if (type === 'cert') {
                 data = certsData[index];
-                if (!data) return;
+                mCertText.classList.remove('hidden');
 
-                mCertText.classList.remove("hidden");
-
-                // cert single image
+                // cert single img
                 currentImages = [data.img];
                 currentImgIndex = 0;
                 renderDots();
                 setModalImage(0);
             }
 
-            // isi konten modal
-            mTitle.innerText = data.title || "Untitled";
-            mSubtitle.innerText = data.subtitle || "";
-            mDesc.innerText = data.desc || "";
+            mTitle.innerText = data.title;
+            mSubtitle.innerText = data.subtitle;
+            mDesc.innerText = data.desc;
 
-            // tampilkan modal
-            modal.classList.remove("hidden");
+            modal.classList.remove('hidden');
             setTimeout(() => {
-                backdrop.classList.remove("opacity-0");
-                content.classList.remove("opacity-0", "scale-95");
-                content.classList.add("scale-100");
+                backdrop.classList.remove('opacity-0');
+                content.classList.remove('opacity-0', 'scale-95');
+                content.classList.add('scale-100');
             }, 10);
 
-            document.body.style.overflow = "hidden";
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
-            backdrop.classList.add("opacity-0");
-            content.classList.remove("scale-100");
-            content.classList.add("opacity-0", "scale-95");
-            setTimeout(() => modal.classList.add("hidden"), 250);
-            document.body.style.overflow = "auto";
+            backdrop.classList.add('opacity-0');
+            content.classList.remove('scale-100');
+            content.classList.add('opacity-0', 'scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 250);
+            document.body.style.overflow = 'auto';
         }
-
-        // biar onclick di HTML bisa manggil
-        window.openModal = openModal;
-        window.closeModal = closeModal;
 
         function renderCertificates() {
-            const grid = document.getElementById("certGrid");
+            const grid = document.getElementById('certGrid');
             if (!grid) return;
 
-            grid.innerHTML = certsData
-                .map(
-                    (c, i) => `
-      <div class="group cursor-pointer" onclick="openModal('cert', ${i})" data-aos="zoom-in" data-aos-delay="${60 + i * 30}">
-        <div class="bg-cardSoft border border-white/10 rounded-2xl p-4 transition-all duration-500 hover:border-primary/60 hover:bg-white/5 hover:-translate-y-2 hover:scale-[1.01] flex flex-col h-full">
-          <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 portfolio-img-wrapper">
-            <div class="absolute inset-0 bg-primary/30 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
-              <i class="fas fa-expand text-white text-2xl drop-shadow-md"></i>
+            grid.innerHTML = certsData.map((c, i) => `
+        <div class="group cursor-pointer" onclick="openModal('cert', ${i})" data-aos="zoom-in" data-aos-delay="${60 + i * 30}">
+          <div class="bg-cardSoft border border-white/10 rounded-2xl p-4 transition-all duration-500 hover:border-primary/60 hover:bg-white/5 hover:-translate-y-2 hover:scale-[1.01] flex flex-col h-full">
+            <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 portfolio-img-wrapper">
+              <div class="absolute inset-0 bg-primary/30 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                <i class="fas fa-expand text-white text-2xl drop-shadow-md"></i>
+              </div>
+              <img src="${c.img}" class="w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-110 group-hover:rotate-[1deg]" alt="${c.title}">
             </div>
-            <img src="${c.img}" onerror="this.src='${FALLBACK_IMG}'"
-              class="w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-110 group-hover:rotate-[1deg]" alt="${c.title}">
-          </div>
-          <div class="flex flex-col flex-1">
-            <h4 class="text-white font-semibold text-sm sm:text-base leading-tight group-hover:text-primary transition-colors">${c.title}</h4>
-            <p class="text-slate-500 text-xs sm:text-[13px] mt-1">${c.subtitle}</p>
+            <div class="flex flex-col flex-1">
+              <h4 class="text-white font-semibold text-sm sm:text-base leading-tight group-hover:text-primary transition-colors">${c.title}</h4>
+              <p class="text-slate-500 text-xs sm:text-[13px] mt-1">${c.subtitle}</p>
+            </div>
           </div>
         </div>
-      </div>
-    `
-                )
-                .join("");
+      `).join('');
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
+        const cardsContainer = document.getElementById("cards-container");
+        const cards = document.querySelectorAll(".spotlight-card");
+
+        if (cardsContainer) {
+            cardsContainer.onmousemove = e => {
+                for (const card of cards) {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty("--mouse-x", `${x}px`);
+                    card.style.setProperty("--mouse-y", `${y}px`);
+                }
+            };
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
             renderCertificates();
 
             // SPOTIFY toggle
-            const spotifyToggle = document.getElementById("spotifyToggle");
-            const spotifyWrap = document.getElementById("spotifyWrap");
+            const spotifyToggle = document.getElementById('spotifyToggle');
+            const spotifyWrap = document.getElementById('spotifyWrap');
             if (spotifyToggle && spotifyWrap) {
-                spotifyToggle.addEventListener("click", () => {
-                    spotifyWrap.classList.toggle("hidden");
-                    spotifyToggle.textContent = spotifyWrap.classList.contains("hidden")
-                        ? "Buka"
-                        : "Tutup";
+                spotifyToggle.addEventListener('click', () => {
+                    spotifyWrap.classList.toggle('hidden');
+                    spotifyToggle.textContent = spotifyWrap.classList.contains('hidden') ? 'Buka' : 'Tutup';
                 });
             }
 
             // Mobile Menu
-            const mobileMenu = document.getElementById("mobileMenu");
-            const menuBtn = document.getElementById("menuBtn");
-            function toggleMenu() {
-                mobileMenu.classList.toggle("translate-x-full");
-            }
-            if (menuBtn) menuBtn.addEventListener("click", toggleMenu);
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuBtn = document.getElementById('menuBtn');
+            function toggleMenu() { mobileMenu.classList.toggle('translate-x-full'); }
+            if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
             window.toggleMenu = toggleMenu;
 
             // Navbar blur on scroll
-            const navbar = document.getElementById("navbar");
-            window.addEventListener("scroll", () => {
-                if (window.scrollY > 20) navbar.classList.add("glass-nav");
-                else navbar.classList.remove("glass-nav");
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) navbar.classList.add('glass-nav');
+                else navbar.classList.remove('glass-nav');
             });
 
             // Close modal by ESC
