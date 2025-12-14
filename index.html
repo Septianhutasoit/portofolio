@@ -706,6 +706,7 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
         AOS.init({ duration: 1100, once: true, offset: 80 });
 
@@ -722,17 +723,23 @@
                 desc: "Website klinik untuk booking dan informasi layanan. Fokus pada UX dan backend rapi.",
                 tags: ["Laravel", "MySQL", "Tailwind", "GitHub"],
                 github: "https://github.com/Septianhutasoit/NAMA_REPO_1",
-                demo: "" // isi kalau ada link live, misal: https://namadomain.vercel.app
+                demo: ""
             },
             {
-                title: "Shopify Clone",
-                subtitle: "E-Commerce",
+                title: "Website Aksara Batak",
+                subtitle: "Informasi",
                 images: [
-                    "assets/img/frontend.png",
-                    "assets/img/backend.png"
+                    "assets/img/Home.png",
+                    "assets/img/Fitur.png",
+                    "assets/img/bahasa.png",
+                    "assets/img/Tentang.png",
+                    "assets/img/mengenal aksara.png",
+                    "assets/img/visualisasi.png",
+                    "assets/img/kuis.png",
+                    "assets/img/kuis2.png"
                 ],
-                desc: "Platform e-commerce dengan manajemen produk, cart real-time, dan integrasi payment gateway.",
-                tags: ["React", "Redux", "Node.js", "Stripe API"],
+                desc: "Website informasi/pembelajaran aksara Batak dengan beberapa halaman fitur dan visualisasi.",
+                tags: ["React", "Tailwind", "JavaScript"],
                 github: "https://github.com/Septianhutasoit/NAMA_REPO_2",
                 demo: ""
             },
@@ -784,13 +791,18 @@
         let currentImages = [];
         let currentImgIndex = 0;
 
+        // Fallback kalau gambar path-nya salah (biar gak blank)
+        const FALLBACK_IMG = "assets/img/placeholder.png"; // bikin file ini ya (simple aja)
+
         function renderDots() {
             if (!imgDots) return;
             imgDots.innerHTML = "";
             currentImages.forEach((_, i) => {
                 const dot = document.createElement("button");
                 dot.type = "button";
-                dot.className = "w-2 h-2 rounded-full transition-all " + (i === currentImgIndex ? "bg-white" : "bg-white/30");
+                dot.className =
+                    "w-2 h-2 rounded-full transition-all " +
+                    (i === currentImgIndex ? "bg-white" : "bg-white/30");
                 dot.addEventListener("click", (e) => {
                     e.stopPropagation();
                     setModalImage(i);
@@ -802,19 +814,29 @@
         function setModalImage(i) {
             if (!currentImages.length) return;
             currentImgIndex = (i + currentImages.length) % currentImages.length;
-            mImage.src = encodeURI(currentImages[currentImgIndex]);
+
+            const src = encodeURI(currentImages[currentImgIndex]);
+            mImage.src = src;
 
             if (imgDots) {
                 [...imgDots.children].forEach((dot, idx) => {
-                    dot.className = "w-2 h-2 rounded-full transition-all " + (idx === currentImgIndex ? "bg-white" : "bg-white/30");
+                    dot.className =
+                        "w-2 h-2 rounded-full transition-all " +
+                        (idx === currentImgIndex ? "bg-white" : "bg-white/30");
                 });
             }
         }
+
+        // kalau image gagal load, pakai fallback
+        mImage.addEventListener("error", () => {
+            mImage.src = FALLBACK_IMG;
+        });
 
         imgPrev?.addEventListener("click", (e) => {
             e.stopPropagation();
             setModalImage(currentImgIndex - 1);
         });
+
         imgNext?.addEventListener("click", (e) => {
             e.stopPropagation();
             setModalImage(currentImgIndex + 1);
@@ -859,7 +881,7 @@
                 }
 
                 // images
-                currentImages = (data.images && data.images.length) ? data.images : [];
+                currentImages = Array.isArray(data.images) ? data.images : [];
                 currentImgIndex = 0;
                 renderDots();
                 setModalImage(0);
@@ -881,10 +903,12 @@
                 setModalImage(0);
             }
 
-            mTitle.innerText = data.title;
-            mSubtitle.innerText = data.subtitle;
-            mDesc.innerText = data.desc;
+            // isi konten
+            mTitle.innerText = data?.title || "Untitled";
+            mSubtitle.innerText = data?.subtitle || "";
+            mDesc.innerText = data?.desc || "";
 
+            // show modal
             modal.classList.remove('hidden');
             setTimeout(() => {
                 backdrop.classList.remove('opacity-0');
@@ -910,36 +934,22 @@
             if (!grid) return;
 
             grid.innerHTML = certsData.map((c, i) => `
-        <div class="group cursor-pointer" onclick="openModal('cert', ${i})" data-aos="zoom-in" data-aos-delay="${60 + i * 30}">
-          <div class="bg-cardSoft border border-white/10 rounded-2xl p-4 transition-all duration-500 hover:border-primary/60 hover:bg-white/5 hover:-translate-y-2 hover:scale-[1.01] flex flex-col h-full">
-            <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 portfolio-img-wrapper">
-              <div class="absolute inset-0 bg-primary/30 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
-                <i class="fas fa-expand text-white text-2xl drop-shadow-md"></i>
+          <div class="group cursor-pointer" onclick="openModal('cert', ${i})" data-aos="zoom-in" data-aos-delay="${60 + i * 30}">
+            <div class="bg-cardSoft border border-white/10 rounded-2xl p-4 transition-all duration-500 hover:border-primary/60 hover:bg-white/5 hover:-translate-y-2 hover:scale-[1.01] flex flex-col h-full">
+              <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 portfolio-img-wrapper">
+                <div class="absolute inset-0 bg-primary/30 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                  <i class="fas fa-expand text-white text-2xl drop-shadow-md"></i>
+                </div>
+                <img src="${c.img}" onerror="this.src='${FALLBACK_IMG}'"
+                  class="w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-110 group-hover:rotate-[1deg]" alt="${c.title}">
               </div>
-              <img src="${c.img}" class="w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-110 group-hover:rotate-[1deg]" alt="${c.title}">
-            </div>
-            <div class="flex flex-col flex-1">
-              <h4 class="text-white font-semibold text-sm sm:text-base leading-tight group-hover:text-primary transition-colors">${c.title}</h4>
-              <p class="text-slate-500 text-xs sm:text-[13px] mt-1">${c.subtitle}</p>
+              <div class="flex flex-col flex-1">
+                <h4 class="text-white font-semibold text-sm sm:text-base leading-tight group-hover:text-primary transition-colors">${c.title}</h4>
+                <p class="text-slate-500 text-xs sm:text-[13px] mt-1">${c.subtitle}</p>
+              </div>
             </div>
           </div>
-        </div>
-      `).join('');
-        }
-
-        const cardsContainer = document.getElementById("cards-container");
-        const cards = document.querySelectorAll(".spotlight-card");
-
-        if (cardsContainer) {
-            cardsContainer.onmousemove = e => {
-                for (const card of cards) {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    card.style.setProperty("--mouse-x", `${x}px`);
-                    card.style.setProperty("--mouse-y", `${y}px`);
-                }
-            };
+        `).join('');
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -975,6 +985,7 @@
             });
         });
     </script>
+
 </body>
 
 </html>
