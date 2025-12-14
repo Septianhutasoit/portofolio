@@ -875,6 +875,45 @@
             }, 250);
             document.body.style.overflow = 'auto';
         }
+        const skillsData = [
+                { name: "JavaScript", iconClass: "devicon-javascript-plain colored" },
+                { name: "React", iconClass: "devicon-react-original colored" },
+                { name: "Node.js", iconClass: "devicon-nodejs-plain colored" },
+                { name: "HTML5", iconClass: "devicon-html5-plain colored" },
+
+                { name: "CSS3", iconClass: "devicon-css3-plain colored" },
+                { name: "Bootstrap", iconClass: "devicon-bootstrap-plain colored" },
+                { name: "TypeScript", iconClass: "devicon-typescript-plain colored" },
+                { name: "PHP", iconClass: "devicon-php-plain colored" },
+
+                { name: "Laravel", iconClass: "devicon-laravel-original colored" },
+                { name: "Python", iconClass: "devicon-python-plain colored" },
+                { name: "MongoDB", iconClass: "devicon-mongodb-plain colored" },
+                { name: "MySQL", iconClass: "devicon-mysql-plain colored" },
+
+                { name: "PostgreSQL", iconClass: "devicon-postgresql-plain colored" },
+                { name: "Git", iconClass: "devicon-git-plain colored" },
+                { name: "Figma", iconClass: "devicon-figma-plain colored" },
+                { name: "Docker", iconClass: "devicon-docker-plain colored" },
+            ];
+
+            const cardsContainer = document.getElementById("cards-container");
+
+            function renderSkills() {
+                if (!cardsContainer) return;
+
+                cardsContainer.innerHTML = skillsData.map((s) => `
+        <div class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col items-center justify-center text-center min-h-[150px] sm:min-h-[170px]">
+          <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center">
+            <i class="${s.iconClass}" style="font-size: 64px;"></i>
+          </div>
+          <p class="mt-4 text-white font-semibold text-base sm:text-lg">${s.name}</p>
+        </div>
+      `).join("");
+            }
+
+            document.addEventListener("DOMContentLoaded", renderSkills);
+
 
         // ====== RENDER PROJECTS (DINAMIS) ======
         function renderProjects() {
