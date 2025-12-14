@@ -873,6 +873,42 @@
                 <a href="https://github.com/Septianhutasoit"
                     class="text-slate-400 hover:text-white text-xl transition-colors"><i class="fab fa-github"></i></a>
             </div>
+            <form action="https://formspree.io/f/FORM_ID_KAMU" method="POST"
+                class="mt-8 max-w-xl mx-auto text-left bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6">
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-slate-300 text-xs">Nama</label>
+                        <input name="name" required
+                            class="mt-2 w-full rounded-xl bg-black/30 border border-white/10 px-4 py-3 text-sm text-white outline-none focus:border-primary/60"
+                            placeholder="Nama kamu" />
+                    </div>
+
+                    <div>
+                        <label class="text-slate-300 text-xs">Email</label>
+                        <input type="email" name="email" required
+                            class="mt-2 w-full rounded-xl bg-black/30 border border-white/10 px-4 py-3 text-sm text-white outline-none focus:border-primary/60"
+                            placeholder="nama@email.com" />
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <label class="text-slate-300 text-xs">Pesan</label>
+                    <textarea name="message" rows="4" required
+                        class="mt-2 w-full rounded-xl bg-black/30 border border-white/10 px-4 py-3 text-sm text-white outline-none focus:border-primary/60"
+                        placeholder="Tulis konteks, scope, deadline..."></textarea>
+                </div>
+
+                <button type="submit"
+                    class="mt-5 w-full inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-xl bg-white text-bgDark font-semibold text-sm sm:text-base hover:scale-[1.02] transition-transform">
+                    <i class="fas fa-paper-plane text-sm"></i> Kirim Pesan
+                </button>
+
+                <p class="text-[11px] text-slate-500 mt-3">
+                    Pesan akan masuk ke email saya via Formspree.
+                </p>
+            </form>
+
 
             <footer class="mt-14 pt-6 border-t border-white/5 text-slate-600 text-[11px] sm:text-xs">
                 &copy; 2025 Septian Hutasoit. Built as a fullstack product, not a copy–paste template.
@@ -921,12 +957,14 @@
                     </div>
 
                     <div id="mActions" class="mt-auto flex gap-3 hidden">
-                        <a href="#"
-                            class="flex-1 py-2.5 bg-primary text-bgDark font-semibold rounded-xl text-center text-sm hover:bg-white transition-colors">Live
-                            Demo</a>
-                        <a href="#"
-                            class="flex-1 py-2.5 bg-white/5 border border-white/10 text-white font-semibold rounded-xl text-center text-sm hover:bg-white/10 transition-colors">Source
-                            Code</a>
+                        <a id="mDemo" href="#" target="_blank" rel="noopener"
+                            class="flex-1 py-2.5 bg-primary text-bgDark font-semibold rounded-xl text-center text-sm hover:bg-white transition-colors">
+                            Live Demo
+                        </a>
+                        <a id="mCode" href="#" target="_blank" rel="noopener"
+                            class="flex-1 py-2.5 bg-white/5 border border-white/10 text-white font-semibold rounded-xl text-center text-sm hover:bg-white/10 transition-colors">
+                            Source Code
+                        </a>
                     </div>
 
                     <div id="mCertText" class="mt-auto hidden">
@@ -946,25 +984,40 @@
 
         const projectsData = [
             {
-                title: "Finance Dashboard",
-                subtitle: "Fintech App",
-                img: "assets/img/AI.png",
-                desc: "Dashboard keuangan pribadi yang memungkinkan pengguna melacak pengeluaran, membuat anggaran, dan melihat insight lewat grafik interaktif.",
-                tags: ["Vue.js", "Firebase", "Chart.js", "Tailwind"]
+                title: "Pembangunan Website klinik Nauli Dental Care",
+                subtitle: "Web App • Fullstack",
+                images: [
+                    "assets/img/AI.png",
+                    "assets/img/frontend.png",
+                    "assets/img/backend.png"
+                ],
+                desc: "Website klinik untuk booking dan informasi layanan. Fokus pada UX dan backend rapi.",
+                tags: ["Laravel", "MySQL", "Tailwind", "GitHub"],
+                github: "https://github.com/Septianhutasoit/NAMA_REPO_1",
+                demo: "" // isi kalau ada link live
             },
             {
                 title: "Shopify Clone",
                 subtitle: "E-Commerce",
-                img: "assets/img/frontend.png",
-                desc: "Platform e-commerce dengan manajemen produk, keranjang belanja real-time, dan integrasi payment gateway.",
-                tags: ["React", "Redux", "Node.js", "Stripe API"]
+                images: [
+                    "assets/img/frontend.png",
+                    "assets/img/backend.png"
+                ],
+                desc: "Platform e-commerce dengan manajemen produk, cart real-time, dan integrasi payment gateway.",
+                tags: ["React", "Redux", "Node.js", "Stripe API"],
+                github: "https://github.com/Septianhutasoit/NAMA_REPO_2",
+                demo: ""
             },
             {
                 title: "Travel Booking",
-                subtitle: "Mobile/Web App",
-                img: "assets/img/backend.png",
-                desc: "Aplikasi pemesanan tiket dan hotel dengan pencarian rute terbaik dan filter harga.",
-                tags: ["Laravel", "MySQL", "REST API"]
+                subtitle: "Web App",
+                images: [
+                    "assets/img/backend.png"
+                ],
+                desc: "Aplikasi booking dengan filter, rute, dan integrasi API pihak ketiga.",
+                tags: ["Laravel", "MySQL", "REST API"],
+                github: "https://github.com/Septianhutasoit/NAMA_REPO_3",
+                demo: ""
             }
         ];
 
@@ -991,6 +1044,51 @@
         const mTags = document.getElementById('mTags');
         const mActions = document.getElementById('mActions');
         const mCertText = document.getElementById('mCertText');
+        const imgPrev = document.getElementById('imgPrev');
+        const imgNext = document.getElementById('imgNext');
+        const imgDots = document.getElementById('imgDots');
+        const mDemo = document.getElementById('mDemo');
+        const mCode = document.getElementById('mCode');
+
+        let currentImages = [];
+        let currentImgIndex = 0;
+
+        function renderDots() {
+            if (!imgDots) return;
+            imgDots.innerHTML = "";
+            currentImages.forEach((_, i) => {
+                const dot = document.createElement("button");
+                dot.type = "button";
+                dot.className = "w-2 h-2 rounded-full transition-all " + (i === currentImgIndex ? "bg-white" : "bg-white/30");
+                dot.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    setModalImage(i);
+                });
+                imgDots.appendChild(dot);
+            });
+        }
+
+        function setModalImage(i) {
+            if (!currentImages.length) return;
+            currentImgIndex = (i + currentImages.length) % currentImages.length;
+            mImage.src = encodeURI(currentImages[currentImgIndex]);
+
+            // update dots
+            if (imgDots) {
+                [...imgDots.children].forEach((dot, idx) => {
+                    dot.className = "w-2 h-2 rounded-full transition-all " + (idx === currentImgIndex ? "bg-white" : "bg-white/30");
+                });
+            }
+        }
+
+        imgPrev?.addEventListener("click", (e) => {
+            e.stopPropagation();
+            setModalImage(currentImgIndex - 1);
+        });
+        imgNext?.addEventListener("click", (e) => {
+            e.stopPropagation();
+            setModalImage(currentImgIndex + 1);
+        });
 
         function openModal(type, index) {
             let data;
@@ -1060,6 +1158,7 @@
             </div>
           </div>
         </div>
+        
       `).join('');
         }
 
