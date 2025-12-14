@@ -175,29 +175,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .spotlight-card:hover::before {
-            opacity: 1;
-        }
-
-        .spotlight-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            padding: 1px;
-            background: radial-gradient(900px circle at var(--mouse-x) var(--mouse-y),
-                    rgba(56, 189, 248, 0.7),
-                    transparent 45%);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.45s;
-            pointer-events: none;
-            z-index: 2;
-        }
-
         /* PORTFOLIO IMG */
         .portfolio-img-wrapper {
             position: relative;
@@ -245,7 +222,6 @@
             }
         }
     </style>
-
 </head>
 
 <body class="text-slate-300 antialiased overflow-x-hidden selection:bg-primary selection:text-bgDark">
@@ -431,9 +407,7 @@
 
             <div id="cards-container"
                 class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 max-w-5xl mx-auto">
-                <!-- (kartu skills kamu tetap, gue gak ubah) -->
-                <!-- ... semua kartu skills kamu tetap sama ... -->
-                <!-- Karena kamu minta "tanpa ada yang dihapus", bagian skill kamu biarin tetap persis seperti yang kamu punya -->
+                <!-- isi skill kamu boleh taruh di sini -->
             </div>
         </div>
     </section>
@@ -454,88 +428,8 @@
                 </div>
             </div>
 
-            <!-- NOTE: Card project kamu tetap sama. Nanti modalnya yang berubah jadi bisa multi image + github/demo -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                <!-- Project 1 -->
-                <div class="group relative rounded-2xl overflow-hidden glass-card cursor-pointer flex flex-col hover:-translate-y-2 hover:scale-[1.01] transition-all duration-500 ease-out"
-                    onclick="openModal('project', 0)" data-aos="fade-up" data-aos-delay="80">
-                    <div class="relative h-52 sm:h-60 portfolio-img-wrapper portfolio-img-hover">
-                        <img src="assets/img/AI.png" class="portfolio-img" alt="Project 1">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                        <div class="absolute top-3 right-3 z-20">
-                            <span
-                                class="px-3 py-1 bg-black/60 backdrop-blur-md border border-white/15 rounded-full text-[11px] font-semibold text-slate-100">Product</span>
-                        </div>
-                        <div class="absolute bottom-3 left-3 z-20">
-                            <p class="text-[11px] text-slate-300 uppercase tracking-[0.16em]">Web • Fullstack</p>
-                        </div>
-                    </div>
-                    <div class="p-5 sm:p-6 bg-cardSoft flex flex-col flex-1">
-                        <h3
-                            class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                            Nauli Dental Care</h3>
-                        <p class="text-slate-400 text-sm flex-1">Website klinik untuk booking dan informasi layanan.</p>
-                        <div class="flex flex-wrap gap-2 mt-4">
-                            <span
-                                class="text-[11px] text-slate-200 bg-white/5 px-2.5 py-1 rounded-full border border-white/10">Laravel</span>
-                            <span
-                                class="text-[11px] text-slate-200 bg-white/5 px-2.5 py-1 rounded-full border border-white/10">MySQL</span>
-                            <span
-                                class="text-[11px] text-slate-200 bg-white/5 px-2.5 py-1 rounded-full border border-white/10">Tailwind</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="group relative rounded-2xl overflow-hidden glass-card cursor-pointer flex flex-col hover:-translate-y-2 hover:scale-[1.01] transition-all duration-500 ease-out"
-                    onclick="openModal('project', 1)" data-aos="fade-up" data-aos-delay="160">
-                    <div class="relative h-52 sm:h-60 portfolio-img-wrapper portfolio-img-hover">
-                        <img src="assets/img/frontend.png" class="portfolio-img" alt="Project 2">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                        <div class="absolute top-3 right-3 z-20">
-                            <span
-                                class="px-3 py-1 bg-black/60 backdrop-blur-md border border-white/15 rounded-full text-[11px] font-semibold text-slate-100">E-Commerce</span>
-                        </div>
-                    </div>
-                    <div class="p-5 sm:p-6 bg-cardSoft flex flex-col flex-1">
-                        <h3
-                            class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                            Shopify Clone</h3>
-                        <p class="text-slate-400 text-sm flex-1">Platform e-commerce dengan cart real-time.</p>
-                        <div class="flex flex-wrap gap-2 mt-4">
-                            <span
-                                class="text-[11px] text-slate-200 bg-white/5 px-2.5 py-1 rounded-full border border-white/10">React</span>
-                            <span
-                                class="text-[11px] text-slate-200 bg-white/5 px-2.5 py-1 rounded-full border border-white/10">Redux</span>
-                            <span
-                                class="text-[11px] text-slate-200 bg-white/5 px-2.5 py-1 rounded-full border border-white/10">Node.js</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="group relative rounded-2xl overflow-hidden glass-card cursor-pointer flex flex-col hover:-translate-y-2 hover:scale-[1.01] transition-all duration-500 ease-out"
-                    onclick="openModal('project', 2)" data-aos="fade-up" data-aos-delay="240">
-                    <div class="relative h-52 sm:h-60 portfolio-img-wrapper portfolio-img-hover">
-                        <img src="assets/img/backend.png" class="portfolio-img" alt="Project 3">
-                    </div>
-                    <div class="p-5 sm:p-6 bg-cardSoft flex flex-col flex-1">
-                        <h3
-                            class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                            Travel Booking</h3>
-                        <p class="text-slate-400 text-sm flex-1">Aplikasi booking dengan filter & integrasi API.</p>
-                        <div class="flex flex-wrap gap-2 mt-4">
-                            <span
-                                class="text-[11px] text-slate-200 bg-white/5 px-2.5 py-1 rounded-full border border-white/10">Laravel</span>
-                            <span
-                                class="text-[11px] text-slate-200 bg-white/5 px-2.5 py-1 rounded-full border border-white/10">MySQL</span>
-                            <span
-                                class="text-[11px] text-slate-200 bg-white/5 px-2.5 py-1 rounded-full border border-white/10">REST
-                                API</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- grid projects DINAMIS dari data -->
+            <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"></div>
         </div>
     </section>
 
@@ -548,7 +442,7 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">Lisensi & <span
                         class="text-gradient">Sertifikasi</span></h2>
                 <p class="text-slate-400 text-sm sm:text-base mt-3 max-w-2xl mx-auto">
-                    Sertifikat di bawah ini sudah dinamis dari data (klik kartu = modal kebuka ke gambar yang sama).
+                    Sertifikat di bawah ini sudah dinamis dari data (klik kartu = modal kebuka).
                 </p>
             </div>
 
@@ -587,7 +481,6 @@
                     class="text-slate-400 hover:text-white text-xl transition-colors"><i class="fab fa-github"></i></a>
             </div>
 
-            <!-- Contact form (Formspree) -->
             <form action="https://formspree.io/f/FORM_ID_KAMU" method="POST"
                 class="mt-8 max-w-xl mx-auto text-left bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6">
 
@@ -639,7 +532,7 @@
             <div id="modalContent"
                 class="bg-cardSoft border border-white/10 w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl transform scale-95 opacity-0 transition-all duration-300 flex flex-col md:flex-row max-h-[90vh]">
 
-                <!-- Image Side (FIXED: now contains prev/next/dots) -->
+                <!-- Image Side -->
                 <div class="w-full md:w-1/2 h-60 md:h-auto bg-black relative flex items-center justify-center">
                     <img id="mImage" src="" alt=""
                         class="w-full h-full object-contain bg-black/80 rounded-2xl shadow-[0_18px_45px_rgba(15,23,42,0.95)]" />
@@ -679,7 +572,7 @@
                     <p id="mDesc" class="text-slate-300 text-sm sm:text-[15px] leading-relaxed mb-6">Description...</p>
 
                     <div id="mTagsGroup" class="mb-6 hidden">
-                        <h4 class="text-white font-semibold mb-2 text-sm">Teknologi</h4>
+                        <h4 class="text-white font-semibold mb-2 text-sm">Teknologi / Badge</h4>
                         <div id="mTags" class="flex flex-wrap gap-2"></div>
                     </div>
 
@@ -709,41 +602,107 @@
     <script>
         AOS.init({ duration: 1100, once: true, offset: 80 });
 
+        // ====== ICON MAP + HELPERS ======
+        const ICONS = {
+            laravel: { cls: "fa-brands fa-laravel", color: "text-red-400" },
+            php: { cls: "fa-brands fa-php", color: "text-indigo-300" },
+            mysql: { cls: "fa-solid fa-database", color: "text-sky-300" },
+            postgres: { cls: "fa-solid fa-database", color: "text-sky-300" },
+            react: { cls: "fa-brands fa-react", color: "text-cyan-300" },
+            redux: { cls: "fa-solid fa-circle-nodes", color: "text-violet-300" },
+            node: { cls: "fa-brands fa-node-js", color: "text-green-400" },
+            tailwind: { cls: "fa-brands fa-css3-alt", color: "text-sky-400" }, // fallback
+            api: { cls: "fa-solid fa-plug", color: "text-teal-300" },
+            github: { cls: "fa-brands fa-github", color: "text-slate-200" },
+            i18n: { cls: "fa-solid fa-language", color: "text-amber-300" },
+            product: { cls: "fa-solid fa-box", color: "text-violet-300" },
+            ecommerce: { cls: "fa-solid fa-cart-shopping", color: "text-amber-200" },
+            web: { cls: "fa-solid fa-globe", color: "text-slate-200" },
+        };
+
+        function normKey(t) {
+            return String(t || "").toLowerCase().replace(/\./g, "").replace(/\s+/g, "");
+        }
+
+        function getIcon(tag) {
+            const key = normKey(tag);
+            if (key.includes("laravel")) return ICONS.laravel;
+            if (key.includes("php")) return ICONS.php;
+            if (key.includes("mysql")) return ICONS.mysql;
+            if (key.includes("postgres")) return ICONS.postgres;
+            if (key.includes("react")) return ICONS.react;
+            if (key.includes("redux")) return ICONS.redux;
+            if (key.includes("node")) return ICONS.node;
+            if (key.includes("tailwind")) return ICONS.tailwind;
+            if (key.includes("rest") || key.includes("api")) return ICONS.api;
+            if (key.includes("github")) return ICONS.github;
+            if (key.includes("multi") || key.includes("bahasa") || key.includes("i18n")) return ICONS.i18n;
+            if (key.includes("product")) return ICONS.product;
+            if (key.includes("e-commerce") || key.includes("ecommerce")) return ICONS.ecommerce;
+            if (key.includes("web")) return ICONS.web;
+            return { cls: "fa-solid fa-code", color: "text-slate-300" };
+        }
+
         // ====== DATA ======
         const projectsData = [
             {
+                cardTitle: "Nauli Dental Care",
                 title: "Pembangunan Website klinik Nauli Dental Care",
                 subtitle: "Web App • Fullstack",
-                images: [
-                    "assets/img/AI.png",
-                    "assets/img/frontend.png",
-                    "assets/img/backend.png"
-                ],
+                categoryChip: "Product",
+                cover: "assets/img/AI.png",
+                images: ["assets/img/AI.png", "assets/img/frontend.png", "assets/img/backend.png"],
                 desc: "Website klinik untuk booking dan informasi layanan. Fokus pada UX dan backend rapi.",
-                tags: ["Laravel", "MySQL", "Tailwind", "GitHub"],
+                tags: ["Laravel", "MySQL", "Tailwind"],
+                badges: ["Product"],
                 github: "https://github.com/Septianhutasoit/NAMA_REPO_1",
-                demo: "" // isi kalau ada link live, misal: https://namadomain.vercel.app
+                demo: ""
             },
             {
+                cardTitle: "Shopify Clone",
                 title: "Shopify Clone",
                 subtitle: "E-Commerce",
-                images: [
-                    "assets/img/frontend.png",
-                    "assets/img/backend.png"
-                ],
+                categoryChip: "E-Commerce",
+                cover: "assets/img/frontend.png",
+                images: ["assets/img/frontend.png", "assets/img/backend.png"],
                 desc: "Platform e-commerce dengan manajemen produk, cart real-time, dan integrasi payment gateway.",
-                tags: ["React", "Redux", "Node.js", "Stripe API"],
+                tags: ["React", "Redux", "Node.js", "REST API"],
+                badges: ["Product"],
                 github: "https://github.com/Septianhutasoit/NAMA_REPO_2",
                 demo: ""
             },
             {
+                cardTitle: "Website Aksara Batak",
+                title: "Website Aksara Batak",
+                subtitle: "Informasi • Multi Bahasa",
+                categoryChip: "Informasi",
+                cover: "assets/img/Home.png",
+                images: [
+                    "assets/img/Home.png",
+                    "assets/img/Fitur.png",
+                    "assets/img/bahasa.png",
+                    "assets/img/Tentang.png",
+                    "assets/img/mengenal aksara.png",
+                    "assets/img/visualisasi.png",
+                    "assets/img/kuis.png",
+                    "assets/img/kuis2.png"
+                ],
+                desc: "Website edukasi Aksara Batak dengan fitur multi-bahasa, alur belajar, visualisasi, dan kuis.",
+                tags: ["Laravel", "PHP", "MySQL"],
+                badges: ["Product", "Multi Bahasa"],
+                github: "https://github.com/Septianhutasoit/NAMA_REPO_4",
+                demo: ""
+            },
+            {
+                cardTitle: "Travel Booking",
                 title: "Travel Booking",
                 subtitle: "Web App",
-                images: [
-                    "assets/img/backend.png"
-                ],
+                categoryChip: "Web App",
+                cover: "assets/img/backend.png",
+                images: ["assets/img/backend.png"],
                 desc: "Aplikasi booking dengan filter, rute, dan integrasi API pihak ketiga.",
                 tags: ["Laravel", "MySQL", "REST API"],
+                badges: [],
                 github: "https://github.com/Septianhutasoit/NAMA_REPO_3",
                 demo: ""
             }
@@ -804,6 +763,9 @@
             currentImgIndex = (i + currentImages.length) % currentImages.length;
             mImage.src = encodeURI(currentImages[currentImgIndex]);
 
+            // fallback kalau file gambar salah
+            mImage.onerror = () => { mImage.src = "assets/img/placeholder.png"; };
+
             if (imgDots) {
                 [...imgDots.children].forEach((dot, idx) => {
                     dot.className = "w-2 h-2 rounded-full transition-all " + (idx === currentImgIndex ? "bg-white" : "bg-white/30");
@@ -835,13 +797,23 @@
             if (type === 'project') {
                 data = projectsData[index];
 
-                // tags
+                // tags + badges with icons
                 mTagsGroup.classList.remove('hidden');
                 mTags.innerHTML = '';
+
                 (data.tags || []).forEach(tag => {
+                    const ic = getIcon(tag);
                     const span = document.createElement('span');
-                    span.className = "px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-[11px] text-slate-300";
-                    span.textContent = tag;
+                    span.className = "px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-[11px] text-slate-200 flex items-center gap-2";
+                    span.innerHTML = `<i class="${ic.cls} ${ic.color}"></i><span>${tag}</span>`;
+                    mTags.appendChild(span);
+                });
+
+                (data.badges || []).forEach(b => {
+                    const ic = getIcon(b);
+                    const span = document.createElement('span');
+                    span.className = "px-3 py-1 bg-black/30 border border-white/10 rounded-lg text-[11px] text-slate-200 flex items-center gap-2";
+                    span.innerHTML = `<i class="${ic.cls} ${ic.color}"></i><span>${b}</span>`;
                     mTags.appendChild(span);
                 });
 
@@ -859,7 +831,7 @@
                 }
 
                 // images
-                currentImages = (data.images && data.images.length) ? data.images : [];
+                currentImages = (data.images && data.images.length) ? data.images : [data.cover];
                 currentImgIndex = 0;
                 renderDots();
                 setModalImage(0);
@@ -874,7 +846,6 @@
                 data = certsData[index];
                 mCertText.classList.remove('hidden');
 
-                // cert single img
                 currentImages = [data.img];
                 currentImgIndex = 0;
                 renderDots();
@@ -905,6 +876,65 @@
             document.body.style.overflow = 'auto';
         }
 
+        // ====== RENDER PROJECTS (DINAMIS) ======
+        function renderProjects() {
+            const grid = document.getElementById('projectsGrid');
+            if (!grid) return;
+
+            grid.innerHTML = projectsData.map((p, i) => {
+                const chip = p.categoryChip || "Project";
+                const topBadges = (p.badges || []).slice(0, 2).map(b => {
+                    const ic = getIcon(b);
+                    return `<span class="inline-flex items-center gap-2 px-3 py-1 bg-black/60 backdrop-blur-md border border-white/15 rounded-full text-[11px] font-semibold text-slate-100">
+                    <i class="${ic.cls} ${ic.color}"></i>${b}
+                  </span>`;
+                }).join("");
+
+                const tagIcons = (p.tags || []).slice(0, 3).map(t => {
+                    const ic = getIcon(t);
+                    return `<span class="inline-flex items-center gap-2 text-[12px] text-slate-300 bg-white/5 px-3 py-1 rounded-full border border-white/10">
+                    <i class="${ic.cls} ${ic.color}"></i>${t}
+                  </span>`;
+                }).join("");
+
+                return `
+          <div class="group relative rounded-2xl overflow-hidden glass-card cursor-pointer flex flex-col hover:-translate-y-2 hover:scale-[1.01] transition-all duration-500 ease-out"
+              onclick="openModal('project', ${i})" data-aos="fade-up" data-aos-delay="${80 + i * 80}">
+            <div class="relative h-52 sm:h-60 portfolio-img-wrapper portfolio-img-hover">
+              <img src="${p.cover}" class="portfolio-img" alt="${p.cardTitle || p.title}">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+
+              <div class="absolute top-3 right-3 z-20 flex gap-2">
+                <span class="px-3 py-1 bg-black/60 backdrop-blur-md border border-white/15 rounded-full text-[11px] font-semibold text-slate-100">
+                  ${chip}
+                </span>
+              </div>
+
+              <div class="absolute top-3 left-3 z-20 flex flex-wrap gap-2">
+                ${topBadges}
+              </div>
+
+              <div class="absolute bottom-3 left-3 z-20">
+                <p class="text-[11px] text-slate-300 uppercase tracking-[0.16em]">${p.subtitle}</p>
+              </div>
+            </div>
+
+            <div class="p-5 sm:p-6 bg-cardSoft flex flex-col flex-1">
+              <h3 class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                ${p.cardTitle || p.title}
+              </h3>
+              <p class="text-slate-400 text-sm flex-1">${p.desc}</p>
+
+              <div class="flex flex-wrap gap-2 mt-4">
+                ${tagIcons}
+              </div>
+            </div>
+          </div>
+        `;
+            }).join("");
+        }
+
+        // ====== RENDER CERTS ======
         function renderCertificates() {
             const grid = document.getElementById('certGrid');
             if (!grid) return;
@@ -927,22 +957,8 @@
       `).join('');
         }
 
-        const cardsContainer = document.getElementById("cards-container");
-        const cards = document.querySelectorAll(".spotlight-card");
-
-        if (cardsContainer) {
-            cardsContainer.onmousemove = e => {
-                for (const card of cards) {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    card.style.setProperty("--mouse-x", `${x}px`);
-                    card.style.setProperty("--mouse-y", `${y}px`);
-                }
-            };
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
+            renderProjects();
             renderCertificates();
 
             // SPOTIFY toggle
