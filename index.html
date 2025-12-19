@@ -659,138 +659,137 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-        <script>
-            AOS.init({ duration: 1100, once: true, offset: 80 });
+    <script>
+        AOS.init({ duration: 1100, once: true, offset: 80 });
 
-            // ====== ICON MAP + HELPERS (buat tags/badges di project modal) ======
-            // ====== ICON MAP + HELPERS (buat tags/badges di project modal) ======
-                const ICONS = {
-                    laravel: { cls: "fa-brands fa-laravel", color: "text-red-400" },
-                    php: { cls: "fa-brands fa-php", color: "text-indigo-300" },
-                    mysql: { cls: "fa-solid fa-database", color: "text-sky-300" },
-                    postgres: { cls: "fa-solid fa-database", color: "text-sky-300" },
-                    mongodb: { cls: "fa-solid fa-leaf", color: "text-green-400" },
+        // ====== ICON MAP + HELPERS (buat tags/badges di project modal) ======
+        // ====== ICON MAP + HELPERS (buat tags/badges di project modal) ======
+        const ICONS = {
+            laravel: { cls: "fa-brands fa-laravel", color: "text-red-400" },
+            php: { cls: "fa-brands fa-php", color: "text-indigo-300" },
+            mysql: { cls: "fa-solid fa-database", color: "text-sky-300" },
+            postgres: { cls: "fa-solid fa-database", color: "text-sky-300" },
+            mongodb: { cls: "fa-solid fa-leaf", color: "text-green-400" },
 
-                    react: { cls: "fa-brands fa-react", color: "text-cyan-300" },
-                    next: { cls: "fa-solid fa-layer-group", color: "text-slate-200" },
-                    redux: { cls: "fa-solid fa-circle-nodes", color: "text-violet-300" },
-                    node: { cls: "fa-brands fa-node-js", color: "text-green-400" },
-                    express: { cls: "fa-solid fa-bolt", color: "text-slate-200" },
+            react: { cls: "fa-brands fa-react", color: "text-cyan-300" },
+            next: { cls: "fa-solid fa-layer-group", color: "text-slate-200" },
+            redux: { cls: "fa-solid fa-circle-nodes", color: "text-violet-300" },
+            node: { cls: "fa-brands fa-node-js", color: "text-green-400" },
+            express: { cls: "fa-solid fa-bolt", color: "text-slate-200" },
 
-                    tailwind: { cls: "fa-solid fa-wand-magic-sparkles", color: "text-sky-300" },
-                    bootstrap: { cls: "fa-brands fa-bootstrap", color: "text-violet-300" },
+            tailwind: { cls: "fa-solid fa-wand-magic-sparkles", color: "text-sky-300" },
+            bootstrap: { cls: "fa-brands fa-bootstrap", color: "text-violet-300" },
 
-                    api: { cls: "fa-solid fa-plug", color: "text-teal-300" },
-                    postman: { cls: "fa-solid fa-paper-plane", color: "text-orange-300" },
+            api: { cls: "fa-solid fa-plug", color: "text-teal-300" },
+            postman: { cls: "fa-solid fa-paper-plane", color: "text-orange-300" },
 
-                    github: { cls: "fa-brands fa-github", color: "text-slate-200" },
-                    git: { cls: "fa-brands fa-git-alt", color: "text-orange-400" },
-                    docker: { cls: "fa-brands fa-docker", color: "text-sky-300" },
+            github: { cls: "fa-brands fa-github", color: "text-slate-200" },
+            git: { cls: "fa-brands fa-git-alt", color: "text-orange-400" },
+            docker: { cls: "fa-brands fa-docker", color: "text-sky-300" },
 
-                    i18n: { cls: "fa-solid fa-language", color: "text-amber-300" },
-                    product: { cls: "fa-solid fa-box", color: "text-violet-300" },
-                    ecommerce: { cls: "fa-solid fa-cart-shopping", color: "text-amber-200" },
-                    web: { cls: "fa-solid fa-globe", color: "text-slate-200" },
-                };
+            i18n: { cls: "fa-solid fa-language", color: "text-amber-300" },
+            product: { cls: "fa-solid fa-box", color: "text-violet-300" },
+            ecommerce: { cls: "fa-solid fa-cart-shopping", color: "text-amber-200" },
+            web: { cls: "fa-solid fa-globe", color: "text-slate-200" },
+        };
 
-                function normKey(t) {
-                    // hapus spasi & titik, jadi "Next.js" -> "nextjs"
-                    return String(t || "").toLowerCase().replace(/\./g, "").replace(/\s+/g, "");
-                }
+        function normKey(t) {
+            // hapus spasi & titik, jadi "Next.js" -> "nextjs"
+            return String(t || "").toLowerCase().replace(/\./g, "").replace(/\s+/g, "");
+        }
 
-                function getIcon(tag) {
-                    const key = normKey(tag);
+        function getIcon(tag) {
+            const key = normKey(tag);
 
-                    if (key.includes("laravel")) return ICONS.laravel;
-                    if (key.includes("php")) return ICONS.php;
+            if (key.includes("laravel")) return ICONS.laravel;
+            if (key.includes("php")) return ICONS.php;
 
-                    if (key.includes("postgres") || key.includes("postgresql")) return ICONS.postgres;
-                    if (key.includes("mysql")) return ICONS.mysql;
-                    if (key.includes("mongo") || key.includes("mongodb")) return ICONS.mongodb;
+            if (key.includes("postgres") || key.includes("postgresql")) return ICONS.postgres;
+            if (key.includes("mysql")) return ICONS.mysql;
+            if (key.includes("mongo") || key.includes("mongodb")) return ICONS.mongodb;
 
-                    if (key.includes("react")) return ICONS.react;
-                    if (key.includes("next") || key.includes("nextjs")) return ICONS.next;
-                    if (key.includes("redux")) return ICONS.redux;
+            if (key.includes("react")) return ICONS.react;
+            if (key.includes("next") || key.includes("nextjs")) return ICONS.next;
+            if (key.includes("redux")) return ICONS.redux;
 
-                    if (key.includes("node")) return ICONS.node;
-                    if (key.includes("express")) return ICONS.express;
+            if (key.includes("node")) return ICONS.node;
+            if (key.includes("express")) return ICONS.express;
 
-                    if (key.includes("tailwind")) return ICONS.tailwind;
-                    if (key.includes("bootstrap")) return ICONS.bootstrap;
+            if (key.includes("tailwind")) return ICONS.tailwind;
+            if (key.includes("bootstrap")) return ICONS.bootstrap;
 
-                    if (key.includes("postman")) return ICONS.postman;
-                    if (key.includes("rest") || key.includes("api")) return ICONS.api;
+            if (key.includes("postman")) return ICONS.postman;
+            if (key.includes("rest") || key.includes("api")) return ICONS.api;
 
-                    if (key.includes("docker")) return ICONS.docker;
-                    if (key.includes("git")) return ICONS.git;
-                    if (key.includes("github")) return ICONS.github;
+            if (key.includes("docker")) return ICONS.docker;
+            if (key.includes("git")) return ICONS.git;
+            if (key.includes("github")) return ICONS.github;
 
-                    if (key.includes("multi") || key.includes("bahasa") || key.includes("i18n")) return ICONS.i18n;
-                    if (key.includes("product")) return ICONS.product;
-                    if (key.includes("ecommerce") || key.includes("e-commerce")) return ICONS.ecommerce;
-                    if (key.includes("web")) return ICONS.web;
+            if (key.includes("multi") || key.includes("bahasa") || key.includes("i18n")) return ICONS.i18n;
+            if (key.includes("product")) return ICONS.product;
+            if (key.includes("ecommerce") || key.includes("e-commerce")) return ICONS.ecommerce;
+            if (key.includes("web")) return ICONS.web;
 
-                    return { cls: "fa-solid fa-code", color: "text-slate-300" };
-                }
-
-
-            // ===== SKILLS (DEVICON) =====
-           // ===== SKILLS (DEVICON) =====
-            const skillsData = [
-                // Core FE
-                { name: "HTML5", icon: "devicon-html5-plain colored" },
-                { name: "CSS3", icon: "devicon-css3-plain colored" },
-                { name: "JavaScript", icon: "devicon-javascript-plain colored" },
-                { name: "TypeScript", icon: "devicon-typescript-plain colored" },
-                { name: "React", icon: "devicon-react-original colored" },
-                { name: "Next.js", icon: "devicon-nextjs- plain" },
-                { name: "Tailwind", icon: "devicon-tailwindcss-original colored" },
-                { name: "Bootstrap", icon: "devicon-bootstrap-plain colored" },
-
-                // Backend
-                { name: "Node.js", icon: "devicon-nodejs-plain colored" },
-                { name: "Express.js", icon: "devicon-express-original" },
-                { name: "Laravel", icon: "devicon-laravel-original colored" },
-                { name: "PHP", icon: "devicon-php-plain colored" },
-
-                // API Tools
-                { name: "REST API", icon: "fa-solid fa-plug text-teal-300" },        // FontAwesome
-                { name: "Postman", icon: "devicon-postman-plain colored" },          // Devicon
-
-                // Database
-                { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
-                { name: "MySQL", icon: "devicon-mysql-plain colored" },
-                { name: "MongoDB", icon: "devicon-mongodb-plain colored" },
-
-                // CMS
-                { name: "WordPress", icon: "devicon-wordpress-plain colored" },
-
-                // Programming
-                { name: "Java", icon: "devicon-java-plain colored" },
-                { name: "C", icon: "devicon-c-plain colored" },
-                { name: "Python", icon: "devicon-python-plain colored" },
-
-                // Tools
-                { name: "Git", icon: "devicon-git-plain colored" },
-                { name: "GitHub", icon: "devicon-github-original" },
-                { name: "Docker", icon: "devicon-docker-plain colored" },
-                { name: "Figma", icon: "devicon-figma-plain colored" },
-
-                // Extra tools (optional)
-                { name: "Vite", icon: "devicon-vitejs-plain colored" },
-                { name: "NPM", icon: "devicon-npm-original-wordmark colored" },
-                { name: "Yarn", icon: "devicon-yarn-original colored" },
-                { name: "VS Code", icon: "devicon-vscode-plain colored" },
-                { name: "Linux", icon: "devicon-linux-plain colored" },
-                { name: "Firebase", icon: "devicon-firebase-plain colored" },
-            ];
+            return { cls: "fa-solid fa-code", color: "text-slate-300" };
+        }
 
 
-            function renderSkills() {
-                const cardsContainer = document.getElementById("cards-container");
-                if (!cardsContainer) return;
+        // ===== SKILLS (DEVICON) =====
+        const skillsData = [
+            // Core FE
+            { name: "HTML5", icon: "devicon-html5-plain colored" },
+            { name: "CSS3", icon: "devicon-css3-plain colored" },
+            { name: "JavaScript", icon: "devicon-javascript-plain colored" },
+            { name: "TypeScript", icon: "devicon-typescript-plain colored" },
+            { name: "React", icon: "devicon-react-original colored" },
+            { name: "Next.js", icon: "devicon-nextjs- plain" },
+            { name: "Tailwind", icon: "devicon-tailwindcss-original colored" },
+            { name: "Bootstrap", icon: "devicon-bootstrap-plain colored" },
 
-                cardsContainer.innerHTML = skillsData.map((s, i) => `
+            // Backend
+            { name: "Node.js", icon: "devicon-nodejs-plain colored" },
+            { name: "Express.js", icon: "devicon-express-original" },
+            { name: "Laravel", icon: "devicon-laravel-original colored" },
+            { name: "PHP", icon: "devicon-php-plain colored" },
+
+            // API Tools
+            { name: "REST API", icon: "fa-solid fa-plug text-teal-300" },        // FontAwesome
+            { name: "Postman", icon: "devicon-postman-plain colored" },          // Devicon
+
+            // Database
+            { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
+            { name: "MySQL", icon: "devicon-mysql-plain colored" },
+            { name: "MongoDB", icon: "devicon-mongodb-plain colored" },
+
+            // CMS
+            { name: "WordPress", icon: "devicon-wordpress-plain colored" },
+
+            // Programming
+            { name: "Java", icon: "devicon-java-plain colored" },
+            { name: "C", icon: "devicon-c-plain colored" },
+            { name: "Python", icon: "devicon-python-plain colored" },
+
+            // Tools
+            { name: "Git", icon: "devicon-git-plain colored" },
+            { name: "GitHub", icon: "devicon-github-original" },
+            { name: "Docker", icon: "devicon-docker-plain colored" },
+            { name: "Figma", icon: "devicon-figma-plain colored" },
+
+            // Extra tools (optional)
+            { name: "Vite", icon: "devicon-vitejs-plain colored" },
+            { name: "NPM", icon: "devicon-npm-original-wordmark colored" },
+            { name: "Yarn", icon: "devicon-yarn-original colored" },
+            { name: "VS Code", icon: "devicon-vscode-plain colored" },
+            { name: "Linux", icon: "devicon-linux-plain colored" },
+            { name: "Firebase", icon: "devicon-firebase-plain colored" },
+        ];
+
+
+        function renderSkills() {
+            const cardsContainer = document.getElementById("cards-container");
+            if (!cardsContainer) return;
+
+            cardsContainer.innerHTML = skillsData.map((s, i) => `
             <div class="skill-card p-6 sm:p-7 flex flex-col items-center justify-center text-center min-h-[170px] sm:min-h-[185px]"
                 data-aos="zoom-in" data-aos-delay="${60 + i * 20}">
             <div class="skill-glow"></div>
@@ -803,7 +802,7 @@
             <p class="text-[11px] text-slate-500 mt-1">Stack</p>
             </div>
         `).join("");
-            }
+        }
 
         // ====== DATA PROJECTS ======
         const projectsData = [
@@ -821,16 +820,29 @@
                 demo: ""
             },
             {
-                cardTitle: "Shopify Clone",
-                title: "Shopify Clone",
+                cardTitle: "Website Aplikasi Ecommerce Delshoop",
+                title: "Delshoop E-Commerce",
                 subtitle: "E-Commerce",
                 categoryChip: "E-Commerce",
-                cover: "assets/img/frontend.png",
-                images: ["assets/img/frontend.png", "assets/img/backend.png"],
+                cover: "assets/img/Delshop Home.png",
+                images: ["assets/img/Produk2.png",
+                    "assets/img/Tersedia.png",
+                    "assets/img/cart.png",
+                    "assets/img/Barcode.png",
+                    "assets/img/Cod.png",
+                    "assets/img/Cod2.png",
+                    "assets/img/daftar.png",
+                    "assets/img/testimoni.png",
+                    "assets/img/chat.png",
+                    "assets/img/jopet.png",
+                    "assets/img/jopet.png",
+                    "assets/img/dashboard.png",
+                    "assets/img/produk admin.png"
+                ],
                 desc: "Platform e-commerce dengan manajemen produk, cart real-time, dan integrasi payment gateway.",
-                tags: ["React", "Redux", "Node.js", "Express.js", "REST API"],
+                tags: ["Laravel", "Mysql", "Tailwind.css", "REST API"],
                 badges: ["Product"],
-                github: "https://github.com/Septianhutasoit/NAMA_REPO_2",
+                github: "https://github.com/Septianhutasoit/Aplikasi",
                 demo: ""
             },
             {
