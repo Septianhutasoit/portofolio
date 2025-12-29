@@ -506,6 +506,8 @@
 
             <div id="certGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6"></div>
         </div>
+        <div id="certPagination" class="flex justify-center items-center gap-2 mt-12 flex-wrap">
+        </div>
     </section>
 
     <!-- CONTACT -->
@@ -1124,32 +1126,102 @@
         }
 
         // ====== RENDER CERTS ======
+       // --- LOGIKA PAGINATION SERTIFIKAT ---
+        let currentCertPage = 1;
+        const certsPerPage = 4; // Tampilkan 4 sertifikat per halaman (bisa diubah sesuai keinginan)
+
+        // ====== RENDER CERTS (DENGAN PAGINATION) ======
         function renderCertificates() {
             const grid = document.getElementById('certGrid');
+            const paginationContainer = document.getElementById('certPagination');
             if (!grid) return;
 
-            grid.innerHTML = certsData.map((c, i) => `
-        <div class="group cursor-pointer" onclick="openModal('cert', ${i})" data-aos="zoom-in" data-aos-delay="${60 + i * 30}">
-          <div class="bg-cardSoft border border-white/10 rounded-2xl p-4 transition-all duration-500 hover:border-primary/60 hover:bg-white/5 hover:-translate-y-2 hover:scale-[1.01] flex flex-col h-full">
-            <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 portfolio-img-wrapper">
-              <div class="absolute inset-0 bg-primary/30 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
-                <i class="fas fa-expand text-white text-2xl drop-shadow-md"></i>
-              </div>
-              <img src="${c.img}" class="w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-110 group-hover:rotate-[1deg]" alt="${c.title}">
-            </div>
-            <div class="flex flex-col flex-1">
-              <h4 class="text-white font-semibold text-sm sm:text-base leading-tight group-hover:text-primary transition-colors">${c.title}</h4>
-              <p class="text-slate-500 text-xs sm:text-[13px] mt-1">${c.subtitle}</p>
-            </div>
-          </div>
-        </div>
-      `).join('');
+            // Hitung data yang akan ditampilkan
+            const totalPages = Math.ceil(certsData.length / certsPerPage);
+            const startIndex = (currentCertPage - 1) * certsPerPage;
+            const endIndex = startIndex + certsPerPage;
+            const paginatedCerts = certsData.slice(startIndex, endIndex);
+
+            // Render Kartu Sertifikat
+            grid.innerHTML = paginatedCerts.map((c, i) => `
+                <div class="group cursor-pointer" onclick="openModal('cert', ${startIndex + i})" data-aos="zoom-in" data-aos-delay="${60 + i * 30}">
+                    <div class="bg-cardSoft border border-white/10 rounded-2xl p-4 transition-all duration-500 hover:border-primary/60 hover:bg-white/5 hover:-translate-y-2 hover:scale-[1.01] flex flex-col h-full">
+                        <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 portfolio-img-wrapper">
+                            <div class="absolute inset-0 bg-primary/30 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                                <i class="fas fa-expand text-white text-2xl drop-shadow-md"></i>
+                            </div>
+                            <img src="${c.img}" class="w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-110 group-hover:rotate-[1deg]" alt="${c.title}">
+                        </div>
+                        <div class="flex flex-col flex-1">
+                            <h4 class="text-white font-semibold text-sm sm:text-base leading-tight group-hover:text-primary transition-colors">${c.title}</h4>
+                            <p class="text-slate-500 text-xs sm:text-[13px] mt-1">${c.subtitle}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Panggil fungsi render tombol navigasi
+            renderCertPagination(totalPages);
+
+            // Refresh AOS agar animasi muncul kembali saat pindah halaman
+            if (window.AOS) AOS.refresh();
+        }
+
+        // --- FUNGSI RENDER TOMBOL PAGINATION ---
+        function renderCertPagination(totalPages) {
+            const container = document.getElementById('certPagination');
+            if (!container) return;
+
+            let html = '';
+
+            // Tombol Previous
+            html += `
+                <button onclick="changeCertPage(${currentCertPage - 1})" ${currentCertPage === 1 ? 'disabled' : ''} 
+                    class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs sm:text-sm font-medium hover:bg-primary hover:text-bgDark transition-all disabled:opacity-20 disabled:cursor-not-allowed">
+                    « Prev
+                </button>
+            `;
+
+            // Tombol Angka
+            for (let i = 1; i <= totalPages; i++) {
+                const isActive = i === currentCertPage;
+                html += `
+                    <button onclick="changeCertPage(${i})" 
+                        class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl text-xs sm:text-sm font-bold transition-all ${isActive
+                        ? 'bg-primary text-bgDark shadow-[0_0_20px_rgba(56,189,248,0.4)]'
+                        : 'bg-white/5 border border-white/10 text-slate-400 hover:bg-white/10 hover:text-white'}">
+                        ${i}
+                    </button>
+                `;
+            }
+
+            // Tombol Next
+            html += `
+                <button onclick="changeCertPage(${currentCertPage + 1})" ${currentCertPage === totalPages ? 'disabled' : ''} 
+                    class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs sm:text-sm font-medium hover:bg-primary hover:text-bgDark transition-all disabled:opacity-20 disabled:cursor-not-allowed">
+                    Next »
+                </button>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        // --- FUNGSI PINDAH HALAMAN ---
+        function changeCertPage(page) {
+            const totalPages = Math.ceil(certsData.length / certsPerPage);
+            if (page < 1 || page > totalPages) return;
+
+            currentCertPage = page;
+            renderCertificates();
+
+            // Scroll otomatis kembali ke section sertifikat agar user tidak tersesat
+            document.getElementById('certificates').scrollIntoView({ behavior: 'smooth' });
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             renderSkills();
             renderProjects();
-            renderCertificates();
+            renderCertificates(); // Memanggil versi baru dengan pagination
 
             // SPOTIFY toggle
             const spotifyToggle = document.getElementById('spotifyToggle');
