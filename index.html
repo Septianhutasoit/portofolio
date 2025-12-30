@@ -895,8 +895,8 @@
                         "assets/img/vc.png"
                 ],
                 desc: "Aplikasi booking tiket dan juga untuk sumber informasi terhadap pemilik kapal.",
-                tags: ["figma", "UI/UX Design"],
-                badges: [],
+                tags: ["Figma", "UI/UX Design"],
+                badges: ["Figma", "UI/UX Design"],
                 github: "https://github.com/Septianhutasoit/Evedina-Tuktuk",
                 demo: ""
             }
@@ -1081,7 +1081,7 @@
 
             grid.innerHTML = projectsData.map((p, i) => {
                 const chip = p.categoryChip || "Project";
-                const topBadges = (p.badges || []).slice(0, 2).map(b => {
+                const topBadges = (p.badges || []).slice(0, 3).map(b => {
                     const ic = getIcon(b);
                     return `<span class="inline-flex items-center gap-2 px-3 py-1 bg-black/60 backdrop-blur-md border border-white/15 rounded-full text-[11px] font-semibold text-slate-100">
               <i class="${ic.cls} ${ic.color}"></i>${b}
