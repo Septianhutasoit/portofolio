@@ -695,6 +695,8 @@
             product: { cls: "fa-solid fa-box", color: "text-violet-300" },
             ecommerce: { cls: "fa-solid fa-cart-shopping", color: "text-amber-200" },
             web: { cls: "fa-solid fa-globe", color: "text-slate-200" },
+            figma: { cls: "fa-brands fa-figma", color: "text-purple-400" },
+            design: { cls: "fa-solid fa-pen-nib", color: "text-pink-400" },
         };
 
         function normKey(t) {
@@ -733,6 +735,9 @@
             if (key.includes("product")) return ICONS.product;
             if (key.includes("ecommerce") || key.includes("e-commerce")) return ICONS.ecommerce;
             if (key.includes("web")) return ICONS.web;
+            if (key.includes("figma")) return ICONS.figma;
+            if (key.includes("design") || key.includes("ui") || key.includes("ux")) return ICONS.design;
+
 
             return { cls: "fa-solid fa-code", color: "text-slate-300" };
         }
@@ -896,7 +901,7 @@
                 ],
                 desc: "Aplikasi booking tiket dan juga untuk sumber informasi terhadap pemilik kapal.",
                 tags: ["Figma", "UI/UX Design"],
-                badges: ["Figma", "UI/UX Design"],
+                badges: ["Mobile App"],
                 github: "https://github.com/Septianhutasoit/Evedina-Tuktuk",
                 demo: ""
             }
