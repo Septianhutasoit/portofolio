@@ -111,16 +111,6 @@
                 radial-gradient(circle at 90% 10%, rgba(129, 140, 248, 0.18) 0, transparent 60%),
                 radial-gradient(circle at 50% 100%, rgba(15, 23, 42, 1) 0, #020617 70%);
         }
-        /* Tambahkan ini untuk posisi canvas bintang */
-#starCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Supaya di belakang konten */
-    pointer-events: none;
-}
 
         @media (max-width: 640px) {
 
@@ -169,13 +159,21 @@
         }
 
         .glass-card {
-    background: rgba(15, 23, 42, 0.7) !important; /* Gunakan rgba untuk transparansi */
-    backdrop-filter: blur(12px);
-}
-.soft-card {
-    background: rgba(15, 23, 42, 0.75) !important;
-    backdrop-filter: blur(8px);
-}
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.94));
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(148, 163, 184, 0.28);
+            box-shadow:
+                0 22px 60px rgba(15, 23, 42, 0.95),
+                0 0 40px rgba(56, 189, 248, 0.12);
+            transition: all 0.6s ease;
+        }
+
+        .soft-card {
+            background: radial-gradient(circle at top left, rgba(30, 64, 175, 0.25), rgba(15, 23, 42, 0.95));
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            box-shadow: 0 18px 50px rgba(15, 23, 42, 0.85);
+            transition: transform 0.7s ease, box-shadow 0.7s ease;
+        }
 
         .soft-card:hover {
             transform: translateY(-6px) scale(1.01);
@@ -283,8 +281,6 @@
 </head>
 
 <body class="text-slate-300 antialiased overflow-x-hidden selection:bg-primary selection:text-bgDark">
-    <!-- TAMBAHKAN BARIS INI -->
-    <canvas id="starCanvas"></canvas>
 
     <!-- SPOTIFY PLAYER WIDGET -->
     <div class="fixed bottom-5 left-4 sm:left-6 z-50">
@@ -1268,127 +1264,6 @@
                 if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
             });
         });
-        /* --- LOGIKA ANIMASI BINTANG (STARS BACKGROUND) --- */
-const canvas = document.getElementById('starCanvas');
-const ctx = canvas.getContext('2d');
-let stars = [];
-
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    initStars();
-}
-
-class Star {
-    constructor() {
-        this.reset();
-    }
-    reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 1.5 + 0.5; // Ukuran bintang
-        this.speed = Math.random() * 0.4 + 0.1; // Kecepatan gerak
-        this.opacity = Math.random();
-    }
-    update() {
-        this.y -= this.speed; // Gerak ke atas secara perlahan
-        if (this.y < 0) this.reset(); // Balik ke bawah jika sudah sampai atas
-        
-        // Efek kelap-kelip lembut
-        this.opacity += (Math.random() - 0.5) * 0.03;
-        if (this.opacity < 0.1) this.opacity = 0.1;
-        if (this.opacity > 0.8) this.opacity = 0.8;
-    }
-    draw() {
-        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-    }
-}
-
-function initStars() {
-    stars = [];
-    const starCount = Math.floor((canvas.width * canvas.height) / 8000); // Jumlah bintang responsif
-    for (let i = 0; i < starCount; i++) {
-        stars.push(new Star());
-    }
-}
-
-function animateStars() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    stars.forEach(star => {
-        star.update();
-        star.draw();
-    });
-    requestAnimationFrame(animateStars);
-}
-
-// Jalankan animasi
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-animateStars();
-
-    /* --- LOGIKA ANIMASI BINTANG (STARS BACKGROUND) --- */
-    const canvas = document.getElementById('starCanvas');
-    const ctx = canvas.getContext('2d');
-    let stars = [];
-
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        initStars();
-    }
-
-    class Star {
-        constructor() {
-            this.reset();
-        }
-        reset() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 1.5 + 0.5; // Ukuran bintang
-            this.speed = Math.random() * 0.4 + 0.1; // Kecepatan gerak
-            this.opacity = Math.random();
-        }
-        update() {
-            this.y -= this.speed; // Gerak ke atas secara perlahan
-            if (this.y < 0) this.reset(); // Balik ke bawah jika sudah sampai atas
-
-            // Efek kelap-kelip lembut
-            this.opacity += (Math.random() - 0.5) * 0.03;
-            if (this.opacity < 0.1) this.opacity = 0.1;
-            if (this.opacity > 0.8) this.opacity = 0.8;
-        }
-        draw() {
-            ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
-
-    function initStars() {
-        stars = [];
-        const starCount = Math.floor((canvas.width * canvas.height) / 8000); // Jumlah bintang responsif
-        for (let i = 0; i < starCount; i++) {
-            stars.push(new Star());
-        }
-    }
-
-    function animateStars() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        stars.forEach(star => {
-            star.update();
-            star.draw();
-        });
-        requestAnimationFrame(animateStars);
-    }
-
-    // Jalankan animasi
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-    animateStars();
     </script>
 </body>
 
