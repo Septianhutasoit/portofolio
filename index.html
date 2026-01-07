@@ -363,20 +363,21 @@
                     class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white transition-all">Kontak</a>
             </div>
 
-            <div class="hidden md:flex items-center gap-3">
-                <!-- Tombol Light/Dark Mode -->
-                <button id="themeToggle"
-                    class="w-10 h-10 rounded-full flex items-center justify-center bg-white/5 border border-white/10 text-slate-300 dark:text-yellow-400 hover:bg-white/10 hover:border-white/30 transition-all duration-300">
-                    <i class="fas fa-moon dark:hidden text-sm"></i>
-                    <i class="fas fa-sun hidden dark:block text-sm"></i>
-                </button>
-            
-                <!-- Tombol Hire Me -->
-                <a href="#contact"
-                    class="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-primary hover:border-primary transition-all duration-300">
-                    Hire Me
-                </a>
-            </div>
+        <!-- Cari div yang membungkus tombol Hire Me -->
+        <div class="hidden md:flex items-center gap-4">
+        
+            <!-- Pindahkan tombol light mode ke sini -->
+            <button id="themeToggle" class="text-slate-300 dark:text-yellow-400 p-2">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:block"></i>
+            </button>
+        
+            <!-- Tombol Hire Me -->
+            <a href="#contact"
+                class="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-primary transition-all">
+                Hire Me
+            </a>
+        </div>
     </nav>
 
     <!-- MOBILE MENU -->
