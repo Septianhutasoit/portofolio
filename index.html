@@ -277,6 +277,25 @@
             font-size: 56px;
             line-height: 1;
         }
+        /* Transisi halus saat ganti tema */
+* { transition: background-color 0.5s ease, color 0.3s ease, border-color 0.5s ease; }
+
+/* Canvas Background */
+#hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: auto; /* Memungkinkan interaksi klik */
+}
+
+/* Penyesuaian warna Light Mode */
+.light { background-color: #f8fafc; color: #0f172a; }
+.light .glass-nav { background: rgba(255, 255, 255, 0.8); border-color: rgba(0,0,0,0.1); }
+.light .soft-card, .light .glass-card { background: white; border-color: rgba(0,0,0,0.1); color: #1e293b; }
+.light .text-slate-400 { color: #64748b; }
     </style>
 </head>
 
@@ -353,6 +372,11 @@
 
             <button id="menuBtn" class="md:hidden text-2xl text-white"><i class="fas fa-bars"></i></button>
         </div>
+        <button id="themeToggle"
+            class="w-10 h-10 rounded-full flex items-center justify-center bg-white/5 border border-white/10 dark:text-yellow-400 text-indigo-600 hover:scale-110 transition-all">
+            <i class="fas fa-moon dark:hidden"></i>
+            <i class="fas fa-sun hidden dark:block"></i>
+        </button>
     </nav>
 
     <!-- MOBILE MENU -->
@@ -374,6 +398,7 @@
 
     <!-- HERO -->
     <section id="home" class="min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <canvas id="hero-canvas"></canvas>
         <div
             class="absolute top-[15%] left-[5%] w-72 h-72 sm:w-96 sm:h-96 bg-primary/25 rounded-full mix-blend-screen blur-[110px] animate-blob">
         </div>
@@ -1261,6 +1286,89 @@
                 if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
             });
         });
+        // --- LOGIKA LIGHT/DARK MODE ---
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+
+            // --- LOGIKA PLEXUS BACKGROUND ---
+            const canvas = document.getElementById('hero-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let mouse = { x: null, y: null, radius: 150 };
+
+            function initCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                particles = [];
+                let particleCount = (canvas.width * canvas.height) / 9000;
+                for (let i = 0; i < particleCount; i++) { particles.push(new Particle()); }
+            }
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 1;
+                    this.speedX = Math.random() * 1 - 0.5;
+                    this.speedY = Math.random() * 1 - 0.5;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+                    if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+                }
+                draw() {
+                    ctx.fillStyle = document.documentElement.classList.contains('dark') ? 'rgba(56,189,248,0.5)' : 'rgba(30,41,59,0.2)';
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            function connect() {
+                let opacityValue = 1;
+                for (let a = 0; a < particles.length; a++) {
+                    for (let b = a; b < particles.length; b++) {
+                        let dx = particles[a].x - particles[b].x;
+                        let dy = particles[a].y - particles[b].y;
+                        let distance = Math.sqrt(dx * dx + dy * dy);
+                        if (distance < 150) {
+                            opacityValue = 1 - (distance / 150);
+                            ctx.strokeStyle = document.documentElement.classList.contains('dark') ? `rgba(56,189,248,${opacityValue})` : `rgba(30,41,59,${opacityValue * 0.2})`;
+                            ctx.lineWidth = 0.8;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[a].x, particles[a].y);
+                            ctx.lineTo(particles[b].x, particles[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => { p.update(); p.draw(); });
+                connect();
+                requestAnimationFrame(animate);
+            }
+
+            // Efek Burst saat Klik
+            window.addEventListener('click', (e) => {
+                for (let i = 0; i < 8; i++) {
+                    particles.push(new Particle());
+                    particles[particles.length - 1].x = e.clientX;
+                    particles[particles.length - 1].y = e.clientY;
+                }
+            });
+
+            window.addEventListener('resize', initCanvas);
+            initCanvas();
+            animate();
     </script>
 </body>
 
