@@ -618,8 +618,8 @@
             onclick="closeModal()"></div>
 
         <div class="absolute inset-0 flex items-center justify-center p-4">
-            <div id="modalContent"
-                class="bg-cardSoft border border-white/10 w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl transform scale-95 opacity-0 transition-all duration-300 flex flex-col md:flex-row max-h-[90vh]">
+        <div id="modalContent"
+            class="bg-cardSoft border border-white/10 w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl transform scale-90 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] flex flex-col md:flex-row max-h-[90vh]">
 
                 <!-- Image Side -->
                 <div class="w-full md:w-1/2 h-60 md:h-auto bg-black relative flex items-center justify-center">
@@ -1083,10 +1083,10 @@
             mDesc.innerText = data.desc;
 
             modal.classList.remove('hidden');
-            setTimeout(() => {
-                backdrop.classList.remove('opacity-0');
-                content.classList.remove('opacity-0', 'scale-95');
-                content.classList.add('scale-100');
+           setTimeout(() => {
+                backdrop.classList.replace('opacity-0', 'opacity-100');
+                content.classList.remove('opacity-0', 'scale-90');
+                content.classList.add('opacity-100', 'scale-100');
             }, 10);
 
             document.body.style.overflow = 'hidden';
@@ -1124,8 +1124,11 @@
                 }).join("");
 
                 return `
-          <div class="group relative rounded-2xl overflow-hidden glass-card cursor-pointer flex flex-col hover:-translate-y-2 hover:scale-[1.01] transition-all duration-500 ease-out"
-              onclick="openModal('project', ${i})" data-aos="fade-up" data-aos-delay="${80 + i * 80}">
+          <div class="group relative rounded-2xl overflow-hidden glass-card cursor-pointer flex flex-col
+              hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)]
+              active:scale-95 active:brightness-90
+              transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]"
+      onclick="openModal('project', ${i})" data-aos="fade-up" data-aos-delay="${80 + i * 80}">
             <div class="relative h-52 sm:h-60 portfolio-img-wrapper portfolio-img-hover">
               <img src="${p.cover}" class="portfolio-img" alt="${p.cardTitle || p.title}">
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
