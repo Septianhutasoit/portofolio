@@ -51,8 +51,8 @@
                         'hero-glow': 'heroGlow 4s ease-in-out infinite',
                         'img-float-slow': 'imgFloatSlow 16s ease-in-out infinite',
                         'img-kenburns': 'imgKenburns 28s ease-in-out infinite',
-                         'scroll-left': 'scroll-left 35s linear infinite',
-                        'scroll-right': 'scroll-right 35s linear infinite',
+                        'scroll-left': 'scroll-left 40s linear infinite',
+                        'scroll-right': 'scroll-right 40s linear infinite',
                     },
                     keyframes: {
                         'scroll-left': {
@@ -500,24 +500,38 @@
     </div>
 
     <!-- Container Utama Marquee -->
-    <div class="flex flex-col gap-10">
-        <!-- Baris 1: Bergerak ke Kiri -->
+<section id="skills" class="py-20 bg-bgDark border-t border-white/5 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 mb-16 text-center" data-aos="fade-up">
+        <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Tech Stack</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-white mt-3">Professional <span
+                class="text-gradient">Skillset</span></h2>
+    </div>
+
+    <!-- Container Marquee 4 Baris -->
+    <div class="flex flex-col gap-6 sm:gap-8">
         <div class="relative flex overflow-hidden group">
             <div id="row1"
-                class="flex gap-12 py-4 animate-scroll-left whitespace-nowrap group-hover:[animation-play-state:paused]">
-                <!-- Konten akan diisi oleh JavaScript -->
+                class="flex gap-8 py-2 animate-scroll-left whitespace-nowrap group-hover:[animation-play-state:paused]">
             </div>
         </div>
-
-        <!-- Baris 2: Bergerak ke Kanan -->
         <div class="relative flex overflow-hidden group">
             <div id="row2"
-                class="flex gap-12 py-4 animate-scroll-right whitespace-nowrap group-hover:[animation-play-state:paused]">
-                <!-- Konten akan diisi oleh JavaScript -->
+                class="flex gap-8 py-2 animate-scroll-right whitespace-nowrap group-hover:[animation-play-state:paused]">
+            </div>
+        </div>
+        <div class="relative flex overflow-hidden group">
+            <div id="row3"
+                class="flex gap-8 py-2 animate-scroll-left whitespace-nowrap group-hover:[animation-play-state:paused]">
+            </div>
+        </div>
+        <div class="relative flex overflow-hidden group">
+            <div id="row4"
+                class="flex gap-8 py-2 animate-scroll-right whitespace-nowrap group-hover:[animation-play-state:paused]">
             </div>
         </div>
     </div>
 </section>
+
 
     <!-- PROJECTS -->
     <section id="portfolio" class="py-20 sm:py-24 relative bg-bgDark border-t border-white/5">
@@ -805,62 +819,79 @@
 
 
         // ===== SKILLS (DEVICON) =====
-        // DATA SKILL ANDA (DIPISAH MENJADI 2 BARIS)
-            const skillsData = [
-                { name: "HTML5", icon: "devicon-html5-plain colored" },
-                { name: "CSS3", icon: "devicon-css3-plain colored" },
-                { name: "JavaScript", icon: "devicon-javascript-plain colored" },
-                { name: "TypeScript", icon: "devicon-typescript-plain colored" },
-                { name: "React", icon: "devicon-react-original colored" },
-                { name: "Next.js", icon: "devicon-nextjs-plain text-white" },
-                { name: "Node.js", icon: "devicon-nodejs-plain colored" },
-                { name: "Express.js", icon: "devicon-express-original text-white" },
-                { name: "Laravel", icon: "devicon-laravel-original colored" },
-                { name: "PHP", icon: "devicon-php-plain colored" },
-                { name: "MySQL", icon: "devicon-mysql-plain colored" },
-                { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
-                { name: "Python", icon: "devicon-python-plain colored" },
-                { name: "FastAPI", icon: "devicon-fastapi-plain colored" },
-                { name: "Java", icon: "devicon-java-plain colored" },
-                { name: "Docker", icon: "devicon-docker-plain colored" },
-                { name: "Git", icon: "devicon-git-plain colored" },
-                { name: "Figma", icon: "devicon-figma-plain colored" },
-                { name: "HuggingFace", icon: "fa-solid fa-face-smile text-yellow-400" },
-                { name: "Langchain", icon: "fa-solid fa-link text-cyan-400" },
-                { name: "Pinecone", icon: "fa-solid fa-tree text-emerald-500" },
-                { name: "RAG", icon: "fa-solid fa-layer-group text-indigo-400" }
-            ];
+            const skillsRow1 = [
+                    { name: "JavaScript", icon: "devicon-javascript-plain colored" },
+                    { name: "TypeScript", icon: "devicon-typescript-plain colored" },
+                    { name: "Python", icon: "devicon-python-plain colored" },
+                    { name: "Java", icon: "devicon-java-plain colored" },
+                    { name: "PHP", icon: "devicon-php-plain colored" },
+                    { name: "FastAPI", icon: "devicon-fastapi-plain colored" },
+                    { name: "C", icon: "devicon-c-plain colored" },
+                    { name: "Node.js", icon: "devicon-nodejs-plain colored" }
+                ];
 
-            function createSkillCard(s) {
-                return `
-    <div class="inline-flex flex-col items-center justify-center p-5 sm:p-7 min-w-[140px] sm:min-w-[170px] glass-card rounded-2xl group/card transition-all duration-300 hover:border-primary/50">
-        <div class="mb-4 text-4xl sm:text-5xl transition-transform duration-300 group-hover/card:scale-110">
-            <i class="${s.icon}"></i>
+                const skillsRow2 = [
+                    { name: "React", icon: "devicon-react-original colored" },
+                    { name: "Next.js", icon: "devicon-nextjs-plain text-white" },
+                    { name: "Tailwind CSS", icon: "devicon-tailwindcss-original colored" },
+                    { name: "Bootstrap", icon: "devicon-bootstrap-plain colored" },
+                    { name: "HTML", icon: "devicon-html5-plain colored" },
+                    { name: "CSS", icon: "devicon-css3-plain colored" },
+                    { name: "Vite", icon: "devicon-vitejs-plain colored" },
+                    { name: "Express.js", icon: "devicon-express-original text-white" }
+                ];
+
+                const skillsRow3 = [
+                    { name: "MySQL", icon: "devicon-mysql-plain colored" },
+                    { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
+                    { name: "Laravel", icon: "devicon-laravel-original colored" },
+                    { name: "WordPress", icon: "devicon-wordpress-plain colored" },
+                    { name: "Postman", icon: "devicon-postman-plain colored" },
+                    { name: "REST API", icon: "fa-solid fa-plug text-teal-300" },
+                    { name: "NPM", icon: "devicon-npm-original-wordmark colored" },
+                    { name: "Linux", icon: "devicon-linux-plain colored" }
+                ];
+
+                const skillsRow4 = [
+                    { name: "Docker", icon: "devicon-docker-plain colored" },
+                    { name: "Git", icon: "devicon-git-plain colored" },
+                    { name: "GitHub", icon: "devicon-github-original" },
+                    { name: "Figma", icon: "devicon-figma-plain colored" },
+                    { name: "HuggingFace", icon: "fa-solid fa-face-smile text-yellow-400" },
+                    { name: "Langchain", icon: "fa-solid fa-link text-cyan-400" },
+                    { name: "Pinecone", icon: "fa-solid fa-tree text-emerald-500" },
+                    { name: "RAG", icon: "fa-solid fa-layer-group text-indigo-400" }
+                ];
+
+                // Fungsi membuat item kecil (seperti di gambar)
+                function createSkillItem(s) {
+                    return `
+    <div class="flex flex-col items-center justify-center min-w-[90px] group/item">
+        <div class="w-14 h-14 mb-3 flex items-center justify-center bg-white/5 rounded-xl border border-white/10 transition-all duration-300 group-hover/item:bg-white/10 group-hover/item:border-primary/50 group-hover/item:-translate-y-1">
+            <i class="${s.icon} text-3xl"></i>
         </div>
-        <p class="text-white font-semibold text-sm sm:text-base">${s.name}</p>
-        <p class="text-[10px] text-slate-500 mt-1 uppercase tracking-widest">Stack</p>
+        <span class="text-[11px] font-semibold text-slate-400 group-hover/item:text-white transition-colors uppercase tracking-wider">${s.name}</span>
     </div>
     `;
-            }
+                }
 
-            function renderSkills() {
-                const r1 = document.getElementById("row1");
-                const r2 = document.getElementById("row2");
-                if (!r1 || !r2) return;
+                function renderSkills() {
+                    const rows = [
+                        { id: "row1", data: skillsRow1 },
+                        { id: "row2", data: skillsRow2 },
+                        { id: "row3", data: skillsRow3 },
+                        { id: "row4", data: skillsRow4 }
+                    ];
 
-                // Bagi data menjadi dua (setengah baris 1, setengah baris 2)
-                const mid = Math.ceil(skillsData.length / 2);
-                const firstRow = skillsData.slice(0, mid);
-                const secondRow = skillsData.slice(mid);
-
-                // Render baris 1 (Duplikasi 2x untuk loop mulus)
-                const html1 = firstRow.map(createSkillCard).join("");
-                r1.innerHTML = html1 + html1;
-
-                // Render baris 2 (Duplikasi 2x)
-                const html2 = secondRow.map(createSkillCard).join("");
-                r2.innerHTML = html2 + html2;
-            }
+                    rows.forEach(row => {
+                        const container = document.getElementById(row.id);
+                        if (container) {
+                            // Duplikasi 3x agar pergerakan tidak terputus di layar lebar
+                            const html = row.data.map(createSkillItem).join("");
+                            container.innerHTML = html + html + html;
+                        }
+                    });
+                }
 
         // ====== DATA PROJECTS ======
         const projectsData = [
