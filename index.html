@@ -725,6 +725,13 @@
             design: { cls: "fa-solid fa-pen-nib", color: "text-pink-400" },
             javascript: { cls: "fa-brands fa-js", color: "text-yellow-400" }, // Tambahkan ini
             mobile: { cls: "fa-solid fa-mobile-screen-button", color: "text-indigo-400" }, // Tambahkan ini
+
+            // Tambahan untuk Project ChatBot AI
+            python: { cls: "fa-brands fa-python", color: "text-blue-400" },
+            fastapi: { cls: "fa-solid fa-bolt", color: "text-emerald-400" },
+            rag: { cls: "fa-solid fa-database", color: "text-indigo-400" },
+            ai: { cls: "fa-solid fa-brain", color: "text-purple-400" },
+            code: { cls: "fa-solid fa-code", color: "text-slate-300" } 
         };
 
         function normKey(t) {
@@ -733,38 +740,42 @@
         }
 
         function getIcon(tag) {
-            const key = normKey(tag);
+             const key = normKey(tag);
 
             if (key.includes("laravel")) return ICONS.laravel;
             if (key.includes("php")) return ICONS.php;
-
-            if (key.includes("postgres") || key.includes("postgresql")) return ICONS.postgres;
+            if (key.includes("postgres")) return ICONS.postgres;
             if (key.includes("mysql")) return ICONS.mysql;
-
             if (key.includes("react")) return ICONS.react;
-            if (key.includes("next") || key.includes("nextjs")) return ICONS.next;
+            if (key.includes("next")) return ICONS.next;
             if (key.includes("redux")) return ICONS.redux;
-
             if (key.includes("node")) return ICONS.node;
             if (key.includes("express")) return ICONS.express;
-
             if (key.includes("tailwind")) return ICONS.tailwind;
             if (key.includes("bootstrap")) return ICONS.bootstrap;
-
             if (key.includes("postman")) return ICONS.postman;
+
+            // Cek Python & FastAPI
+            if (key.includes("python")) return ICONS.python;
+            if (key.includes("fastapi")) return ICONS.fastapi;
+
+            // Cek API umum (seperti di gambar anda FastAPI pakai ikon plug)
             if (key.includes("rest") || key.includes("api")) return ICONS.api;
 
             if (key.includes("docker")) return ICONS.docker;
             if (key.includes("git")) return ICONS.git;
             if (key.includes("github")) return ICONS.github;
 
-            if (key.includes("multi") || key.includes("bahasa") || key.includes("i18n")) return ICONS.i18n;
+            // Cek AI / RAG / Langchain
+            if (key.includes("rag")) return ICONS.rag;
+            if (key.includes("ai") || key.includes("hugging") || key.includes("langchain") || key.includes("pinecone") || key.includes("cohere")) return ICONS.code;
+
+            if (key.includes("multi") || key.includes("i18n")) return ICONS.i18n;
             if (key.includes("product")) return ICONS.product;
-            if (key.includes("ecommerce") || key.includes("e-commerce")) return ICONS.ecommerce;
+            if (key.includes("ecommerce")) return ICONS.ecommerce;
             if (key.includes("web")) return ICONS.web;
             if (key.includes("figma")) return ICONS.figma;
-            if (key.includes("design") || key.includes("ui") || key.includes("ux")) return ICONS.design;
-
+            if (key.includes("design") || key.includes("ui")) return ICONS.design;
 
             return { cls: "fa-solid fa-code", color: "text-slate-300" };
         }
@@ -965,7 +976,7 @@
                 ],
                 desc: "Aplikasi Website Untuk ChatBotAI Klinik Gigi",
                 tags: ["Node.js", "Next.js", "Pinecone", "CohereAi", "Tailwind.css", "python", "RAG", "Langchain", "FastAPI", "HuggingFace"],
-                badges: ["Web App"],
+                badges: ["AI ChatBot"],
                 //github: "https://github.com/Septianhutasoit/CodeAlpha",
                 demo: ""
             }
