@@ -51,8 +51,18 @@
                         'hero-glow': 'heroGlow 4s ease-in-out infinite',
                         'img-float-slow': 'imgFloatSlow 16s ease-in-out infinite',
                         'img-kenburns': 'imgKenburns 28s ease-in-out infinite',
+                         'scroll-left': 'scroll-left 35s linear infinite',
+                        'scroll-right': 'scroll-right 35s linear infinite',
                     },
                     keyframes: {
+                        'scroll-left': {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        'scroll-right': {
+                            '0%': { transform: 'translateX(-50%)' },
+                            '100%': { transform: 'translateX(0)' },
+                        },
                         blob: {
                             '0%': { transform: 'translate(0px, 0px) scale(1)' },
                             '33%': { transform: 'translate(40px, -60px) scale(1.08)' },
@@ -475,26 +485,39 @@
         </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="py-20 sm:py-24 relative border-t border-white/5">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
-                <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Tech Stack</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">
-                    Fullstack & <span class="text-gradient">Product Stack</span>
-                </h2>
-                <p class="text-slate-400 text-sm sm:text-base mt-3 max-w-xl mx-auto">
-                    Tumpukan teknologi yang biasa saya pakai buat ngembangin produk end-to-end: dari API, database,
-                    sampai interface.
-                </p>
-            </div>
+<!-- SKILLS SECTION - UPDATED -->
+<section id="skills" class="py-20 sm:py-24 relative border-t border-white/5 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Tech Stack</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">
+                Fullstack & <span class="text-gradient">Product Stack</span>
+            </h2>
+            <p class="text-slate-400 text-sm sm:text-base mt-3 max-w-xl mx-auto">
+                Tumpukan teknologi yang biasa saya pakai buat ngembangin produk end-to-end.
+            </p>
+        </div>
+    </div>
 
-            <div id="cards-container"
-                class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 max-w-5xl mx-auto">
-                <!-- isi skill dirender JS -->
+    <!-- Container Utama Marquee -->
+    <div class="flex flex-col gap-10">
+        <!-- Baris 1: Bergerak ke Kiri -->
+        <div class="relative flex overflow-hidden group">
+            <div id="row1"
+                class="flex gap-12 py-4 animate-scroll-left whitespace-nowrap group-hover:[animation-play-state:paused]">
+                <!-- Konten akan diisi oleh JavaScript -->
             </div>
         </div>
-    </section>
+
+        <!-- Baris 2: Bergerak ke Kanan -->
+        <div class="relative flex overflow-hidden group">
+            <div id="row2"
+                class="flex gap-12 py-4 animate-scroll-right whitespace-nowrap group-hover:[animation-play-state:paused]">
+                <!-- Konten akan diisi oleh JavaScript -->
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- PROJECTS -->
     <section id="portfolio" class="py-20 sm:py-24 relative bg-bgDark border-t border-white/5">
@@ -782,78 +805,62 @@
 
 
         // ===== SKILLS (DEVICON) =====
-        const skillsData = [
-            // Core FE
-            { name: "HTML5", icon: "devicon-html5-plain colored" },
-            { name: "CSS3", icon: "devicon-css3-plain colored" },
-            { name: "JavaScript", icon: "devicon-javascript-plain colored" },
-            { name: "TypeScript", icon: "devicon-typescript-plain colored" },
-            { name: "React", icon: "devicon-react-original colored" },
-            { name: "Next.js", icon: "devicon-nextjs-plain " },
-            { name: "Tailwind", icon: "devicon-tailwindcss-original colored" },
-            { name: "Bootstrap", icon: "devicon-bootstrap-plain colored" },
+        // DATA SKILL ANDA (DIPISAH MENJADI 2 BARIS)
+            const skillsData = [
+                { name: "HTML5", icon: "devicon-html5-plain colored" },
+                { name: "CSS3", icon: "devicon-css3-plain colored" },
+                { name: "JavaScript", icon: "devicon-javascript-plain colored" },
+                { name: "TypeScript", icon: "devicon-typescript-plain colored" },
+                { name: "React", icon: "devicon-react-original colored" },
+                { name: "Next.js", icon: "devicon-nextjs-plain text-white" },
+                { name: "Node.js", icon: "devicon-nodejs-plain colored" },
+                { name: "Express.js", icon: "devicon-express-original text-white" },
+                { name: "Laravel", icon: "devicon-laravel-original colored" },
+                { name: "PHP", icon: "devicon-php-plain colored" },
+                { name: "MySQL", icon: "devicon-mysql-plain colored" },
+                { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
+                { name: "Python", icon: "devicon-python-plain colored" },
+                { name: "FastAPI", icon: "devicon-fastapi-plain colored" },
+                { name: "Java", icon: "devicon-java-plain colored" },
+                { name: "Docker", icon: "devicon-docker-plain colored" },
+                { name: "Git", icon: "devicon-git-plain colored" },
+                { name: "Figma", icon: "devicon-figma-plain colored" },
+                { name: "HuggingFace", icon: "fa-solid fa-face-smile text-yellow-400" },
+                { name: "Langchain", icon: "fa-solid fa-link text-cyan-400" },
+                { name: "Pinecone", icon: "fa-solid fa-tree text-emerald-500" },
+                { name: "RAG", icon: "fa-solid fa-layer-group text-indigo-400" }
+            ];
 
-            // Backend
-            { name: "Node.js", icon: "devicon-nodejs-plain colored" },
-            { name: "Express.js", icon: "devicon-express-original text-white" },
-            { name: "Laravel", icon: "devicon-laravel-original colored" },
-            { name: "PHP", icon: "devicon-php-plain colored" },
+            function createSkillCard(s) {
+                return `
+    <div class="inline-flex flex-col items-center justify-center p-5 sm:p-7 min-w-[140px] sm:min-w-[170px] glass-card rounded-2xl group/card transition-all duration-300 hover:border-primary/50">
+        <div class="mb-4 text-4xl sm:text-5xl transition-transform duration-300 group-hover/card:scale-110">
+            <i class="${s.icon}"></i>
+        </div>
+        <p class="text-white font-semibold text-sm sm:text-base">${s.name}</p>
+        <p class="text-[10px] text-slate-500 mt-1 uppercase tracking-widest">Stack</p>
+    </div>
+    `;
+            }
 
-            // API Tools
-            { name: "REST API", icon: "fa-solid fa-plug text-teal-300" },        // FontAwesome
-            { name: "Postman", icon: "devicon-postman-plain colored" },          // Devicon
+            function renderSkills() {
+                const r1 = document.getElementById("row1");
+                const r2 = document.getElementById("row2");
+                if (!r1 || !r2) return;
 
-            // Database
-            { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
-            { name: "MySQL", icon: "devicon-mysql-plain colored" },
+                // Bagi data menjadi dua (setengah baris 1, setengah baris 2)
+                const mid = Math.ceil(skillsData.length / 2);
+                const firstRow = skillsData.slice(0, mid);
+                const secondRow = skillsData.slice(mid);
 
-            // CMS
-            { name: "WordPress", icon: "devicon-wordpress-plain colored" },
+                // Render baris 1 (Duplikasi 2x untuk loop mulus)
+                const html1 = firstRow.map(createSkillCard).join("");
+                r1.innerHTML = html1 + html1;
 
-            // Programming
-            { name: "Java", icon: "devicon-java-plain colored" },
-            { name: "C", icon: "devicon-c-plain colored" },
-            { name: "Python", icon: "devicon-python-plain colored" },
-
-            // Tools
-            { name: "Git", icon: "devicon-git-plain colored" },
-            { name: "GitHub", icon: "devicon-github-original" },
-            { name: "Docker", icon: "devicon-docker-plain colored" },
-            { name: "Figma", icon: "devicon-figma-plain colored" },
-
-            // Extra tools (optional)
-            { name: "Vite", icon: "devicon-vitejs-plain colored" },
-            { name: "NPM", icon: "devicon-npm-original-wordmark colored" },
-            { name: "Linux", icon: "devicon-linux-plain colored" },
-
-             // AI & Data Science
-            { name: "Python", icon: "devicon-python-plain colored" },
-            { name: "FastAPI", icon: "devicon-fastapi-plain colored" },
-            { name: "HuggingFace", icon: "fa-solid fa-face-smile text-yellow-400" }, // Menggunakan FontAwesome karena Devicon belum ada
-            { name: "Langchain", icon: "fa-solid fa-link text-cyan-400" },
-            { name: "Pinecone", icon: "fa-solid fa-tree text-emerald-500" },
-            { name: "RAG", icon: "fa-solid fa-layer-group text-indigo-400" },
-        ];
-
-
-        function renderSkills() {
-            const cardsContainer = document.getElementById("cards-container");
-            if (!cardsContainer) return;
-
-            cardsContainer.innerHTML = skillsData.map((s, i) => `
-            <div class="skill-card p-6 sm:p-7 flex flex-col items-center justify-center text-center min-h-[170px] sm:min-h-[185px]"
-                data-aos="zoom-in" data-aos-delay="${60 + i * 20}">
-            <div class="skill-glow"></div>
-
-            <div class="skill-icon mb-4">
-                <i class="${s.icon}"></i>
-            </div>
-
-            <p class="text-white font-semibold text-base sm:text-lg">${s.name}</p>
-            <p class="text-[11px] text-slate-500 mt-1">Stack</p>
-            </div>
-        `).join("");
-        }
+                // Render baris 2 (Duplikasi 2x)
+                const html2 = secondRow.map(createSkillCard).join("");
+                r2.innerHTML = html2 + html2;
+            }
 
         // ====== DATA PROJECTS ======
         const projectsData = [
