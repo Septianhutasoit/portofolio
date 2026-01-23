@@ -695,29 +695,44 @@
 
         // ====== ICON MAP + HELPERS (buat tags/badges di project modal) ======
         const ICONS = {
-                laravel: { cls: "fa-brands fa-laravel", color: "text-red-400" },
-                php: { cls: "fa-brands fa-php", color: "text-indigo-300" },
-                mysql: { cls: "fa-solid fa-database", color: "text-sky-300" },
-                postgres: { cls: "fa-solid fa-database", color: "text-sky-300" },
-                mongodb: { cls: "fa-solid fa-leaf", color: "text-green-400" },
-                react: { cls: "fa-brands fa-react", color: "text-cyan-300" },
-                next: { cls: "fa-solid fa-layer-group", color: "text-slate-200" },
-                node: { cls: "fa-brands fa-node-js", color: "text-green-400" },
-                tailwind: { cls: "fa-solid fa-wand-magic-sparkles", color: "text-sky-300" },
-                api: { cls: "fa-solid fa-plug", color: "text-teal-300" },
-                python: { cls: "fa-brands fa-python", color: "text-blue-400" },
-                fastapi: { cls: "fa-solid fa-bolt", color: "text-emerald-400" },
-                rag: { cls: "fa-solid fa-layer-group", color: "text-indigo-400" },
+            laravel: { cls: "fa-brands fa-laravel", color: "text-red-400" },
+            php: { cls: "fa-brands fa-php", color: "text-indigo-300" },
+            mysql: { cls: "fa-solid fa-database", color: "text-sky-300" },
+            postgres: { cls: "fa-solid fa-database", color: "text-sky-300" },
+            mongodb: { cls: "fa-solid fa-leaf", color: "text-green-400" },
 
-                // Ikon Spesifik untuk AI (Update Baru)
-                pinecone: { cls: "fa-solid fa-tree", color: "text-emerald-500" },      // Ikon pohon pinus
-                cohere: { cls: "fa-solid fa-brain", color: "text-purple-400" },     // Ikon otak untuk AI
-                langchain: { cls: "fa-solid fa-link", color: "text-cyan-400" },      // Ikon rantai untuk Chain
-                huggingface: { cls: "fa-solid fa-face-smile", color: "text-yellow-400" }, // Ikon wajah
-                chatbot: { cls: "fa-solid fa-robot", color: "text-primary" },       // Ikon robot chatbot
+            react: { cls: "fa-brands fa-react", color: "text-cyan-300" },
+            next: { cls: "fa-solid fa-layer-group", color: "text-slate-200" },
+            redux: { cls: "fa-solid fa-circle-nodes", color: "text-violet-300" },
+            node: { cls: "fa-brands fa-node-js", color: "text-green-400" },
+            express: { cls: "fa-solid fa-bolt", color: "text-slate-200" },
 
-                code: { cls: "fa-solid fa-code", color: "text-slate-300" }
-            };
+            tailwind: { cls: "fa-solid fa-wand-magic-sparkles", color: "text-sky-300" },
+            bootstrap: { cls: "fa-brands fa-bootstrap", color: "text-violet-300" },
+
+            api: { cls: "fa-solid fa-plug", color: "text-teal-300" },
+            postman: { cls: "fa-solid fa-paper-plane", color: "text-orange-300" },
+
+            github: { cls: "fa-brands fa-github", color: "text-slate-200" },
+            git: { cls: "fa-brands fa-git-alt", color: "text-orange-400" },
+            docker: { cls: "fa-brands fa-docker", color: "text-sky-300" },
+
+            i18n: { cls: "fa-solid fa-language", color: "text-amber-300" },
+            product: { cls: "fa-solid fa-box", color: "text-violet-300" },
+            ecommerce: { cls: "fa-solid fa-cart-shopping", color: "text-amber-200" },
+            web: { cls: "fa-solid fa-globe", color: "text-slate-200" },
+            figma: { cls: "fa-brands fa-figma", color: "text-purple-400" },
+            design: { cls: "fa-solid fa-pen-nib", color: "text-pink-400" },
+            javascript: { cls: "fa-brands fa-js", color: "text-yellow-400" }, // Tambahkan ini
+            mobile: { cls: "fa-solid fa-mobile-screen-button", color: "text-indigo-400" }, // Tambahkan ini
+
+            // Tambahan untuk Project ChatBot AI
+            python: { cls: "fa-brands fa-python", color: "text-blue-400" },
+            fastapi: { cls: "fa-solid fa-bolt", color: "text-emerald-400" },
+            rag: { cls: "fa-solid fa-database", color: "text-indigo-400" },
+            ai: { cls: "fa-solid fa-brain", color: "text-purple-400" },
+            code: { cls: "fa-solid fa-code", color: "text-slate-300" } 
+        };
 
         function normKey(t) {
             // hapus spasi & titik, jadi "Next.js" -> "nextjs"
@@ -725,29 +740,45 @@
         }
 
         function getIcon(tag) {
-                const key = normKey(tag);
+             const key = normKey(tag);
 
-                if (key.includes("laravel")) return ICONS.laravel;
-                if (key.includes("php")) return ICONS.php;
-                if (key.includes("mysql")) return ICONS.mysql;
-                if (key.includes("react")) return ICONS.react;
-                if (key.includes("next")) return ICONS.next;
-                if (key.includes("node")) return ICONS.node;
-                if (key.includes("tailwind")) return ICONS.tailwind;
-                if (key.includes("python")) return ICONS.python;
-                if (key.includes("fastapi")) return ICONS.fastapi;
-                if (key.includes("rag")) return ICONS.rag;
-                if (key.includes("rest") || key.includes("api")) return ICONS.api;
+            if (key.includes("laravel")) return ICONS.laravel;
+            if (key.includes("php")) return ICONS.php;
+            if (key.includes("postgres")) return ICONS.postgres;
+            if (key.includes("mysql")) return ICONS.mysql;
+            if (key.includes("react")) return ICONS.react;
+            if (key.includes("next")) return ICONS.next;
+            if (key.includes("redux")) return ICONS.redux;
+            if (key.includes("node")) return ICONS.node;
+            if (key.includes("express")) return ICONS.express;
+            if (key.includes("tailwind")) return ICONS.tailwind;
+            if (key.includes("bootstrap")) return ICONS.bootstrap;
+            if (key.includes("postman")) return ICONS.postman;
 
-                // Logika baru untuk AI Tags
-                if (key.includes("pinecone")) return ICONS.pinecone;
-                if (key.includes("cohere")) return ICONS.cohere;
-                if (key.includes("langchain")) return ICONS.langchain;
-                if (key.includes("hugging")) return ICONS.huggingface;
-                if (key.includes("chatbot")) return ICONS.chatbot;
+            // Cek Python & FastAPI
+            if (key.includes("python")) return ICONS.python;
+            if (key.includes("fastapi")) return ICONS.fastapi;
 
-                return ICONS.code; // Default jika tidak ada yang cocok
-            }
+            // Cek API umum (seperti di gambar anda FastAPI pakai ikon plug)
+            if (key.includes("rest") || key.includes("api")) return ICONS.api;
+
+            if (key.includes("docker")) return ICONS.docker;
+            if (key.includes("git")) return ICONS.git;
+            if (key.includes("github")) return ICONS.github;
+
+            // Cek AI / RAG / Langchain
+            if (key.includes("rag")) return ICONS.rag;
+            if (key.includes("ai") || key.includes("hugging") || key.includes("langchain") || key.includes("pinecone") || key.includes("cohere")) return ICONS.code;
+
+            if (key.includes("multi") || key.includes("i18n")) return ICONS.i18n;
+            if (key.includes("product")) return ICONS.product;
+            if (key.includes("ecommerce")) return ICONS.ecommerce;
+            if (key.includes("web")) return ICONS.web;
+            if (key.includes("figma")) return ICONS.figma;
+            if (key.includes("design") || key.includes("ui")) return ICONS.design;
+
+             return ICONS.code;
+        }
 
 
         // ===== SKILLS (DEVICON) =====
@@ -796,11 +827,12 @@
             { name: "Linux", icon: "devicon-linux-plain colored" },
 
              // AI & Data Science
+            { name: "Python", icon: "devicon-python-plain colored" },
             { name: "FastAPI", icon: "devicon-fastapi-plain colored" },
             { name: "HuggingFace", icon: "fa-solid fa-face-smile text-yellow-400" }, // Menggunakan FontAwesome karena Devicon belum ada
             { name: "Langchain", icon: "fa-solid fa-link text-cyan-400" },
             { name: "Pinecone", icon: "fa-solid fa-tree text-emerald-500" },
-            { name: "RAG", icon: "fa-solid fa-layer-group text-indigo-400" }
+            { name: "RAG", icon: "fa-solid fa-layer-group text-indigo-400" },
         ];
 
 
