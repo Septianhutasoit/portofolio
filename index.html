@@ -301,6 +301,97 @@
     pointer-events: auto; /* Memungkinkan interaksi klik */
 }
 
+/* Animasi untuk teks yang berubah */
+.typing-container {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+#dynamic-text {
+    background: linear-gradient(135deg, #38bdf8 0%, #818cf8 45%, #2dd4bf 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gentleFloat 6s ease-in-out infinite;
+    white-space: nowrap;
+}
+
+.typing-cursor {
+    display: inline-block;
+    width: 4px;
+    height: 1.2em;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    margin-left: 8px;
+    animation: blinkCursor 1s infinite;
+    border-radius: 2px;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Animasi untuk role text */
+#role-text {
+    position: relative;
+    display: inline-block;
+}
+
+#changing-role {
+    display: inline-block;
+    min-width: 160px;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+.role-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background: #38bdf8;
+    animation: blinkRole 1.2s infinite;
+    border-radius: 2px;
+}
+
+@keyframes blinkRole {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes gentleFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-5px) scale(1.02);
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 40px rgba(56, 189, 248, 0.6);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    #dynamic-text {
+        min-width: 200px;
+        font-size: 1.8rem;
+    }
+    
+    #changing-role {
+        min-width: 130px;
+    }
+}
+
 /* Penyesuaian warna Light Mode */
 .light { background-color: #f8fafc; color: #0f172a; }
 .light .glass-nav { background: rgba(255, 255, 255, 0.8); border-color: rgba(0,0,0,0.1); }
@@ -431,14 +522,21 @@
 
             <h1
                 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 leading-[1.05] tracking-tight">
-                Crafting Fullstack<br />
-                <span id="dynamic-text" class="text-gradient inline-block min-w-[300px] text-left"></span>
-                <span class="animate-pulse text-primary">|</span>
+                <span class="block mb-2">Crafting Fullstack</span>
+                <span class="flex items-center flex-wrap">
+                    <span class="text-gradient typing-container">
+                        <span id="dynamic-text" class="inline-block min-w-[280px]"></span>
+                        <span class="typing-cursor">|</span>
+                    </span>
+                </span>
             </h1>
 
             <p class="text-sm sm:text-base text-slate-400 mb-7 max-w-xl leading-relaxed">
                 Saya <span class="text-white font-semibold">Septian Hutasoit</span>,
-                <span class="text-slate-100 font-semibold">Software Developer & AI Enthusiast </span> yang fokus
+                <span id="role-text" class="text-slate-100 font-semibold relative inline-block">
+                    <span id="changing-role">Software Developer</span>
+                    <span class="role-cursor ml-1 text-primary">|</span>
+                </span> yang fokus
                 bikin produk digital dari sisi arsitektur backend sampai tampilan yang enak dipakai manusia normal,
                 bukan cuma buat demo.
             </p>
@@ -1460,64 +1558,120 @@
             window.addEventListener('resize', initCanvas);
             initCanvas();
             animate();
+    // ====== ANIMASI TEKS UTAMA (TYPING EFFECT SLOW MOTION) ======
+    const dynamicText = document.getElementById('dynamic-text');
+    const textOptions = [
+        'Product Experiences.',
+        'AI Solutions.',
+        'Web Applications.',
+        'Mobile Apps.',
+        'UI/UX Design.',
+        'Cloud Architecture.',
+        'Fullstack Projects.',
+        'Digital Products.'
+    ];
 
-            // ====== ANIMASI TEKS BERUBAH (TYPING EFFECT) ======
-                const dynamicText = document.getElementById('dynamic-text');
-                const textOptions = [
-                    'Product Experiences.',
-                    'AI Solutions.',
-                    'Web Applications.',
-                    'Mobile Apps.',
-                    'UI/UX Design.',
-                    'Cloud Architecture.',
-                    'Fullstack Projects.'
-                ];
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let isWaiting = false;
 
-                let textIndex = 0;
-                let charIndex = 0;
-                let isDeleting = false;
-                let isWaiting = false;
+    function typeEffect() {
+        if (!dynamicText) return;
 
-                function typeEffect() {
-                    if (!dynamicText) return;
+        const currentText = textOptions[textIndex];
 
-                    const currentText = textOptions[textIndex];
+        if (isDeleting) {
+            // Menghapus teks dengan efek slow motion
+            dynamicText.textContent = currentText.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            // Mengetik teks dengan efek slow motion
+            dynamicText.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+        }
 
-                    if (isDeleting) {
-                        // Menghapus teks
-                        dynamicText.textContent = currentText.substring(0, charIndex - 1);
-                        charIndex--;
-                    } else {
-                        // Mengetik teks
-                        dynamicText.textContent = currentText.substring(0, charIndex + 1);
-                        charIndex++;
-                    }
+        // Kecepatan mengetik (diperlambat untuk efek slow motion)
+        let typeSpeed = isDeleting ? 60 : 100; // Lebih lambat untuk efek dramatis
 
-                    // Kecepatan mengetik (slow motion)
-                    let typeSpeed = isDeleting ? 50 : 80; // Lebih lambat untuk efek slow motion
+        // Jika selesai mengetik
+        if (!isDeleting && charIndex === currentText.length) {
+            isWaiting = true;
+            typeSpeed = 2500; // Jeda lebih lama setelah selesai mengetik (2.5 detik)
+            isDeleting = true;
+            isWaiting = false;
+        }
+        // Jika selesai menghapus
+        else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % textOptions.length;
+            typeSpeed = 800; // Jeda sebelum mengetik kata baru
+        }
 
-                    // Jika selesai mengetik
-                    if (!isDeleting && charIndex === currentText.length) {
-                        isWaiting = true;
-                        typeSpeed = 2000; // Jeda sebelum menghapus (2 detik)
-                        isDeleting = true;
-                        isWaiting = false;
-                    }
-                    // Jika selesai menghapus
-                    else if (isDeleting && charIndex === 0) {
-                        isDeleting = false;
-                        textIndex = (textIndex + 1) % textOptions.length;
-                        typeSpeed = 500; // Jeda sebelum mengetik kata baru
-                    }
+        setTimeout(typeEffect, typeSpeed);
+    }
 
-                    setTimeout(typeEffect, typeSpeed);
-                }
+    // ====== ANIMASI UNTUK ROLE (Software Developer) ======
+    const roleElement = document.getElementById('changing-role');
+    const roleOptions = [
+        'Software Developer',
+        'Fullstack Engineer',
+        'UI/UX Designer',
+        'AI Enthusiast',
+        'Backend Specialist',
+        'Frontend Expert',
+        'Product Designer',
+        'Cloud Architect'
+    ];
 
-                // Mulai animasi setelah halaman dimuat
-                document.addEventListener('DOMContentLoaded', () => {
-                    // Delay start untuk efek yang lebih baik
-                    setTimeout(typeEffect, 1000);
-                });
+    let roleIndex = 0;
+    let roleCharIndex = 0;
+    let isRoleDeleting = false;
+    let isRoleWaiting = false;
+
+    function roleTypeEffect() {
+        if (!roleElement) return;
+
+        const currentRole = roleOptions[roleIndex];
+
+        if (isRoleDeleting) {
+            // Menghapus teks role
+            roleElement.textContent = currentRole.substring(0, roleCharIndex - 1);
+            roleCharIndex--;
+        } else {
+            // Mengetik teks role
+            roleElement.textContent = currentRole.substring(0, roleCharIndex + 1);
+            roleCharIndex++;
+        }
+
+        // Kecepatan mengetik role (sedikit lebih cepat dari teks utama)
+        let typeSpeed = isRoleDeleting ? 40 : 70;
+
+        // Jika selesai mengetik
+        if (!isRoleDeleting && roleCharIndex === currentRole.length) {
+            isRoleWaiting = true;
+            typeSpeed = 2000; // Jeda 2 detik
+            isRoleDeleting = true;
+            isRoleWaiting = false;
+        }
+        // Jika selesai menghapus
+        else if (isRoleDeleting && roleCharIndex === 0) {
+            isRoleDeleting = false;
+            roleIndex = (roleIndex + 1) % roleOptions.length;
+            typeSpeed = 500;
+        }
+
+        setTimeout(roleTypeEffect, typeSpeed);
+    }
+
+    // Mulai kedua animasi setelah halaman dimuat
+    document.addEventListener('DOMContentLoaded', () => {
+        // Delay start untuk efek yang lebih baik
+        setTimeout(() => {
+            typeEffect();
+            roleTypeEffect();
+        }, 1000);
+    });
     </script>
 </body>
 
