@@ -397,6 +397,79 @@
 .light .glass-nav { background: rgba(255, 255, 255, 0.8); border-color: rgba(0,0,0,0.1); }
 .light .soft-card, .light .glass-card { background: white; border-color: rgba(0,0,0,0.1); color: #1e293b; }
 .light .text-slate-400 { color: #64748b; }
+/* Styling untuk teks utama dan cursor */
+.typing-wrapper {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+#dynamic-text {
+    background: linear-gradient(135deg, #38bdf8 0%, #818cf8 45%, #2dd4bf 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.cursor {
+    display: inline-block;
+    width: 4px;
+    height: 1.2em;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    margin-left: 8px;
+    animation: blink 1s infinite;
+    border-radius: 2px;
+    vertical-align: middle;
+}
+
+/* Styling untuk role text */
+.role-wrapper {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+#changing-role {
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    min-width: 150px;
+}
+
+.role-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background: #38bdf8;
+    margin-left: 4px;
+    animation: blink 1.2s infinite;
+    border-radius: 2px;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    #dynamic-text {
+        min-width: 200px;
+    }
+    
+    #changing-role {
+        min-width: 130px;
+    }
+    
+    .cursor {
+        height: 1em;
+    }
+}
     </style>
 </head>
 
@@ -520,25 +593,23 @@
                 Available for Fullstack Projects
             </div>
 
+            <!-- Perbaikan di sini: Hanya satu baris "Crafting Fullstack" -->
             <h1
                 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 leading-[1.05] tracking-tight">
-                <span class="block mb-2">Crafting Fullstack</span>
-                <span class="flex items-center flex-wrap">
-                    <span class="text-gradient typing-container">
-                        <span id="dynamic-text" class="inline-block min-w-[280px]"></span>
-                        <span class="typing-cursor">|</span>
-                    </span>
+                 Software Engineer <br />
+                <span class="typing-wrapper">
+                    <span id="dynamic-text" class="text-gradient"></span>
+                    <span class="cursor"></span>
                 </span>
             </h1>
 
             <p class="text-sm sm:text-base text-slate-400 mb-7 max-w-xl leading-relaxed">
                 Saya <span class="text-white font-semibold">Septian Hutasoit</span>,
-                <span id="role-text" class="text-slate-100 font-semibold relative inline-block">
+                <span class="text-slate-100 font-semibold role-wrapper">
                     <span id="changing-role">Software Developer</span>
-                    <span class="role-cursor ml-1 text-primary">|</span>
+                    <span class="role-cursor"></span>
                 </span> yang fokus
-                bikin produk digital dari sisi arsitektur backend sampai tampilan yang enak dipakai manusia normal,
-                bukan cuma buat demo.
+                pada software developer dengan sentuhan UI/UX yang enak dipakai. Saya suka ngerangkai backend yang rapi dengan frontend yang intuitif.
             </p>
 
             <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -1611,67 +1682,108 @@
         setTimeout(typeEffect, typeSpeed);
     }
 
-    // ====== ANIMASI UNTUK ROLE (Software Developer) ======
-    const roleElement = document.getElementById('changing-role');
-    const roleOptions = [
-        'Software Developer',
-        'Fullstack Engineer',
-        'UI/UX Designer',
-        'AI Enthusiast',
-        'Backend Specialist',
-        'Frontend Expert',
-        'Product Designer',
-        'Cloud Architect'
-    ];
+    // ====== ANIMASI TEKS UTAMA ======
+        const dynamicText = document.getElementById('dynamic-text');
+        const textOptions = [
+            'Product Experiences.',
+            'AI Solutions.',
+            'Web Applications.',
+            'Mobile Apps.',
+            'UI/UX Design.',
+            'Cloud Architecture.',
+            'Fullstack Projects.'
+        ];
 
-    let roleIndex = 0;
-    let roleCharIndex = 0;
-    let isRoleDeleting = false;
-    let isRoleWaiting = false;
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
 
-    function roleTypeEffect() {
-        if (!roleElement) return;
+        function typeEffect() {
+            if (!dynamicText) return;
 
-        const currentRole = roleOptions[roleIndex];
+            const currentText = textOptions[textIndex];
 
-        if (isRoleDeleting) {
-            // Menghapus teks role
-            roleElement.textContent = currentRole.substring(0, roleCharIndex - 1);
-            roleCharIndex--;
-        } else {
-            // Mengetik teks role
-            roleElement.textContent = currentRole.substring(0, roleCharIndex + 1);
-            roleCharIndex++;
+            if (isDeleting) {
+                // Menghapus teks
+                dynamicText.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                // Mengetik teks
+                dynamicText.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            // Kecepatan mengetik
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            // Jika selesai mengetik
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000; // Jeda 2 detik
+                isDeleting = true;
+            }
+            // Jika selesai menghapus
+            else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % textOptions.length;
+                typeSpeed = 500; // Jeda 0.5 detik
+            }
+
+            setTimeout(typeEffect, typeSpeed);
         }
 
-        // Kecepatan mengetik role (sedikit lebih cepat dari teks utama)
-        let typeSpeed = isRoleDeleting ? 40 : 70;
+        // ====== ANIMASI UNTUK ROLE ======
+        const roleElement = document.getElementById('changing-role');
+        const roleOptions = [
+            'Software Developer',
+            'Fullstack Engineer',
+            'UI/UX Designer',
+            'AI Enthusiast',
+            'Backend Specialist'
+        ];
 
-        // Jika selesai mengetik
-        if (!isRoleDeleting && roleCharIndex === currentRole.length) {
-            isRoleWaiting = true;
-            typeSpeed = 2000; // Jeda 2 detik
-            isRoleDeleting = true;
-            isRoleWaiting = false;
+        let roleIndex = 0;
+        let roleCharIndex = 0;
+        let isRoleDeleting = false;
+
+        function roleTypeEffect() {
+            if (!roleElement) return;
+
+            const currentRole = roleOptions[roleIndex];
+
+            if (isRoleDeleting) {
+                roleElement.textContent = currentRole.substring(0, roleCharIndex - 1);
+                roleCharIndex--;
+            } else {
+                roleElement.textContent = currentRole.substring(0, roleCharIndex + 1);
+                roleCharIndex++;
+            }
+
+            let typeSpeed = isRoleDeleting ? 40 : 70;
+
+            if (!isRoleDeleting && roleCharIndex === currentRole.length) {
+                typeSpeed = 2000;
+                isRoleDeleting = true;
+            }
+            else if (isRoleDeleting && roleCharIndex === 0) {
+                isRoleDeleting = false;
+                roleIndex = (roleIndex + 1) % roleOptions.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(roleTypeEffect, typeSpeed);
         }
-        // Jika selesai menghapus
-        else if (isRoleDeleting && roleCharIndex === 0) {
-            isRoleDeleting = false;
-            roleIndex = (roleIndex + 1) % roleOptions.length;
-            typeSpeed = 500;
-        }
 
-        setTimeout(roleTypeEffect, typeSpeed);
-    }
+        // Mulai animasi
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set teks awal
+            if (dynamicText) dynamicText.textContent = '';
+            if (roleElement) roleElement.textContent = '';
 
-    // Mulai kedua animasi setelah halaman dimuat
-    document.addEventListener('DOMContentLoaded', () => {
-        // Delay start untuk efek yang lebih baik
-        setTimeout(() => {
-            typeEffect();
-            roleTypeEffect();
-        }, 1000);
-    });
+            setTimeout(() => {
+                typeEffect();
+                roleTypeEffect();
+            }, 500);
+        });
     </script>
 </body>
 
