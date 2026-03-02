@@ -407,83 +407,82 @@
         </div>
     </div>
 
-    <!-- HERO -->
-    <section id="home" class="min-h-screen flex items-center pt-20 relative overflow-hidden">
-        <canvas id="hero-canvas"></canvas>
-        <div
-            class="absolute top-[15%] left-[5%] w-72 h-72 sm:w-96 sm:h-96 bg-primary/25 rounded-full mix-blend-screen blur-[110px] animate-blob">
-        </div>
-        <div
-            class="absolute bottom-[10%] right-[5%] w-72 h-72 sm:w-96 sm:h-96 bg-secondary/25 rounded-full mix-blend-screen blur-[110px] animate-blob">
-        </div>
+<!-- HERO -->
+<section id="home" class="min-h-screen flex items-center pt-20 relative overflow-hidden">
+    <canvas id="hero-canvas"></canvas>
+    <div
+        class="absolute top-[15%] left-[5%] w-72 h-72 sm:w-96 sm:h-96 bg-primary/25 rounded-full mix-blend-screen blur-[110px] animate-blob">
+    </div>
+    <div
+        class="absolute bottom-[10%] right-[5%] w-72 h-72 sm:w-96 sm:h-96 bg-secondary/25 rounded-full mix-blend-screen blur-[110px] animate-blob">
+    </div>
 
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center relative z-10">
-            <div data-aos="fade-right">
-                <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] mb-5">
-                    <span class="relative flex h-2 w-2">
-                        <span
-                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                    </span>
-                    Available for Fullstack Projects
-                </div>
-
-                <h1
-                    class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 leading-[1.05] tracking-tight">
-                    Crafting Fullstack<br />
-                    <span class="text-gradient">Product Experiences.</span>
-                </h1>
-
-                <p class="text-sm sm:text-base text-slate-400 mb-7 max-w-xl leading-relaxed">
-                    Saya <span class="text-white font-semibold">Septian Hutasoit</span>,
-                    <span class="text-slate-100 font-semibold">Software Developer & AI Enthusiast </span> yang fokus
-                    bikin produk digital dari sisi arsitektur backend sampai tampilan yang enak dipakai manusia normal,
-                    bukan cuma
-                    buat demo.
-                </p>
-
-                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                    <a href="#portfolio"
-                        class="px-7 py-3.5 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold text-sm hover:shadow-[0_0_30px_rgba(56,189,248,0.75)] transition-all text-center">
-                        Lihat Proyek
-                    </a>
-                    <a href="https://github.com/Septianhutasoit" target="_blank"
-                        class="px-7 py-3.5 rounded-full bg-white/5 border border-white/10 font-semibold text-white text-sm hover:bg-white/10 transition-all flex items-center justify-center gap-2">
-                        <i class="fab fa-github text-lg"></i> GitHub
-                    </a>
-                </div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center relative z-10">
+        <div data-aos="fade-right">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] mb-5">
+                <span class="relative flex h-2 w-2">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                Available for Fullstack Projects
             </div>
 
-            <div class="relative flex justify-center lg:justify-end" data-aos="fade-left">
+            <h1
+                class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 leading-[1.05] tracking-tight">
+                Crafting Fullstack<br />
+                <span id="dynamic-text" class="text-gradient inline-block min-w-[300px] text-left"></span>
+                <span class="animate-pulse text-primary">|</span>
+            </h1>
+
+            <p class="text-sm sm:text-base text-slate-400 mb-7 max-w-xl leading-relaxed">
+                Saya <span class="text-white font-semibold">Septian Hutasoit</span>,
+                <span class="text-slate-100 font-semibold">Software Developer & AI Enthusiast </span> yang fokus
+                bikin produk digital dari sisi arsitektur backend sampai tampilan yang enak dipakai manusia normal,
+                bukan cuma buat demo.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <a href="#portfolio"
+                    class="px-7 py-3.5 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold text-sm hover:shadow-[0_0_30px_rgba(56,189,248,0.75)] transition-all text-center">
+                    Lihat Proyek
+                </a>
+                <a href="https://github.com/Septianhutasoit" target="_blank"
+                    class="px-7 py-3.5 rounded-full bg-white/5 border border-white/10 font-semibold text-white text-sm hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+                    <i class="fab fa-github text-lg"></i> GitHub
+                </a>
+            </div>
+        </div>
+
+        <div class="relative flex justify-center lg:justify-end" data-aos="fade-left">
+            <div
+                class="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-3xl overflow-hidden soft-card animate-slow-float">
                 <div
-                    class="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-3xl overflow-hidden soft-card animate-slow-float">
-                    <div
-                        class="absolute -inset-10 bg-gradient-to-tr from-primary/40 via-secondary/40 to-accent/40 blur-3xl opacity-40">
-                    </div>
-                    <img src="assets/img/profile.jpg" alt="Septian"
-                        class="relative w-full h-full object-cover rounded-3xl border border-white/10 shadow-2xl" />
+                    class="absolute -inset-10 bg-gradient-to-tr from-primary/40 via-secondary/40 to-accent/40 blur-3xl opacity-40">
+                </div>
+                <img src="assets/img/profile.jpg" alt="Septian"
+                    class="relative w-full h-full object-cover rounded-3xl border border-white/10 shadow-2xl" />
 
-                    <div
-                        class="absolute bottom-4 left-4 glass-card px-4 py-3 rounded-2xl flex items-center gap-3 border border-white/25">
-                        <div
-                            class="w-9 h-9 bg-green-500/15 rounded-full flex items-center justify-center text-green-400">
-                            <i class="fas fa-layer-group"></i>
-                        </div>
-                        <div>
-                            <p class="text-[11px] text-slate-400">Fokus</p>
-                            <p class="text-white font-semibold text-xs"> Software Developer & Product UI</p>
-                        </div>
+                <div
+                    class="absolute bottom-4 left-4 glass-card px-4 py-3 rounded-2xl flex items-center gap-3 border border-white/25">
+                    <div class="w-9 h-9 bg-green-500/15 rounded-full flex items-center justify-center text-green-400">
+                        <i class="fas fa-layer-group"></i>
                     </div>
+                    <div>
+                        <p class="text-[11px] text-slate-400">Fokus</p>
+                        <p class="text-white font-semibold text-xs"> Software Developer & Product UI</p>
+                    </div>
+                </div>
 
-                    <div
-                        class="absolute top-4 right-4 px-3 py-1 rounded-full bg-black/60 border border-white/20 text-[10px] text-slate-200 uppercase tracking-[0.18em]">
-                        Portfolio 2025
-                    </div>
+                <div
+                    class="absolute top-4 right-4 px-3 py-1 rounded-full bg-black/60 border border-white/20 text-[10px] text-slate-200 uppercase tracking-[0.18em]">
+                    Portfolio 2025
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 
 
@@ -1461,6 +1460,64 @@
             window.addEventListener('resize', initCanvas);
             initCanvas();
             animate();
+
+            // ====== ANIMASI TEKS BERUBAH (TYPING EFFECT) ======
+                const dynamicText = document.getElementById('dynamic-text');
+                const textOptions = [
+                    'Product Experiences.',
+                    'AI Solutions.',
+                    'Web Applications.',
+                    'Mobile Apps.',
+                    'UI/UX Design.',
+                    'Cloud Architecture.',
+                    'Fullstack Projects.'
+                ];
+
+                let textIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+                let isWaiting = false;
+
+                function typeEffect() {
+                    if (!dynamicText) return;
+
+                    const currentText = textOptions[textIndex];
+
+                    if (isDeleting) {
+                        // Menghapus teks
+                        dynamicText.textContent = currentText.substring(0, charIndex - 1);
+                        charIndex--;
+                    } else {
+                        // Mengetik teks
+                        dynamicText.textContent = currentText.substring(0, charIndex + 1);
+                        charIndex++;
+                    }
+
+                    // Kecepatan mengetik (slow motion)
+                    let typeSpeed = isDeleting ? 50 : 80; // Lebih lambat untuk efek slow motion
+
+                    // Jika selesai mengetik
+                    if (!isDeleting && charIndex === currentText.length) {
+                        isWaiting = true;
+                        typeSpeed = 2000; // Jeda sebelum menghapus (2 detik)
+                        isDeleting = true;
+                        isWaiting = false;
+                    }
+                    // Jika selesai menghapus
+                    else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        textIndex = (textIndex + 1) % textOptions.length;
+                        typeSpeed = 500; // Jeda sebelum mengetik kata baru
+                    }
+
+                    setTimeout(typeEffect, typeSpeed);
+                }
+
+                // Mulai animasi setelah halaman dimuat
+                document.addEventListener('DOMContentLoaded', () => {
+                    // Delay start untuk efek yang lebih baik
+                    setTimeout(typeEffect, 1000);
+                });
     </script>
 </body>
 
