@@ -9,9 +9,9 @@
     <meta name="author" content="Septian Hutasoit" />
     <title>Septian Hutasoit | Software Developer & UI/UX Designer</title>
 
-    <!-- Favicon Modern -->
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2338bdf8'/%3E%3Cstop offset='100%25' style='stop-color:%23818cf8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23grad)'/%3E%3Cpath d='M30 35 L15 50 L30 65 M45 70 L55 30 M70 35 L85 50 L70 65' fill='none' stroke='%230f172a' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2338bdf8'/%3E%3Cstop offset='100%25' style='stop-color:%23818cf8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23grad)'/%3E%3Cpath d='M30 35 L15 50 L30 65 M45 70 L55 30 M70 35 L85 50 L70 65' fill='none' stroke='%23ffffff' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
@@ -20,7 +20,7 @@
     <!-- FontAwesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-    <!-- Devicon untuk icons skills -->
+    <!-- Devicon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
     <!-- AOS Animation -->
@@ -59,13 +59,11 @@
                     animation: {
                         'blob': 'blob 18s infinite',
                         'float': 'float 6s ease-in-out infinite',
-                        'spin-slow': 'spin 12s linear infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'bounce-slow': 'bounce 3s infinite',
                         'gradient': 'gradient 8s ease infinite',
-                        'glow': 'glow 2s ease-in-out infinite',
                         'scroll-left': 'scroll-left 40s linear infinite',
                         'scroll-right': 'scroll-right 40s linear infinite',
+                        'glow': 'glow 2s ease-in-out infinite',
                     },
                     keyframes: {
                         blob: {
@@ -83,8 +81,8 @@
                             '50%': { backgroundPosition: '100% 50%' },
                         },
                         glow: {
-                            '0%, 100%': { opacity: 1 },
-                            '50%': { opacity: 0.5 },
+                            '0%, 100%': { opacity: 0.8 },
+                            '50%': { opacity: 1 },
                         },
                         'scroll-left': {
                             '0%': { transform: 'translateX(0)' },
@@ -94,9 +92,6 @@
                             '0%': { transform: 'translateX(-50%)' },
                             '100%': { transform: 'translateX(0)' },
                         },
-                    },
-                    backgroundSize: {
-                        '300%': '300%',
                     }
                 }
             }
@@ -114,8 +109,8 @@
         body {
             background-color: #020617;
             background-image:
-                radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 30%, rgba(129, 140, 248, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 30%, rgba(129, 140, 248, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 40% 80%, rgba(45, 212, 191, 0.1) 0%, transparent 50%);
             font-family: 'Plus Jakarta Sans', sans-serif;
             transition: background-color 0.5s ease;
@@ -123,19 +118,17 @@
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
         }
 
         ::-webkit-scrollbar-track {
             background: #0f172a;
-            border-radius: 10px;
         }
 
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(135deg, #38bdf8, #818cf8);
-            border-radius: 10px;
-            border: 2px solid #0f172a;
+            border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
@@ -147,12 +140,11 @@
             scroll-margin-top: 80px;
         }
 
-        /* Glassmorphism Effects */
+        /* Glassmorphism */
         .glass-nav {
             background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .glass-card {
@@ -160,11 +152,11 @@
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s ease;
         }
 
         .glass-card:hover {
-            transform: translateY(-8px) scale(1.02);
+            transform: translateY(-8px);
             border-color: rgba(56, 189, 248, 0.5);
             box-shadow: 0 20px 60px rgba(56, 189, 248, 0.3);
         }
@@ -188,22 +180,23 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: gradient 6s ease infinite;
+            animation: gradient 8s ease infinite;
         }
 
-        /* Portfolio Image Effects */
+        /* Portfolio Image Styles */
         .portfolio-img-wrapper {
             position: relative;
             overflow: hidden;
             border-radius: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            aspect-ratio: 16/9;
+            background: #0f172a;
         }
 
         .portfolio-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .portfolio-img-wrapper:hover .portfolio-img {
@@ -214,7 +207,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent 60%);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -257,6 +250,15 @@
         }
 
         /* Typing Animation */
+        .typing-container {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
         .typing-wrapper {
             display: inline-flex;
             align-items: center;
@@ -264,21 +266,16 @@
         }
 
         #dynamic-text {
-            background: linear-gradient(135deg, #38bdf8, #818cf8, #2dd4bf);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradient 6s ease infinite;
-            min-width: 250px;
+            color: #38bdf8;
+            font-weight: 600;
         }
 
         .cursor {
             display: inline-block;
-            width: 4px;
+            width: 3px;
             height: 1.2em;
-            background: linear-gradient(135deg, #38bdf8, #818cf8);
-            margin-left: 8px;
+            background: #38bdf8;
+            margin-left: 4px;
             animation: blink 1s infinite;
             border-radius: 2px;
         }
@@ -295,7 +292,7 @@
             }
         }
 
-        /* Modal Styles */
+        /* Modal */
         #universalModal {
             transition: visibility 0.3s ease;
         }
@@ -304,7 +301,7 @@
             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        /* Loading Animation */
+        /* Loading Spinner */
         .loading-spinner {
             width: 40px;
             height: 40px;
@@ -320,14 +317,10 @@
             }
         }
 
-        /* Responsive Typography */
+        /* Responsive */
         @media (max-width: 640px) {
             h1 {
                 font-size: clamp(2rem, 8vw, 2.5rem);
-            }
-
-            .hero-subtitle {
-                font-size: 0.9rem;
             }
         }
 
@@ -342,7 +335,7 @@
             z-index: 0;
         }
 
-        /* Custom Buttons */
+        /* Button Styles */
         .btn-primary {
             background: linear-gradient(135deg, #38bdf8, #818cf8);
             transition: all 0.3s ease;
@@ -369,12 +362,6 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(56, 189, 248, 0.5);
         }
-
-        /* Marquee Animation Pause on Hover */
-        .group:hover .animate-scroll-left,
-        .group:hover .animate-scroll-right {
-            animation-play-state: paused;
-        }
     </style>
 </head>
 
@@ -385,14 +372,13 @@
         class="fixed inset-0 bg-dark-950 z-[100] flex items-center justify-center transition-opacity duration-500">
         <div class="text-center">
             <div class="loading-spinner mx-auto mb-4"></div>
-            <p class="text-primary animate-pulse">Loading amazing experience...</p>
+            <p class="text-primary animate-pulse">Loading portfolio...</p>
         </div>
     </div>
 
     <!-- Spotify Widget -->
     <div class="fixed bottom-5 left-4 sm:left-6 z-50">
-        <div
-            class="glass-card p-3 rounded-2xl w-[280px] sm:w-[320px] transform hover:scale-105 transition-all duration-300">
+        <div class="glass-card p-3 rounded-2xl w-[280px] sm:w-[320px] hover:scale-105 transition-all duration-300">
             <div class="flex items-center justify-between gap-3">
                 <div class="flex items-center gap-3">
                     <div
@@ -405,14 +391,13 @@
                     </div>
                 </div>
                 <button id="spotifyToggle"
-                    class="px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-primary transition-all duration-300">
+                    class="px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-primary transition-all">
                     Buka
                 </button>
             </div>
             <div id="spotifyWrap" class="mt-3 hidden">
-                <iframe style="border-radius:12px"
-                    src="https://open.spotify.com/embed/track/0e2wfbDK7ppotqyUWD7qs8?utm_source=generator" width="100%"
-                    height="152" frameBorder="0" allowfullscreen=""
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0e2wfbDK7ppotqyUWD7qs8"
+                    width="100%" height="152" frameBorder="0" allowfullscreen=""
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
                     class="rounded-xl"></iframe>
             </div>
@@ -421,7 +406,7 @@
 
     <!-- Scroll to Top -->
     <a href="#home"
-        class="fixed bottom-5 right-4 sm:right-6 z-50 w-12 h-12 rounded-full glass-card flex items-center justify-center text-primary hover:text-white hover:bg-primary transition-all duration-300 shadow-lg hover:shadow-primary/50">
+        class="fixed bottom-5 right-4 sm:right-6 z-50 w-12 h-12 rounded-full glass-card flex items-center justify-center text-primary hover:text-white hover:bg-primary transition-all">
         <i class="fas fa-arrow-up"></i>
     </a>
 
@@ -430,11 +415,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
             <a href="#home" class="flex items-center gap-3 group">
                 <div
-                    class="w-10 h-10 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    class="w-10 h-10 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                     <i class="fas fa-laptop-code text-white text-lg"></i>
                 </div>
-                <span class="text-white font-bold text-lg group-hover:text-primary transition-colors">Septian<span
-                        class="text-primary">.</span></span>
+                <span class="text-white font-bold text-lg">Septian<span class="text-primary">.</span></span>
             </a>
 
             <!-- Desktop Menu -->
@@ -489,10 +473,6 @@
             <a href="#certificates" onclick="toggleMenu()"
                 class="text-3xl font-bold text-white hover:text-primary transition-colors">Sertifikat</a>
             <a href="#contact" onclick="toggleMenu()" class="text-3xl font-bold text-primary">Kontak</a>
-            <button id="themeToggleMobile"
-                class="mt-8 px-8 py-3 rounded-full bg-white/5 border border-white/10 text-white">
-                <i class="fas fa-moon mr-2"></i>Toggle Theme
-            </button>
         </div>
     </div>
 
@@ -502,13 +482,13 @@
 
         <!-- Animated Background Blobs -->
         <div
-            class="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full mix-blend-screen filter blur-3xl animate-blob">
+            class="absolute top-20 left-10 w-96 h-96 bg-primary/10 rounded-full mix-blend-screen filter blur-3xl animate-blob">
         </div>
         <div
-            class="absolute bottom-20 right-10 w-72 h-72 bg-secondary/20 rounded-full mix-blend-screen filter blur-3xl animate-blob animation-delay-2000">
+            class="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full mix-blend-screen filter blur-3xl animate-blob animation-delay-2000">
         </div>
         <div
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/10 rounded-full mix-blend-screen filter blur-3xl animate-pulse-slow">
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/10 rounded-full mix-blend-screen filter blur-3xl animate-pulse-slow">
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
@@ -527,52 +507,40 @@
                             Fullstack Projects</span>
                     </div>
 
-                    <!-- Main Title -->
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 leading-tight">
-                        Software Engineer <br />
-                        <span class="typing-wrapper">
-                            <span id="dynamic-text" class="text-gradient"></span>
-                            <span class="cursor"></span>
-                        </span>
+                    <!-- Main Title - Static Software Engineer -->
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">
+                        Software Engineer
                     </h1>
 
+                    <!-- Dynamic Text Below -->
+                    <div class="typing-container inline-flex items-center mb-6">
+                        <span class="text-slate-400 mr-2">Building</span>
+                        <div class="typing-wrapper">
+                            <span id="dynamic-text" class="text-primary font-semibold"></span>
+                            <span class="cursor"></span>
+                        </div>
+                    </div>
+
                     <!-- Description -->
-                    <p class="text-base sm:text-lg text-slate-400 mb-6 max-w-xl leading-relaxed">
+                    <p class="text-base sm:text-lg text-slate-400 mb-8 max-w-xl leading-relaxed">
                         Halo, saya <span class="text-white font-semibold">Septian Hutasoit</span>,
-                        <span class="text-primary font-semibold role-wrapper">
-                            <span id="changing-role">Software Developer</span>
-                            <span class="role-cursor"></span>
-                        </span> yang fokus pada pengembangan aplikasi fullstack dengan sentuhan UI/UX yang intuitif.
+                        <span class="text-primary font-semibold">Software Developer</span> yang fokus pada
+                        pengembangan aplikasi fullstack dengan sentuhan UI/UX yang intuitif dan performa optimal.
                     </p>
 
                     <!-- Stats -->
-                    <div class="flex flex-wrap gap-6 mb-8">
-                        <div class="flex items-center gap-2">
-                            <div class="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
-                                <i class="fas fa-code text-primary"></i>
-                            </div>
-                            <div>
-                                <p class="text-white font-bold text-xl">20+</p>
-                                <p class="text-slate-400 text-xs">Projects</p>
-                            </div>
+                    <div class="flex flex-wrap gap-8 mb-8">
+                        <div>
+                            <p class="text-white font-bold text-3xl">20+</p>
+                            <p class="text-slate-400 text-sm">Projects</p>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <div class="w-10 h-10 rounded-xl bg-secondary/20 flex items-center justify-center">
-                                <i class="fas fa-users text-secondary"></i>
-                            </div>
-                            <div>
-                                <p class="text-white font-bold text-xl">15+</p>
-                                <p class="text-slate-400 text-xs">Clients</p>
-                            </div>
+                        <div>
+                            <p class="text-white font-bold text-3xl">15+</p>
+                            <p class="text-slate-400 text-sm">Clients</p>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <div class="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center">
-                                <i class="fas fa-award text-accent"></i>
-                            </div>
-                            <div>
-                                <p class="text-white font-bold text-xl">10+</p>
-                                <p class="text-slate-400 text-xs">Certifications</p>
-                            </div>
+                        <div>
+                            <p class="text-white font-bold text-3xl">3+</p>
+                            <p class="text-slate-400 text-sm">Years</p>
                         </div>
                     </div>
 
@@ -587,21 +555,6 @@
                             <i class="fab fa-github text-xl"></i> GitHub
                         </a>
                     </div>
-
-                    <!-- Social Proof -->
-                    <div class="mt-8 flex items-center gap-4">
-                        <div class="flex -space-x-2">
-                            <img src="https://randomuser.me/api/portraits/women/44.jpg"
-                                class="w-8 h-8 rounded-full border-2 border-dark-950" alt="">
-                            <img src="https://randomuser.me/api/portraits/men/46.jpg"
-                                class="w-8 h-8 rounded-full border-2 border-dark-950" alt="">
-                            <img src="https://randomuser.me/api/portraits/women/68.jpg"
-                                class="w-8 h-8 rounded-full border-2 border-dark-950" alt="">
-                        </div>
-                        <p class="text-sm text-slate-400">
-                            <span class="text-white font-semibold">100+</span> kontribusi GitHub
-                        </p>
-                    </div>
                 </div>
 
                 <!-- Right Content - Profile Image -->
@@ -614,25 +567,21 @@
 
                         <!-- Image Container -->
                         <div
-                            class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden border-2 border-white/10">
-                            <img src="https://via.placeholder.com/400x400/1e293b/38bdf8?text=Septian"
+                            class="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden border-2 border-white/10">
+                            <img src="https://ui-avatars.com/api/?name=Septian+Hutasoit&size=400&length=2&background=38bdf8&color=fff&bold=true&font-size=0.50"
                                 alt="Septian Hutasoit"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                         </div>
 
-                        <!-- Floating Badges -->
+                        <!-- Floating Badge -->
                         <div class="absolute -bottom-4 -left-4 glass-card px-4 py-3 rounded-xl flex items-center gap-3">
                             <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-layer-group text-primary"></i>
+                                <i class="fas fa-code text-primary"></i>
                             </div>
                             <div>
-                                <p class="text-xs text-slate-400">Fokus Utama</p>
-                                <p class="text-white font-semibold text-sm">Fullstack & UI/UX</p>
+                                <p class="text-xs text-slate-400">Fullstack Developer</p>
+                                <p class="text-white font-semibold text-sm">React & Laravel</p>
                             </div>
-                        </div>
-
-                        <div class="absolute -top-4 -right-4 glass-card px-4 py-2 rounded-full">
-                            <p class="text-primary font-bold text-sm">Portfolio 2025</p>
                         </div>
                     </div>
                 </div>
@@ -663,32 +612,6 @@
             </div>
             <div class="relative flex overflow-hidden group">
                 <div id="row4" class="flex gap-8 py-2 animate-scroll-right whitespace-nowrap"></div>
-            </div>
-        </div>
-
-        <!-- Skill Categories Grid -->
-        <div class="max-w-7xl mx-auto px-4 mt-20">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="skill-card-modern" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-code text-3xl text-primary mb-4"></i>
-                    <h3 class="text-white font-bold mb-2">Frontend</h3>
-                    <p class="text-slate-400 text-sm">React, Next.js, Tailwind, Vue</p>
-                </div>
-                <div class="skill-card-modern" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-server text-3xl text-secondary mb-4"></i>
-                    <h3 class="text-white font-bold mb-2">Backend</h3>
-                    <p class="text-slate-400 text-sm">Node.js, Laravel, Python, Java</p>
-                </div>
-                <div class="skill-card-modern" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-database text-3xl text-accent mb-4"></i>
-                    <h3 class="text-white font-bold mb-2">Database</h3>
-                    <p class="text-slate-400 text-sm">MySQL, PostgreSQL, MongoDB</p>
-                </div>
-                <div class="skill-card-modern" data-aos="fade-up" data-aos-delay="400">
-                    <i class="fas fa-cloud text-3xl text-primary mb-4"></i>
-                    <h3 class="text-white font-bold mb-2">DevOps</h3>
-                    <p class="text-slate-400 text-sm">Docker, Git, AWS, CI/CD</p>
-                </div>
             </div>
         </div>
     </section>
@@ -759,7 +682,7 @@
                 </div>
 
                 <!-- Contact Form -->
-                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST"
+                <form action="https://formspree.io/f/xdkrzqew" method="POST"
                     class="glass-card p-8 rounded-3xl text-left">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
@@ -805,7 +728,7 @@
             <div id="modalContent"
                 class="glass-card w-full max-w-4xl rounded-3xl overflow-hidden transform scale-90 opacity-0 transition-all flex flex-col md:flex-row max-h-[90vh]">
                 <!-- Image Side -->
-                <div class="w-full md:w-1/2 h-60 md:h-auto bg-black relative">
+                <div class="w-full md:w-1/2 h-60 md:h-auto bg-dark-950 relative">
                     <img id="mImage" src="" alt="" class="w-full h-full object-contain">
 
                     <!-- Navigation Buttons -->
@@ -863,8 +786,7 @@
         AOS.init({
             duration: 1000,
             once: true,
-            offset: 100,
-            easing: 'ease-out-cubic'
+            offset: 100
         });
 
         // Hide Loading Screen
@@ -886,7 +808,9 @@
             { name: "PHP", icon: "devicon-php-plain colored" },
             { name: "React", icon: "devicon-react-original colored" },
             { name: "Node.js", icon: "devicon-nodejs-plain colored" },
-            { name: "Laravel", icon: "devicon-laravel-original colored" }
+            { name: "Laravel", icon: "devicon-laravel-original colored" },
+            { name: "JavaScript", icon: "devicon-javascript-plain colored" },
+            { name: "TypeScript", icon: "devicon-typescript-plain colored" }
         ];
 
         const skillsRow2 = [
@@ -897,7 +821,9 @@
             { name: "Vue.js", icon: "devicon-vuejs-plain colored" },
             { name: "HTML5", icon: "devicon-html5-plain colored" },
             { name: "CSS3", icon: "devicon-css3-plain colored" },
-            { name: "Vite", icon: "devicon-vitejs-plain colored" }
+            { name: "Vite", icon: "devicon-vitejs-plain colored" },
+            { name: "React", icon: "devicon-react-original colored" },
+            { name: "Next.js", icon: "devicon-nextjs-plain" }
         ];
 
         const skillsRow3 = [
@@ -908,7 +834,9 @@
             { name: "Git", icon: "devicon-git-plain colored" },
             { name: "GitHub", icon: "devicon-github-original" },
             { name: "Figma", icon: "devicon-figma-plain colored" },
-            { name: "Postman", icon: "devicon-postman-plain colored" }
+            { name: "Postman", icon: "devicon-postman-plain colored" },
+            { name: "MySQL", icon: "devicon-mysql-plain colored" },
+            { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" }
         ];
 
         const skillsRow4 = [
@@ -919,19 +847,25 @@
             { name: "Redis", icon: "devicon-redis-plain colored" },
             { name: "Linux", icon: "devicon-linux-plain colored" },
             { name: "AWS", icon: "devicon-amazonwebservices-original colored" },
-            { name: "Nginx", icon: "devicon-nginx-original colored" }
+            { name: "Nginx", icon: "devicon-nginx-original colored" },
+            { name: "Express", icon: "devicon-express-original" },
+            { name: "FastAPI", icon: "devicon-fastapi-plain colored" }
         ];
 
         const projectsData = [
             {
                 cardTitle: "Nauli Dental Care",
                 title: "Website Klinik Nauli Dental Care",
-                subtitle: "Web App • Klinik Gigi",
+                subtitle: "Healthcare Web App",
                 categoryChip: "Healthcare",
-                cover: "https://via.placeholder.com/600x400/1e293b/38bdf8?text=Nauli+Dental",
-                images: ["https://via.placeholder.com/800x600/1e293b/38bdf8?text=Image+1"],
-                desc: "Website klinik untuk booking janji temu antara pasien dan dokter, serta informasi layanan lengkap.",
-                tags: ["Laravel", "MySQL", "Tailwind", "REST API"],
+                cover: "https://placehold.co/600x400/1e293b/38bdf8?text=Nauli+Dental+Care",
+                images: [
+                    "https://placehold.co/800x600/1e293b/38bdf8?text=Dashboard",
+                    "https://placehold.co/800x600/1e293b/38bdf8?text=Booking+System",
+                    "https://placehold.co/800x600/1e293b/38bdf8?text=Patient+Management"
+                ],
+                desc: "Website klinik untuk booking janji temu antara pasien dan dokter, serta informasi layanan lengkap dengan sistem manajemen pasien.",
+                tags: ["Laravel", "MySQL", "Tailwind", "REST API", "Bootstrap"],
                 badges: ["Healthcare", "Web App"],
                 github: "https://github.com/Septianhutasoit/projectsep",
                 demo: ""
@@ -941,10 +875,14 @@
                 title: "Aplikasi E-Commerce Delshoop",
                 subtitle: "E-Commerce Platform",
                 categoryChip: "E-Commerce",
-                cover: "https://via.placeholder.com/600x400/1e293b/818cf8?text=Delshoop",
-                images: ["https://via.placeholder.com/800x600/1e293b/818cf8?text=Image+1"],
-                desc: "Platform e-commerce dengan manajemen produk, cart real-time, dan integrasi payment gateway.",
-                tags: ["Laravel", "MySQL", "Tailwind", "JavaScript"],
+                cover: "https://placehold.co/600x400/1e293b/818cf8?text=Delshoop+E-Commerce",
+                images: [
+                    "https://placehold.co/800x600/1e293b/818cf8?text=Homepage",
+                    "https://placehold.co/800x600/1e293b/818cf8?text=Product+Page",
+                    "https://placehold.co/800x600/1e293b/818cf8?text=Checkout"
+                ],
+                desc: "Platform e-commerce dengan manajemen produk, cart real-time, dan integrasi payment gateway untuk kemudahan transaksi.",
+                tags: ["Laravel", "MySQL", "Tailwind", "JavaScript", "AJAX"],
                 badges: ["E-Commerce", "Web App"],
                 github: "https://github.com/Septianhutasoit/Aplikasi",
                 demo: ""
@@ -954,10 +892,14 @@
                 title: "Website Edukasi Aksara Batak",
                 subtitle: "Educational Platform",
                 categoryChip: "Education",
-                cover: "https://via.placeholder.com/600x400/1e293b/2dd4bf?text=Aksara+Batak",
-                images: ["https://via.placeholder.com/800x600/1e293b/2dd4bf?text=Image+1"],
-                desc: "Website edukasi interaktif untuk belajar Aksara Batak dengan fitur multi-bahasa dan kuis.",
-                tags: ["Laravel", "PHP", "MySQL", "Bootstrap"],
+                cover: "https://placehold.co/600x400/1e293b/2dd4bf?text=Aksara+Batak",
+                images: [
+                    "https://placehold.co/800x600/1e293b/2dd4bf?text=Home",
+                    "https://placehold.co/800x600/1e293b/2dd4bf?text=Learning+Module",
+                    "https://placehold.co/800x600/1e293b/2dd4bf?text=Quiz"
+                ],
+                desc: "Website edukasi interaktif untuk belajar Aksara Batak dengan fitur multi-bahasa, visualisasi, dan sistem kuis untuk evaluasi.",
+                tags: ["Laravel", "PHP", "MySQL", "Bootstrap", "JavaScript"],
                 badges: ["Education", "Multi Language"],
                 github: "https://github.com/bryansiagian/BoanAksara",
                 demo: ""
@@ -967,23 +909,31 @@
                 title: "Aplikasi Pemesanan Tiket Kapal",
                 subtitle: "Mobile App Design",
                 categoryChip: "Mobile",
-                cover: "https://via.placeholder.com/600x400/1e293b/38bdf8?text=Evedina",
-                images: ["https://via.placeholder.com/800x600/1e293b/38bdf8?text=Image+1"],
-                desc: "Aplikasi booking tiket kapal dengan informasi jadwal, rute, dan harga tiket real-time.",
-                tags: ["Figma", "UI/UX Design", "Prototyping"],
+                cover: "https://placehold.co/600x400/1e293b/38bdf8?text=Evedina+Tuktuk",
+                images: [
+                    "https://placehold.co/800x600/1e293b/38bdf8?text=Splash+Screen",
+                    "https://placehold.co/800x600/1e293b/38bdf8?text=Home+Screen",
+                    "https://placehold.co/800x600/1e293b/38bdf8?text=Booking+Screen"
+                ],
+                desc: "Aplikasi booking tiket kapal dengan informasi jadwal, rute, dan harga tiket real-time. Desain UI/UX modern dan user-friendly.",
+                tags: ["Figma", "UI/UX Design", "Prototyping", "Mobile Design"],
                 badges: ["Mobile App", "UI/UX"],
                 github: "https://github.com/Septianhutasoit/Evedina-Tuktuk",
                 demo: ""
             },
             {
                 cardTitle: "CodeAlpha E-Commerce",
-                title: "Sistem E-Commerce",
-                subtitle: "Web Application",
+                title: "Sistem E-Commerce Modern",
+                subtitle: "Fullstack Web App",
                 categoryChip: "E-Commerce",
-                cover: "https://via.placeholder.com/600x400/1e293b/818cf8?text=CodeAlpha",
-                images: ["https://via.placeholder.com/800x600/1e293b/818cf8?text=Image+1"],
-                desc: "Aplikasi e-commerce modern dengan arsitektur MERN stack dan fitur lengkap.",
-                tags: ["Node.js", "React", "PostgreSQL", "Tailwind"],
+                cover: "https://placehold.co/600x400/1e293b/818cf8?text=CodeAlpha",
+                images: [
+                    "https://placehold.co/800x600/1e293b/818cf8?text=Dashboard",
+                    "https://placehold.co/800x600/1e293b/818cf8?text=Products",
+                    "https://placehold.co/800x600/1e293b/818cf8?text=Orders"
+                ],
+                desc: "Aplikasi e-commerce modern dengan arsitektur MERN stack, fitur lengkap seperti autentikasi, manajemen produk, dan pembayaran.",
+                tags: ["Node.js", "React", "PostgreSQL", "Tailwind", "Redux"],
                 badges: ["MERN", "E-Commerce"],
                 github: "https://github.com/Septianhutasoit/CodeAlpha",
                 demo: ""
@@ -993,10 +943,14 @@
                 title: "ChatBot AI untuk Klinik",
                 subtitle: "AI Integration",
                 categoryChip: "AI",
-                cover: "https://via.placeholder.com/600x400/1e293b/2dd4bf?text=AI+ChatBot",
-                images: ["https://via.placeholder.com/800x600/1e293b/2dd4bf?text=Image+1"],
-                desc: "Sistem ChatBot AI untuk membantu layanan informasi dan penjadwalan di klinik gigi.",
-                tags: ["Python", "FastAPI", "RAG", "Langchain"],
+                cover: "https://placehold.co/600x400/1e293b/2dd4bf?text=AI+ChatBot",
+                images: [
+                    "https://placehold.co/800x600/1e293b/2dd4bf?text=Chat+Interface",
+                    "https://placehold.co/800x600/1e293b/2dd4bf?text=AI+Response",
+                    "https://placehold.co/800x600/1e293b/2dd4bf?text=Analytics"
+                ],
+                desc: "Sistem ChatBot AI untuk membantu layanan informasi dan penjadwalan di klinik gigi dengan teknologi RAG dan Langchain.",
+                tags: ["Python", "FastAPI", "RAG", "Langchain", "OpenAI", "Next.js"],
                 badges: ["AI", "ChatBot"],
                 github: "",
                 demo: ""
@@ -1004,40 +958,47 @@
         ];
 
         const certsData = [
-            { title: "Huawei Cloud Computing", subtitle: "Huawei Academy", img: "https://via.placeholder.com/400x300/1e293b/38bdf8?text=Cloud+Computing", desc: "Fondasi cloud computing: layanan inti, deployment, dan arsitektur scalable." },
-            { title: "Huawei Data Analytics", subtitle: "Huawei Academy", img: "https://via.placeholder.com/400x300/1e293b/818cf8?text=Data+Analytics", desc: "Analisis data end-to-end dari ingestion sampai insight bisnis." },
-            { title: "AI Fundamentals", subtitle: "AI Track", img: "https://via.placeholder.com/400x300/1e293b/2dd4bf?text=AI+Fundamentals", desc: "Konsep AI dasar, evaluasi model, dan implementasi praktis." },
-            { title: "Data Science Essentials", subtitle: "Data Track", img: "https://via.placeholder.com/400x300/1e293b/38bdf8?text=Data+Science", desc: "Statistik, data cleaning, feature engineering, dan visualisasi." },
-            { title: "Frontend Development", subtitle: "Web Engineering", img: "https://via.placeholder.com/400x300/1e293b/818cf8?text=Frontend", desc: "Pengembangan frontend modern dengan React dan framework terkini." },
-            { title: "Backend Engineering", subtitle: "Web Engineering", img: "https://via.placeholder.com/400x300/1e293b/2dd4bf?text=Backend", desc: "API design, autentikasi, database, dan arsitektur backend." },
-            { title: "Cloud & Deployment", subtitle: "Infrastructure", img: "https://via.placeholder.com/400x300/1e293b/38bdf8?text=Cloud+Deployment", desc: "Hosting, CI/CD, containerization, dan deployment workflow." },
-            { title: "Applied AI Project", subtitle: "Project Portfolio", img: "https://via.placeholder.com/400x300/1e293b/818cf8?text=Applied+AI", desc: "Implementasi AI nyata dalam project end-to-end." }
+            { title: "Huawei Cloud Computing", subtitle: "Huawei Academy", img: "https://placehold.co/400x300/1e293b/38bdf8?text=Cloud+Computing", desc: "Fondasi cloud computing: layanan inti, deployment, dan arsitektur scalable." },
+            { title: "Huawei Data Analytics", subtitle: "Huawei Academy", img: "https://placehold.co/400x300/1e293b/818cf8?text=Data+Analytics", desc: "Analisis data end-to-end dari ingestion sampai insight bisnis." },
+            { title: "AI Fundamentals", subtitle: "AI Track", img: "https://placehold.co/400x300/1e293b/2dd4bf?text=AI+Fundamentals", desc: "Konsep AI dasar, evaluasi model, dan implementasi praktis." },
+            { title: "Data Science Essentials", subtitle: "Data Track", img: "https://placehold.co/400x300/1e293b/38bdf8?text=Data+Science", desc: "Statistik, data cleaning, feature engineering, dan visualisasi." },
+            { title: "Frontend Development", subtitle: "Web Engineering", img: "https://placehold.co/400x300/1e293b/818cf8?text=Frontend+Dev", desc: "Pengembangan frontend modern dengan React dan framework terkini." },
+            { title: "Backend Engineering", subtitle: "Web Engineering", img: "https://placehold.co/400x300/1e293b/2dd4bf?text=Backend+Dev", desc: "API design, autentikasi, database, dan arsitektur backend." },
+            { title: "Cloud & Deployment", subtitle: "Infrastructure", img: "https://placehold.co/400x300/1e293b/38bdf8?text=Cloud+Deployment", desc: "Hosting, CI/CD, containerization, dan deployment workflow." },
+            { title: "Applied AI Project", subtitle: "Project Portfolio", img: "https://placehold.co/400x300/1e293b/818cf8?text=Applied+AI", desc: "Implementasi AI nyata dalam project end-to-end." },
+            { title: "Applied AI Azure", subtitle: "AI Portfolio", img: "https://placehold.co/400x300/1e293b/2dd4bf?text=Azure+AI", desc: "Implementasi Basic Fundamental AI dengan layanan Microsoft Azure." },
+            { title: "Python With AI", subtitle: "AI Portfolio", img: "https://placehold.co/400x300/1e293b/38bdf8?text=Python+AI", desc: "Implementasi Basic Fundamental AI menggunakan Python." },
+            { title: "Applied DataScience", subtitle: "DataScience", img: "https://placehold.co/400x300/1e293b/818cf8?text=Data+Science", desc: "Implementasi Basic Fundamental Data Science." },
+            { title: "Computer Vision", subtitle: "AI Portfolio", img: "https://placehold.co/400x300/1e293b/2dd4bf?text=Computer+Vision", desc: "Cabang Kecerdasan Buatan (AI) untuk pemrosesan gambar dan video." }
         ];
 
         // Icon mapping
         const ICONS = {
             laravel: { cls: "fa-brands fa-laravel", color: "text-red-400" },
             php: { cls: "fa-brands fa-php", color: "text-indigo-300" },
-            mysql: { cls: "fa-solid fa-database", color: "text-sky-300" },
-            postgresql: { cls: "fa-solid fa-database", color: "text-sky-300" },
+            mysql: { cls: "fa-solid fa-database", color: "text-blue-300" },
+            postgresql: { cls: "fa-solid fa-database", color: "text-blue-300" },
             mongodb: { cls: "fa-solid fa-leaf", color: "text-green-400" },
             react: { cls: "fa-brands fa-react", color: "text-cyan-300" },
-            nextjs: { cls: "fa-solid fa-layer-group", color: "text-slate-200" },
+            nextjs: { cls: "fa-solid fa-layer-group", color: "text-gray-200" },
             nodejs: { cls: "fa-brands fa-node-js", color: "text-green-400" },
-            express: { cls: "fa-solid fa-bolt", color: "text-slate-200" },
-            tailwind: { cls: "fa-solid fa-wand-magic-sparkles", color: "text-sky-300" },
-            bootstrap: { cls: "fa-brands fa-bootstrap", color: "text-violet-300" },
+            express: { cls: "fa-solid fa-bolt", color: "text-gray-200" },
+            tailwind: { cls: "fa-solid fa-wand-magic-sparkles", color: "text-cyan-300" },
+            bootstrap: { cls: "fa-brands fa-bootstrap", color: "text-purple-400" },
             python: { cls: "fa-brands fa-python", color: "text-blue-400" },
             fastapi: { cls: "fa-solid fa-bolt", color: "text-emerald-400" },
-            docker: { cls: "fa-brands fa-docker", color: "text-sky-300" },
+            docker: { cls: "fa-brands fa-docker", color: "text-blue-400" },
             git: { cls: "fa-brands fa-git-alt", color: "text-orange-400" },
-            github: { cls: "fa-brands fa-github", color: "text-slate-200" },
+            github: { cls: "fa-brands fa-github", color: "text-gray-200" },
             figma: { cls: "fa-brands fa-figma", color: "text-purple-400" },
             javascript: { cls: "fa-brands fa-js", color: "text-yellow-400" },
             api: { cls: "fa-solid fa-plug", color: "text-teal-300" },
             ai: { cls: "fa-solid fa-brain", color: "text-purple-400" },
             rag: { cls: "fa-solid fa-database", color: "text-indigo-400" },
-            langchain: { cls: "fa-solid fa-link", color: "text-cyan-400" }
+            langchain: { cls: "fa-solid fa-link", color: "text-cyan-400" },
+            ajax: { cls: "fa-solid fa-rotate", color: "text-green-400" },
+            redux: { cls: "fa-solid fa-circle-nodes", color: "text-purple-400" },
+            openai: { cls: "fa-solid fa-robot", color: "text-green-400" }
         };
 
         function getIcon(tag) {
@@ -1045,7 +1006,7 @@
             for (let [k, v] of Object.entries(ICONS)) {
                 if (key.includes(k)) return v;
             }
-            return { cls: "fa-solid fa-code", color: "text-slate-300" };
+            return { cls: "fa-solid fa-code", color: "text-gray-300" };
         }
 
         // Render Skills
@@ -1081,15 +1042,15 @@
             grid.innerHTML = projectsData.map((p, i) => `
                 <div class="group glass-card rounded-2xl overflow-hidden cursor-pointer transform hover:-translate-y-2 transition-all duration-500"
                      onclick="openModal('project', ${i})" data-aos="fade-up" data-aos-delay="${i * 100}">
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="${p.cover}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="${p.title}">
-                        <div class="absolute top-3 right-3">
+                    <div class="portfolio-img-wrapper">
+                        <img src="${p.cover}" class="portfolio-img" alt="${p.title}">
+                        <div class="absolute top-3 right-3 z-10">
                             <span class="px-3 py-1 bg-primary/90 text-white text-xs font-semibold rounded-full">${p.categoryChip}</span>
                         </div>
                     </div>
                     <div class="p-5">
                         <h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">${p.cardTitle}</h3>
-                        <p class="text-slate-400 text-sm mb-3">${p.desc.substring(0, 100)}...</p>
+                        <p class="text-slate-400 text-sm mb-3 line-clamp-2">${p.desc}</p>
                         <div class="flex flex-wrap gap-2">
                             ${p.tags.slice(0, 3).map(t => `
                                 <span class="text-xs px-2 py-1 bg-white/5 rounded-full text-slate-300">${t}</span>
@@ -1120,7 +1081,7 @@
                         <div class="aspect-[4/3] rounded-lg overflow-hidden mb-3">
                             <img src="${c.img}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="${c.title}">
                         </div>
-                        <h4 class="text-white font-semibold text-sm group-hover:text-primary">${c.title}</h4>
+                        <h4 class="text-white font-semibold text-sm group-hover:text-primary line-clamp-1">${c.title}</h4>
                         <p class="text-slate-500 text-xs mt-1">${c.subtitle}</p>
                     </div>
                 </div>
@@ -1129,15 +1090,15 @@
             // Pagination
             let paginationHtml = '';
             paginationHtml += `<button onclick="changeCertPage(${currentCertPage - 1})" ${currentCertPage === 1 ? 'disabled' : ''} 
-                class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-sm hover:bg-primary/20 disabled:opacity-30">Prev</button>`;
+                class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-sm hover:bg-primary/20 disabled:opacity-30 transition-all">Prev</button>`;
 
             for (let i = 1; i <= totalPages; i++) {
                 paginationHtml += `<button onclick="changeCertPage(${i})" 
-                    class="w-10 h-10 rounded-xl ${i === currentCertPage ? 'bg-primary text-white' : 'bg-white/5 border border-white/10 text-white hover:bg-white/10'}">${i}</button>`;
+                    class="w-10 h-10 rounded-xl ${i === currentCertPage ? 'bg-primary text-white' : 'bg-white/5 border border-white/10 text-white hover:bg-white/10'} transition-all">${i}</button>`;
             }
 
             paginationHtml += `<button onclick="changeCertPage(${currentCertPage + 1})" ${currentCertPage === totalPages ? 'disabled' : ''} 
-                class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-sm hover:bg-primary/20 disabled:opacity-30">Next</button>`;
+                class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-sm hover:bg-primary/20 disabled:opacity-30 transition-all">Next</button>`;
 
             pagination.innerHTML = paginationHtml;
         }
@@ -1147,6 +1108,7 @@
             if (page < 1 || page > totalPages) return;
             currentCertPage = page;
             renderCertificates();
+            document.getElementById('certificates').scrollIntoView({ behavior: 'smooth' });
         }
 
         // Modal Functions
@@ -1169,6 +1131,31 @@
 
         let currentImages = [];
         let currentImgIndex = 0;
+
+        function renderDots() {
+            imgDots.innerHTML = '';
+            currentImages.forEach((_, i) => {
+                const dot = document.createElement('span');
+                dot.className = `w-2 h-2 rounded-full cursor-pointer transition-all ${i === currentImgIndex ? 'bg-primary' : 'bg-white/30'}`;
+                dot.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    setModalImage(i);
+                });
+                imgDots.appendChild(dot);
+            });
+        }
+
+        function setModalImage(index) {
+            if (!currentImages.length) return;
+            currentImgIndex = (index + currentImages.length) % currentImages.length;
+            mImage.src = currentImages[currentImgIndex];
+
+            if (imgDots) {
+                [...imgDots.children].forEach((dot, i) => {
+                    dot.className = `w-2 h-2 rounded-full cursor-pointer transition-all ${i === currentImgIndex ? 'bg-primary' : 'bg-white/30'}`;
+                });
+            }
+        }
 
         function openModal(type, index) {
             let data = type === 'project' ? projectsData[index] : certsData[index];
@@ -1199,8 +1186,12 @@
 
                 // Actions
                 mActions.classList.remove('hidden');
-                if (data.demo) mDemo.href = data.demo;
-                else mDemo.classList.add('hidden');
+                if (data.demo && data.demo.trim() !== '') {
+                    mDemo.href = data.demo;
+                    mDemo.classList.remove('hidden');
+                } else {
+                    mDemo.classList.add('hidden');
+                }
                 mCode.href = data.github || '#';
 
                 // Images
@@ -1218,6 +1209,7 @@
             // Set image
             currentImgIndex = 0;
             mImage.src = currentImages[0];
+            if (currentImages.length > 1) renderDots();
 
             // Show modal
             modal.classList.remove('hidden');
@@ -1238,31 +1230,23 @@
         }
 
         // Image navigation
-        function setModalImage(index) {
-            if (!currentImages.length) return;
-            currentImgIndex = (index + currentImages.length) % currentImages.length;
-            mImage.src = currentImages[currentImgIndex];
-        }
-
-        imgPrev.addEventListener('click', (e) => {
+        imgPrev?.addEventListener('click', (e) => {
             e.stopPropagation();
             setModalImage(currentImgIndex - 1);
         });
 
-        imgNext.addEventListener('click', (e) => {
+        imgNext?.addEventListener('click', (e) => {
             e.stopPropagation();
             setModalImage(currentImgIndex + 1);
         });
 
-        // Typing Animation
+        // Typing Animation (only for the subtitle)
         const dynamicText = document.getElementById('dynamic-text');
-        const roleElement = document.getElementById('changing-role');
+        const textOptions = ['Product Experiences.', 'AI Solutions.', 'Web Applications.', 'Mobile Apps.', 'UI/UX Design.', 'Cloud Architecture.'];
 
-        const textOptions = ['Product Experiences.', 'AI Solutions.', 'Web Apps.', 'Mobile Apps.', 'UI/UX Design.'];
-        const roleOptions = ['Software Developer', 'Fullstack Engineer', 'UI/UX Designer', 'AI Enthusiast'];
-
-        let textIndex = 0, charIndex = 0, isDeleting = false;
-        let roleIndex = 0, roleCharIndex = 0, isRoleDeleting = false;
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
 
         function typeEffect() {
             if (!dynamicText) return;
@@ -1290,32 +1274,6 @@
             setTimeout(typeEffect, speed);
         }
 
-        function roleTypeEffect() {
-            if (!roleElement) return;
-            const current = roleOptions[roleIndex];
-
-            if (isRoleDeleting) {
-                roleElement.textContent = current.substring(0, roleCharIndex - 1);
-                roleCharIndex--;
-            } else {
-                roleElement.textContent = current.substring(0, roleCharIndex + 1);
-                roleCharIndex++;
-            }
-
-            let speed = isRoleDeleting ? 40 : 70;
-
-            if (!isRoleDeleting && roleCharIndex === current.length) {
-                speed = 2000;
-                isRoleDeleting = true;
-            } else if (isRoleDeleting && roleCharIndex === 0) {
-                isRoleDeleting = false;
-                roleIndex = (roleIndex + 1) % roleOptions.length;
-                speed = 500;
-            }
-
-            setTimeout(roleTypeEffect, speed);
-        }
-
         // Particle Canvas
         const canvas = document.getElementById('hero-canvas');
         if (canvas) {
@@ -1326,20 +1284,20 @@
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
                 particles = [];
-                for (let i = 0; i < 50; i++) {
+                for (let i = 0; i < 60; i++) {
                     particles.push({
                         x: Math.random() * canvas.width,
                         y: Math.random() * canvas.height,
-                        size: Math.random() * 2,
-                        speedX: Math.random() * 0.5 - 0.25,
-                        speedY: Math.random() * 0.5 - 0.25
+                        size: Math.random() * 2.5,
+                        speedX: Math.random() * 0.8 - 0.4,
+                        speedY: Math.random() * 0.8 - 0.4
                     });
                 }
             }
 
             function animateParticles() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = 'rgba(56, 189, 248, 0.3)';
+                ctx.fillStyle = 'rgba(56, 189, 248, 0.4)';
 
                 particles.forEach(p => {
                     p.x += p.speedX;
@@ -1390,9 +1348,16 @@
         // Theme Toggle
         function toggleTheme() {
             document.documentElement.classList.toggle('dark');
+            const icon = document.querySelector('#themeToggle i');
+            if (icon) {
+                if (document.documentElement.classList.contains('dark')) {
+                    icon.className = 'fas fa-sun text-yellow-400';
+                } else {
+                    icon.className = 'fas fa-moon text-slate-300';
+                }
+            }
         }
         document.getElementById('themeToggle').addEventListener('click', toggleTheme);
-        document.getElementById('themeToggleMobile').addEventListener('click', toggleTheme);
 
         // Close modal with ESC
         document.addEventListener('keydown', (e) => {
@@ -1406,7 +1371,6 @@
             renderCertificates();
             setTimeout(() => {
                 typeEffect();
-                roleTypeEffect();
             }, 1000);
         });
     </script>
