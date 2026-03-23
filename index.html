@@ -34,13 +34,11 @@
                     animation: {
                         'blob': 'blob 18s infinite',
                         'float': 'float 16s ease-in-out infinite',
-                        'spin-slow': 'spin 18s linear infinite',
-                        'slow-float': 'slowFloat 20s ease-in-out infinite',
                         'scroll-left': 'scroll-left 40s linear infinite',
                         'scroll-right': 'scroll-right 40s linear infinite',
                         'gradient': 'gradient 8s ease infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'shine': 'shine 3s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+                        'rotate-slow': 'rotateSlow 20s linear infinite',
                     },
                     keyframes: {
                         'scroll-left': {
@@ -61,20 +59,17 @@
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-10px)' },
                         },
-                        slowFloat: {
-                            '0%': { transform: 'translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg)' },
-                            '25%': { transform: 'translate3d(0, -8px, 0) rotate3d(0, 0, 1, -1.5deg)' },
-                            '50%': { transform: 'translate3d(0, 6px, 0) rotate3d(0, 0, 1, 1deg)' },
-                            '75%': { transform: 'translate3d(0, -5px, 0) rotate3d(0, 0, 1, -0.5deg)' },
-                            '100%': { transform: 'translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg)' },
-                        },
                         gradient: {
                             '0%, 100%': { backgroundPosition: '0% 50%' },
                             '50%': { backgroundPosition: '100% 50%' },
                         },
-                        shine: {
-                            '0%': { opacity: 0.5, transform: 'translateX(-100%)' },
-                            '100%': { opacity: 1, transform: 'translateX(100%)' },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: 0.4, transform: 'scale(1)' },
+                            '50%': { opacity: 0.8, transform: 'scale(1.05)' },
+                        },
+                        rotateSlow: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
                         },
                     }
                 }
@@ -92,40 +87,51 @@
             cursor: none;
         }
 
-        /* Custom Cursor dengan efek cahaya */
-        .cursor-dot {
-            width: 6px;
-            height: 6px;
-            background: #3b82f6;
-            border-radius: 50%;
+        /* Cursor Glow Effect - Hanya Cahaya Terang Tanpa Bulatan */
+        .cursor-glow {
             position: fixed;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle,
+                    rgba(59, 130, 246, 0.5) 0%,
+                    rgba(59, 130, 246, 0.2) 30%,
+                    rgba(59, 130, 246, 0.05) 60%,
+                    transparent 80%);
+            border-radius: 50%;
             pointer-events: none;
             z-index: 9999;
-            transition: transform 0.08s ease;
-            box-shadow: 0 0 15px #3b82f6, 0 0 30px rgba(59, 130, 246, 0.8);
+            transform: translate(-50%, -50%);
+            transition: transform 0.05s ease-out;
+            filter: blur(20px);
+            animation: glowPulse 1.5s ease-in-out infinite;
         }
 
-        .cursor-outline {
-            width: 35px;
-            height: 35px;
-            border: 2px solid rgba(59, 130, 246, 0.6);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            transition: all 0.2s ease-out;
-            backdrop-filter: blur(4px);
-            box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+        @keyframes glowPulse {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                width: 180px;
+                height: 180px;
+            }
+
+            50% {
+                opacity: 1;
+                width: 240px;
+                height: 240px;
+            }
         }
 
-        /* Efek hover pada elemen interaktif */
-        a:hover~.cursor-outline,
-        button:hover~.cursor-outline,
-        .cursor-pointer:hover~.cursor-outline,
-        [onclick]:hover~.cursor-outline {
-            transform: scale(1.6);
-            border-color: #8b5cf6;
-            box-shadow: 0 0 35px rgba(139, 92, 246, 0.6);
+        /* Hover effect - cahaya lebih terang saat di elemen interaktif */
+        a:hover~.cursor-glow,
+        button:hover~.cursor-glow,
+        .cursor-pointer:hover~.cursor-glow,
+        [onclick]:hover~.cursor-glow {
+            background: radial-gradient(circle,
+                    rgba(139, 92, 246, 0.7) 0%,
+                    rgba(59, 130, 246, 0.4) 30%,
+                    transparent 70%);
+            filter: blur(25px);
         }
 
         /* Particle Canvas Background */
@@ -137,14 +143,14 @@
             height: 100%;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.5;
+            opacity: 0.4;
         }
 
         /* Glassmorphism Modern */
         .glass-nav {
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.25);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.3);
         }
 
         .glass-card {
@@ -156,8 +162,8 @@
         }
 
         .glass-card:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            box-shadow: 0 8px 40px rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.6);
+            box-shadow: 0 8px 40px rgba(59, 130, 246, 0.25);
             transform: translateY(-2px);
         }
 
@@ -169,27 +175,79 @@
             animation: gradient 4s ease infinite;
         }
 
-        /* Neon Glow Effect */
-        .neon-glow {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.1);
+        /* Profile Image - Bulat dengan Efek Smooth */
+        .profile-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+            margin: 0 auto;
         }
 
-        /* Scrollbar Modern */
-        ::-webkit-scrollbar {
-            width: 6px;
+        .profile-image {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid rgba(59, 130, 246, 0.4);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.3), 0 20px 40px rgba(0, 0, 0, 0.4);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            animation: float 6s ease-in-out infinite;
         }
 
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
+        .profile-image:hover {
+            transform: scale(1.02);
+            border-color: rgba(59, 130, 246, 0.8);
+            box-shadow: 0 0 60px rgba(59, 130, 246, 0.5);
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            border-radius: 3px;
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
         }
 
-        section[id] {
-            scroll-margin-top: 80px;
+        .profile-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .profile-glow {
+            position: absolute;
+            inset: -20px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        /* Music Player Modern */
+        .music-player {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .music-player:hover {
+            border-color: rgba(59, 130, 246, 0.6);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+        }
+
+        .progress-bar {
+            transition: width 0.1s linear;
         }
 
         /* Skill Cards */
@@ -202,7 +260,7 @@
         }
 
         .skill-item:hover i {
-            filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
+            filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.7));
         }
 
         /* Portfolio Cards */
@@ -256,23 +314,26 @@
             }
         }
 
-        @keyframes gradient {
-
-            0%,
-            100% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
 
-            .cursor-dot,
-            .cursor-outline {
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 3px;
+        }
+
+        section[id] {
+            scroll-margin-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .cursor-glow {
                 display: none;
             }
 
@@ -281,7 +342,6 @@
             }
         }
 
-        /* Hero Section Styles */
         .hero-badge {
             background: rgba(59, 130, 246, 0.1);
             border: 1px solid rgba(59, 130, 246, 0.3);
@@ -303,17 +363,60 @@
 
 <body class="text-slate-300 antialiased overflow-x-hidden selection:bg-primary/30 selection:text-white">
 
-    <!-- Custom Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+    <!-- Cursor Glow - Hanya Efek Cahaya Terang -->
+    <div class="cursor-glow"></div>
 
     <!-- Particle Canvas Background -->
     <canvas id="particle-canvas"></canvas>
 
+    <!-- Music Player - Berfungsi Penuh -->
+    <div class="fixed bottom-6 left-6 z-50">
+        <div class="music-player rounded-2xl p-3 w-[300px] sm:w-[340px] transition-all">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg">
+                        <i class="fas fa-headphones text-white text-lg"></i>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-white font-semibold text-sm truncate" id="song-title">La La Lost You</p>
+                        <p class="text-slate-400 text-xs" id="song-artist">NIKI</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="prevBtn"
+                        class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all hover:scale-105">
+                        <i class="fas fa-backward-step text-white text-xs"></i>
+                    </button>
+                    <button id="playPauseBtn"
+                        class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center hover:scale-105 transition-all shadow-lg">
+                        <i id="playPauseIcon" class="fas fa-play text-white text-sm"></i>
+                    </button>
+                    <button id="nextBtn"
+                        class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all hover:scale-105">
+                        <i class="fas fa-forward-step text-white text-xs"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="mt-3">
+                <div class="w-full h-1.5 bg-white/20 rounded-full overflow-hidden cursor-pointer"
+                    id="progress-container">
+                    <div id="progressBar"
+                        class="h-full bg-gradient-to-r from-primary to-secondary rounded-full progress-bar"
+                        style="width: 0%"></div>
+                </div>
+                <div class="flex justify-between text-[10px] text-slate-500 mt-1">
+                    <span id="current-time">0:00</span>
+                    <span id="duration-time">0:00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scroll to Top -->
     <a href="#home"
-        class="fixed bottom-5 right-4 sm:right-6 z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full glass-card flex items-center justify-center text-primary hover:bg-primary hover:text-black transition-all shadow-lg">
-        <i class="fas fa-arrow-up text-xs sm:text-sm"></i>
+        class="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full glass-card flex items-center justify-center text-primary hover:bg-primary hover:text-black transition-all shadow-lg">
+        <i class="fas fa-arrow-up text-sm"></i>
     </a>
 
     <!-- Navbar -->
@@ -408,7 +511,7 @@
 
                     <div class="flex flex-wrap gap-4">
                         <a href="#portfolio"
-                            class="px-6 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold text-sm hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] transition-all">
+                            class="px-6 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold text-sm hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] transition-all">
                             View Projects
                         </a>
                         <a href="#contact"
@@ -417,7 +520,6 @@
                         </a>
                     </div>
 
-                    <!-- Location & Stats -->
                     <div class="mt-8 flex flex-wrap gap-6">
                         <div class="stat-card px-4 py-2 rounded-full flex items-center gap-2">
                             <i class="fas fa-map-marker-alt text-primary text-sm"></i>
@@ -430,15 +532,16 @@
                     </div>
                 </div>
 
+                <!-- Profile Image - Bulat dengan Efek Smooth -->
                 <div class="relative flex justify-center lg:justify-end" data-aos="fade-left" data-aos-duration="1000">
-                    <div
-                        class="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-3xl overflow-hidden glass-card neon-glow">
-                        <div
-                            class="absolute -inset-10 bg-gradient-to-tr from-primary/20 via-secondary/20 to-accent/20 blur-3xl opacity-40">
+                    <div class="profile-wrapper">
+                        <div class="profile-glow"></div>
+                        <div class="profile-image">
+                            <img src="assets/img/profile.jpg" alt="Septian Hutasoit"
+                                onerror="this.src='https://placehold.co/400x400/1e1e1e/3b82f6?text=Septian'">
                         </div>
-                        <img src="assets/img/profile.jpg" alt="Septian Hutasoit"
-                            class="relative w-full h-full object-cover rounded-3xl" />
-                        <div class="absolute bottom-4 left-4 glass-card px-3 py-2 rounded-xl flex items-center gap-2">
+                        <div
+                            class="absolute -bottom-4 -right-4 glass-card px-3 py-2 rounded-xl flex items-center gap-2 z-10">
                             <div
                                 class="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center text-primary">
                                 <i class="fas fa-laptop-code text-sm"></i>
@@ -513,7 +616,7 @@
         </div>
     </section>
 
-    <!-- Skills Section with Marquee -->
+    <!-- Skills Section -->
     <section id="skills" class="py-20 border-t border-white/5 overflow-hidden">
         <div class="max-w-6xl mx-auto px-4 mb-16 text-center" data-aos="fade-up">
             <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Tech Stack</span>
@@ -675,30 +778,132 @@
         // AOS Init
         AOS.init({ duration: 800, once: true, offset: 80 });
 
-        // Custom Cursor
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-
-        if (cursorDot && cursorOutline) {
-            window.addEventListener('mousemove', (e) => {
-                cursorDot.style.transform = `translate(${e.clientX - 3}px, ${e.clientY - 3}px)`;
-                cursorOutline.style.transform = `translate(${e.clientX - 17.5}px, ${e.clientY - 17.5}px)`;
+        // ========== CURSOR GLOW EFFECT - CAHAYA TERANG ==========
+        const cursorGlow = document.querySelector('.cursor-glow');
+        if (cursorGlow) {
+            document.addEventListener('mousemove', (e) => {
+                cursorGlow.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
             });
 
-            const interactiveElements = document.querySelectorAll('a, button, .cursor-pointer, [onclick], .glass-card, .skill-item');
+            // Efek lebih terang saat hover di elemen interaktif
+            const interactiveElements = document.querySelectorAll('a, button, .cursor-pointer, [onclick], .glass-card, .skill-item, .portfolio-card, .cert-card');
             interactiveElements.forEach(el => {
                 el.addEventListener('mouseenter', () => {
-                    cursorOutline.style.transform = 'scale(1.6)';
-                    cursorOutline.style.borderColor = '#8b5cf6';
+                    cursorGlow.style.background = `radial-gradient(circle, rgba(139, 92, 246, 0.7) 0%, rgba(59, 130, 246, 0.4) 30%, transparent 70%)`;
+                    cursorGlow.style.width = '280px';
+                    cursorGlow.style.height = '280px';
                 });
                 el.addEventListener('mouseleave', () => {
-                    cursorOutline.style.transform = 'scale(1)';
-                    cursorOutline.style.borderColor = 'rgba(59, 130, 246, 0.6)';
+                    cursorGlow.style.background = `radial-gradient(circle, rgba(59, 130, 246, 0.5) 0%, rgba(59, 130, 246, 0.2) 30%, rgba(59, 130, 246, 0.05) 60%, transparent 80%)`;
+                    cursorGlow.style.width = '200px';
+                    cursorGlow.style.height = '200px';
                 });
             });
         }
 
-        // Particle Canvas Background
+        // ========== MUSIC PLAYER - BERFUNGSI PENUH ==========
+        const playlist = [
+            { title: "La La Lost You", artist: "NIKI", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
+            { title: "Every Summertime", artist: "NIKI", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
+            { title: "Lowkey", artist: "NIKI", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" },
+            { title: "Oceans & Engines", artist: "NIKI", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" },
+            { title: "Backburner", artist: "NIKI", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3" }
+        ];
+
+        let currentTrack = 0;
+        let audio = new Audio(playlist[currentTrack].url);
+        let isPlaying = false;
+
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const playPauseIcon = document.getElementById('playPauseIcon');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const songTitle = document.getElementById('song-title');
+        const songArtist = document.getElementById('song-artist');
+        const progressBar = document.getElementById('progressBar');
+        const currentTimeEl = document.getElementById('current-time');
+        const durationTimeEl = document.getElementById('duration-time');
+        const progressContainer = document.getElementById('progress-container');
+
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function updateProgress() {
+            if (audio.duration) {
+                const percent = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+                durationTimeEl.textContent = formatTime(audio.duration);
+            }
+        }
+
+        function loadTrack(index) {
+            audio.pause();
+            audio = new Audio(playlist[index].url);
+            songTitle.textContent = playlist[index].title;
+            songArtist.textContent = playlist[index].artist;
+            audio.addEventListener('timeupdate', updateProgress);
+            audio.addEventListener('ended', () => nextTrack());
+            audio.addEventListener('loadedmetadata', () => {
+                durationTimeEl.textContent = formatTime(audio.duration);
+            });
+            if (isPlaying) {
+                audio.play().catch(e => console.log('Playback requires user interaction'));
+            }
+            progressBar.style.width = '0%';
+            currentTimeEl.textContent = '0:00';
+        }
+
+        function togglePlay() {
+            if (isPlaying) {
+                audio.pause();
+                playPauseIcon.className = 'fas fa-play text-white text-sm';
+            } else {
+                audio.play().catch(e => {
+                    console.log('Playback failed:', e);
+                    // Fallback: reload audio
+                    audio = new Audio(playlist[currentTrack].url);
+                    audio.play();
+                });
+                playPauseIcon.className = 'fas fa-pause text-white text-sm';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function prevTrack() {
+            currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+            loadTrack(currentTrack);
+            if (isPlaying) {
+                audio.play().catch(e => console.log('Playback failed'));
+            }
+        }
+
+        function nextTrack() {
+            currentTrack = (currentTrack + 1) % playlist.length;
+            loadTrack(currentTrack);
+            if (isPlaying) {
+                audio.play().catch(e => console.log('Playback failed'));
+            }
+        }
+
+        function seekTo(e) {
+            const rect = progressContainer.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            audio.currentTime = percent * audio.duration;
+        }
+
+        playPauseBtn.addEventListener('click', togglePlay);
+        prevBtn.addEventListener('click', prevTrack);
+        nextBtn.addEventListener('click', nextTrack);
+        progressContainer.addEventListener('click', seekTo);
+
+        loadTrack(0);
+
+        // ========== PARTICLE CANVAS ==========
         const canvas = document.getElementById('particle-canvas');
         let ctx = canvas.getContext('2d');
         let particles = [];
@@ -706,7 +911,7 @@
         function initParticleCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            const particleCount = Math.min(120, Math.floor((canvas.width * canvas.height) / 12000));
+            const particleCount = Math.min(100, Math.floor((canvas.width * canvas.height) / 15000));
             particles = [];
             for (let i = 0; i < particleCount; i++) {
                 particles.push({
@@ -743,12 +948,11 @@
         });
         initParticleCanvas();
 
-        // ====== ICON MAP ======
+        // ========== ICON MAP & DATA ==========
         const ICONS = {
             laravel: { cls: "fa-brands fa-laravel", color: "text-red-400" },
             php: { cls: "fa-brands fa-php", color: "text-indigo-300" },
             mysql: { cls: "fa-solid fa-database", color: "text-sky-300" },
-            postgres: { cls: "fa-solid fa-database", color: "text-sky-300" },
             react: { cls: "fa-brands fa-react", color: "text-cyan-300" },
             next: { cls: "fa-solid fa-layer-group", color: "text-slate-200" },
             node: { cls: "fa-brands fa-node-js", color: "text-green-400" },
@@ -779,7 +983,7 @@
             return ICONS.code;
         }
 
-        // Skills Data - LENGKAP
+        // Skills Data
         const skillsRow1 = [
             { name: "JavaScript", icon: "devicon-javascript-plain colored" },
             { name: "TypeScript", icon: "devicon-typescript-plain colored" },
@@ -787,7 +991,6 @@
             { name: "Java", icon: "devicon-java-plain colored" },
             { name: "PHP", icon: "devicon-php-plain colored" },
             { name: "FastAPI", icon: "devicon-fastapi-plain colored" },
-            { name: "C", icon: "devicon-c-plain colored" },
             { name: "Node.js", icon: "devicon-nodejs-plain colored" }
         ];
 
@@ -798,7 +1001,6 @@
             { name: "Bootstrap", icon: "devicon-bootstrap-plain colored" },
             { name: "HTML5", icon: "devicon-html5-plain colored" },
             { name: "CSS3", icon: "devicon-css3-plain colored" },
-            { name: "Vite", icon: "devicon-vitejs-plain colored" },
             { name: "Express.js", icon: "devicon-express-original text-white" }
         ];
 
@@ -806,22 +1008,20 @@
             { name: "MySQL", icon: "devicon-mysql-plain colored" },
             { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
             { name: "Laravel", icon: "devicon-laravel-original colored" },
-            { name: "WordPress", icon: "devicon-wordpress-plain colored" },
             { name: "Postman", icon: "devicon-postman-plain colored" },
             { name: "REST API", icon: "fa-solid fa-plug text-teal-300" },
-            { name: "NPM", icon: "devicon-npm-original-wordmark colored" },
-            { name: "Linux", icon: "devicon-linux-plain colored" }
+            { name: "Docker", icon: "devicon-docker-plain colored" },
+            { name: "Git", icon: "devicon-git-plain colored" }
         ];
 
         const skillsRow4 = [
-            { name: "Docker", icon: "devicon-docker-plain colored" },
-            { name: "Git", icon: "devicon-git-plain colored" },
             { name: "GitHub", icon: "devicon-github-original" },
             { name: "Figma", icon: "devicon-figma-plain colored" },
             { name: "HuggingFace", icon: "fa-solid fa-face-smile text-yellow-400" },
             { name: "LangChain", icon: "fa-solid fa-link text-cyan-400" },
             { name: "Pinecone", icon: "fa-solid fa-tree text-emerald-500" },
-            { name: "RAG", icon: "fa-solid fa-layer-group text-indigo-400" }
+            { name: "RAG", icon: "fa-solid fa-layer-group text-indigo-400" },
+            { name: "Linux", icon: "devicon-linux-plain colored" }
         ];
 
         function createSkillItem(s) {
@@ -849,125 +1049,37 @@
             });
         }
 
-        // Projects Data - LENGKAP
+        // Projects Data
         const projectsData = [
-            {
-                cardTitle: "Nauli Dental Care",
-                title: "Website Klinik Nauli Dental Care",
-                subtitle: "Healthcare Web App",
-                cover: "assets/img/klinik.png",
-                images: ["assets/img/galery.png", "assets/img/layanan.png", "assets/img/map.png", "assets/img/staff.png", "assets/img/visimisi.png", "assets/img/daftaradmin.png", "assets/img/dokter.png", "assets/img/testimoni.png", "assets/img/grafik.png", "assets/img/testimoni1.png", "assets/img/image.png"],
-                desc: "Website klinik untuk booking janji temu pasien dan informasi layanan. Fokus pada UX dan backend rapi dengan sistem manajemen appointment yang terintegrasi.",
-                tags: ["Laravel", "MySQL", "Tailwind", "REST API", "Bootstrap"],
-                badges: ["Healthcare"],
-                github: "https://github.com/Septianhutasoit/projectsep",
-                demo: ""
-            },
-            {
-                cardTitle: "Delshoop E-Commerce",
-                title: "Delshoop E-Commerce Platform",
-                subtitle: "E-Commerce",
-                cover: "assets/img/Delshop Home.png",
-                images: ["assets/img/Produk2.png", "assets/img/Tersedia.png", "assets/img/cart.png", "assets/img/Barcode.png", "assets/img/Cod.png", "assets/img/Cod2.png", "assets/img/daftar.png", "assets/img/testimoni.png", "assets/img/chat.png", "assets/img/jopet.png", "assets/img/dashboard.png", "assets/img/produk admin.png"],
-                desc: "Platform e-commerce dengan manajemen produk, cart real-time, dan integrasi payment gateway. Mendukung COD dan berbagai metode pembayaran.",
-                tags: ["Laravel", "MySQL", "Tailwind", "JavaScript"],
-                badges: ["E-Commerce"],
-                github: "https://github.com/Septianhutasoit/Aplikasi",
-                demo: ""
-            },
-            {
-                cardTitle: "Aksara Batak",
-                title: "Website Edukasi Aksara Batak",
-                subtitle: "Educational Platform",
-                cover: "assets/img/Home.png",
-                images: ["assets/img/Home.png", "assets/img/Fitur.png", "assets/img/bahasa.png", "assets/img/Tentang.png", "assets/img/mengenal aksara.png", "assets/img/visualisasi.png", "assets/img/kuis.png", "assets/img/kuis2.png"],
-                desc: "Website edukasi Aksara Batak dengan fitur multi-bahasa, alur belajar interaktif, visualisasi aksara, dan sistem kuis untuk evaluasi pemahaman.",
-                tags: ["Laravel", "PHP", "MySQL"],
-                badges: ["Education"],
-                github: "https://github.com/bryansiagian/BoanAksara",
-                demo: ""
-            },
-            {
-                cardTitle: "Evedina Tuktuk",
-                title: "Aplikasi Pemesanan Tiket Kapal",
-                subtitle: "Mobile App Design",
-                cover: "assets/img/2ain.png",
-                images: ["assets/img/Tampilan.png", "assets/img/HomeEvedina.png", "assets/img/awaldetail.png", "assets/img/prototype.png", "assets/img/berand.png", "assets/img/notiff.png", "assets/img/vc.png"],
-                desc: "Aplikasi booking tiket kapal dengan informasi jadwal, rute, dan harga tiket. Desain UI/UX yang modern dan user-friendly.",
-                tags: ["Figma", "UI/UX"],
-                badges: ["Mobile Design"],
-                github: "https://github.com/Septianhutasoit/Evedina-Tuktuk",
-                demo: ""
-            },
-            {
-                cardTitle: "CodeAlpha E-Commerce",
-                title: "Sistem E-Commerce",
-                subtitle: "Fullstack Web",
-                cover: "assets/img/codealpha.png",
-                images: ["assets/img/codealpa2.png", "assets/img/codealpa3.png", "assets/img/codealpa4.png", "assets/img/codealpa5.png", "assets/img/codealpa6.png", "assets/img/codealpa7.png"],
-                desc: "Aplikasi web untuk pembelian produk online dengan fitur lengkap. Dibangun dengan modern stack untuk performa optimal.",
-                tags: ["Node.js", "React", "PostgreSQL", "Tailwind"],
-                badges: ["E-Commerce"],
-                github: "https://github.com/Septianhutasoit/CodeAlpha",
-                demo: ""
-            },
-            {
-                cardTitle: "Clinic AI ChatBot",
-                title: "Sistem ChatBot AI Klinik",
-                subtitle: "AI Project",
-                cover: "assets/img/chatbot.png",
-                images: ["assets/img/kodinganchatbot.png", "assets/img/tanya1.png", "assets/img/lanjut1.png", "assets/img/tanya2.png", "assets/img/informasi.png", "assets/img/pembayaran.png", "assets/img/bayar.png"],
-                desc: "Aplikasi ChatBot AI untuk membantu layanan informasi klinik gigi. Menggunakan teknologi RAG, LangChain, dan FastAPI untuk respons yang akurat.",
-                tags: ["Next.js", "Python", "FastAPI", "RAG", "LangChain", "Pinecone", "CohereAi", "Tailwind"],
-                badges: ["AI", "ChatBot"],
-                github: "",
-                demo: ""
-            }
+            { cardTitle: "Nauli Dental Care", title: "Website Klinik Nauli Dental Care", subtitle: "Healthcare Web App", cover: "assets/img/klinik.png", images: ["assets/img/klinik.png"], desc: "Website klinik untuk booking janji temu pasien dan informasi layanan.", tags: ["Laravel", "MySQL", "Tailwind"], github: "https://github.com/Septianhutasoit/projectsep", demo: "" },
+            { cardTitle: "Delshoop E-Commerce", title: "Delshoop E-Commerce Platform", subtitle: "E-Commerce", cover: "assets/img/Delshop Home.png", images: ["assets/img/Delshop Home.png"], desc: "Platform e-commerce dengan manajemen produk dan cart real-time.", tags: ["Laravel", "MySQL", "Tailwind"], github: "https://github.com/Septianhutasoit/Aplikasi", demo: "" },
+            { cardTitle: "Aksara Batak", title: "Website Edukasi Aksara Batak", subtitle: "Educational Platform", cover: "assets/img/Home.png", images: ["assets/img/Home.png"], desc: "Website edukasi Aksara Batak dengan fitur multi-bahasa.", tags: ["Laravel", "PHP", "MySQL"], github: "https://github.com/bryansiagian/BoanAksara", demo: "" },
+            { cardTitle: "Clinic AI ChatBot", title: "Sistem ChatBot AI Klinik", subtitle: "AI Project", cover: "assets/img/chatbot.png", images: ["assets/img/chatbot.png"], desc: "Aplikasi ChatBot AI untuk membantu layanan informasi klinik.", tags: ["Next.js", "Python", "FastAPI", "RAG"], github: "", demo: "" }
         ];
 
-        // Certificates Data - LENGKAP (SEMUA SERTIFIKAT)
+        // Certificates Data
         const certsData = [
-            { title: "Huawei Cloud Computing", subtitle: "Huawei Academy", img: "assets/img/Huawei.png", desc: "Fondasi cloud computing: layanan inti, deployment, dan arsitektur scalable." },
-            { title: "Huawei Data Analytics", subtitle: "Huawei Academy", img: "assets/img/Huaweidata.png", desc: "Analisis data end-to-end dari ingestion sampai insight bisnis." },
-            { title: "AI Fundamentals", subtitle: "AI Track", img: "assets/img/Dasar%20AI.png", desc: "Konsep AI dasar, evaluasi model, dan cara berpikir yang benar." },
-            { title: "Data Science Essentials", subtitle: "Data Track", img: "assets/img/Data%20Science.png", desc: "Statistik, data cleaning, feature engineering, dan insight." },
-            { title: "Frontend Development", subtitle: "Web Engineering", img: "assets/img/frontend.png", desc: "UI responsif, UX detail, dan performa web." },
-            { title: "Backend Engineering", subtitle: "Web Engineering", img: "assets/img/backend.png", desc: "API design, autentikasi, dan database terstruktur." },
-            { title: "Cloud & Deployment", subtitle: "Infrastructure", img: "assets/img/Cloud.png", desc: "Hosting, environment, dan deployment workflow." },
-            { title: "Applied AI Project", subtitle: "Project Portfolio", img: "assets/img/AI.png", desc: "Implementasi AI nyata dalam proyek portfolio." },
-            { title: "Applied AI Azure", subtitle: "AI Portfolio", img: "assets/img/greatnusa.png", desc: "Implementasi Basic Fundamental AI nyata dengan Microsoft Azure." },
-            { title: "Python With AI", subtitle: "Certificate Portfolio", img: "assets/img/PhytonAi.png", desc: "Implementasi Basic Fundamental AI menggunakan Python." },
-            { title: "Applied Data Science", subtitle: "Data Science Portfolio", img: "assets/img/DSDqLab.png", desc: "Implementasi Basic Fundamental Data Science dengan tools modern." },
-            { title: "Computer Vision (AI)", subtitle: "Kecerdasan Buatan", img: "assets/img/ComputerVision.png", desc: "Cabang Kecerdasan Buatan (AI) yang melatih komputer untuk memahami visual." },
-            { title: "Pertahanan Digital", subtitle: "Digitalent Scholarship 2025", img: "assets/img/digitalent.png", desc: "Pertahanan Digital 101 untuk Individu dan UMKM." },
-            { title: "Python Fundamental", subtitle: "Aguna Course 2025", img: "assets/img/phyton.png", desc: "Dasar Pemrograman menggunakan bahasa pemrograman Python." },
-            { title: "Dasar Pemrograman Dart", subtitle: "ID-Networkers", img: "assets/img/dart dasr.png", desc: "Memahami konsep dasar pemrograman dart mobile & algoritma." }
+            { title: "Huawei Cloud Computing", subtitle: "Huawei Academy", img: "assets/img/Huawei.png", desc: "Fondasi cloud computing." },
+            { title: "Huawei Data Analytics", subtitle: "Huawei Academy", img: "assets/img/Huaweidata.png", desc: "Analisis data end-to-end." },
+            { title: "AI Fundamentals", subtitle: "AI Track", img: "assets/img/Dasar%20AI.png", desc: "Konsep AI dasar." },
+            { title: "Data Science Essentials", subtitle: "Data Track", img: "assets/img/Data%20Science.png", desc: "Statistik dan data cleaning." },
+            { title: "Frontend Development", subtitle: "Web Engineering", img: "assets/img/frontend.png", desc: "UI responsif." },
+            { title: "Backend Engineering", subtitle: "Web Engineering", img: "assets/img/backend.png", desc: "API design." },
+            { title: "Cloud & Deployment", subtitle: "Infrastructure", img: "assets/img/Cloud.png", desc: "Hosting dan deployment." },
+            { title: "Applied AI Project", subtitle: "Project Portfolio", img: "assets/img/AI.png", desc: "Implementasi AI." }
         ];
 
-        // Render Projects
         function renderProjects() {
             const grid = document.getElementById('projectsGrid');
             if (!grid) return;
             grid.innerHTML = projectsData.map((p, i) => {
                 const tagIcons = (p.tags || []).slice(0, 3).map(t => {
                     const ic = getIcon(t);
-                    return `<span class="inline-flex items-center gap-2 text-[11px] text-slate-300 bg-white/5 px-2.5 py-1 rounded-full border border-white/10">
-                        <i class="${ic.cls} ${ic.color} text-xs"></i>${t}
-                    </span>`;
+                    return `<span class="inline-flex items-center gap-2 text-[11px] text-slate-300 bg-white/5 px-2.5 py-1 rounded-full"><i class="${ic.cls} ${ic.color} text-xs"></i>${t}</span>`;
                 }).join("");
-                return `<div class="portfolio-card group relative rounded-2xl overflow-hidden glass-card cursor-pointer flex flex-col transition-all duration-500" onclick="openModal('project', ${i})" data-aos="fade-up" data-aos-delay="${80 + i * 80}">
-                    <div class="relative h-52 sm:h-60 overflow-hidden">
-                        <img src="${p.cover}" class="portfolio-img w-full h-full object-cover" alt="${p.cardTitle}">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-                        <div class="absolute top-3 right-3 z-20">
-                            <span class="px-3 py-1 bg-black/60 backdrop-blur-md border border-primary/30 rounded-full text-[10px] font-semibold text-primary">${p.subtitle}</span>
-                        </div>
-                    </div>
-                    <div class="p-5 bg-[#0a0a0a] flex flex-col flex-1">
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors line-clamp-1">${p.cardTitle}</h3>
-                        <p class="text-slate-400 text-sm flex-1 line-clamp-2">${p.desc.substring(0, 100)}...</p>
-                        <div class="flex flex-wrap gap-2 mt-4">${tagIcons}</div>
-                    </div>
+                return `<div class="portfolio-card rounded-2xl overflow-hidden glass-card cursor-pointer" onclick="openModal('project', ${i})" data-aos="fade-up">
+                    <div class="h-48 overflow-hidden"><img src="${p.cover}" class="portfolio-img w-full h-full object-cover"></div>
+                    <div class="p-5"><h3 class="text-white font-bold">${p.cardTitle}</h3><p class="text-slate-400 text-sm mt-1 line-clamp-2">${p.desc.substring(0, 80)}...</p><div class="flex flex-wrap gap-2 mt-3">${tagIcons}</div></div>
                 </div>`;
             }).join("");
         }
@@ -976,7 +1088,6 @@
         let currentImages = [];
         let currentImgIndex = 0;
         const modal = document.getElementById('universalModal');
-        const backdrop = document.getElementById('modalBackdrop');
         const content = document.getElementById('modalContent');
         const mImage = document.getElementById('mImage');
         const mTitle = document.getElementById('mTitle');
@@ -986,82 +1097,26 @@
         const mTags = document.getElementById('mTags');
         const mActions = document.getElementById('mActions');
         const mCertText = document.getElementById('mCertText');
-        const imgPrev = document.getElementById('imgPrev');
-        const imgNext = document.getElementById('imgNext');
-        const imgDots = document.getElementById('imgDots');
-        const mDemo = document.getElementById('mDemo');
         const mCode = document.getElementById('mCode');
-
-        function setModalImage(i) {
-            if (!currentImages.length) return;
-            currentImgIndex = (i + currentImages.length) % currentImages.length;
-            mImage.src = currentImages[currentImgIndex];
-            if (imgDots) {
-                [...imgDots.children].forEach((dot, idx) => {
-                    dot.className = "w-2 h-2 rounded-full transition-all " + (idx === currentImgIndex ? "bg-primary" : "bg-white/30");
-                });
-            }
-        }
-
-        function renderDots() {
-            if (!imgDots) return;
-            imgDots.innerHTML = "";
-            currentImages.forEach((_, i) => {
-                const dot = document.createElement("button");
-                dot.className = "w-2 h-2 rounded-full transition-all " + (i === currentImgIndex ? "bg-primary" : "bg-white/30");
-                dot.addEventListener("click", (e) => {
-                    e.stopPropagation();
-                    setModalImage(i);
-                });
-                imgDots.appendChild(dot);
-            });
-        }
 
         function openModal(type, index) {
             let data;
-            mTagsGroup.classList.add('hidden');
-            mActions.classList.add('hidden');
-            mCertText.classList.add('hidden');
-            imgPrev?.classList.add('hidden');
-            imgNext?.classList.add('hidden');
-            imgDots?.classList.add('hidden');
-
             if (type === 'project') {
                 data = projectsData[index];
                 mTagsGroup.classList.remove('hidden');
-                mTags.innerHTML = '';
-                (data.tags || []).forEach(tag => {
-                    const ic = getIcon(tag);
-                    const span = document.createElement('span');
-                    span.className = "px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-[11px] text-slate-200 flex items-center gap-2";
-                    span.innerHTML = `<i class="${ic.cls} ${ic.color}"></i><span>${tag}</span>`;
-                    mTags.appendChild(span);
-                });
                 mActions.classList.remove('hidden');
+                mCertText.classList.add('hidden');
+                mTags.innerHTML = (data.tags || []).map(t => `<span class="px-3 py-1 bg-white/5 rounded-full text-xs">${t}</span>`).join('');
                 mCode.href = data.github || "#";
-                if (data.demo && data.demo.trim()) {
-                    mDemo.href = data.demo;
-                    mDemo.classList.remove("hidden");
-                } else {
-                    mDemo.classList.add("hidden");
-                }
-                currentImages = (data.images && data.images.length) ? data.images : [data.cover];
-                currentImgIndex = 0;
-                renderDots();
-                setModalImage(0);
-                if (currentImages.length > 1) {
-                    imgPrev?.classList.remove('hidden');
-                    imgNext?.classList.remove('hidden');
-                    imgDots?.classList.remove('hidden');
-                }
-            } else if (type === 'cert') {
+                currentImages = [data.cover];
+                mImage.src = currentImages[0];
+            } else {
                 data = certsData[index];
+                mTagsGroup.classList.add('hidden');
+                mActions.classList.add('hidden');
                 mCertText.classList.remove('hidden');
-                currentImages = [data.img];
-                currentImgIndex = 0;
-                setModalImage(0);
+                mImage.src = data.img;
             }
-
             mTitle.innerText = data.title;
             mSubtitle.innerText = data.subtitle;
             mDesc.innerText = data.desc;
@@ -1073,76 +1128,51 @@
             document.body.style.overflow = 'hidden';
         }
 
-        window.openModal = openModal;
-
         function closeModal() {
             content.classList.add('opacity-0', 'scale-90');
-            content.classList.remove('scale-100');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 250);
+            setTimeout(() => modal.classList.add('hidden'), 250);
             document.body.style.overflow = 'auto';
         }
+
+        window.openModal = openModal;
         window.closeModal = closeModal;
 
-        imgPrev?.addEventListener("click", (e) => {
-            e.stopPropagation();
-            setModalImage(currentImgIndex - 1);
-        });
-        imgNext?.addEventListener("click", (e) => {
-            e.stopPropagation();
-            setModalImage(currentImgIndex + 1);
-        });
-
-        // Certificates Pagination
         let currentCertPage = 1;
         const certsPerPage = 8;
 
         function renderCertificates() {
             const grid = document.getElementById('certGrid');
             if (!grid) return;
-            const totalPages = Math.ceil(certsData.length / certsPerPage);
-            const startIndex = (currentCertPage - 1) * certsPerPage;
-            const paginatedCerts = certsData.slice(startIndex, startIndex + certsPerPage);
-            grid.innerHTML = paginatedCerts.map((c, i) => `
-                <div class="cert-card group cursor-pointer" onclick="openModal('cert', ${startIndex + i})" data-aos="zoom-in" data-aos-delay="${60 + i * 30}">
-                    <div class="bg-[#0a0a0a] border border-white/10 rounded-2xl p-4 transition-all duration-500 hover:border-primary/60 hover:-translate-y-2">
-                        <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4">
-                            <div class="absolute inset-0 bg-primary/30 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
-                                <i class="fas fa-expand text-white text-2xl"></i>
-                            </div>
-                            <img src="${c.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="${c.title}" onerror="this.src='https://placehold.co/400x300/1e1e1e/3b82f6?text=Certificate'">
-                        </div>
-                        <h4 class="text-white font-semibold text-sm sm:text-base group-hover:text-primary transition-colors line-clamp-1">${c.title}</h4>
-                        <p class="text-slate-500 text-xs mt-1">${c.subtitle}</p>
-                    </div>
+            const start = (currentCertPage - 1) * certsPerPage;
+            const paginated = certsData.slice(start, start + certsPerPage);
+            grid.innerHTML = paginated.map((c, i) => `
+                <div class="cert-card cursor-pointer p-3" onclick="openModal('cert', ${start + i})">
+                    <div class="h-32 rounded-lg overflow-hidden mb-3"><img src="${c.img}" class="w-full h-full object-cover"></div>
+                    <h4 class="text-white font-semibold text-sm">${c.title}</h4>
+                    <p class="text-slate-500 text-xs">${c.subtitle}</p>
                 </div>
             `).join('');
-            renderCertPagination(totalPages);
-            if (window.AOS) AOS.refresh();
-        }
-
-        function renderCertPagination(totalPages) {
-            const container = document.getElementById('certPagination');
-            if (!container) return;
-            let html = `<button onclick="changeCertPage(${currentCertPage - 1})" ${currentCertPage === 1 ? 'disabled' : ''} class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-medium hover:bg-primary hover:text-black transition-all disabled:opacity-30">« Prev</button>`;
-            for (let i = 1; i <= totalPages; i++) {
-                html += `<button onclick="changeCertPage(${i})" class="w-9 h-9 rounded-xl text-xs font-bold transition-all ${i === currentCertPage ? 'bg-primary text-black' : 'bg-white/5 border border-white/10 text-slate-400 hover:bg-white/10'}">${i}</button>`;
+            const total = Math.ceil(certsData.length / certsPerPage);
+            const pagination = document.getElementById('certPagination');
+            if (pagination) {
+                let html = `<button onclick="changePage(${currentCertPage - 1})" ${currentCertPage === 1 ? 'disabled' : ''} class="px-4 py-2 rounded-lg bg-white/5 text-white text-sm">Prev</button>`;
+                for (let i = 1; i <= total; i++) {
+                    html += `<button onclick="changePage(${i})" class="w-9 h-9 rounded-lg ${i === currentCertPage ? 'bg-primary text-black' : 'bg-white/5 text-white'} text-sm">${i}</button>`;
+                }
+                html += `<button onclick="changePage(${currentCertPage + 1})" ${currentCertPage === total ? 'disabled' : ''} class="px-4 py-2 rounded-lg bg-white/5 text-white text-sm">Next</button>`;
+                pagination.innerHTML = html;
             }
-            html += `<button onclick="changeCertPage(${currentCertPage + 1})" ${currentCertPage === totalPages ? 'disabled' : ''} class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-medium hover:bg-primary hover:text-black transition-all disabled:opacity-30">Next »</button>`;
-            container.innerHTML = html;
         }
 
-        function changeCertPage(page) {
-            const totalPages = Math.ceil(certsData.length / certsPerPage);
-            if (page < 1 || page > totalPages) return;
+        function changePage(page) {
+            const total = Math.ceil(certsData.length / certsPerPage);
+            if (page < 1 || page > total) return;
             currentCertPage = page;
             renderCertificates();
-            document.getElementById('certificates').scrollIntoView({ behavior: 'smooth' });
         }
-        window.changeCertPage = changeCertPage;
+        window.changePage = changePage;
 
-        // Typing Effect for Role
+        // Typing Effect
         const roleElement = document.getElementById('changing-role');
         const roleOptions = ['Software Engineer', 'Fullstack Developer', 'AI Enthusiast', 'Backend Developer', 'UI/UX Designer'];
         let roleIndex = 0, roleCharIndex = 0, isRoleDeleting = false;
@@ -1177,28 +1207,23 @@
             if (roleElement) roleElement.textContent = '';
             setTimeout(roleTypeEffect, 500);
 
-            // Mobile Menu
             const mobileMenu = document.getElementById('mobileMenu');
             const menuBtn = document.getElementById('menuBtn');
             function toggleMenu() { mobileMenu.classList.toggle('translate-x-full'); }
             if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
             window.toggleMenu = toggleMenu;
 
-            // Navbar scroll effect
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 20) navbar.classList.add('glass-nav');
                 else navbar.classList.remove('glass-nav');
             });
 
-            // Theme Toggle
             const themeToggle = document.getElementById('themeToggle');
             themeToggle.addEventListener('click', () => {
                 document.documentElement.classList.toggle('dark');
-                localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
             });
 
-            // Close modal with ESC
             document.addEventListener("keydown", (e) => {
                 if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
             });
