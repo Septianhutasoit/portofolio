@@ -57,27 +57,3 @@ A modern, interactive portfolio website showcasing my journey as a Software Engi
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=Septianhutasoit&theme=radical&hide_border=true&background=000000&stroke=22c55e&ring=22c55e&fire=22c55e&currStreakLabel=22c55e" alt="GitHub Streak" width="48%" />
 </div>
 
-
-## 🎨 Visual Effects
-
-The portfolio features several custom visual effects:
-
-- **✨ Custom Cursor** - Glowing cursor with particle trails
-- **🟢 Profile Glow** - Animated green glow around profile picture with rotating rings
-- **🎭 Smooth Animations** - Scroll-triggered animations with AOS
-- **🌟 Sparkle Effects** - Particle effects on click and hover
-- **🎵 Spotify Widget** - Embedded music player with toggle functionality
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Any modern web browser
-- Code editor (VS Code recommended)
-
-### Installation
-
-1. Clone the repository
-```bash
-git clone https://github.com/Septianhutasoit/portfolio.git
