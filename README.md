@@ -59,7 +59,7 @@ A modern, interactive portfolio website showcasing my journey as a Software Engi
 
 ---
 
-## 🏆 Certifications
+
 
 <div align="center">
   
