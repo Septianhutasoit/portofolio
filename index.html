@@ -8,7 +8,7 @@
     <title>Septian Hutasoit | Software Developer & UI/UX</title>
 
     <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23000000%22/><path d=%22M30 35 L15 50 L30 65 M45 70 L55 30 M70 35 L85 50 L70 65%22 fill=%22none%22 stroke=%22%2338bdf8%22 stroke-width=%228%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>">
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23000000%22/><path d=%22M30 35 L15 50 L30 65 M45 70 L55 30 M70 35 L85 50 L70 65%22 fill=%22none%22 stroke=%22%233b82f6%22 stroke-width=%228%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>">
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet" />
@@ -36,15 +36,11 @@
                         'float': 'float 16s ease-in-out infinite',
                         'spin-slow': 'spin 18s linear infinite',
                         'slow-float': 'slowFloat 20s ease-in-out infinite',
-                        'hero-line': 'heroLine 1s cubic-bezier(0.22, 1, 0.36, 1) forwards',
-                        'hero-word': 'heroWord 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards',
-                        'hero-glow': 'heroGlow 4s ease-in-out infinite',
-                        'img-float-slow': 'imgFloatSlow 16s ease-in-out infinite',
-                        'img-kenburns': 'imgKenburns 28s ease-in-out infinite',
                         'scroll-left': 'scroll-left 40s linear infinite',
                         'scroll-right': 'scroll-right 40s linear infinite',
                         'gradient': 'gradient 8s ease infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shine': 'shine 3s ease-in-out infinite',
                     },
                     keyframes: {
                         'scroll-left': {
@@ -72,36 +68,13 @@
                             '75%': { transform: 'translate3d(0, -5px, 0) rotate3d(0, 0, 1, -0.5deg)' },
                             '100%': { transform: 'translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg)' },
                         },
-                        heroLine: {
-                            '0%': { opacity: 0, transform: 'translateY(24px)' },
-                            '100%': { opacity: 1, transform: 'translateY(0)' },
-                        },
-                        heroWord: {
-                            '0%': { opacity: 0, transform: 'translateY(110%)' },
-                            '60%': { opacity: 1, transform: 'translateY(-4%)' },
-                            '100%': { opacity: 1, transform: 'translateY(0)' },
-                        },
-                        heroGlow: {
-                            '0%': { textShadow: '0 0 0 rgba(59, 130, 246, 0)' },
-                            '50%': { textShadow: '0 0 26px rgba(59, 130, 246, 0.7)' },
-                            '100%': { textShadow: '0 0 0 rgba(59, 130, 246, 0)' },
-                        },
-                        imgFloatSlow: {
-                            '0%': { transform: 'translateY(0px)' },
-                            '25%': { transform: 'translateY(-6px)' },
-                            '50%': { transform: 'translateY(2px)' },
-                            '75%': { transform: 'translateY(-4px)' },
-                            '100%': { transform: 'translateY(0px)' },
-                        },
-                        imgKenburns: {
-                            '0%': { transform: 'scale(1.02) translate3d(0, 0, 0)' },
-                            '40%': { transform: 'scale(1.08) translate3d(-6px, -4px, 0)' },
-                            '70%': { transform: 'scale(1.06) translate3d(4px, -2px, 0)' },
-                            '100%': { transform: 'scale(1.02) translate3d(0, 0, 0)' },
-                        },
                         gradient: {
                             '0%, 100%': { backgroundPosition: '0% 50%' },
                             '50%': { backgroundPosition: '100% 50%' },
+                        },
+                        shine: {
+                            '0%': { opacity: 0.5, transform: 'translateX(-100%)' },
+                            '100%': { opacity: 1, transform: 'translateX(100%)' },
                         },
                     }
                 }
@@ -121,37 +94,38 @@
 
         /* Custom Cursor dengan efek cahaya */
         .cursor-dot {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             background: #3b82f6;
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 9999;
-            transition: transform 0.1s ease;
-            box-shadow: 0 0 20px #3b82f6, 0 0 40px rgba(59, 130, 246, 0.5);
+            transition: transform 0.08s ease;
+            box-shadow: 0 0 15px #3b82f6, 0 0 30px rgba(59, 130, 246, 0.8);
         }
 
         .cursor-outline {
-            width: 40px;
-            height: 40px;
-            border: 2px solid rgba(59, 130, 246, 0.5);
+            width: 35px;
+            height: 35px;
+            border: 2px solid rgba(59, 130, 246, 0.6);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 9998;
-            transition: all 0.15s ease-out;
-            backdrop-filter: blur(2px);
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+            transition: all 0.2s ease-out;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
         }
 
         /* Efek hover pada elemen interaktif */
         a:hover~.cursor-outline,
         button:hover~.cursor-outline,
-        .cursor-pointer:hover~.cursor-outline {
-            transform: scale(1.5);
+        .cursor-pointer:hover~.cursor-outline,
+        [onclick]:hover~.cursor-outline {
+            transform: scale(1.6);
             border-color: #8b5cf6;
-            box-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
+            box-shadow: 0 0 35px rgba(139, 92, 246, 0.6);
         }
 
         /* Particle Canvas Background */
@@ -163,14 +137,14 @@
             height: 100%;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
         /* Glassmorphism Modern */
         .glass-nav {
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.25);
         }
 
         .glass-card {
@@ -178,19 +152,13 @@
             backdrop-filter: blur(12px);
             border: 1px solid rgba(59, 130, 246, 0.2);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            transition: all 0.5s ease;
+            transition: all 0.4s ease;
         }
 
         .glass-card:hover {
             border-color: rgba(59, 130, 246, 0.5);
-            box-shadow: 0 8px 48px rgba(59, 130, 246, 0.15);
-            transform: translateY(-4px);
-        }
-
-        .soft-card {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.02));
-            border: 1px solid rgba(59, 130, 246, 0.15);
-            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 40px rgba(59, 130, 246, 0.2);
+            transform: translateY(-2px);
         }
 
         .text-gradient {
@@ -204,10 +172,6 @@
         /* Neon Glow Effect */
         .neon-glow {
             box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.1);
-        }
-
-        .neon-glow:hover {
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5), 0 0 60px rgba(59, 130, 246, 0.2);
         }
 
         /* Scrollbar Modern */
@@ -224,73 +188,60 @@
             border-radius: 3px;
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
-        }
-
         section[id] {
-            scroll-margin-top: 96px;
+            scroll-margin-top: 80px;
         }
 
-        /* Skill Cards Modern */
-        .skill-card-modern {
-            position: relative;
-            overflow: hidden;
-            border-radius: 1.25rem;
-            background: rgba(17, 17, 17, 0.8);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            transition: all 0.4s ease;
+        /* Skill Cards */
+        .skill-item {
+            transition: all 0.3s ease;
         }
 
-        .skill-card-modern:hover {
-            transform: translateY(-6px);
-            border-color: rgba(59, 130, 246, 0.6);
-            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.2);
+        .skill-item:hover {
+            transform: translateY(-5px);
         }
 
-        /* Portfolio Image Effects */
-        .portfolio-img-wrapper {
-            position: relative;
-            overflow: hidden;
-            border-radius: 1rem;
-            background: #0a0a0a;
+        .skill-item:hover i {
+            filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
+        }
+
+        /* Portfolio Cards */
+        .portfolio-card {
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-8px);
         }
 
         .portfolio-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease, filter 0.6s ease;
+            transition: transform 0.6s ease;
         }
 
-        .group:hover .portfolio-img {
-            transform: scale(1.1);
-            filter: brightness(1.1);
+        .portfolio-card:hover .portfolio-img {
+            transform: scale(1.08);
         }
 
-        /* Typing Animation */
-        .typing-container {
-            display: inline-flex;
-            align-items: center;
-            position: relative;
+        /* Certificate Cards */
+        .cert-card {
+            transition: all 0.4s ease;
         }
 
-        #dynamic-text {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient 4s ease infinite;
+        .cert-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(59, 130, 246, 0.5);
         }
 
+        /* Typing Cursor */
         .typing-cursor {
             display: inline-block;
             width: 3px;
             height: 1.2em;
             background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            margin-left: 8px;
+            margin-left: 4px;
             animation: blinkCursor 1s infinite;
             border-radius: 2px;
+            vertical-align: middle;
         }
 
         @keyframes blinkCursor {
@@ -329,6 +280,24 @@
                 cursor: auto;
             }
         }
+
+        /* Hero Section Styles */
+        .hero-badge {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .stat-card {
+            background: rgba(17, 17, 17, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 
@@ -340,34 +309,6 @@
 
     <!-- Particle Canvas Background -->
     <canvas id="particle-canvas"></canvas>
-
-    <!-- Spotify Player Widget -->
-    <div class="fixed bottom-5 left-4 sm:left-6 z-50">
-        <div class="glass-card p-3 rounded-2xl w-[280px] sm:w-[320px]">
-            <div class="flex items-center justify-between gap-3">
-                <div class="flex items-center gap-3">
-                    <div
-                        class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                        <i class="fab fa-spotify text-green-400 text-lg"></i>
-                    </div>
-                    <div class="overflow-hidden">
-                        <p class="text-white font-semibold text-xs sm:text-sm truncate">La La Lost You</p>
-                        <p class="text-[11px] text-slate-400 truncate">NIKI • Spotify</p>
-                    </div>
-                </div>
-                <button id="spotifyToggle"
-                    class="px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-white/10 transition">
-                    Buka
-                </button>
-            </div>
-            <div id="spotifyWrap" class="mt-3 hidden">
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0e2wfbDK7ppotqyUWD7qs8"
-                    width="100%" height="152" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy"></iframe>
-            </div>
-        </div>
-    </div>
 
     <!-- Scroll to Top -->
     <a href="#home"
@@ -389,15 +330,15 @@
 
             <div class="hidden md:flex items-center gap-1">
                 <a href="#home"
-                    class="nav-link px-4 py-2 text-sm font-medium rounded-full hover:bg-primary/10 text-white hover:text-primary transition-all">Beranda</a>
+                    class="nav-link px-4 py-2 text-sm font-medium rounded-full hover:bg-primary/10 text-white hover:text-primary transition-all">Home</a>
                 <a href="#portfolio"
-                    class="nav-link px-4 py-2 text-sm font-medium rounded-full hover:bg-primary/10 text-slate-300 hover:text-primary transition-all">Proyek</a>
+                    class="nav-link px-4 py-2 text-sm font-medium rounded-full hover:bg-primary/10 text-slate-300 hover:text-primary transition-all">Projects</a>
                 <a href="#skills"
                     class="nav-link px-4 py-2 text-sm font-medium rounded-full hover:bg-primary/10 text-slate-300 hover:text-primary transition-all">Skills</a>
                 <a href="#certificates"
-                    class="nav-link px-4 py-2 text-sm font-medium rounded-full hover:bg-primary/10 text-slate-300 hover:text-primary transition-all">Sertifikat</a>
+                    class="nav-link px-4 py-2 text-sm font-medium rounded-full hover:bg-primary/10 text-slate-300 hover:text-primary transition-all">Certificates</a>
                 <a href="#contact"
-                    class="nav-link px-4 py-2 text-sm font-medium rounded-full hover:bg-primary/10 text-slate-300 hover:text-primary transition-all">Kontak</a>
+                    class="nav-link px-4 py-2 text-sm font-medium rounded-full hover:bg-primary/10 text-slate-300 hover:text-primary transition-all">Contact</a>
             </div>
 
             <div class="hidden md:flex items-center gap-4">
@@ -424,75 +365,148 @@
         </button>
         <div class="flex flex-col space-y-6 text-center">
             <a href="#home" onclick="toggleMenu()"
-                class="text-2xl font-bold text-white hover:text-primary transition">Beranda</a>
+                class="text-2xl font-bold text-white hover:text-primary transition">Home</a>
             <a href="#portfolio" onclick="toggleMenu()"
-                class="text-2xl font-bold text-white hover:text-primary transition">Proyek</a>
+                class="text-2xl font-bold text-white hover:text-primary transition">Projects</a>
             <a href="#skills" onclick="toggleMenu()"
                 class="text-2xl font-bold text-white hover:text-primary transition">Skills</a>
             <a href="#certificates" onclick="toggleMenu()"
-                class="text-2xl font-bold text-white hover:text-primary transition">Sertifikat</a>
-            <a href="#contact" onclick="toggleMenu()" class="text-2xl font-bold text-primary">Kontak</a>
+                class="text-2xl font-bold text-white hover:text-primary transition">Certificates</a>
+            <a href="#contact" onclick="toggleMenu()" class="text-2xl font-bold text-primary">Contact</a>
         </div>
     </div>
 
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center pt-20 relative overflow-hidden">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center relative z-10">
-            <div data-aos="fade-right" data-aos-duration="1000">
-                <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] mb-5">
-                    <span class="relative flex h-2 w-2">
-                        <span
-                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                    </span>
-                    Available for Fullstack Projects
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right" data-aos-duration="1000">
+                    <div class="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                        </span>
+                        <span class="text-primary text-xs font-medium">Available for Work</span>
+                    </div>
+
+                    <h1
+                        class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 leading-[1.1] tracking-tight">
+                        Hi, I'm <span class="text-gradient">Septian Hutasoit</span>
+                    </h1>
+
+                    <div class="text-xl sm:text-2xl text-slate-400 mb-6">
+                        <span id="changing-role">Software Engineer</span>
+                        <span class="typing-cursor"></span>
+                    </div>
+
+                    <p class="text-slate-400 text-base leading-relaxed mb-8 max-w-lg">
+                        I'm passionate about building efficient, structured, and scalable systems, combining them with
+                        exceptional user experiences. Full-stack developer with expertise in AI integration and backend
+                        architecture.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#portfolio"
+                            class="px-6 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold text-sm hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] transition-all">
+                            View Projects
+                        </a>
+                        <a href="#contact"
+                            class="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white font-semibold text-sm hover:bg-white/10 transition-all">
+                            Contact Me
+                        </a>
+                    </div>
+
+                    <!-- Location & Stats -->
+                    <div class="mt-8 flex flex-wrap gap-6">
+                        <div class="stat-card px-4 py-2 rounded-full flex items-center gap-2">
+                            <i class="fas fa-map-marker-alt text-primary text-sm"></i>
+                            <span class="text-slate-300 text-sm">Medan, Indonesia</span>
+                        </div>
+                        <div class="stat-card px-4 py-2 rounded-full flex items-center gap-2">
+                            <i class="fas fa-code text-primary text-sm"></i>
+                            <span class="text-slate-300 text-sm">3+ Years Experience</span>
+                        </div>
+                    </div>
                 </div>
 
-                <h1
-                    class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 leading-[1.1] tracking-tight">
-                    Software Engineer <br />
-                    <span class="text-gradient">Building Digital Excellence.</span>
-                </h1>
-
-                <p class="text-sm sm:text-base text-slate-400 mb-7 max-w-xl leading-relaxed">
-                    I'm <span class="text-white font-semibold">Septian Hutasoit</span>,
-                    <span class="text-slate-100 font-semibold">
-                        <span id="changing-role">Software Developer</span>
-                        <span class="typing-cursor"></span>
-                    </span>
-                    <br />A tech developer passionate about building efficient, structured, and scalable systems with
-                    exceptional user experiences.
-                </p>
-
-                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                    <a href="#portfolio"
-                        class="px-7 py-3.5 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold text-sm hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] transition-all text-center">
-                        Lihat Proyek
-                    </a>
-                    <a href="https://github.com/Septianhutasoit" target="_blank"
-                        class="px-7 py-3.5 rounded-full bg-white/5 border border-white/10 font-semibold text-white text-sm hover:bg-white/10 transition-all flex items-center justify-center gap-2">
-                        <i class="fab fa-github text-lg"></i> GitHub
-                    </a>
+                <div class="relative flex justify-center lg:justify-end" data-aos="fade-left" data-aos-duration="1000">
+                    <div
+                        class="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-3xl overflow-hidden glass-card neon-glow">
+                        <div
+                            class="absolute -inset-10 bg-gradient-to-tr from-primary/20 via-secondary/20 to-accent/20 blur-3xl opacity-40">
+                        </div>
+                        <img src="assets/img/profile.jpg" alt="Septian Hutasoit"
+                            class="relative w-full h-full object-cover rounded-3xl" />
+                        <div class="absolute bottom-4 left-4 glass-card px-3 py-2 rounded-xl flex items-center gap-2">
+                            <div
+                                class="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center text-primary">
+                                <i class="fas fa-laptop-code text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-slate-400">Open to work</p>
+                                <p class="text-white font-semibold text-xs">Fullstack Dev</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="relative flex justify-center lg:justify-end" data-aos="fade-left" data-aos-duration="1000">
-                <div
-                    class="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-3xl overflow-hidden soft-card animate-slow-float neon-glow">
-                    <div
-                        class="absolute -inset-10 bg-gradient-to-tr from-primary/20 via-secondary/20 to-accent/20 blur-3xl opacity-40">
+    <!-- About Section -->
+    <section id="about" class="py-20 border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">About Me</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-3 mb-5">
+                        Passionate About <span class="text-gradient">Building Digital Solutions</span>
+                    </h2>
+                    <p class="text-slate-400 leading-relaxed mb-4">
+                        Hello! You can call me <span class="text-white font-semibold">Septian</span>. I'm passionate
+                        about software systems, constantly building Full-stack and AI Systems, and I love turning ideas
+                        into real products.
+                    </p>
+                    <p class="text-slate-400 leading-relaxed mb-4">
+                        Started exploring software and systems in my first year at university. Since then, I've simply
+                        kept building, learning how to turn ideas into systems that actually work in practice.
+                    </p>
+                    <div class="flex flex-wrap gap-4 mt-6">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-graduation-cap text-primary"></i>
+                            <span class="text-slate-300 text-sm">Informatics Engineering</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-code text-primary"></i>
+                            <span class="text-slate-300 text-sm">Fullstack Developer</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-brain text-primary"></i>
+                            <span class="text-slate-300 text-sm">AI Enthusiast</span>
+                        </div>
                     </div>
-                    <img src="assets/img/profile.jpg" alt="Septian"
-                        class="relative w-full h-full object-cover rounded-3xl border border-white/10" />
-                    <div class="absolute bottom-4 left-4 glass-card px-4 py-3 rounded-2xl flex items-center gap-3">
-                        <div class="w-9 h-9 bg-primary/20 rounded-full flex items-center justify-center text-primary">
-                            <i class="fas fa-layer-group"></i>
-                        </div>
-                        <div>
-                            <p class="text-[11px] text-slate-400">Fokus</p>
-                            <p class="text-white font-semibold text-xs">Software Dev & UI/UX</p>
-                        </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
+                    <div class="glass-card p-6 rounded-2xl text-center">
+                        <i class="fas fa-code text-3xl text-primary mb-3"></i>
+                        <h3 class="text-2xl font-bold text-white">15+</h3>
+                        <p class="text-slate-400 text-sm">Projects Completed</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl text-center">
+                        <i class="fas fa-certificate text-3xl text-primary mb-3"></i>
+                        <h3 class="text-2xl font-bold text-white">20+</h3>
+                        <p class="text-slate-400 text-sm">Certifications</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl text-center">
+                        <i class="fas fa-users text-3xl text-primary mb-3"></i>
+                        <h3 class="text-2xl font-bold text-white">10+</h3>
+                        <p class="text-slate-400 text-sm">Happy Clients</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl text-center">
+                        <i class="fas fa-clock text-3xl text-primary mb-3"></i>
+                        <h3 class="text-2xl font-bold text-white">3+</h3>
+                        <p class="text-slate-400 text-sm">Years Experience</p>
                     </div>
                 </div>
             </div>
@@ -534,16 +548,14 @@
     <!-- Projects Section -->
     <section id="portfolio" class="py-20 sm:py-24 relative border-t border-white/5">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 sm:mb-12"
-                data-aos="fade-up">
-                <div>
-                    <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Selected
-                        Projects</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">End-to-End <span
-                            class="text-gradient">Product Work</span></h2>
-                    <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-xl">Proyek yang menunjukkan kombinasi
-                        backend, frontend, dan UX dalam satu alur yang solid.</p>
-                </div>
+            <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
+                <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Featured Projects</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">My Latest <span
+                        class="text-gradient">Work</span></h2>
+                <p class="text-slate-400 text-sm sm:text-base mt-3 max-w-2xl mx-auto">
+                    I've worked on a variety of projects, from simple websites to complex web apps. Click to see more
+                    details.
+                </p>
             </div>
             <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"></div>
         </div>
@@ -555,10 +567,11 @@
             <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
                 <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Licenses &
                     Certificates</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">Lisensi & <span
-                        class="text-gradient">Sertifikasi</span></h2>
-                <p class="text-slate-400 text-sm sm:text-base mt-3 max-w-2xl mx-auto">Sertifikat yang telah saya peroleh
-                    dalam perjalanan karir saya.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">My <span
+                        class="text-gradient">Certifications</span></h2>
+                <p class="text-slate-400 text-sm sm:text-base mt-3 max-w-2xl mx-auto">
+                    Professional certifications and achievements throughout my career journey.
+                </p>
             </div>
             <div id="certGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6"></div>
             <div id="certPagination" class="flex justify-center items-center gap-2 mt-12 flex-wrap"></div>
@@ -569,27 +582,27 @@
     <section id="contact" class="py-20 sm:py-24 relative overflow-hidden border-t border-white/5">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center" data-aos="fade-up">
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-                Let's Create <span class="text-gradient">Something Amazing.</span>
+                Let's Work <span class="text-gradient">Together</span>
             </h2>
             <p class="text-slate-400 text-sm sm:text-base mb-9 max-w-xl mx-auto">
-                Punya ide proyek atau ingin berkolaborasi? Hubungi saya dan mari kita wujudkan bersama.
+                Have a project in mind? Let's collaborate and create something amazing.
             </p>
 
             <a href="mailto:septianhts95@gmail.com"
                 class="inline-flex items-center gap-3 px-7 sm:px-8 py-3.5 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold text-sm sm:text-base hover:scale-105 transition-transform">
-                <i class="fas fa-envelope text-sm"></i> Kirim Email
+                <i class="fas fa-envelope text-sm"></i> Send Email
             </a>
 
             <div class="flex justify-center gap-5 mt-10">
-                <a href="https://www.instagram.com/tianhts_/"
+                <a href="https://www.instagram.com/tianhts_/" target="_blank"
                     class="text-slate-400 hover:text-primary text-xl transition-colors">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/septian-a-hutasoit/"
+                <a href="https://www.linkedin.com/in/septian-a-hutasoit/" target="_blank"
                     class="text-slate-400 hover:text-primary text-xl transition-colors">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="https://github.com/Septianhutasoit"
+                <a href="https://github.com/Septianhutasoit" target="_blank"
                     class="text-slate-400 hover:text-primary text-xl transition-colors">
                     <i class="fab fa-github"></i>
                 </a>
@@ -637,7 +650,7 @@
                     </div>
                     <p id="mDesc" class="text-slate-300 text-sm sm:text-[15px] leading-relaxed mb-6">Description...</p>
                     <div id="mTagsGroup" class="mb-6 hidden">
-                        <h4 class="text-white font-semibold mb-2 text-sm">Teknologi</h4>
+                        <h4 class="text-white font-semibold mb-2 text-sm">Technologies</h4>
                         <div id="mTags" class="flex flex-wrap gap-2"></div>
                     </div>
                     <div id="mActions" class="mt-auto flex gap-3 hidden">
@@ -649,8 +662,8 @@
                             Code</a>
                     </div>
                     <div id="mCertText" class="mt-auto hidden">
-                        <p class="text-[11px] text-slate-500 italic mt-4">Klik gambar untuk melihat sertifikat dalam
-                            ukuran lebih besar.</p>
+                        <p class="text-[11px] text-slate-500 italic mt-4">Click image to view certificate in full size.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -668,22 +681,19 @@
 
         if (cursorDot && cursorOutline) {
             window.addEventListener('mousemove', (e) => {
-                const posX = e.clientX;
-                const posY = e.clientY;
-                cursorDot.style.transform = `translate(${posX - 4}px, ${posY - 4}px)`;
-                cursorOutline.style.transform = `translate(${posX - 20}px, ${posY - 20}px)`;
+                cursorDot.style.transform = `translate(${e.clientX - 3}px, ${e.clientY - 3}px)`;
+                cursorOutline.style.transform = `translate(${e.clientX - 17.5}px, ${e.clientY - 17.5}px)`;
             });
 
-            // Hover effect on interactive elements
-            const interactiveElements = document.querySelectorAll('a, button, .cursor-pointer, [onclick]');
+            const interactiveElements = document.querySelectorAll('a, button, .cursor-pointer, [onclick], .glass-card, .skill-item');
             interactiveElements.forEach(el => {
                 el.addEventListener('mouseenter', () => {
-                    cursorOutline.style.transform = 'scale(1.5)';
+                    cursorOutline.style.transform = 'scale(1.6)';
                     cursorOutline.style.borderColor = '#8b5cf6';
                 });
                 el.addEventListener('mouseleave', () => {
                     cursorOutline.style.transform = 'scale(1)';
-                    cursorOutline.style.borderColor = 'rgba(59, 130, 246, 0.5)';
+                    cursorOutline.style.borderColor = 'rgba(59, 130, 246, 0.6)';
                 });
             });
         }
@@ -696,16 +706,15 @@
         function initParticleCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-
-            const particleCount = Math.min(150, Math.floor((canvas.width * canvas.height) / 10000));
+            const particleCount = Math.min(120, Math.floor((canvas.width * canvas.height) / 12000));
             particles = [];
             for (let i = 0; i < particleCount; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    radius: Math.random() * 2 + 1,
-                    vx: (Math.random() - 0.5) * 0.5,
-                    vy: (Math.random() - 0.5) * 0.5,
+                    radius: Math.random() * 2 + 0.5,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
                 });
             }
             animateParticles();
@@ -714,19 +723,16 @@
         function animateParticles() {
             if (!ctx) return;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
             particles.forEach(p => {
                 p.x += p.vx;
                 p.y += p.vy;
                 if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
                 if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
                 ctx.fillStyle = `rgba(59, 130, 246, ${Math.random() * 0.3 + 0.1})`;
                 ctx.fill();
             });
-
             requestAnimationFrame(animateParticles);
         }
 
@@ -735,7 +741,6 @@
             canvas.height = window.innerHeight;
             initParticleCanvas();
         });
-
         initParticleCanvas();
 
         // ====== ICON MAP ======
@@ -744,18 +749,14 @@
             php: { cls: "fa-brands fa-php", color: "text-indigo-300" },
             mysql: { cls: "fa-solid fa-database", color: "text-sky-300" },
             postgres: { cls: "fa-solid fa-database", color: "text-sky-300" },
-            mongodb: { cls: "fa-solid fa-leaf", color: "text-green-400" },
             react: { cls: "fa-brands fa-react", color: "text-cyan-300" },
             next: { cls: "fa-solid fa-layer-group", color: "text-slate-200" },
             node: { cls: "fa-brands fa-node-js", color: "text-green-400" },
-            express: { cls: "fa-solid fa-bolt", color: "text-slate-200" },
             tailwind: { cls: "fa-solid fa-wand-magic-sparkles", color: "text-sky-300" },
-            bootstrap: { cls: "fa-brands fa-bootstrap", color: "text-violet-300" },
             python: { cls: "fa-brands fa-python", color: "text-blue-400" },
             fastapi: { cls: "fa-solid fa-bolt", color: "text-emerald-400" },
             docker: { cls: "fa-brands fa-docker", color: "text-sky-300" },
             git: { cls: "fa-brands fa-git-alt", color: "text-orange-400" },
-            github: { cls: "fa-brands fa-github", color: "text-slate-200" },
             figma: { cls: "fa-brands fa-figma", color: "text-purple-400" },
             javascript: { cls: "fa-brands fa-js", color: "text-yellow-400" },
             code: { cls: "fa-solid fa-code", color: "text-slate-300" }
@@ -766,13 +767,10 @@
             if (key.includes("laravel")) return ICONS.laravel;
             if (key.includes("php")) return ICONS.php;
             if (key.includes("mysql")) return ICONS.mysql;
-            if (key.includes("postgres")) return ICONS.postgres;
             if (key.includes("react")) return ICONS.react;
             if (key.includes("next")) return ICONS.next;
             if (key.includes("node")) return ICONS.node;
-            if (key.includes("express")) return ICONS.express;
             if (key.includes("tailwind")) return ICONS.tailwind;
-            if (key.includes("bootstrap")) return ICONS.bootstrap;
             if (key.includes("python")) return ICONS.python;
             if (key.includes("fastapi")) return ICONS.fastapi;
             if (key.includes("docker")) return ICONS.docker;
@@ -781,7 +779,7 @@
             return ICONS.code;
         }
 
-        // Skills Data
+        // Skills Data - LENGKAP
         const skillsRow1 = [
             { name: "JavaScript", icon: "devicon-javascript-plain colored" },
             { name: "TypeScript", icon: "devicon-typescript-plain colored" },
@@ -827,11 +825,11 @@
         ];
 
         function createSkillItem(s) {
-            return `<div class="flex flex-col items-center justify-center min-w-[90px] group/item">
-                <div class="w-14 h-14 mb-3 flex items-center justify-center bg-white/5 rounded-xl border border-white/10 transition-all duration-300 group-hover/item:bg-primary/10 group-hover/item:border-primary/50 group-hover/item:-translate-y-1">
+            return `<div class="skill-item flex flex-col items-center justify-center min-w-[85px]">
+                <div class="w-14 h-14 mb-2 flex items-center justify-center bg-white/5 rounded-xl border border-white/10 transition-all duration-300 hover:bg-primary/10 hover:border-primary/50">
                     <i class="${s.icon} text-3xl"></i>
                 </div>
-                <span class="text-[11px] font-semibold text-slate-400 group-hover/item:text-white transition-colors">${s.name}</span>
+                <span class="text-[10px] font-medium text-slate-400 hover:text-white transition-colors">${s.name}</span>
             </div>`;
         }
 
@@ -851,16 +849,16 @@
             });
         }
 
-        // Projects Data
+        // Projects Data - LENGKAP
         const projectsData = [
             {
                 cardTitle: "Nauli Dental Care",
                 title: "Website Klinik Nauli Dental Care",
-                subtitle: "Web App",
+                subtitle: "Healthcare Web App",
                 cover: "assets/img/klinik.png",
-                images: ["assets/img/galery.png", "assets/img/layanan.png", "assets/img/map.png"],
-                desc: "Website klinik untuk booking janji temu pasien dan informasi layanan. Fokus pada UX dan backend rapi.",
-                tags: ["Laravel", "MySQL", "Tailwind", "REST API"],
+                images: ["assets/img/galery.png", "assets/img/layanan.png", "assets/img/map.png", "assets/img/staff.png", "assets/img/visimisi.png", "assets/img/daftaradmin.png", "assets/img/dokter.png", "assets/img/testimoni.png", "assets/img/grafik.png", "assets/img/testimoni1.png", "assets/img/image.png"],
+                desc: "Website klinik untuk booking janji temu pasien dan informasi layanan. Fokus pada UX dan backend rapi dengan sistem manajemen appointment yang terintegrasi.",
+                tags: ["Laravel", "MySQL", "Tailwind", "REST API", "Bootstrap"],
                 badges: ["Healthcare"],
                 github: "https://github.com/Septianhutasoit/projectsep",
                 demo: ""
@@ -870,8 +868,8 @@
                 title: "Delshoop E-Commerce Platform",
                 subtitle: "E-Commerce",
                 cover: "assets/img/Delshop Home.png",
-                images: ["assets/img/Produk2.png", "assets/img/Tersedia.png", "assets/img/cart.png"],
-                desc: "Platform e-commerce dengan manajemen produk, cart real-time, dan integrasi payment gateway.",
+                images: ["assets/img/Produk2.png", "assets/img/Tersedia.png", "assets/img/cart.png", "assets/img/Barcode.png", "assets/img/Cod.png", "assets/img/Cod2.png", "assets/img/daftar.png", "assets/img/testimoni.png", "assets/img/chat.png", "assets/img/jopet.png", "assets/img/dashboard.png", "assets/img/produk admin.png"],
+                desc: "Platform e-commerce dengan manajemen produk, cart real-time, dan integrasi payment gateway. Mendukung COD dan berbagai metode pembayaran.",
                 tags: ["Laravel", "MySQL", "Tailwind", "JavaScript"],
                 badges: ["E-Commerce"],
                 github: "https://github.com/Septianhutasoit/Aplikasi",
@@ -882,8 +880,8 @@
                 title: "Website Edukasi Aksara Batak",
                 subtitle: "Educational Platform",
                 cover: "assets/img/Home.png",
-                images: ["assets/img/Home.png", "assets/img/Fitur.png", "assets/img/bahasa.png"],
-                desc: "Website edukasi Aksara Batak dengan fitur multi-bahasa, alur belajar, visualisasi, dan kuis.",
+                images: ["assets/img/Home.png", "assets/img/Fitur.png", "assets/img/bahasa.png", "assets/img/Tentang.png", "assets/img/mengenal aksara.png", "assets/img/visualisasi.png", "assets/img/kuis.png", "assets/img/kuis2.png"],
+                desc: "Website edukasi Aksara Batak dengan fitur multi-bahasa, alur belajar interaktif, visualisasi aksara, dan sistem kuis untuk evaluasi pemahaman.",
                 tags: ["Laravel", "PHP", "MySQL"],
                 badges: ["Education"],
                 github: "https://github.com/bryansiagian/BoanAksara",
@@ -894,8 +892,8 @@
                 title: "Aplikasi Pemesanan Tiket Kapal",
                 subtitle: "Mobile App Design",
                 cover: "assets/img/2ain.png",
-                images: ["assets/img/Tampilan.png", "assets/img/HomeEvedina.png", "assets/img/awaldetail.png"],
-                desc: "Aplikasi booking tiket kapal dengan informasi jadwal, rute, dan harga tiket.",
+                images: ["assets/img/Tampilan.png", "assets/img/HomeEvedina.png", "assets/img/awaldetail.png", "assets/img/prototype.png", "assets/img/berand.png", "assets/img/notiff.png", "assets/img/vc.png"],
+                desc: "Aplikasi booking tiket kapal dengan informasi jadwal, rute, dan harga tiket. Desain UI/UX yang modern dan user-friendly.",
                 tags: ["Figma", "UI/UX"],
                 badges: ["Mobile Design"],
                 github: "https://github.com/Septianhutasoit/Evedina-Tuktuk",
@@ -906,8 +904,8 @@
                 title: "Sistem E-Commerce",
                 subtitle: "Fullstack Web",
                 cover: "assets/img/codealpha.png",
-                images: ["assets/img/codealpa2.png", "assets/img/codealpa3.png", "assets/img/codealpa4.png"],
-                desc: "Aplikasi web untuk pembelian produk online dengan fitur lengkap.",
+                images: ["assets/img/codealpa2.png", "assets/img/codealpa3.png", "assets/img/codealpa4.png", "assets/img/codealpa5.png", "assets/img/codealpa6.png", "assets/img/codealpa7.png"],
+                desc: "Aplikasi web untuk pembelian produk online dengan fitur lengkap. Dibangun dengan modern stack untuk performa optimal.",
                 tags: ["Node.js", "React", "PostgreSQL", "Tailwind"],
                 badges: ["E-Commerce"],
                 github: "https://github.com/Septianhutasoit/CodeAlpha",
@@ -918,15 +916,16 @@
                 title: "Sistem ChatBot AI Klinik",
                 subtitle: "AI Project",
                 cover: "assets/img/chatbot.png",
-                images: ["assets/img/kodinganchatbot.png", "assets/img/tanya1.png", "assets/img/lanjut1.png"],
-                desc: "Aplikasi ChatBot AI untuk membantu layanan informasi klinik gigi.",
-                tags: ["Next.js", "Python", "FastAPI", "RAG", "LangChain"],
+                images: ["assets/img/kodinganchatbot.png", "assets/img/tanya1.png", "assets/img/lanjut1.png", "assets/img/tanya2.png", "assets/img/informasi.png", "assets/img/pembayaran.png", "assets/img/bayar.png"],
+                desc: "Aplikasi ChatBot AI untuk membantu layanan informasi klinik gigi. Menggunakan teknologi RAG, LangChain, dan FastAPI untuk respons yang akurat.",
+                tags: ["Next.js", "Python", "FastAPI", "RAG", "LangChain", "Pinecone", "CohereAi", "Tailwind"],
                 badges: ["AI", "ChatBot"],
                 github: "",
                 demo: ""
             }
         ];
 
+        // Certificates Data - LENGKAP (SEMUA SERTIFIKAT)
         const certsData = [
             { title: "Huawei Cloud Computing", subtitle: "Huawei Academy", img: "assets/img/Huawei.png", desc: "Fondasi cloud computing: layanan inti, deployment, dan arsitektur scalable." },
             { title: "Huawei Data Analytics", subtitle: "Huawei Academy", img: "assets/img/Huaweidata.png", desc: "Analisis data end-to-end dari ingestion sampai insight bisnis." },
@@ -935,7 +934,14 @@
             { title: "Frontend Development", subtitle: "Web Engineering", img: "assets/img/frontend.png", desc: "UI responsif, UX detail, dan performa web." },
             { title: "Backend Engineering", subtitle: "Web Engineering", img: "assets/img/backend.png", desc: "API design, autentikasi, dan database terstruktur." },
             { title: "Cloud & Deployment", subtitle: "Infrastructure", img: "assets/img/Cloud.png", desc: "Hosting, environment, dan deployment workflow." },
-            { title: "Applied AI Project", subtitle: "Project Portfolio", img: "assets/img/AI.png", desc: "Implementasi AI nyata dalam proyek portfolio." }
+            { title: "Applied AI Project", subtitle: "Project Portfolio", img: "assets/img/AI.png", desc: "Implementasi AI nyata dalam proyek portfolio." },
+            { title: "Applied AI Azure", subtitle: "AI Portfolio", img: "assets/img/greatnusa.png", desc: "Implementasi Basic Fundamental AI nyata dengan Microsoft Azure." },
+            { title: "Python With AI", subtitle: "Certificate Portfolio", img: "assets/img/PhytonAi.png", desc: "Implementasi Basic Fundamental AI menggunakan Python." },
+            { title: "Applied Data Science", subtitle: "Data Science Portfolio", img: "assets/img/DSDqLab.png", desc: "Implementasi Basic Fundamental Data Science dengan tools modern." },
+            { title: "Computer Vision (AI)", subtitle: "Kecerdasan Buatan", img: "assets/img/ComputerVision.png", desc: "Cabang Kecerdasan Buatan (AI) yang melatih komputer untuk memahami visual." },
+            { title: "Pertahanan Digital", subtitle: "Digitalent Scholarship 2025", img: "assets/img/digitalent.png", desc: "Pertahanan Digital 101 untuk Individu dan UMKM." },
+            { title: "Python Fundamental", subtitle: "Aguna Course 2025", img: "assets/img/phyton.png", desc: "Dasar Pemrograman menggunakan bahasa pemrograman Python." },
+            { title: "Dasar Pemrograman Dart", subtitle: "ID-Networkers", img: "assets/img/dart dasr.png", desc: "Memahami konsep dasar pemrograman dart mobile & algoritma." }
         ];
 
         // Render Projects
@@ -945,21 +951,21 @@
             grid.innerHTML = projectsData.map((p, i) => {
                 const tagIcons = (p.tags || []).slice(0, 3).map(t => {
                     const ic = getIcon(t);
-                    return `<span class="inline-flex items-center gap-2 text-[12px] text-slate-300 bg-white/5 px-3 py-1 rounded-full border border-white/10">
-                        <i class="${ic.cls} ${ic.color}"></i>${t}
+                    return `<span class="inline-flex items-center gap-2 text-[11px] text-slate-300 bg-white/5 px-2.5 py-1 rounded-full border border-white/10">
+                        <i class="${ic.cls} ${ic.color} text-xs"></i>${t}
                     </span>`;
                 }).join("");
-                return `<div class="group relative rounded-2xl overflow-hidden glass-card cursor-pointer flex flex-col transition-all duration-500" onclick="openModal('project', ${i})" data-aos="fade-up" data-aos-delay="${80 + i * 80}">
-                    <div class="relative h-52 sm:h-60 portfolio-img-wrapper">
-                        <img src="${p.cover}" class="portfolio-img" alt="${p.cardTitle}">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                return `<div class="portfolio-card group relative rounded-2xl overflow-hidden glass-card cursor-pointer flex flex-col transition-all duration-500" onclick="openModal('project', ${i})" data-aos="fade-up" data-aos-delay="${80 + i * 80}">
+                    <div class="relative h-52 sm:h-60 overflow-hidden">
+                        <img src="${p.cover}" class="portfolio-img w-full h-full object-cover" alt="${p.cardTitle}">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
                         <div class="absolute top-3 right-3 z-20">
-                            <span class="px-3 py-1 bg-black/60 backdrop-blur-md border border-primary/30 rounded-full text-[11px] font-semibold text-primary">${p.subtitle}</span>
+                            <span class="px-3 py-1 bg-black/60 backdrop-blur-md border border-primary/30 rounded-full text-[10px] font-semibold text-primary">${p.subtitle}</span>
                         </div>
                     </div>
-                    <div class="p-5 sm:p-6 bg-[#0a0a0a] flex flex-col flex-1">
-                        <h3 class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">${p.cardTitle}</h3>
-                        <p class="text-slate-400 text-sm flex-1 line-clamp-2">${p.desc}</p>
+                    <div class="p-5 bg-[#0a0a0a] flex flex-col flex-1">
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors line-clamp-1">${p.cardTitle}</h3>
+                        <p class="text-slate-400 text-sm flex-1 line-clamp-2">${p.desc.substring(0, 100)}...</p>
                         <div class="flex flex-wrap gap-2 mt-4">${tagIcons}</div>
                     </div>
                 </div>`;
@@ -1094,21 +1100,20 @@
 
         function renderCertificates() {
             const grid = document.getElementById('certGrid');
-            const paginationContainer = document.getElementById('certPagination');
             if (!grid) return;
             const totalPages = Math.ceil(certsData.length / certsPerPage);
             const startIndex = (currentCertPage - 1) * certsPerPage;
             const paginatedCerts = certsData.slice(startIndex, startIndex + certsPerPage);
             grid.innerHTML = paginatedCerts.map((c, i) => `
-                <div class="group cursor-pointer" onclick="openModal('cert', ${startIndex + i})" data-aos="zoom-in" data-aos-delay="${60 + i * 30}">
+                <div class="cert-card group cursor-pointer" onclick="openModal('cert', ${startIndex + i})" data-aos="zoom-in" data-aos-delay="${60 + i * 30}">
                     <div class="bg-[#0a0a0a] border border-white/10 rounded-2xl p-4 transition-all duration-500 hover:border-primary/60 hover:-translate-y-2">
                         <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4">
                             <div class="absolute inset-0 bg-primary/30 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
                                 <i class="fas fa-expand text-white text-2xl"></i>
                             </div>
-                            <img src="${c.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="${c.title}">
+                            <img src="${c.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="${c.title}" onerror="this.src='https://placehold.co/400x300/1e1e1e/3b82f6?text=Certificate'">
                         </div>
-                        <h4 class="text-white font-semibold text-sm sm:text-base group-hover:text-primary transition-colors">${c.title}</h4>
+                        <h4 class="text-white font-semibold text-sm sm:text-base group-hover:text-primary transition-colors line-clamp-1">${c.title}</h4>
                         <p class="text-slate-500 text-xs mt-1">${c.subtitle}</p>
                     </div>
                 </div>
@@ -1171,16 +1176,6 @@
             renderCertificates();
             if (roleElement) roleElement.textContent = '';
             setTimeout(roleTypeEffect, 500);
-
-            // Spotify toggle
-            const spotifyToggle = document.getElementById('spotifyToggle');
-            const spotifyWrap = document.getElementById('spotifyWrap');
-            if (spotifyToggle && spotifyWrap) {
-                spotifyToggle.addEventListener('click', () => {
-                    spotifyWrap.classList.toggle('hidden');
-                    spotifyToggle.textContent = spotifyWrap.classList.contains('hidden') ? 'Buka' : 'Tutup';
-                });
-            }
 
             // Mobile Menu
             const mobileMenu = document.getElementById('mobileMenu');
