@@ -48,41 +48,7 @@ A modern, interactive portfolio website showcasing my journey as a Software Engi
 
 </div>
 
----
 
-## 🎯 Featured Projects
-
-### 1. Nauli Dental Care
-> **Web App • Clinic Management System**
-- Laravel-based dental clinic website with appointment booking system
-- Features: patient registration, doctor scheduling, service information
-- Tech: Laravel, MySQL, Tailwind CSS, Bootstrap, REST API
-
-### 2. Delshoop E-Commerce
-> **E-Commerce Platform**
-- Full-featured online store with product management
-- Features: real-time cart, payment gateway integration, admin dashboard
-- Tech: Laravel, MySQL, Tailwind CSS, JavaScript, REST API
-
-### 3. Aksara Batak
-> **Cultural Education Website**
-- Educational platform for learning Batak script
-- Features: multi-language support, quizzes, visualizations
-- Tech: Laravel, PHP, MySQL
-
-### 4. Evedina Tuktuk
-> **Mobile App Design**
-- Ferry ticket booking application UI/UX design
-- Features: ticket booking, schedule information, route maps
-- Tech: Figma, UI/UX Design Principles
-
-### 5. AI ChatBot Clinic
-> **AI-Powered Healthcare Assistant**
-- Intelligent chatbot for dental clinic inquiries
-- Features: RAG implementation, natural language processing
-- Tech: Python, FastAPI, Next.js, LangChain, Pinecone, CohereAI
-
----
 
 ## 📊 GitHub Stats
 
