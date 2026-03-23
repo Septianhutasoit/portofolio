@@ -515,7 +515,157 @@
                 height: 1em;
             }
         }
-        
+        /* ===== EFEK KURSOR BERCAHAYA MODERN ===== */
+.cursor-glow {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.8) 0%, rgba(56, 189, 248, 0.3) 50%, transparent 70%);
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease;
+    mix-blend-mode: screen;
+}
+
+.cursor-trail {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.5) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: all 0.1s ease;
+    filter: blur(4px);
+}
+
+/* Efek hover pada link dan tombol */
+a:hover ~ .cursor-glow,
+button:hover ~ .cursor-glow,
+.cursor-glow.hover-effect {
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.9) 0%, rgba(56, 189, 248, 0.4) 40%, transparent 70%);
+}
+
+/* ===== EFEK GLOW DI SEKITAR FOTO PROFIL BULAT ===== */
+.profile-glow {
+    position: absolute;
+    inset: -15px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.8), rgba(129, 140, 248, 0.6), rgba(45, 212, 191, 0.4));
+    filter: blur(20px);
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: -1;
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+/* Efek glow saat hover pada foto */
+.profile-container:hover .profile-glow {
+    opacity: 1;
+    animation: none;
+    filter: blur(25px);
+    background: radial-gradient(circle, rgba(56, 189, 248, 1), rgba(129, 140, 248, 0.8), rgba(45, 212, 191, 0.6));
+}
+
+/* Efek ring berputar di sekitar foto */
+.profile-ring {
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 2px solid rgba(56, 189, 248, 0.6);
+    opacity: 0.6;
+    transition: all 0.5s ease;
+    pointer-events: none;
+}
+
+.profile-ring::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px dashed rgba(129, 140, 248, 0.4);
+    animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.profile-container:hover .profile-ring {
+    opacity: 1;
+    border-color: rgba(56, 189, 248, 1);
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.5);
+}
+
+/* Efek sparkle di sekitar foto */
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #38bdf8, #818cf8);
+    pointer-events: none;
+    animation: sparkleFloat 2s ease-out forwards;
+    z-index: 10;
+}
+
+@keyframes sparkleFloat {
+    0% {
+        transform: scale(1) translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0) translate(var(--tx, 30px), var(--ty, -30px));
+        opacity: 0;
+    }
+}
+/* Tambahkan di bagian <style> */
+
+.cursor-particle {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #38bdf8, #818cf8);
+    pointer-events: none;
+    z-index: 9997;
+    transition: all 0.05s linear;
+    filter: blur(1px);
+}
+
+/* Untuk layar sentuh, nonaktifkan efek kursor */
+@media (hover: none) and (pointer: coarse) {
+    .cursor-glow,
+    .cursor-trail,
+    .cursor-particle {
+        display: none;
+    }
+    
+    #home {
+        cursor: auto !important;
+    }
+}
     </style>
 </head>
 
@@ -671,17 +821,22 @@
 
             <div class="relative flex justify-center lg:justify-end" data-aos="fade-left">
                 <div
-                    class="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-full overflow-hidden soft-card animate-slow-float">
+                    class="profile-container relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-full overflow-hidden soft-card animate-slow-float">
+                    <!-- Efek Glow Background -->
+                    <div class="profile-glow"></div>
+            
+                    <!-- Efek Ring Berputar -->
+                    <div class="profile-ring"></div>
+            
                     <div
                         class="absolute -inset-10 bg-gradient-to-tr from-primary/40 via-secondary/40 to-accent/40 blur-3xl opacity-40">
                     </div>
                     <img src="assets/img/profile.jpg" alt="Septian"
-                        class="relative w-full h-full object-cover rounded-full border border-white/10 shadow-2xl" />
-
+                        class="relative w-full h-full object-cover rounded-full border-2 border-white/20 shadow-2xl" />
+            
                     <div
-                        class="absolute bottom-4 left-4 glass-card px-4 py-3 rounded-2xl flex items-center gap-3 border border-white/25">
-                        <div
-                            class="w-9 h-9 bg-green-500/15 rounded-full flex items-center justify-center text-green-400">
+                        class="absolute bottom-4 left-4 glass-card px-4 py-3 rounded-2xl flex items-center gap-3 border border-white/25 z-10">
+                        <div class="w-9 h-9 bg-green-500/15 rounded-full flex items-center justify-center text-green-400">
                             <i class="fas fa-layer-group"></i>
                         </div>
                         <div>
@@ -689,9 +844,9 @@
                             <p class="text-white font-semibold text-xs"> Software Developer & Product UI</p>
                         </div>
                     </div>
-
+            
                     <div
-                        class="absolute top-4 right-4 px-3 py-1 rounded-full bg-black/60 border border-white/20 text-[10px] text-slate-200 uppercase tracking-[0.18em]">
+                        class="absolute top-4 right-4 px-3 py-1 rounded-full bg-black/60 border border-white/20 text-[10px] text-slate-200 uppercase tracking-[0.18em] z-10">
                         Portfolio 2025
                     </div>
                 </div>
@@ -1777,6 +1932,177 @@
                 roleTypeEffect();
             }, 500);
         });
+
+        // ===== EFEK KURSOR BERCAHAYA MODERN =====
+            (function () {
+                // Buat elemen cursor glow
+                const cursorGlow = document.createElement('div');
+                cursorGlow.className = 'cursor-glow';
+                document.body.appendChild(cursorGlow);
+
+                // Buat elemen trail cursor
+                const cursorTrail = document.createElement('div');
+                cursorTrail.className = 'cursor-trail';
+                document.body.appendChild(cursorTrail);
+
+                // Variabel untuk trail
+                let mouseX = 0, mouseY = 0;
+                let trailX = 0, trailY = 0;
+
+                // Update posisi cursor utama
+                document.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                    cursorGlow.style.left = mouseX + 'px';
+                    cursorGlow.style.top = mouseY + 'px';
+
+                    // Efek hover pada elemen interaktif
+                    const hoverTarget = e.target.closest('a, button, .cursor-pointer, [onclick]');
+                    if (hoverTarget) {
+                        cursorGlow.classList.add('hover-effect');
+                    } else {
+                        cursorGlow.classList.remove('hover-effect');
+                    }
+                });
+
+                // Animasi trail dengan delay
+                function animateTrail() {
+                    const dx = mouseX - trailX;
+                    const dy = mouseY - trailY;
+                    trailX += dx * 0.2;
+                    trailY += dy * 0.2;
+                    cursorTrail.style.left = trailX + 'px';
+                    cursorTrail.style.top = trailY + 'px';
+                    requestAnimationFrame(animateTrail);
+                }
+                animateTrail();
+
+                // Sembunyikan cursor default saat hover di area tertentu (opsional)
+                const heroSection = document.querySelector('#home');
+                if (heroSection) {
+                    heroSection.style.cursor = 'none';
+                }
+
+                // Tampilkan kembali cursor default saat keluar dari hero
+                document.addEventListener('mouseleave', () => {
+                    cursorGlow.style.opacity = '0';
+                    cursorTrail.style.opacity = '0';
+                });
+
+                document.addEventListener('mouseenter', () => {
+                    cursorGlow.style.opacity = '1';
+                    cursorTrail.style.opacity = '1';
+                });
+
+                // Efek sparkle saat mengklik
+                function createSparkle(x, y) {
+                    for (let i = 0; i < 8; i++) {
+                        const sparkle = document.createElement('div');
+                        sparkle.className = 'sparkle';
+                        sparkle.style.left = x + 'px';
+                        sparkle.style.top = y + 'px';
+
+                        const angle = (i * 45) + Math.random() * 45;
+                        const distance = 30 + Math.random() * 40;
+                        const tx = Math.cos(angle * Math.PI / 180) * distance;
+                        const ty = Math.sin(angle * Math.PI / 180) * distance;
+
+                        sparkle.style.setProperty('--tx', tx + 'px');
+                        sparkle.style.setProperty('--ty', ty + 'px');
+
+                        document.body.appendChild(sparkle);
+
+                        setTimeout(() => {
+                            sparkle.remove();
+                        }, 2000);
+                    }
+                }
+
+                // Sparkle saat klik
+                document.addEventListener('click', (e) => {
+                    createSparkle(e.clientX, e.clientY);
+                });
+
+                // Efek tambahan: partikel mengikuti cursor
+                let particles = [];
+                const PARTICLE_COUNT = 5;
+
+                for (let i = 0; i < PARTICLE_COUNT; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'cursor-particle';
+                    particle.style.cssText = `
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #38bdf8, #818cf8);
+            pointer-events: none;
+            z-index: 9997;
+            opacity: 0.6;
+            filter: blur(1px);
+        `;
+                    document.body.appendChild(particle);
+                    particles.push({
+                        element: particle,
+                        x: 0,
+                        y: 0,
+                        delay: i * 3
+                    });
+                }
+
+                let frame = 0;
+                function animateParticles() {
+                    frame++;
+                    particles.forEach((particle, idx) => {
+                        const delayFrames = particle.delay;
+                        const historyIndex = Math.max(0, frame - delayFrames);
+
+                        // Simulasi posisi berdasarkan history cursor
+                        const x = mouseX;
+                        const y = mouseY;
+
+                        particle.element.style.left = x + 'px';
+                        particle.element.style.top = y + 'px';
+                        particle.element.style.opacity = 0.6 - (idx * 0.1);
+                    });
+                    requestAnimationFrame(animateParticles);
+                }
+                animateParticles();
+            })();
+
+            // ===== EFEK GLOW STATIS UNTUK FOTO PROFIL =====
+            const profileContainer = document.querySelector('.profile-container');
+            if (profileContainer) {
+                // Auto glow animation
+                setInterval(() => {
+                    const glow = profileContainer.querySelector('.profile-glow');
+                    if (glow && !profileContainer.matches(':hover')) {
+                        glow.style.animation = 'none';
+                        glow.offsetHeight; // trigger reflow
+                        glow.style.animation = 'pulseGlow 3s ease-in-out infinite';
+                    }
+                }, 5000);
+            }
+
+            // ===== EFEK MOUSE PARALLAX UNTUK FOTO =====
+            const profileImg = document.querySelector('.profile-container img');
+            if (profileImg) {
+                document.addEventListener('mousemove', (e) => {
+                    const rect = profileContainer.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+
+                    const deltaX = (e.clientX - centerX) / 30;
+                    const deltaY = (e.clientY - centerY) / 30;
+
+                    profileImg.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(1.02)`;
+
+                    // Reset setelah mouse keluar
+                    profileContainer.addEventListener('mouseleave', () => {
+                        profileImg.style.transform = 'translate(0, 0) scale(1)';
+                    });
+                });
+            }
     </script>
 </body>
 
