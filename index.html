@@ -515,6 +515,131 @@
                 height: 1em;
             }
         }
+        /* ===== EFEK KURSOR BERCAHAYA MODERN ===== */
+.cursor-glow {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.8) 0%, rgba(56, 189, 248, 0.3) 50%, transparent 70%);
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease;
+    mix-blend-mode: screen;
+}
+
+.cursor-trail {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.5) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: all 0.1s ease;
+    filter: blur(4px);
+}
+
+/* Efek hover pada link dan tombol */
+a:hover ~ .cursor-glow,
+button:hover ~ .cursor-glow,
+.cursor-glow.hover-effect {
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.9) 0%, rgba(56, 189, 248, 0.4) 40%, transparent 70%);
+}
+
+/* ===== EFEK GLOW DI SEKITAR FOTO PROFIL BULAT ===== */
+.profile-glow {
+    position: absolute;
+    inset: -15px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.8), rgba(129, 140, 248, 0.6), rgba(45, 212, 191, 0.4));
+    filter: blur(20px);
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: -1;
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+/* Efek glow saat hover pada foto */
+.profile-container:hover .profile-glow {
+    opacity: 1;
+    animation: none;
+    filter: blur(25px);
+    background: radial-gradient(circle, rgba(56, 189, 248, 1), rgba(129, 140, 248, 0.8), rgba(45, 212, 191, 0.6));
+}
+
+/* Efek ring berputar di sekitar foto */
+.profile-ring {
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 2px solid rgba(56, 189, 248, 0.6);
+    opacity: 0.6;
+    transition: all 0.5s ease;
+    pointer-events: none;
+}
+
+.profile-ring::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px dashed rgba(129, 140, 248, 0.4);
+    animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.profile-container:hover .profile-ring {
+    opacity: 1;
+    border-color: rgba(56, 189, 248, 1);
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.5);
+}
+
+/* Efek sparkle di sekitar foto */
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #38bdf8, #818cf8);
+    pointer-events: none;
+    animation: sparkleFloat 2s ease-out forwards;
+    z-index: 10;
+}
+
+@keyframes sparkleFloat {
+    0% {
+        transform: scale(1) translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0) translate(var(--tx, 30px), var(--ty, -30px));
+        opacity: 0;
+    }
+}
     </style>
 </head>
 
