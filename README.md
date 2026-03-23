@@ -47,7 +47,6 @@ A modern, interactive portfolio website showcasing my journey as a Software Engi
 
 </div>
 
-
 <div align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=Septianhutasoit&show_icons=true&theme=radical&hide_border=true&bg_color=000000&title_color=22c55e&icon_color=22c55e" alt="GitHub Stats" width="48%" />
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=Septianhutasoit&theme=radical&hide_border=true&background=000000&stroke=22c55e&ring=22c55e&fire=22c55e&currStreakLabel=22c55e" alt="GitHub Streak" width="48%" />
