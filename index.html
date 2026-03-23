@@ -1,22 +1,32 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth dark">
+<html lang="id" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Portofolio Septian Hutasoit - Software Developer & UI/UX Designer" />
-    <title>Septian Hutasoit | Software Engineer</title>
+    <title>Septian Hutasoit | Software Developer & UI/UX</title>
 
+    <!-- Tambahkan link favicon di sini -->
     <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23000000%22/><path d=%22M30 35 L15 50 L30 65 M45 70 L55 30 M70 35 L85 50 L70 65%22 fill=%22none%22 stroke=%22%233b82f6%22 stroke-width=%228%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>">
-
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230f172a%22/><path d=%22M30 35 L15 50 L30 65 M45 70 L55 30 M70 35 L85 50 L70 65%22 fill=%22none%22 stroke=%22%2338bdf8%22 stroke-width=%228%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>">
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet" />
+
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Devicon (WAJIB buat ikon skills) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+    <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -24,23 +34,25 @@
                 extend: {
                     fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
                     colors: {
-                        bgDark: '#000000',
-                        cardDark: '#0a0a0a',
-                        cardSoft: '#111111',
-                        primary: '#3b82f6',
-                        secondary: '#8b5cf6',
-                        accent: '#06b6d4',
+                        bgDark: '#020617',
+                        cardDark: '#020617',
+                        cardSoft: '#0f172a',
+                        primary: '#38bdf8',
+                        secondary: '#818cf8',
+                        accent: '#2dd4bf',
                     },
                     animation: {
                         'blob': 'blob 18s infinite',
                         'float': 'float 16s ease-in-out infinite',
                         'spin-slow': 'spin 18s linear infinite',
                         'slow-float': 'slowFloat 20s ease-in-out infinite',
+                        'hero-line': 'heroLine 1s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+                        'hero-word': 'heroWord 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+                        'hero-glow': 'heroGlow 4s ease-in-out infinite',
+                        'img-float-slow': 'imgFloatSlow 16s ease-in-out infinite',
+                        'img-kenburns': 'imgKenburns 28s ease-in-out infinite',
                         'scroll-left': 'scroll-left 40s linear infinite',
                         'scroll-right': 'scroll-right 40s linear infinite',
-                        'gradient': 'gradient 8s ease infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'shine': 'shine 3s ease-in-out infinite',
                     },
                     keyframes: {
                         'scroll-left': {
@@ -68,13 +80,32 @@
                             '75%': { transform: 'translate3d(0, -5px, 0) rotate3d(0, 0, 1, -0.5deg)' },
                             '100%': { transform: 'translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg)' },
                         },
-                        gradient: {
-                            '0%, 100%': { backgroundPosition: '0% 50%' },
-                            '50%': { backgroundPosition: '100% 50%' },
+                        heroLine: {
+                            '0%': { opacity: 0, transform: 'translateY(24px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
                         },
-                        shine: {
-                            '0%': { opacity: 0.5, transform: 'translateX(-100%)' },
-                            '100%': { opacity: 1, transform: 'translateX(100%)' },
+                        heroWord: {
+                            '0%': { opacity: 0, transform: 'translateY(110%)' },
+                            '60%': { opacity: 1, transform: 'translateY(-4%)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        },
+                        heroGlow: {
+                            '0%': { textShadow: '0 0 0 rgba(56, 189, 248, 0)' },
+                            '50%': { textShadow: '0 0 26px rgba(56, 189, 248, 0.7)' },
+                            '100%': { textShadow: '0 0 0 rgba(56, 189, 248, 0)' },
+                        },
+                        imgFloatSlow: {
+                            '0%': { transform: 'translateY(0px)' },
+                            '25%': { transform: 'translateY(-6px)' },
+                            '50%': { transform: 'translateY(2px)' },
+                            '75%': { transform: 'translateY(-4px)' },
+                            '100%': { transform: 'translateY(0px)' },
+                        },
+                        imgKenburns: {
+                            '0%': { transform: 'scale(1.02) translate3d(0, 0, 0)' },
+                            '40%': { transform: 'scale(1.08) translate3d(-6px, -4px, 0)' },
+                            '70%': { transform: 'scale(1.06) translate3d(4px, -2px, 0)' },
+                            '100%': { transform: 'scale(1.02) translate3d(0, 0, 0)' },
                         },
                     }
                 }
@@ -83,557 +114,727 @@
     </script>
 
     <style>
-        * {
-            cursor: none;
-        }
-
         body {
-            background: #000000;
-            cursor: none;
+            background-color: #020617;
+            background-image:
+                radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.16) 0, transparent 55%),
+                radial-gradient(circle at 90% 10%, rgba(129, 140, 248, 0.18) 0, transparent 60%),
+                radial-gradient(circle at 50% 100%, rgba(15, 23, 42, 1) 0, #020617 70%);
         }
 
-        /* Custom Cursor dengan efek cahaya */
-        .cursor-dot {
-            width: 6px;
-            height: 6px;
-            background: #3b82f6;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.08s ease;
-            box-shadow: 0 0 15px #3b82f6, 0 0 30px rgba(59, 130, 246, 0.8);
+        @media (max-width: 640px) {
+
+            h1,
+            .hero-title {
+                font-size: clamp(1.9rem, 7vw, 2.5rem);
+                line-height: 1.1;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .glass-card,
+            .soft-card {
+                border-radius: 1.25rem;
+            }
         }
 
-        .cursor-outline {
-            width: 35px;
-            height: 35px;
-            border: 2px solid rgba(59, 130, 246, 0.6);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            transition: all 0.2s ease-out;
-            backdrop-filter: blur(4px);
-            box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
-        }
-
-        /* Efek hover pada elemen interaktif */
-        a:hover~.cursor-outline,
-        button:hover~.cursor-outline,
-        .cursor-pointer:hover~.cursor-outline,
-        [onclick]:hover~.cursor-outline {
-            transform: scale(1.6);
-            border-color: #8b5cf6;
-            box-shadow: 0 0 35px rgba(139, 92, 246, 0.6);
-        }
-
-        /* Particle Canvas Background */
-        #particle-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.5;
-        }
-
-        /* Glassmorphism Modern */
-        .glass-nav {
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.25);
-        }
-
-        .glass-card {
-            background: linear-gradient(135deg, rgba(17, 17, 17, 0.9), rgba(10, 10, 10, 0.95));
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            transition: all 0.4s ease;
-        }
-
-        .glass-card:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            box-shadow: 0 8px 40px rgba(59, 130, 246, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .text-gradient {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient 4s ease infinite;
-        }
-
-        /* Neon Glow Effect */
-        .neon-glow {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.1);
-        }
-
-        /* Scrollbar Modern */
         ::-webkit-scrollbar {
-            width: 6px;
+            width: 8px;
         }
 
         ::-webkit-scrollbar-track {
-            background: #0a0a0a;
+            background: #020617;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            border-radius: 3px;
+            background: #334155;
+            border-radius: 4px;
         }
 
+        ::-webkit-scrollbar-thumb:hover {
+            background: #38bdf8;
+        }
+
+        /* Biar scroll ke #skills/#portfolio gak ketiban navbar fixed */
         section[id] {
-            scroll-margin-top: 80px;
+            scroll-margin-top: 96px;
         }
 
-        /* Skill Cards */
-        .skill-item {
-            transition: all 0.3s ease;
+        .glass-nav {
+            background: radial-gradient(circle at top, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 0.96));
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.18);
         }
 
-        .skill-item:hover {
-            transform: translateY(-5px);
+        .glass-card {
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.94));
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(148, 163, 184, 0.28);
+            box-shadow:
+                0 22px 60px rgba(15, 23, 42, 0.95),
+                0 0 40px rgba(56, 189, 248, 0.12);
+            transition: all 0.6s ease;
         }
 
-        .skill-item:hover i {
-            filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
+        .soft-card {
+            background: radial-gradient(circle at top left, rgba(30, 64, 175, 0.25), rgba(15, 23, 42, 0.95));
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            box-shadow: 0 18px 50px rgba(15, 23, 42, 0.85);
+            transition: transform 0.7s ease, box-shadow 0.7s ease;
         }
 
-        /* Portfolio Cards */
-        .portfolio-card {
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        .soft-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 26px 70px rgba(15, 23, 42, 0.95);
         }
 
-        .portfolio-card:hover {
-            transform: translateY(-8px);
+        .text-gradient {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 45%, #2dd4bf 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* PORTFOLIO IMG */
+        .portfolio-img-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 1));
+            animation: imgFloatSlow 16s ease-in-out infinite;
         }
 
         .portfolio-img {
-            transition: transform 0.6s ease;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.9s ease, filter 0.9s ease, opacity 0.6s ease;
+            transform-origin: center;
+            animation: imgKenburns 26s ease-in-out infinite;
         }
 
-        .portfolio-card:hover .portfolio-img {
-            transform: scale(1.08);
+        .portfolio-img-hover::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.78), transparent 60%);
+            pointer-events: none;
+            mix-blend-mode: normal;
         }
 
-        /* Certificate Cards */
-        .cert-card {
-            transition: all 0.4s ease;
+        .group:hover .portfolio-img {
+            transform: scale(1.12) rotate(0.6deg);
+            filter: saturate(1.18) contrast(1.05);
         }
 
-        .cert-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(59, 130, 246, 0.5);
+        .group:hover .portfolio-img-wrapper {
+            animation-play-state: paused;
         }
 
-        /* Typing Cursor */
-        .typing-cursor {
-            display: inline-block;
-            width: 3px;
-            height: 1.2em;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            margin-left: 4px;
-            animation: blinkCursor 1s infinite;
-            border-radius: 2px;
-            vertical-align: middle;
-        }
-
-        @keyframes blinkCursor {
-
-            0%,
-            100% {
-                opacity: 1;
+        @media (max-width: 480px) {
+            .portfolio-img-wrapper {
+                animation-duration: 22s;
             }
 
-            50% {
-                opacity: 0;
+            .portfolio-img {
+                animation-duration: 32s;
             }
         }
 
-        @keyframes gradient {
-
-            0%,
-            100% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
+        /* ===== SKILL CARDS (mirip tampilan gambar) ===== */
+        .skill-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.25rem;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            background: radial-gradient(circle at top, rgba(30, 64, 175, 0.16), rgba(15, 23, 42, 0.95));
+            box-shadow: 0 18px 55px rgba(15, 23, 42, 0.9);
+            transition: transform .45s ease, border-color .45s ease, box-shadow .45s ease;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-
-            .cursor-dot,
-            .cursor-outline {
-                display: none;
-            }
-
-            * {
-                cursor: auto;
-            }
+        .skill-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            border-color: rgba(56, 189, 248, 0.55);
+            box-shadow: 0 26px 80px rgba(15, 23, 42, 0.95);
         }
 
-        /* Hero Section Styles */
-        .hero-badge {
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
+        .skill-glow {
+            position: absolute;
+            inset: -60px;
+            background: radial-gradient(circle, rgba(56, 189, 248, .18), transparent 55%);
+            opacity: 0;
+            transition: opacity .5s ease;
+            pointer-events: none;
         }
 
-        .stat-card {
-            background: rgba(17, 17, 17, 0.6);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            transition: all 0.3s ease;
+        .skill-card:hover .skill-glow {
+            opacity: 1;
         }
 
-        .stat-card:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            transform: translateY(-2px);
+        .skill-icon {
+            width: 84px;
+            height: 84px;
+            display: grid;
+            place-items: center;
+            border-radius: 1.25rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
+
+        .skill-icon i {
+            font-size: 56px;
+            line-height: 1;
+        }
+        /* Transisi halus saat ganti tema */
+* { transition: background-color 0.5s ease, color 0.3s ease, border-color 0.5s ease; }
+
+/* Canvas Background */
+#hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: auto; /* Memungkinkan interaksi klik */
+}
+
+/* Animasi untuk teks yang berubah */
+.typing-container {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+#dynamic-text {
+    background: linear-gradient(135deg, #38bdf8 0%, #818cf8 45%, #2dd4bf 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gentleFloat 6s ease-in-out infinite;
+    white-space: nowrap;
+}
+
+.typing-cursor {
+    display: inline-block;
+    width: 4px;
+    height: 1.2em;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    margin-left: 8px;
+    animation: blinkCursor 1s infinite;
+    border-radius: 2px;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Animasi untuk role text */
+#role-text {
+    position: relative;
+    display: inline-block;
+}
+
+#changing-role {
+    display: inline-block;
+    min-width: 160px;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+.role-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background: #38bdf8;
+    animation: blinkRole 1.2s infinite;
+    border-radius: 2px;
+}
+
+@keyframes blinkRole {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes gentleFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-5px) scale(1.02);
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 40px rgba(56, 189, 248, 0.6);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    #dynamic-text {
+        min-width: 200px;
+        font-size: 1.8rem;
+    }
+    
+    #changing-role {
+        min-width: 130px;
+    }
+}
+
+/* Penyesuaian warna Light Mode */
+.light { background-color: #f8fafc; color: #0f172a; }
+.light .glass-nav { background: rgba(255, 255, 255, 0.8); border-color: rgba(0,0,0,0.1); }
+.light .soft-card, .light .glass-card { background: white; border-color: rgba(0,0,0,0.1); color: #1e293b; }
+.light .text-slate-400 { color: #64748b; }
+/* Styling untuk teks utama dan cursor */
+.typing-wrapper {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+#dynamic-text {
+    background: linear-gradient(135deg, #38bdf8 0%, #818cf8 45%, #2dd4bf 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.cursor {
+    display: inline-block;
+    width: 4px;
+    height: 1.2em;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    margin-left: 8px;
+    animation: blink 1s infinite;
+    border-radius: 2px;
+    vertical-align: middle;
+}
+
+/* Styling untuk role text */
+.role-wrapper {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+#changing-role {
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    min-width: 150px;
+}
+
+.role-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background: #38bdf8;
+    margin-left: 4px;
+    animation: blink 1.2s infinite;
+    border-radius: 2px;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    #dynamic-text {
+        min-width: 200px;
+    }
+    
+    #changing-role {
+        min-width: 130px;
+    }
+    
+    .cursor {
+        height: 1em;
+    }
+}
     </style>
 </head>
 
-<body class="text-slate-300 antialiased overflow-x-hidden selection:bg-primary/30 selection:text-white">
+<body class="text-slate-300 antialiased overflow-x-hidden selection:bg-primary selection:text-bgDark">
 
-    <!-- Custom Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+    <!-- SPOTIFY PLAYER WIDGET -->
+    <div class="fixed bottom-5 left-4 sm:left-6 z-50">
+        <div class="glass-card p-3 rounded-2xl bg-black/70 w-[280px] sm:w-[320px]">
+            <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
+                        <i class="fab fa-spotify text-green-400 text-lg"></i>
+                    </div>
+                    <div class="overflow-hidden">
+                        <p class="text-white font-semibold text-xs sm:text-sm truncate">La La Lost You</p>
+                        <p class="text-[11px] text-slate-400 truncate">NIKI • Spotify</p>
+                    </div>
+                </div>
 
-    <!-- Particle Canvas Background -->
-    <canvas id="particle-canvas"></canvas>
+                <button id="spotifyToggle"
+                    class="px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-white/10 transition">
+                    Buka
+                </button>
+            </div>
 
-    <!-- Scroll to Top -->
+            <div id="spotifyWrap" class="mt-3 hidden">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0e2wfbDK7ppotqyUWD7qs8"
+                    width="100%" height="152" frameborder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"></iframe>
+                <p class="text-[10px] text-slate-500 mt-2">
+                    Spotify embed tidak bisa dikontrol play/pause via JS.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCROLL TO TOP -->
     <a href="#home"
-        class="fixed bottom-5 right-4 sm:right-6 z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full glass-card flex items-center justify-center text-primary hover:bg-primary hover:text-black transition-all shadow-lg">
+        class="fixed bottom-5 right-4 sm:right-6 z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full glass-card flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-lg shadow-black/60">
         <i class="fas fa-arrow-up text-xs sm:text-sm"></i>
     </a>
 
-    <!-- Navbar -->
-    <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 py-4">
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 py-3">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center">
             <a href="#home" class="flex items-center gap-2">
                 <span
-                    class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-white/5 border border-primary/30 flex items-center justify-center">
+                    class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shadow-lg shadow-black/40">
                     <i class="fas fa-laptop-code text-primary text-lg"></i>
                 </span>
             </a>
 
-            <div class="hidden md:flex items-center gap-1">
+            <div class="hidden md:flex items-center gap-1 p-1 rounded-full bg-black/20 border border-white/10">
                 <a href="#home"
-                    class="nav-link px-4 py-2 text-sm font-medium rounded-full hover:bg-primary/10 text-white hover:text-primary transition-all">Home</a>
+                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-white transition-all">Beranda</a>
                 <a href="#portfolio"
-                    class="nav-link px-4 py-2 text-sm font-medium rounded-full hover:bg-primary/10 text-slate-300 hover:text-primary transition-all">Projects</a>
+                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white transition-all">Proyek</a>
                 <a href="#skills"
-                    class="nav-link px-4 py-2 text-sm font-medium rounded-full hover:bg-primary/10 text-slate-300 hover:text-primary transition-all">Skills</a>
+                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white transition-all">Skills</a>
                 <a href="#certificates"
-                    class="nav-link px-4 py-2 text-sm font-medium rounded-full hover:bg-primary/10 text-slate-300 hover:text-primary transition-all">Certificates</a>
+                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white transition-all">Sertifikat</a>
                 <a href="#contact"
-                    class="nav-link px-4 py-2 text-sm font-medium rounded-full hover:bg-primary/10 text-slate-300 hover:text-primary transition-all">Contact</a>
+                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white transition-all">Kontak</a>
             </div>
 
-            <div class="hidden md:flex items-center gap-4">
-                <button id="themeToggle" class="text-slate-300 hover:text-primary p-2 transition">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <a href="#contact"
-                    class="px-5 py-2.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-semibold hover:bg-primary hover:text-black transition-all">
-                    Hire Me
-                </a>
-            </div>
-
-            <button id="menuBtn" class="md:hidden text-white text-2xl">
-                <i class="fas fa-bars"></i>
+        <!-- Cari div yang membungkus tombol Hire Me -->
+        <div class="hidden md:flex items-center gap-4">
+        
+            <!-- Pindahkan tombol light mode ke sini -->
+            <button id="themeToggle" class="text-slate-300 dark:text-yellow-400 p-2">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:block"></i>
             </button>
+        
+            <!-- Tombol Hire Me -->
+            <a href="#contact"
+                class="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-primary transition-all">
+                Hire Me
+            </a>
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
+    <!-- MOBILE MENU -->
     <div id="mobileMenu"
-        class="fixed inset-0 bg-black/98 backdrop-blur-xl z-50 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center">
+        class="fixed inset-0 bg-bgDark/98 backdrop-blur-xl z-50 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center">
         <button onclick="toggleMenu()" class="absolute top-6 right-6 text-3xl text-white">
             <i class="fas fa-times"></i>
         </button>
         <div class="flex flex-col space-y-6 text-center">
-            <a href="#home" onclick="toggleMenu()"
-                class="text-2xl font-bold text-white hover:text-primary transition">Home</a>
+            <a href="#home" onclick="toggleMenu()" class="text-2xl font-bold text-white hover:text-primary">Beranda</a>
             <a href="#portfolio" onclick="toggleMenu()"
-                class="text-2xl font-bold text-white hover:text-primary transition">Projects</a>
-            <a href="#skills" onclick="toggleMenu()"
-                class="text-2xl font-bold text-white hover:text-primary transition">Skills</a>
+                class="text-2xl font-bold text-white hover:text-primary">Proyek</a>
+            <a href="#skills" onclick="toggleMenu()" class="text-2xl font-bold text-white hover:text-primary">Skills</a>
             <a href="#certificates" onclick="toggleMenu()"
-                class="text-2xl font-bold text-white hover:text-primary transition">Certificates</a>
-            <a href="#contact" onclick="toggleMenu()" class="text-2xl font-bold text-primary">Contact</a>
+                class="text-2xl font-bold text-white hover:text-primary">Sertifikat</a>
+            <a href="#contact" onclick="toggleMenu()" class="text-2xl font-bold text-primary">Kontak</a>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center pt-20 relative overflow-hidden">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right" data-aos-duration="1000">
-                    <div class="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6">
-                        <span class="relative flex h-2 w-2">
-                            <span
-                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                        </span>
-                        <span class="text-primary text-xs font-medium">Available for Work</span>
+<!-- HERO -->
+<section id="home" class="min-h-screen flex items-center pt-20 relative overflow-hidden">
+    <canvas id="hero-canvas"></canvas>
+    <div
+        class="absolute top-[15%] left-[5%] w-72 h-72 sm:w-96 sm:h-96 bg-primary/25 rounded-full mix-blend-screen blur-[110px] animate-blob">
+    </div>
+    <div
+        class="absolute bottom-[10%] right-[5%] w-72 h-72 sm:w-96 sm:h-96 bg-secondary/25 rounded-full mix-blend-screen blur-[110px] animate-blob">
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center relative z-10">
+        <div data-aos="fade-right">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] mb-5">
+                <span class="relative flex h-2 w-2">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                Available for Fullstack Projects
+            </div>
+
+            <!-- Perbaikan di sini: Hanya satu baris "Crafting Fullstack" -->
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 leading-[1.05] tracking-tight">
+                Software Engineer <br />
+                <span class="text-gradient">Fullstack Projects.</span>
+            </h1>
+
+            <p class="text-sm sm:text-base text-slate-400 mb-7 max-w-xl leading-relaxed">
+                I'm <span class="text-white font-semibold">Septian Hutasoit</span>,
+                <span class="text-slate-100 font-semibold role-wrapper">
+                    <span id="changing-role">Software Developer</span>
+                    <span class="role-cursor"></span>
+                </span>a tech developer with a passion for Software Engineering, Web Development, Artificial
+                Intelligence, and Backend Development. I'm passionate about building efficient, structured, and scalable systems,
+                combining them with a clear interface for user-friendliness.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <a href="#portfolio"
+                    class="px-7 py-3.2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold text-sm hover:shadow-[0_0_30px_rgba(56,189,248,0.75)] transition-all text-center">
+                    Lihat Proyek
+                </a>
+                <a href="https://github.com/Septianhutasoit" target="_blank"
+                    class="px-7 py-3.2 rounded-full bg-white/5 border border-white/10 font-semibold text-white text-sm hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+                    <i class="fab fa-github text-lg"></i> GitHub
+                </a>
+            </div>
+        </div>
+
+        <div class="relative flex justify-center lg:justify-end" data-aos="fade-left">
+            <div
+                class="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-3xl overflow-hidden soft-card animate-slow-float">
+                <div
+                    class="absolute -inset-10 bg-gradient-to-tr from-primary/40 via-secondary/40 to-accent/40 blur-3xl opacity-40">
+                </div>
+                <img src="assets/img/profile.jpg" alt="Septian"
+                    class="relative w-full h-full object-cover rounded-3xl border border-white/10 shadow-2xl" />
+
+                <div
+                    class="absolute bottom-4 left-4 glass-card px-4 py-3 rounded-2xl flex items-center gap-3 border border-white/25">
+                    <div class="w-9 h-9 bg-green-500/15 rounded-full flex items-center justify-center text-green-400">
+                        <i class="fas fa-layer-group"></i>
                     </div>
-
-                    <h1
-                        class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 leading-[1.1] tracking-tight">
-                        Hi, I'm <span class="text-gradient">Septian Hutasoit</span>
-                    </h1>
-
-                    <div class="text-xl sm:text-2xl text-slate-400 mb-6">
-                        <span id="changing-role">Software Engineer</span>
-                        <span class="typing-cursor"></span>
-                    </div>
-
-                    <p class="text-slate-400 text-base leading-relaxed mb-8 max-w-lg">
-                        I'm passionate about building efficient, structured, and scalable systems, combining them with
-                        exceptional user experiences. Full-stack developer with expertise in AI integration and backend
-                        architecture.
-                    </p>
-
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#portfolio"
-                            class="px-6 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold text-sm hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] transition-all">
-                            View Projects
-                        </a>
-                        <a href="#contact"
-                            class="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white font-semibold text-sm hover:bg-white/10 transition-all">
-                            Contact Me
-                        </a>
-                    </div>
-
-                    <!-- Location & Stats -->
-                    <div class="mt-8 flex flex-wrap gap-6">
-                        <div class="stat-card px-4 py-2 rounded-full flex items-center gap-2">
-                            <i class="fas fa-map-marker-alt text-primary text-sm"></i>
-                            <span class="text-slate-300 text-sm">Medan, Indonesia</span>
-                        </div>
-                        <div class="stat-card px-4 py-2 rounded-full flex items-center gap-2">
-                            <i class="fas fa-code text-primary text-sm"></i>
-                            <span class="text-slate-300 text-sm">3+ Years Experience</span>
-                        </div>
+                    <div>
+                        <p class="text-[11px] text-slate-400">Fokus</p>
+                        <p class="text-white font-semibold text-xs"> Software Developer & Product UI</p>
                     </div>
                 </div>
 
-                <div class="relative flex justify-center lg:justify-end" data-aos="fade-left" data-aos-duration="1000">
-                    <div
-                        class="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-3xl overflow-hidden glass-card neon-glow">
-                        <div
-                            class="absolute -inset-10 bg-gradient-to-tr from-primary/20 via-secondary/20 to-accent/20 blur-3xl opacity-40">
-                        </div>
-                        <img src="assets/img/profile.jpg" alt="Septian Hutasoit"
-                            class="relative w-full h-full object-cover rounded-3xl" />
-                        <div class="absolute bottom-4 left-4 glass-card px-3 py-2 rounded-xl flex items-center gap-2">
-                            <div
-                                class="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center text-primary">
-                                <i class="fas fa-laptop-code text-sm"></i>
-                            </div>
-                            <div>
-                                <p class="text-[10px] text-slate-400">Open to work</p>
-                                <p class="text-white font-semibold text-xs">Fullstack Dev</p>
-                            </div>
-                        </div>
-                    </div>
+                <div
+                    class="absolute top-4 right-4 px-3 py-1 rounded-full bg-black/60 border border-white/20 text-[10px] text-slate-200 uppercase tracking-[0.18em]">
+                    Portfolio 2025
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 border-t border-white/5">
+
+
+    <!-- Container Utama Marquee -->
+<section id="skills" class="py-20 bg-bgDark border-t border-white/5 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 mb-16 text-center" data-aos="fade-up">
+        <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Tech Stack</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-white mt-3">Technology Used <span
+                class="text-gradient">Product Stack</span></h2>
+    </div>
+
+    <!-- Container Marquee 4 Baris -->
+    <div class="flex flex-col gap-6 sm:gap-8">
+        <div class="relative flex overflow-hidden group">
+            <div id="row1"
+                class="flex gap-8 py-2 animate-scroll-left whitespace-nowrap group-hover:[animation-play-state:paused]">
+            </div>
+        </div>
+        <div class="relative flex overflow-hidden group">
+            <div id="row2"
+                class="flex gap-8 py-2 animate-scroll-right whitespace-nowrap group-hover:[animation-play-state:paused]">
+            </div>
+        </div>
+        <div class="relative flex overflow-hidden group">
+            <div id="row3"
+                class="flex gap-8 py-2 animate-scroll-left whitespace-nowrap group-hover:[animation-play-state:paused]">
+            </div>
+        </div>
+        <div class="relative flex overflow-hidden group">
+            <div id="row4"
+                class="flex gap-8 py-2 animate-scroll-right whitespace-nowrap group-hover:[animation-play-state:paused]">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- PROJECTS -->
+    <section id="portfolio" class="py-20 sm:py-24 relative bg-bgDark border-t border-white/5">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right">
-                    <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">About Me</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-3 mb-5">
-                        Passionate About <span class="text-gradient">Building Digital Solutions</span>
-                    </h2>
-                    <p class="text-slate-400 leading-relaxed mb-4">
-                        Hello! You can call me <span class="text-white font-semibold">Septian</span>. I'm passionate
-                        about software systems, constantly building Full-stack and AI Systems, and I love turning ideas
-                        into real products.
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 sm:mb-12"
+                data-aos="fade-up">
+                <div>
+                    <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Selected
+                        Projects</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">End-to-End <span
+                            class="text-gradient">Product
+                            Work</span></h2>
+                    <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-xl">
+                        Proyek yang nunjukin cara ngerangkai backend, frontend, dan UX jadi satu alur yang masuk akal.
                     </p>
-                    <p class="text-slate-400 leading-relaxed mb-4">
-                        Started exploring software and systems in my first year at university. Since then, I've simply
-                        kept building, learning how to turn ideas into systems that actually work in practice.
-                    </p>
-                    <div class="flex flex-wrap gap-4 mt-6">
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-graduation-cap text-primary"></i>
-                            <span class="text-slate-300 text-sm">Computer Engineering</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-code text-primary"></i>
-                            <span class="text-slate-300 text-sm">Fullstack Developer</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-brain text-primary"></i>
-                            <span class="text-slate-300 text-sm">AI Enthusiast</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
-                    <div class="glass-card p-6 rounded-2xl text-center">
-                        <i class="fas fa-code text-3xl text-primary mb-3"></i>
-                        <h3 class="text-2xl font-bold text-white">15+</h3>
-                        <p class="text-slate-400 text-sm">Projects Completed</p>
-                    </div>
-                    <div class="glass-card p-6 rounded-2xl text-center">
-                        <i class="fas fa-certificate text-3xl text-primary mb-3"></i>
-                        <h3 class="text-2xl font-bold text-white">15+</h3>
-                        <p class="text-slate-400 text-sm">Certifications</p>
-                    </div>
-                    <div class="glass-card p-6 rounded-2xl text-center">
-                        <i class="fas fa-users text-3xl text-primary mb-3"></i>
-                        <h3 class="text-2xl font-bold text-white">10+</h3>
-                        <p class="text-slate-400 text-sm">Happy Clients</p>
-                    </div>
-                    <div class="glass-card p-6 rounded-2xl text-center">
-                        <i class="fas fa-clock text-3xl text-primary mb-3"></i>
-                        <h3 class="text-2xl font-bold text-white">3+</h3>
-                        <p class="text-slate-400 text-sm">Years Experience</p>
-                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Skills Section with Marquee -->
-    <section id="skills" class="py-20 border-t border-white/5 overflow-hidden">
-        <div class="max-w-6xl mx-auto px-4 mb-16 text-center" data-aos="fade-up">
-            <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Tech Stack</span>
-            <h2 class="text-2xl md:text-3xl font-bold text-white mt-3">Technologies I <span
-                    class="text-gradient">Master</span></h2>
-        </div>
-
-        <div class="flex flex-col gap-6 sm:gap-8">
-            <div class="relative flex overflow-hidden group">
-                <div id="row1"
-                    class="flex gap-8 py-2 animate-scroll-left whitespace-nowrap group-hover:[animation-play-state:paused]">
-                </div>
-            </div>
-            <div class="relative flex overflow-hidden group">
-                <div id="row2"
-                    class="flex gap-8 py-2 animate-scroll-right whitespace-nowrap group-hover:[animation-play-state:paused]">
-                </div>
-            </div>
-            <div class="relative flex overflow-hidden group">
-                <div id="row3"
-                    class="flex gap-8 py-2 animate-scroll-left whitespace-nowrap group-hover:[animation-play-state:paused]">
-                </div>
-            </div>
-            <div class="relative flex overflow-hidden group">
-                <div id="row4"
-                    class="flex gap-8 py-2 animate-scroll-right whitespace-nowrap group-hover:[animation-play-state:paused]">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="portfolio" class="py-20 sm:py-24 relative border-t border-white/5">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
-                <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Featured Projects</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">My Latest <span
-                        class="text-gradient">Work</span></h2>
-                <p class="text-slate-400 text-sm sm:text-base mt-3 max-w-2xl mx-auto">
-                    I've worked on a variety of projects, from simple websites to complex web apps. Click to see more
-                    details.
-                </p>
-            </div>
             <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"></div>
         </div>
     </section>
 
-    <!-- Certificates Section -->
+    <!-- CERTIFICATES -->
     <section id="certificates" class="py-20 sm:py-24 relative border-t border-white/5">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
                 <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Licenses &
                     Certificates</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">My <span
-                        class="text-gradient">Certifications</span></h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">Lisensi & <span
+                        class="text-gradient">Sertifikasi</span></h2>
                 <p class="text-slate-400 text-sm sm:text-base mt-3 max-w-2xl mx-auto">
-                    Professional certifications and achievements throughout my career journey.
+                    Sertifikat di bawah ini sudah dinamis dari data (klik kartu = modal kebuka).
                 </p>
             </div>
+
             <div id="certGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6"></div>
-            <div id="certPagination" class="flex justify-center items-center gap-2 mt-12 flex-wrap"></div>
+        </div>
+        <div id="certPagination" class="flex justify-center items-center gap-2 mt-12 flex-wrap">
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- CONTACT -->
     <section id="contact" class="py-20 sm:py-24 relative overflow-hidden border-t border-white/5">
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] sm:w-[520px] h-[420px] sm:h-[520px] bg-primary/10 rounded-full blur-[120px] -z-10">
+        </div>
+
         <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center" data-aos="fade-up">
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-                Let's Work <span class="text-gradient">Together</span>
+                Let's ship <span class="text-gradient">something real.</span>
             </h2>
             <p class="text-slate-400 text-sm sm:text-base mb-9 max-w-xl mx-auto">
-                Have a project in mind? Let's collaborate and create something amazing.
+                Punya ide produk atau sistem internal yang butuh kombinasi backend rapi & UI yang enak dipakai?
+                Kirim konteksnya, kita breakdown bareng.
             </p>
 
             <a href="mailto:septianhts95@gmail.com"
-                class="inline-flex items-center gap-3 px-7 sm:px-8 py-3.5 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold text-sm sm:text-base hover:scale-105 transition-transform">
-                <i class="fas fa-envelope text-sm"></i> Send Email
+                class="inline-flex items-center gap-3 px-7 sm:px-8 py-3.5 rounded-full bg-white text-bgDark font-semibold text-sm sm:text-base hover:scale-105 transition-transform">
+                <i class="fas fa-envelope text-sm"></i> Kirim Email
             </a>
 
             <div class="flex justify-center gap-5 mt-10">
-                <a href="https://www.instagram.com/tianhts_/" target="_blank"
-                    class="text-slate-400 hover:text-primary text-xl transition-colors">
+                <a href="https://www.instagram.com/tianhts_/"
+                    class="text-slate-400 hover:text-white text-xl transition-colors">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/septian-a-hutasoit/" target="_blank"
-                    class="text-slate-400 hover:text-primary text-xl transition-colors">
+                <a href="https://www.linkedin.com/in/septian-a-hutasoit/"
+                    class="text-slate-400 hover:text-white text-xl transition-colors">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="https://github.com/Septianhutasoit" target="_blank"
-                    class="text-slate-400 hover:text-primary text-xl transition-colors">
+                <a href="https://github.com/Septianhutasoit"
+                    class="text-slate-400 hover:text-white text-xl transition-colors">
                     <i class="fab fa-github"></i>
                 </a>
             </div>
 
+            <form action="https://formspree.io/f/FORM_ID_KAMU" method="POST"
+                class="mt-8 max-w-xl mx-auto text-left bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-slate-300 text-xs">Nama</label>
+                        <input name="name" required
+                            class="mt-2 w-full rounded-xl bg-black/30 border border-white/10 px-4 py-3 text-sm text-white outline-none focus:border-primary/60"
+                            placeholder="Nama kamu" />
+                    </div>
+
+                    <div>
+                        <label class="text-slate-300 text-xs">Email</label>
+                        <input type="email" name="email" required
+                            class="mt-2 w-full rounded-xl bg-black/30 border border-white/10 px-4 py-3 text-sm text-white outline-none focus:border-primary/60"
+                            placeholder="nama@email.com" />
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <label class="text-slate-300 text-xs">Pesan</label>
+                    <textarea name="message" rows="4" required
+                        class="mt-2 w-full rounded-xl bg-black/30 border border-white/10 px-4 py-3 text-sm text-white outline-none focus:border-primary/60"
+                        placeholder="Tulis konteks, scope, deadline..."></textarea>
+                </div>
+
+                <button type="submit"
+                    class="mt-5 w-full inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-xl bg-white text-bgDark font-semibold text-sm sm:text-base hover:scale-[1.02] transition-transform">
+                    <i class="fas fa-paper-plane text-sm"></i> Kirim Pesan
+                </button>
+
+                <p class="text-[11px] text-slate-500 mt-3">
+                    Pesan akan masuk ke email saya via Formspree.
+                </p>
+            </form>
+
             <footer class="mt-14 pt-6 border-t border-white/5 text-slate-600 text-[11px] sm:text-xs">
-                &copy; 2025 Septian Hutasoit. Built with passion and modern technology.
+                &copy; 2025 Septian Hutasoit. Built as a fullstack product, not a copy–paste template.
             </footer>
         </div>
     </section>
 
-    <!-- Universal Modal -->
+    <!-- UNIVERSAL MODAL -->
     <div id="universalModal" class="fixed inset-0 z-[60] hidden">
-        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" id="modalBackdrop" onclick="closeModal()"></div>
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity opacity-0" id="modalBackdrop"
+            onclick="closeModal()"></div>
+
         <div class="absolute inset-0 flex items-center justify-center p-4">
-            <div id="modalContent"
-                class="bg-[#0a0a0a] border border-primary/20 w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl transform scale-90 opacity-0 transition-all duration-500 flex flex-col md:flex-row max-h-[90vh]">
+        <div id="modalContent"
+            class="bg-cardSoft border border-white/10 w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl transform scale-90 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] flex flex-col md:flex-row max-h-[90vh]">
+
+                <!-- Image Side -->
                 <div class="w-full md:w-1/2 h-60 md:h-auto bg-black relative flex items-center justify-center">
-                    <img id="mImage" src="" alt="" class="w-full h-full object-contain bg-black/80 rounded-2xl" />
-                    <button id="imgPrev"
+                    <img id="mImage" src="" alt=""
+                        class="w-full h-full object-contain bg-black/80 rounded-2xl shadow-[0_18px_45px_rgba(15,23,42,0.95)]" />
+
+                    <button id="imgPrev" type="button"
                         class="hidden absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md text-white flex items-center justify-center hover:bg-black/80">
                         <i class="fas fa-chevron-left"></i>
                     </button>
-                    <button id="imgNext"
+
+                    <button id="imgNext" type="button"
                         class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md text-white flex items-center justify-center hover:bg-black/80">
                         <i class="fas fa-chevron-right"></i>
                     </button>
+
                     <div id="imgDots" class="hidden absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
+
                     <button onclick="closeModal()"
                         class="absolute top-4 left-4 md:hidden w-9 h-9 bg-black/60 rounded-full text-white backdrop-blur-md text-sm flex items-center justify-center">
                         <i class="fas fa-arrow-left"></i>
                     </button>
                 </div>
+
+                <!-- Content Side -->
                 <div class="w-full md:w-1/2 p-6 sm:p-8 flex flex-col overflow-y-auto">
                     <div class="flex justify-between items-start mb-4">
                         <div>
@@ -646,284 +847,341 @@
                             <i class="fas fa-times text-xl"></i>
                         </button>
                     </div>
+
                     <p id="mDesc" class="text-slate-300 text-sm sm:text-[15px] leading-relaxed mb-6">Description...</p>
+
                     <div id="mTagsGroup" class="mb-6 hidden">
-                        <h4 class="text-white font-semibold mb-2 text-sm">Technologies</h4>
+                        <h4 class="text-white font-semibold mb-2 text-sm">Teknologi / Badge</h4>
                         <div id="mTags" class="flex flex-wrap gap-2"></div>
                     </div>
+
                     <div id="mActions" class="mt-auto flex gap-3 hidden">
-                        <a id="mDemo" href="#" target="_blank"
-                            class="flex-1 py-2.5 bg-primary text-black font-semibold rounded-xl text-center text-sm hover:bg-primary/80 transition-colors">Live
-                            Demo</a>
-                        <a id="mCode" href="#" target="_blank"
-                            class="flex-1 py-2.5 bg-white/5 border border-white/10 text-white font-semibold rounded-xl text-center text-sm hover:bg-white/10 transition-colors">Source
-                            Code</a>
+                        <a id="mDemo" href="#" target="_blank" rel="noopener"
+                            class="flex-1 py-2.5 bg-primary text-bgDark font-semibold rounded-xl text-center text-sm hover:bg-white transition-colors">
+                            Live Demo
+                        </a>
+                        <a id="mCode" href="#" target="_blank" rel="noopener"
+                            class="flex-1 py-2.5 bg-white/5 border border-white/10 text-white font-semibold rounded-xl text-center text-sm hover:bg-white/10 transition-colors">
+                            Source Code
+                        </a>
                     </div>
+
                     <div id="mCertText" class="mt-auto hidden">
-                        <p class="text-[11px] text-slate-500 italic mt-4">Click image to view certificate in full size.
-                        </p>
+                        <p class="text-[11px] text-slate-500 italic mt-4">Klik gambar untuk melihat sertifikat dalam
+                            ukuran lebih
+                            besar.</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
-        // AOS Init
-        AOS.init({ duration: 800, once: true, offset: 80 });
+        AOS.init({ duration: 1100, once: true, offset: 80 });
 
-        // Custom Cursor
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-
-        if (cursorDot && cursorOutline) {
-            window.addEventListener('mousemove', (e) => {
-                cursorDot.style.transform = `translate(${e.clientX - 3}px, ${e.clientY - 3}px)`;
-                cursorOutline.style.transform = `translate(${e.clientX - 17.5}px, ${e.clientY - 17.5}px)`;
-            });
-
-            const interactiveElements = document.querySelectorAll('a, button, .cursor-pointer, [onclick], .glass-card, .skill-item');
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    cursorOutline.style.transform = 'scale(1.6)';
-                    cursorOutline.style.borderColor = '#8b5cf6';
-                });
-                el.addEventListener('mouseleave', () => {
-                    cursorOutline.style.transform = 'scale(1)';
-                    cursorOutline.style.borderColor = 'rgba(59, 130, 246, 0.6)';
-                });
-            });
-        }
-
-        // Particle Canvas Background
-        const canvas = document.getElementById('particle-canvas');
-        let ctx = canvas.getContext('2d');
-        let particles = [];
-
-        function initParticleCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            const particleCount = Math.min(120, Math.floor((canvas.width * canvas.height) / 12000));
-            particles = [];
-            for (let i = 0; i < particleCount; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    radius: Math.random() * 2 + 0.5,
-                    vx: (Math.random() - 0.5) * 0.3,
-                    vy: (Math.random() - 0.5) * 0.3,
-                });
-            }
-            animateParticles();
-        }
-
-        function animateParticles() {
-            if (!ctx) return;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.x += p.vx;
-                p.y += p.vy;
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(59, 130, 246, ${Math.random() * 0.3 + 0.1})`;
-                ctx.fill();
-            });
-            requestAnimationFrame(animateParticles);
-        }
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            initParticleCanvas();
-        });
-        initParticleCanvas();
-
-        // ====== ICON MAP ======
+        // ====== ICON MAP + HELPERS (buat tags/badges di project modal) ======
         const ICONS = {
             laravel: { cls: "fa-brands fa-laravel", color: "text-red-400" },
             php: { cls: "fa-brands fa-php", color: "text-indigo-300" },
             mysql: { cls: "fa-solid fa-database", color: "text-sky-300" },
             postgres: { cls: "fa-solid fa-database", color: "text-sky-300" },
+            mongodb: { cls: "fa-solid fa-leaf", color: "text-green-400" },
+
             react: { cls: "fa-brands fa-react", color: "text-cyan-300" },
             next: { cls: "fa-solid fa-layer-group", color: "text-slate-200" },
+            redux: { cls: "fa-solid fa-circle-nodes", color: "text-violet-300" },
             node: { cls: "fa-brands fa-node-js", color: "text-green-400" },
+            express: { cls: "fa-solid fa-bolt", color: "text-slate-200" },
+
             tailwind: { cls: "fa-solid fa-wand-magic-sparkles", color: "text-sky-300" },
+            bootstrap: { cls: "fa-brands fa-bootstrap", color: "text-violet-300" },
+
+            api: { cls: "fa-solid fa-plug", color: "text-teal-300" },
+            postman: { cls: "fa-solid fa-paper-plane", color: "text-orange-300" },
+
+            github: { cls: "fa-brands fa-github", color: "text-slate-200" },
+            git: { cls: "fa-brands fa-git-alt", color: "text-orange-400" },
+            docker: { cls: "fa-brands fa-docker", color: "text-sky-300" },
+
+            i18n: { cls: "fa-solid fa-language", color: "text-amber-300" },
+            product: { cls: "fa-solid fa-box", color: "text-violet-300" },
+            ecommerce: { cls: "fa-solid fa-cart-shopping", color: "text-amber-200" },
+            web: { cls: "fa-solid fa-globe", color: "text-slate-200" },
+            figma: { cls: "fa-brands fa-figma", color: "text-purple-400" },
+            design: { cls: "fa-solid fa-pen-nib", color: "text-pink-400" },
+            javascript: { cls: "fa-brands fa-js", color: "text-yellow-400" }, // Tambahkan ini
+            mobile: { cls: "fa-solid fa-mobile-screen-button", color: "text-indigo-400" }, // Tambahkan ini
+
+            // Tambahan untuk Project ChatBot AI
             python: { cls: "fa-brands fa-python", color: "text-blue-400" },
             fastapi: { cls: "fa-solid fa-bolt", color: "text-emerald-400" },
-            docker: { cls: "fa-brands fa-docker", color: "text-sky-300" },
-            git: { cls: "fa-brands fa-git-alt", color: "text-orange-400" },
-            figma: { cls: "fa-brands fa-figma", color: "text-purple-400" },
-            javascript: { cls: "fa-brands fa-js", color: "text-yellow-400" },
-            code: { cls: "fa-solid fa-code", color: "text-slate-300" }
+            rag: { cls: "fa-solid fa-database", color: "text-indigo-400" },
+            ai: { cls: "fa-solid fa-brain", color: "text-purple-400" },
+            code: { cls: "fa-solid fa-code", color: "text-slate-300" } 
         };
 
+        function normKey(t) {
+            // hapus spasi & titik, jadi "Next.js" -> "nextjs"
+            return String(t || "").toLowerCase().replace(/\./g, "").replace(/\s+/g, "");
+        }
+
         function getIcon(tag) {
-            const key = String(tag || "").toLowerCase();
+             const key = normKey(tag);
+
             if (key.includes("laravel")) return ICONS.laravel;
             if (key.includes("php")) return ICONS.php;
+            if (key.includes("postgres")) return ICONS.postgres;
             if (key.includes("mysql")) return ICONS.mysql;
             if (key.includes("react")) return ICONS.react;
             if (key.includes("next")) return ICONS.next;
+            if (key.includes("redux")) return ICONS.redux;
             if (key.includes("node")) return ICONS.node;
+            if (key.includes("express")) return ICONS.express;
             if (key.includes("tailwind")) return ICONS.tailwind;
+            if (key.includes("bootstrap")) return ICONS.bootstrap;
+            if (key.includes("postman")) return ICONS.postman;
+
+            // Cek Python & FastAPI
             if (key.includes("python")) return ICONS.python;
             if (key.includes("fastapi")) return ICONS.fastapi;
+
+            // Cek API umum (seperti di gambar anda FastAPI pakai ikon plug)
+            if (key.includes("rest") || key.includes("api")) return ICONS.api;
+
             if (key.includes("docker")) return ICONS.docker;
             if (key.includes("git")) return ICONS.git;
+            if (key.includes("github")) return ICONS.github;
+
+            // Cek AI / RAG / Langchain
+            if (key.includes("rag")) return ICONS.rag;
+            if (key.includes("ai") || key.includes("hugging") || key.includes("langchain") || key.includes("pinecone") || key.includes("cohere")) return ICONS.code;
+
+            if (key.includes("multi") || key.includes("i18n")) return ICONS.i18n;
+            if (key.includes("product")) return ICONS.product;
+            if (key.includes("ecommerce")) return ICONS.ecommerce;
+            if (key.includes("web")) return ICONS.web;
             if (key.includes("figma")) return ICONS.figma;
-            return ICONS.code;
+            if (key.includes("design") || key.includes("ui")) return ICONS.design;
+
+             return ICONS.code;
         }
 
-        // Skills Data - LENGKAP
-        const skillsRow1 = [
-            { name: "JavaScript", icon: "devicon-javascript-plain colored" },
-            { name: "TypeScript", icon: "devicon-typescript-plain colored" },
-            { name: "Python", icon: "devicon-python-plain colored" },
-            { name: "Java", icon: "devicon-java-plain colored" },
-            { name: "PHP", icon: "devicon-php-plain colored" },
-            { name: "FastAPI", icon: "devicon-fastapi-plain colored" },
-            { name: "C", icon: "devicon-c-plain colored" },
-            { name: "Node.js", icon: "devicon-nodejs-plain colored" }
-        ];
 
-        const skillsRow2 = [
-            { name: "React", icon: "devicon-react-original colored" },
-            { name: "Next.js", icon: "devicon-nextjs-plain text-white" },
-            { name: "Tailwind CSS", icon: "devicon-tailwindcss-original colored" },
-            { name: "Bootstrap", icon: "devicon-bootstrap-plain colored" },
-            { name: "HTML5", icon: "devicon-html5-plain colored" },
-            { name: "CSS3", icon: "devicon-css3-plain colored" },
-            { name: "Vite", icon: "devicon-vitejs-plain colored" },
-            { name: "Express.js", icon: "devicon-express-original text-white" }
-        ];
+        // ===== SKILLS (DEVICON) =====
+            const skillsRow1 = [
+                    { name: "JavaScript", icon: "devicon-javascript-plain colored" },
+                    { name: "TypeScript", icon: "devicon-typescript-plain colored" },
+                    { name: "Python", icon: "devicon-python-plain colored" },
+                    { name: "Java", icon: "devicon-java-plain colored" },
+                    { name: "PHP", icon: "devicon-php-plain colored" },
+                    { name: "FastAPI", icon: "devicon-fastapi-plain colored" },
+                    { name: "C", icon: "devicon-c-plain colored" },
+                    { name: "Node.js", icon: "devicon-nodejs-plain colored" }
+                ];
 
-        const skillsRow3 = [
-            { name: "MySQL", icon: "devicon-mysql-plain colored" },
-            { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
-            { name: "Laravel", icon: "devicon-laravel-original colored" },
-            { name: "WordPress", icon: "devicon-wordpress-plain colored" },
-            { name: "Postman", icon: "devicon-postman-plain colored" },
-            { name: "REST API", icon: "fa-solid fa-plug text-teal-300" },
-            { name: "NPM", icon: "devicon-npm-original-wordmark colored" },
-            { name: "Linux", icon: "devicon-linux-plain colored" }
-        ];
+                const skillsRow2 = [
+                    { name: "React", icon: "devicon-react-original colored" },
+                    { name: "Next.js", icon: "devicon-nextjs-plain text-white" },
+                    { name: "Tailwind CSS", icon: "devicon-tailwindcss-original colored" },
+                    { name: "Bootstrap", icon: "devicon-bootstrap-plain colored" },
+                    { name: "HTML", icon: "devicon-html5-plain colored" },
+                    { name: "CSS", icon: "devicon-css3-plain colored" },
+                    { name: "Vite", icon: "devicon-vitejs-plain colored" },
+                    { name: "Express.js", icon: "devicon-express-original text-white" }
+                ];
 
-        const skillsRow4 = [
-            { name: "Docker", icon: "devicon-docker-plain colored" },
-            { name: "Git", icon: "devicon-git-plain colored" },
-            { name: "GitHub", icon: "devicon-github-original" },
-            { name: "Figma", icon: "devicon-figma-plain colored" },
-            { name: "HuggingFace", icon: "fa-solid fa-face-smile text-yellow-400" },
-            { name: "LangChain", icon: "fa-solid fa-link text-cyan-400" },
-            { name: "Pinecone", icon: "fa-solid fa-tree text-emerald-500" },
-            { name: "RAG", icon: "fa-solid fa-layer-group text-indigo-400" }
-        ];
+                const skillsRow3 = [
+                    { name: "MySQL", icon: "devicon-mysql-plain colored" },
+                    { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
+                    { name: "Laravel", icon: "devicon-laravel-original colored" },
+                    { name: "WordPress", icon: "devicon-wordpress-plain colored" },
+                    { name: "Postman", icon: "devicon-postman-plain colored" },
+                    { name: "REST API", icon: "fa-solid fa-plug text-teal-300" },
+                    { name: "NPM", icon: "devicon-npm-original-wordmark colored" },
+                    { name: "Linux", icon: "devicon-linux-plain colored" }
+                ];
 
-        function createSkillItem(s) {
-            return `<div class="skill-item flex flex-col items-center justify-center min-w-[85px]">
-                <div class="w-14 h-14 mb-2 flex items-center justify-center bg-white/5 rounded-xl border border-white/10 transition-all duration-300 hover:bg-primary/10 hover:border-primary/50">
-                    <i class="${s.icon} text-3xl"></i>
-                </div>
-                <span class="text-[10px] font-medium text-slate-400 hover:text-white transition-colors">${s.name}</span>
-            </div>`;
-        }
+                const skillsRow4 = [
+                    { name: "Docker", icon: "devicon-docker-plain colored" },
+                    { name: "Git", icon: "devicon-git-plain colored" },
+                    { name: "GitHub", icon: "devicon-github-original" },
+                    { name: "Figma", icon: "devicon-figma-plain colored" },
+                    { name: "HuggingFace", icon: "fa-solid fa-face-smile text-yellow-400" },
+                    { name: "Langchain", icon: "fa-solid fa-link text-cyan-400" },
+                    { name: "Pinecone", icon: "fa-solid fa-tree text-emerald-500" },
+                    { name: "RAG", icon: "fa-solid fa-layer-group text-indigo-400" }
+                ];
 
-        function renderSkills() {
-            const rows = [
-                { id: "row1", data: skillsRow1 },
-                { id: "row2", data: skillsRow2 },
-                { id: "row3", data: skillsRow3 },
-                { id: "row4", data: skillsRow4 }
-            ];
-            rows.forEach(row => {
-                const container = document.getElementById(row.id);
-                if (container) {
-                    const html = row.data.map(createSkillItem).join("");
-                    container.innerHTML = html + html + html;
+                // Fungsi membuat item kecil (seperti di gambar)
+                function createSkillItem(s) {
+                    return `
+    <div class="flex flex-col items-center justify-center min-w-[90px] group/item">
+        <div class="w-14 h-14 mb-3 flex items-center justify-center bg-white/5 rounded-xl border border-white/10 transition-all duration-300 group-hover/item:bg-white/10 group-hover/item:border-primary/50 group-hover/item:-translate-y-1">
+            <i class="${s.icon} text-3xl"></i>
+        </div>
+        <span class="text-[11px] font-semibold text-slate-400 group-hover/item:text-white transition-colors uppercase tracking-wider">${s.name}</span>
+    </div>
+    `;
                 }
-            });
-        }
 
-        // Projects Data - LENGKAP
+                function renderSkills() {
+                    const rows = [
+                        { id: "row1", data: skillsRow1 },
+                        { id: "row2", data: skillsRow2 },
+                        { id: "row3", data: skillsRow3 },
+                        { id: "row4", data: skillsRow4 }
+                    ];
+
+                    rows.forEach(row => {
+                        const container = document.getElementById(row.id);
+                        if (container) {
+                            // Duplikasi 3x agar pergerakan tidak terputus di layar lebar
+                            const html = row.data.map(createSkillItem).join("");
+                            container.innerHTML = html + html + html;
+                        }
+                    });
+                }
+
+        // ====== DATA PROJECTS ======
         const projectsData = [
             {
                 cardTitle: "Nauli Dental Care",
-                title: "Website Klinik Nauli Dental Care",
-                subtitle: "Healthcare Web App",
+                title: "Pembangunan Website klinik Nauli Dental Care",
+                subtitle: "Web App • Project One",
+                categoryChip: "Klinik Gigi",
                 cover: "assets/img/klinik.png",
-                images: ["assets/img/galery.png", "assets/img/layanan.png", "assets/img/map.png", "assets/img/staff.png", "assets/img/visimisi.png", "assets/img/daftaradmin.png", "assets/img/dokter.png", "assets/img/testimoni.png", "assets/img/grafik.png", "assets/img/testimoni1.png", "assets/img/image.png"],
-                desc: "Website klinik untuk booking janji temu pasien dan informasi layanan. Fokus pada UX dan backend rapi dengan sistem manajemen appointment yang terintegrasi.",
+                images: ["assets/img/galery.png",
+                    "assets/img/layanan.png",
+                    "assets/img/map.png",
+                    "assets/img/staff.png",
+                    "assets/img/visimisi.png",
+                    "assets/img/daftaradmin.png",
+                    "assets/img/dokter.png",
+                    "assets/img/testimoni.png",
+                    "assets/img/grafik.png",
+                    "assets/img/testimoni1.png",
+                    "assets/img/image.png"
+                ],
+                desc: "Website klinik untuk booking atau janji temu antara pasien dan dokter dan juga untuk informasi layanan. Fokus pada UX dan backend rapi.",
                 tags: ["Laravel", "MySQL", "Tailwind", "REST API", "Bootstrap"],
-                badges: ["Healthcare"],
+                badges: ["Clinic"],
                 github: "https://github.com/Septianhutasoit/projectsep",
                 demo: ""
             },
             {
-                cardTitle: "Delshoop E-Commerce",
-                title: "Delshoop E-Commerce Platform",
+                cardTitle: "Website Aplikasi Ecommerce Delshoop",
+                title: "Delshoop E-Commerce",
                 subtitle: "E-Commerce",
+                categoryChip: "E-Commerce",
                 cover: "assets/img/Delshop Home.png",
-                images: ["assets/img/Produk2.png", "assets/img/Tersedia.png", "assets/img/cart.png", "assets/img/Barcode.png", "assets/img/Cod.png", "assets/img/Cod2.png", "assets/img/daftar.png", "assets/img/testimoni.png", "assets/img/chat.png", "assets/img/jopet.png", "assets/img/dashboard.png", "assets/img/produk admin.png"],
-                desc: "Platform e-commerce dengan manajemen produk, cart real-time, dan integrasi payment gateway. Mendukung COD dan berbagai metode pembayaran.",
-                tags: ["Laravel", "MySQL", "Tailwind", "JavaScript"],
-                badges: ["E-Commerce"],
+                images: ["assets/img/Produk2.png",
+                    "assets/img/Tersedia.png",
+                    "assets/img/cart.png",
+                    "assets/img/Barcode.png",
+                    "assets/img/Cod.png",
+                    "assets/img/Cod2.png",
+                    "assets/img/daftar.png",
+                    "assets/img/testimoni.png",
+                    "assets/img/chat.png",
+                    "assets/img/jopet.png",
+                    "assets/img/jopet.png",
+                    "assets/img/dashboard.png",
+                    "assets/img/produk admin.png"
+                ],
+                desc: "Platform e-commerce dengan manajemen produk, cart real-time, dan integrasi payment gateway.",
+                tags: ["Laravel", "Mysql", "Tailwind.css", "REST API", "javascript"],
+                badges: ["Informasi"],
                 github: "https://github.com/Septianhutasoit/Aplikasi",
                 demo: ""
             },
             {
-                cardTitle: "Aksara Batak",
-                title: "Website Edukasi Aksara Batak",
-                subtitle: "Educational Platform",
+                cardTitle: "Website Aksara Batak",
+                title: "Website Aksara Batak",
+                subtitle: "Informasi • Multi Bahasa",
+                categoryChip: "Informasi",
                 cover: "assets/img/Home.png",
-                images: ["assets/img/Home.png", "assets/img/Fitur.png", "assets/img/bahasa.png", "assets/img/Tentang.png", "assets/img/mengenal aksara.png", "assets/img/visualisasi.png", "assets/img/kuis.png", "assets/img/kuis2.png"],
-                desc: "Website edukasi Aksara Batak dengan fitur multi-bahasa, alur belajar interaktif, visualisasi aksara, dan sistem kuis untuk evaluasi pemahaman.",
+                images: [
+                    "assets/img/Home.png",
+                    "assets/img/Fitur.png",
+                    "assets/img/bahasa.png",
+                    "assets/img/Tentang.png",
+                    "assets/img/mengenal aksara.png",
+                    "assets/img/visualisasi.png",
+                    "assets/img/kuis.png",
+                    "assets/img/kuis2.png"
+                ],
+                desc: "Website edukasi Aksara Batak dengan fitur multi-bahasa, alur belajar, visualisasi, dan kuis.",
                 tags: ["Laravel", "PHP", "MySQL"],
-                badges: ["Education"],
+                badges: ["Product", "Multi Bahasa"],
                 github: "https://github.com/bryansiagian/BoanAksara",
                 demo: ""
             },
             {
-                cardTitle: "Evedina Tuktuk",
-                title: "Aplikasi Pemesanan Tiket Kapal",
-                subtitle: "Mobile App Design",
-                cover: "assets/img/2ain.png",
-                images: ["assets/img/Tampilan.png", "assets/img/HomeEvedina.png", "assets/img/awaldetail.png", "assets/img/prototype.png", "assets/img/berand.png", "assets/img/notiff.png", "assets/img/vc.png"],
-                desc: "Aplikasi booking tiket kapal dengan informasi jadwal, rute, dan harga tiket. Desain UI/UX yang modern dan user-friendly.",
-                tags: ["Figma", "UI/UX"],
-                badges: ["Mobile Design"],
+                cardTitle: "Figma Evedina Tuktuk",
+                title: "Pemesanan Tiket Kapal Evedina Tuktuk ",
+                subtitle: "Mobile App",
+                categoryChip: " App Design",
+                cover:  "assets/img/2ain.png", 
+                images: ["assets/img/Tampilan.png",
+                        "assets/img/HomeEvedina.png",
+                        "assets/img/awaldetail.png",
+                        "assets/img/prototype.png",
+                        "assets/img/berand.png",
+                        "assets/img/notiff.png",
+                        "assets/img/vc.png"
+                ],
+                desc: "Aplikasi booking tiket dan juga untuk sumber informasi terhadap user mengenai jadwal kapal, rute, dan harga tiket.",
+                tags: ["Figma", "UI/UX Design"],
+                badges: ["Mobile App"],
                 github: "https://github.com/Septianhutasoit/Evedina-Tuktuk",
                 demo: ""
             },
             {
-                cardTitle: "CodeAlpha E-Commerce",
-                title: "Sistem E-Commerce",
-                subtitle: "Fullstack Web",
+                cardTitle: "Project Ecommerce ",
+                title: "Sistem E-Commerce App web ",
+                subtitle: "Web",
+                categoryChip: " Ecommerce",                 
                 cover: "assets/img/codealpha.png",
-                images: ["assets/img/codealpa2.png", "assets/img/codealpa3.png", "assets/img/codealpa4.png", "assets/img/codealpa5.png", "assets/img/codealpa6.png", "assets/img/codealpa7.png"],
-                desc: "Aplikasi web untuk pembelian produk online dengan fitur lengkap. Dibangun dengan modern stack untuk performa optimal.",
-                tags: ["Node.js", "React", "PostgreSQL", "Tailwind"],
-                badges: ["E-Commerce"],
+                images: ["assets/img/codealpa2.png",
+                    "assets/img/codealpa3.png",
+                    "assets/img/codealpa4.png",
+                    "assets/img/codealpa5.png",
+                    "assets/img/codealpa6.png",
+                    "assets/img/codealpa7.png"
+                ],
+                desc: "Aplikasi Website Untuk Pembelian Aplikasi online",
+                tags: ["Node.js", "React.js", "Postgresql", "bootstrap", "Tailwind.css"],
+                badges: ["Web App"],
                 github: "https://github.com/Septianhutasoit/CodeAlpha",
                 demo: ""
             },
             {
-                cardTitle: "Clinic AI ChatBot",
-                title: "Sistem ChatBot AI Klinik",
-                subtitle: "AI Project",
+                cardTitle: "Project ChatBotAI Clinic ",
+                title: "Membantu Sistem ChatBotAI Klinik ",
+                subtitle: "Web",
+                categoryChip: " AI ChatBot",
                 cover: "assets/img/chatbot.png",
-                images: ["assets/img/kodinganchatbot.png", "assets/img/tanya1.png", "assets/img/lanjut1.png", "assets/img/tanya2.png", "assets/img/informasi.png", "assets/img/pembayaran.png", "assets/img/bayar.png"],
-                desc: "Aplikasi ChatBot AI untuk membantu layanan informasi klinik gigi. Menggunakan teknologi RAG, LangChain, dan FastAPI untuk respons yang akurat.",
-                tags: ["Next.js", "Python", "FastAPI", "RAG", "LangChain", "Pinecone", "CohereAi", "Tailwind"],
-                badges: ["AI", "ChatBot"],
-                github: "",
+                images: ["assets/img/kodinganchatbot.png",
+                    "assets/img/tanya1.png",
+                    "assets/img/lanjut1.png",
+                    "assets/img/tanya2.png",
+                    "assets/img/informasi.png",
+                    "assets/img/pembayaran.png",
+                    "assets/img/bayar.png"
+                ],
+                desc: "Aplikasi Website Untuk ChatBotAI Klinik Gigi",
+                tags: ["Node.js", "Next.js", "Pinecone", "CohereAi", "Tailwind.css", "python", "RAG", "Langchain", "FastAPI", "HuggingFace"],
+                badges: ["AI ChatBot"],
+                //github: "https://github.com/Septianhutasoit/CodeAlpha",
                 demo: ""
             }
+
         ];
 
-        // Certificates Data - LENGKAP (SEMUA SERTIFIKAT)
         const certsData = [
             { title: "Huawei Cloud Computing", subtitle: "Huawei Academy", img: "assets/img/Huawei.png", desc: "Fondasi cloud computing: layanan inti, deployment, dan arsitektur scalable." },
             { title: "Huawei Data Analytics", subtitle: "Huawei Academy", img: "assets/img/Huaweidata.png", desc: "Analisis data end-to-end dari ingestion sampai insight bisnis." },
@@ -931,51 +1189,22 @@
             { title: "Data Science Essentials", subtitle: "Data Track", img: "assets/img/Data%20Science.png", desc: "Statistik, data cleaning, feature engineering, dan insight." },
             { title: "Frontend Development", subtitle: "Web Engineering", img: "assets/img/frontend.png", desc: "UI responsif, UX detail, dan performa web." },
             { title: "Backend Engineering", subtitle: "Web Engineering", img: "assets/img/backend.png", desc: "API design, autentikasi, dan database terstruktur." },
-            { title: "Cloud & Deployment", subtitle: "Infrastructure", img: "assets/img/Cloud.png", desc: "Hosting, environment, dan deployment workflow." },
-            { title: "Applied AI Project", subtitle: "Project Portfolio", img: "assets/img/AI.png", desc: "Implementasi AI nyata dalam proyek portfolio." },
-            { title: "Applied AI Azure", subtitle: "AI Portfolio", img: "assets/img/greatnusa.png", desc: "Implementasi Basic Fundamental AI nyata dengan Microsoft Azure." },
-            { title: "Python With AI", subtitle: "Certificate Portfolio", img: "assets/img/PhytonAi.png", desc: "Implementasi Basic Fundamental AI menggunakan Python." },
-            { title: "Applied Data Science", subtitle: "Data Science Portfolio", img: "assets/img/DSDqLab.png", desc: "Implementasi Basic Fundamental Data Science dengan tools modern." },
-            { title: "Computer Vision (AI)", subtitle: "Kecerdasan Buatan", img: "assets/img/ComputerVision.png", desc: "Cabang Kecerdasan Buatan (AI) yang melatih komputer untuk memahami visual." },
-            { title: "Pertahanan Digital", subtitle: "Digitalent Scholarship 2025", img: "assets/img/digitalent.png", desc: "Pertahanan Digital 101 untuk Individu dan UMKM." },
-            { title: "Python Fundamental", subtitle: "Aguna Course 2025", img: "assets/img/phyton.png", desc: "Dasar Pemrograman menggunakan bahasa pemrograman Python." },
+            { title: "Cloud & Deployment", subtitle: "Infrastructure", img: "assets/img/Cloud.png", desc: "Hosting, environment, dan deployment workflow n8n." },
+            { title: "Applied AI Project", subtitle: "Project Portfolio", img: "assets/img/AI.png", desc: "Implementasi AI nyata, bukan gimmick." },
+            { title: "Applied AI Azure", subtitle: "Ai Portfolio", img: "assets/img/greatnusa.png", desc: "Implementasi Basic Fundamental AI nyata,." },
+            { title: "Phyton With AI", subtitle: "Sertifikat Portfolio", img: "assets/img/PhytonAi.png", desc: "Implementasi Basic Fundamental AI,." },
+            { title: "Applied DataScience", subtitle: "DataScience Portfolio", img: "assets/img/DSDqLab.png", desc: "Implementasi Basic Fundamental AI nyata,." },
+            { title: "Computer Vision(AI)", subtitle: "Kecerdasan Buatan", img: "assets/img/ComputerVision.png", desc: "Cabang Kecerdasan Buatan (AI) yang melatih komputer untuk memahami,." },
+            { title: "Pertahanan Digital", subtitle: "Digitalent Scholarship 2025", img: "assets/img/digitalent.png", desc: "Pertahanan Digital 101 untuk Individu dan UMKM,." },
+            { title: "Phyton Fundamental", subtitle: "Aguna Course 2025", img: "assets/img/phyton.png", desc: "Dasar Pemrograman menggunakan bahasa pemrograman Python." },
             { title: "Dasar Pemrograman Dart", subtitle: "ID-Networkers", img: "assets/img/dart dasr.png", desc: "Memahami konsep dasar pemrograman dart mobile & algoritma." }
         ];
 
-        // Render Projects
-        function renderProjects() {
-            const grid = document.getElementById('projectsGrid');
-            if (!grid) return;
-            grid.innerHTML = projectsData.map((p, i) => {
-                const tagIcons = (p.tags || []).slice(0, 3).map(t => {
-                    const ic = getIcon(t);
-                    return `<span class="inline-flex items-center gap-2 text-[11px] text-slate-300 bg-white/5 px-2.5 py-1 rounded-full border border-white/10">
-                        <i class="${ic.cls} ${ic.color} text-xs"></i>${t}
-                    </span>`;
-                }).join("");
-                return `<div class="portfolio-card group relative rounded-2xl overflow-hidden glass-card cursor-pointer flex flex-col transition-all duration-500" onclick="openModal('project', ${i})" data-aos="fade-up" data-aos-delay="${80 + i * 80}">
-                    <div class="relative h-52 sm:h-60 overflow-hidden">
-                        <img src="${p.cover}" class="portfolio-img w-full h-full object-cover" alt="${p.cardTitle}">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-                        <div class="absolute top-3 right-3 z-20">
-                            <span class="px-3 py-1 bg-black/60 backdrop-blur-md border border-primary/30 rounded-full text-[10px] font-semibold text-primary">${p.subtitle}</span>
-                        </div>
-                    </div>
-                    <div class="p-5 bg-[#0a0a0a] flex flex-col flex-1">
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors line-clamp-1">${p.cardTitle}</h3>
-                        <p class="text-slate-400 text-sm flex-1 line-clamp-2">${p.desc.substring(0, 100)}...</p>
-                        <div class="flex flex-wrap gap-2 mt-4">${tagIcons}</div>
-                    </div>
-                </div>`;
-            }).join("");
-        }
-
-        // Modal Functions
-        let currentImages = [];
-        let currentImgIndex = 0;
+        // ====== MODAL ELEMENTS ======
         const modal = document.getElementById('universalModal');
         const backdrop = document.getElementById('modalBackdrop');
         const content = document.getElementById('modalContent');
+
         const mImage = document.getElementById('mImage');
         const mTitle = document.getElementById('mTitle');
         const mSubtitle = document.getElementById('mSubtitle');
@@ -984,29 +1213,24 @@
         const mTags = document.getElementById('mTags');
         const mActions = document.getElementById('mActions');
         const mCertText = document.getElementById('mCertText');
+
         const imgPrev = document.getElementById('imgPrev');
         const imgNext = document.getElementById('imgNext');
         const imgDots = document.getElementById('imgDots');
+
         const mDemo = document.getElementById('mDemo');
         const mCode = document.getElementById('mCode');
 
-        function setModalImage(i) {
-            if (!currentImages.length) return;
-            currentImgIndex = (i + currentImages.length) % currentImages.length;
-            mImage.src = currentImages[currentImgIndex];
-            if (imgDots) {
-                [...imgDots.children].forEach((dot, idx) => {
-                    dot.className = "w-2 h-2 rounded-full transition-all " + (idx === currentImgIndex ? "bg-primary" : "bg-white/30");
-                });
-            }
-        }
+        let currentImages = [];
+        let currentImgIndex = 0;
 
         function renderDots() {
             if (!imgDots) return;
             imgDots.innerHTML = "";
             currentImages.forEach((_, i) => {
                 const dot = document.createElement("button");
-                dot.className = "w-2 h-2 rounded-full transition-all " + (i === currentImgIndex ? "bg-primary" : "bg-white/30");
+                dot.type = "button";
+                dot.className = "w-2 h-2 rounded-full transition-all " + (i === currentImgIndex ? "bg-white" : "bg-white/30");
                 dot.addEventListener("click", (e) => {
                     e.stopPropagation();
                     setModalImage(i);
@@ -1015,73 +1239,18 @@
             });
         }
 
-        function openModal(type, index) {
-            let data;
-            mTagsGroup.classList.add('hidden');
-            mActions.classList.add('hidden');
-            mCertText.classList.add('hidden');
-            imgPrev?.classList.add('hidden');
-            imgNext?.classList.add('hidden');
-            imgDots?.classList.add('hidden');
+        function setModalImage(i) {
+            if (!currentImages.length) return;
+            currentImgIndex = (i + currentImages.length) % currentImages.length;
+            mImage.src = encodeURI(currentImages[currentImgIndex]);
+            mImage.onerror = () => { mImage.src = "assets/img/placeholder.png"; };
 
-            if (type === 'project') {
-                data = projectsData[index];
-                mTagsGroup.classList.remove('hidden');
-                mTags.innerHTML = '';
-                (data.tags || []).forEach(tag => {
-                    const ic = getIcon(tag);
-                    const span = document.createElement('span');
-                    span.className = "px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-[11px] text-slate-200 flex items-center gap-2";
-                    span.innerHTML = `<i class="${ic.cls} ${ic.color}"></i><span>${tag}</span>`;
-                    mTags.appendChild(span);
+            if (imgDots) {
+                [...imgDots.children].forEach((dot, idx) => {
+                    dot.className = "w-2 h-2 rounded-full transition-all " + (idx === currentImgIndex ? "bg-white" : "bg-white/30");
                 });
-                mActions.classList.remove('hidden');
-                mCode.href = data.github || "#";
-                if (data.demo && data.demo.trim()) {
-                    mDemo.href = data.demo;
-                    mDemo.classList.remove("hidden");
-                } else {
-                    mDemo.classList.add("hidden");
-                }
-                currentImages = (data.images && data.images.length) ? data.images : [data.cover];
-                currentImgIndex = 0;
-                renderDots();
-                setModalImage(0);
-                if (currentImages.length > 1) {
-                    imgPrev?.classList.remove('hidden');
-                    imgNext?.classList.remove('hidden');
-                    imgDots?.classList.remove('hidden');
-                }
-            } else if (type === 'cert') {
-                data = certsData[index];
-                mCertText.classList.remove('hidden');
-                currentImages = [data.img];
-                currentImgIndex = 0;
-                setModalImage(0);
             }
-
-            mTitle.innerText = data.title;
-            mSubtitle.innerText = data.subtitle;
-            mDesc.innerText = data.desc;
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                content.classList.remove('opacity-0', 'scale-90');
-                content.classList.add('opacity-100', 'scale-100');
-            }, 10);
-            document.body.style.overflow = 'hidden';
         }
-
-        window.openModal = openModal;
-
-        function closeModal() {
-            content.classList.add('opacity-0', 'scale-90');
-            content.classList.remove('scale-100');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 250);
-            document.body.style.overflow = 'auto';
-        }
-        window.closeModal = closeModal;
 
         imgPrev?.addEventListener("click", (e) => {
             e.stopPropagation();
@@ -1092,88 +1261,267 @@
             setModalImage(currentImgIndex + 1);
         });
 
-        // Certificates Pagination
-        let currentCertPage = 1;
-        const certsPerPage = 8;
+        function openModal(type, index) {
+            let data;
 
+            // reset states
+            mTagsGroup.classList.add('hidden');
+            mActions.classList.add('hidden');
+            mCertText.classList.add('hidden');
+
+            imgPrev?.classList.add('hidden');
+            imgNext?.classList.add('hidden');
+            imgDots?.classList.add('hidden');
+
+            if (type === 'project') {
+                data = projectsData[index];
+
+                // tags + badges with icons
+                mTagsGroup.classList.remove('hidden');
+                mTags.innerHTML = '';
+
+                (data.tags || []).forEach(tag => {
+                    const ic = getIcon(tag);
+                    const span = document.createElement('span');
+                    span.className = "px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-[11px] text-slate-200 flex items-center gap-2";
+                    span.innerHTML = `<i class="${ic.cls} ${ic.color}"></i><span>${tag}</span>`;
+                    mTags.appendChild(span);
+                });
+
+                (data.badges || []).forEach(b => {
+                    const ic = getIcon(b);
+                    const span = document.createElement('span');
+                    span.className = "px-3 py-1 bg-black/30 border border-white/10 rounded-lg text-[11px] text-slate-200 flex items-center gap-2";
+                    span.innerHTML = `<i class="${ic.cls} ${ic.color}"></i><span>${b}</span>`;
+                    mTags.appendChild(span);
+                });
+
+                // actions
+                mActions.classList.remove('hidden');
+                mCode.href = data.github || "https://github.com/Septianhutasoit";
+
+                // demo optional
+                if (data.demo && data.demo.trim() !== "") {
+                    mDemo.href = data.demo;
+                    mDemo.classList.remove("hidden");
+                } else {
+                    mDemo.href = "#";
+                    mDemo.classList.add("hidden");
+                }
+
+                // images
+                currentImages = (data.images && data.images.length) ? data.images : [data.cover];
+                currentImgIndex = 0;
+                renderDots();
+                setModalImage(0);
+
+                if (currentImages.length > 1) {
+                    imgPrev?.classList.remove('hidden');
+                    imgNext?.classList.remove('hidden');
+                    imgDots?.classList.remove('hidden');
+                }
+
+            } else if (type === 'cert') {
+                data = certsData[index];
+                mCertText.classList.remove('hidden');
+
+                currentImages = [data.img];
+                currentImgIndex = 0;
+                renderDots();
+                setModalImage(0);
+            }
+
+            mTitle.innerText = data.title;
+            mSubtitle.innerText = data.subtitle;
+            mDesc.innerText = data.desc;
+
+            modal.classList.remove('hidden');
+           setTimeout(() => {
+                backdrop.classList.replace('opacity-0', 'opacity-100');
+                content.classList.remove('opacity-0', 'scale-90');
+                content.classList.add('opacity-100', 'scale-100');
+            }, 10);
+
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            backdrop.classList.add('opacity-0');
+            content.classList.remove('scale-100');
+            content.classList.add('opacity-0', 'scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 250);
+            document.body.style.overflow = 'auto';
+        }
+
+        // ====== RENDER PROJECTS (DINAMIS) ======
+        function renderProjects() {
+            const grid = document.getElementById('projectsGrid');
+            if (!grid) return;
+
+            grid.innerHTML = projectsData.map((p, i) => {
+                const chip = p.categoryChip || "Project";
+                const topBadges = (p.badges || []).slice(0, 3).map(b => {
+                    const ic = getIcon(b);
+                    return `<span class="inline-flex items-center gap-2 px-3 py-1 bg-black/60 backdrop-blur-md border border-white/15 rounded-full text-[11px] font-semibold text-slate-100">
+              <i class="${ic.cls} ${ic.color}"></i>${b}
+            </span>`;
+                }).join("");
+
+                const tagIcons = (p.tags || []).slice(0, 3).map(t => {
+                    const ic = getIcon(t);
+                    return `<span class="inline-flex items-center gap-2 text-[12px] text-slate-300 bg-white/5 px-3 py-1 rounded-full border border-white/10">
+              <i class="${ic.cls} ${ic.color}"></i>${t}
+            </span>`;
+                }).join("");
+
+                return `
+          <div class="group relative rounded-2xl overflow-hidden glass-card cursor-pointer flex flex-col
+              hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)]
+              active:scale-95 active:brightness-90
+              transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]"
+      onclick="openModal('project', ${i})" data-aos="fade-up" data-aos-delay="${80 + i * 80}">
+            <div class="relative h-52 sm:h-60 portfolio-img-wrapper portfolio-img-hover">
+              <img src="${p.cover}" class="portfolio-img" alt="${p.cardTitle || p.title}">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+
+              <div class="absolute top-3 right-3 z-20 flex gap-2">
+                <span class="px-3 py-1 bg-black/60 backdrop-blur-md border border-white/15 rounded-full text-[11px] font-semibold text-slate-100">
+                  ${chip}
+                </span>
+              </div>
+
+              <div class="absolute top-3 left-3 z-20 flex flex-wrap gap-2">
+                ${topBadges}
+              </div>
+
+              <div class="absolute bottom-3 left-3 z-20">
+                <p class="text-[11px] text-slate-300 uppercase tracking-[0.16em]">${p.subtitle}</p>
+              </div>
+            </div>
+
+            <div class="p-5 sm:p-6 bg-cardSoft flex flex-col flex-1">
+              <h3 class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                ${p.cardTitle || p.title}
+              </h3>
+              <p class="text-slate-400 text-sm flex-1">${p.desc}</p>
+
+              <div class="flex flex-wrap gap-2 mt-4">
+                ${tagIcons}
+              </div>
+            </div>
+          </div>
+        `;
+            }).join("");
+        }
+
+       // --- LOGIKA PAGINATION SERTIFIKAT ---
+        let currentCertPage = 1;
+        const certsPerPage = 8; // Tampilkan 4 sertifikat per halaman (bisa diubah sesuai keinginan)
+
+        // ====== RENDER CERTS (DENGAN PAGINATION) ======
         function renderCertificates() {
             const grid = document.getElementById('certGrid');
+            const paginationContainer = document.getElementById('certPagination');
             if (!grid) return;
+
+            // Hitung data yang akan ditampilkan
             const totalPages = Math.ceil(certsData.length / certsPerPage);
             const startIndex = (currentCertPage - 1) * certsPerPage;
-            const paginatedCerts = certsData.slice(startIndex, startIndex + certsPerPage);
+            const endIndex = startIndex + certsPerPage;
+            const paginatedCerts = certsData.slice(startIndex, endIndex);
+
+            // Render Kartu Sertifikat
             grid.innerHTML = paginatedCerts.map((c, i) => `
-                <div class="cert-card group cursor-pointer" onclick="openModal('cert', ${startIndex + i})" data-aos="zoom-in" data-aos-delay="${60 + i * 30}">
-                    <div class="bg-[#0a0a0a] border border-white/10 rounded-2xl p-4 transition-all duration-500 hover:border-primary/60 hover:-translate-y-2">
-                        <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4">
+                <div class="group cursor-pointer" onclick="openModal('cert', ${startIndex + i})" data-aos="zoom-in" data-aos-delay="${60 + i * 30}">
+                    <div class="bg-cardSoft border border-white/10 rounded-2xl p-4 transition-all duration-500 hover:border-primary/60 hover:bg-white/5 hover:-translate-y-2 hover:scale-[1.01] flex flex-col h-full">
+                        <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 portfolio-img-wrapper">
                             <div class="absolute inset-0 bg-primary/30 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
-                                <i class="fas fa-expand text-white text-2xl"></i>
+                                <i class="fas fa-expand text-white text-2xl drop-shadow-md"></i>
                             </div>
-                            <img src="${c.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="${c.title}" onerror="this.src='https://placehold.co/400x300/1e1e1e/3b82f6?text=Certificate'">
+                            <img src="${c.img}" class="w-full h-full object-cover transition-transform duration-[900ms] group-hover:scale-110 group-hover:rotate-[1deg]" alt="${c.title}">
                         </div>
-                        <h4 class="text-white font-semibold text-sm sm:text-base group-hover:text-primary transition-colors line-clamp-1">${c.title}</h4>
-                        <p class="text-slate-500 text-xs mt-1">${c.subtitle}</p>
+                        <div class="flex flex-col flex-1">
+                            <h4 class="text-white font-semibold text-sm sm:text-base leading-tight group-hover:text-primary transition-colors">${c.title}</h4>
+                            <p class="text-slate-500 text-xs sm:text-[13px] mt-1">${c.subtitle}</p>
+                        </div>
                     </div>
                 </div>
             `).join('');
+
+            // Panggil fungsi render tombol navigasi
             renderCertPagination(totalPages);
+
+            // Refresh AOS agar animasi muncul kembali saat pindah halaman
             if (window.AOS) AOS.refresh();
         }
 
+        // --- FUNGSI RENDER TOMBOL PAGINATION ---
         function renderCertPagination(totalPages) {
             const container = document.getElementById('certPagination');
             if (!container) return;
-            let html = `<button onclick="changeCertPage(${currentCertPage - 1})" ${currentCertPage === 1 ? 'disabled' : ''} class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-medium hover:bg-primary hover:text-black transition-all disabled:opacity-30">« Prev</button>`;
+
+            let html = '';
+
+            // Tombol Previous
+            html += `
+                <button onclick="changeCertPage(${currentCertPage - 1})" ${currentCertPage === 1 ? 'disabled' : ''} 
+                    class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs sm:text-sm font-medium hover:bg-primary hover:text-bgDark transition-all disabled:opacity-20 disabled:cursor-not-allowed">
+                    « Prev
+                </button>
+            `;
+
+            // Tombol Angka
             for (let i = 1; i <= totalPages; i++) {
-                html += `<button onclick="changeCertPage(${i})" class="w-9 h-9 rounded-xl text-xs font-bold transition-all ${i === currentCertPage ? 'bg-primary text-black' : 'bg-white/5 border border-white/10 text-slate-400 hover:bg-white/10'}">${i}</button>`;
+                const isActive = i === currentCertPage;
+                html += `
+                    <button onclick="changeCertPage(${i})" 
+                        class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl text-xs sm:text-sm font-bold transition-all ${isActive
+                        ? 'bg-primary text-bgDark shadow-[0_0_20px_rgba(56,189,248,0.4)]'
+                        : 'bg-white/5 border border-white/10 text-slate-400 hover:bg-white/10 hover:text-white'}">
+                        ${i}
+                    </button>
+                `;
             }
-            html += `<button onclick="changeCertPage(${currentCertPage + 1})" ${currentCertPage === totalPages ? 'disabled' : ''} class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-medium hover:bg-primary hover:text-black transition-all disabled:opacity-30">Next »</button>`;
+
+            // Tombol Next
+            html += `
+                <button onclick="changeCertPage(${currentCertPage + 1})" ${currentCertPage === totalPages ? 'disabled' : ''} 
+                    class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs sm:text-sm font-medium hover:bg-primary hover:text-bgDark transition-all disabled:opacity-20 disabled:cursor-not-allowed">
+                    Next »
+                </button>
+            `;
+
             container.innerHTML = html;
         }
 
+        // --- FUNGSI PINDAH HALAMAN ---
         function changeCertPage(page) {
             const totalPages = Math.ceil(certsData.length / certsPerPage);
             if (page < 1 || page > totalPages) return;
+
             currentCertPage = page;
             renderCertificates();
+
+            // Scroll otomatis kembali ke section sertifikat agar user tidak tersesat
             document.getElementById('certificates').scrollIntoView({ behavior: 'smooth' });
         }
-        window.changeCertPage = changeCertPage;
 
-        // Typing Effect for Role
-        const roleElement = document.getElementById('changing-role');
-        const roleOptions = ['Software Engineer', 'Fullstack Developer', 'AI Enthusiast', 'Backend Developer', 'UI/UX Designer'];
-        let roleIndex = 0, roleCharIndex = 0, isRoleDeleting = false;
-
-        function roleTypeEffect() {
-            if (!roleElement) return;
-            const currentRole = roleOptions[roleIndex];
-            if (isRoleDeleting) {
-                roleElement.textContent = currentRole.substring(0, roleCharIndex - 1);
-                roleCharIndex--;
-            } else {
-                roleElement.textContent = currentRole.substring(0, roleCharIndex + 1);
-                roleCharIndex++;
-            }
-            let speed = isRoleDeleting ? 40 : 70;
-            if (!isRoleDeleting && roleCharIndex === currentRole.length) {
-                speed = 2000;
-                isRoleDeleting = true;
-            } else if (isRoleDeleting && roleCharIndex === 0) {
-                isRoleDeleting = false;
-                roleIndex = (roleIndex + 1) % roleOptions.length;
-                speed = 500;
-            }
-            setTimeout(roleTypeEffect, speed);
-        }
-
-        // DOM Ready
         document.addEventListener('DOMContentLoaded', () => {
             renderSkills();
             renderProjects();
-            renderCertificates();
-            if (roleElement) roleElement.textContent = '';
-            setTimeout(roleTypeEffect, 500);
+            renderCertificates(); // Memanggil versi baru dengan pagination
+
+            // SPOTIFY toggle
+            const spotifyToggle = document.getElementById('spotifyToggle');
+            const spotifyWrap = document.getElementById('spotifyWrap');
+            if (spotifyToggle && spotifyWrap) {
+                spotifyToggle.addEventListener('click', () => {
+                    spotifyWrap.classList.toggle('hidden');
+                    spotifyToggle.textContent = spotifyWrap.classList.contains('hidden') ? 'Buka' : 'Tutup';
+                });
+            }
 
             // Mobile Menu
             const mobileMenu = document.getElementById('mobileMenu');
@@ -1182,24 +1530,203 @@
             if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
             window.toggleMenu = toggleMenu;
 
-            // Navbar scroll effect
+            // Navbar blur on scroll
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 20) navbar.classList.add('glass-nav');
                 else navbar.classList.remove('glass-nav');
             });
 
-            // Theme Toggle
-            const themeToggle = document.getElementById('themeToggle');
-            themeToggle.addEventListener('click', () => {
-                document.documentElement.classList.toggle('dark');
-                localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-            });
-
-            // Close modal with ESC
+            // Close modal by ESC
             document.addEventListener("keydown", (e) => {
                 if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
             });
+        });
+        // --- LOGIKA LIGHT/DARK MODE ---
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+
+            // --- LOGIKA PLEXUS BACKGROUND ---
+            const canvas = document.getElementById('hero-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let mouse = { x: null, y: null, radius: 150 };
+
+            function initCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                particles = [];
+                let particleCount = (canvas.width * canvas.height) / 9000;
+                for (let i = 0; i < particleCount; i++) { particles.push(new Particle()); }
+            }
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 1;
+                    this.speedX = Math.random() * 1 - 0.5;
+                    this.speedY = Math.random() * 1 - 0.5;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+                    if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+                }
+                draw() {
+                    ctx.fillStyle = document.documentElement.classList.contains('dark') ? 'rgba(56,189,248,0.5)' : 'rgba(30,41,59,0.2)';
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            function connect() {
+                let opacityValue = 1;
+                for (let a = 0; a < particles.length; a++) {
+                    for (let b = a; b < particles.length; b++) {
+                        let dx = particles[a].x - particles[b].x;
+                        let dy = particles[a].y - particles[b].y;
+                        let distance = Math.sqrt(dx * dx + dy * dy);
+                        if (distance < 150) {
+                            opacityValue = 1 - (distance / 150);
+                            ctx.strokeStyle = document.documentElement.classList.contains('dark') ? `rgba(56,189,248,${opacityValue})` : `rgba(30,41,59,${opacityValue * 0.2})`;
+                            ctx.lineWidth = 0.8;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[a].x, particles[a].y);
+                            ctx.lineTo(particles[b].x, particles[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => { p.update(); p.draw(); });
+                connect();
+                requestAnimationFrame(animate);
+            }
+
+            // Efek Burst saat Klik
+            window.addEventListener('click', (e) => {
+                for (let i = 0; i < 8; i++) {
+                    particles.push(new Particle());
+                    particles[particles.length - 1].x = e.clientX;
+                    particles[particles.length - 1].y = e.clientY;
+                }
+            });
+
+            window.addEventListener('resize', initCanvas);
+            initCanvas();
+            animate();
+    // ====== ANIMASI TEKS UTAMA (TYPING EFFECT SLOW MOTION) ======
+    const dynamicText = document.getElementById('dynamic-text');
+    const textOptions = [
+        'Product Experiences.',
+        'AI Solutions.',
+        'Web Applications.',
+        'Mobile Apps.',
+        'UI/UX Design.',
+        'Cloud Architecture.',
+        'Fullstack Projects.',
+        'Digital Products.'
+    ];
+
+
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            if (!dynamicText) return;
+
+            const currentText = textOptions[textIndex];
+
+            if (isDeleting) {
+                // Menghapus teks
+                dynamicText.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                // Mengetik teks
+                dynamicText.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            // Kecepatan mengetik
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            // Jika selesai mengetik
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000; // Jeda 2 detik
+                isDeleting = true;
+            }
+            // Jika selesai menghapus
+            else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % textOptions.length;
+                typeSpeed = 500; // Jeda 0.5 detik
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+
+        // ====== ANIMASI UNTUK ROLE ======
+        const roleElement = document.getElementById('changing-role');
+        const roleOptions = [
+            'Software Engineer',
+            'Fullstack Developer',
+            'AI Enthusiast',
+            'Backend Developer',
+            'UI/UX Designer',
+        ];
+
+        let roleIndex = 0;
+        let roleCharIndex = 0;
+        let isRoleDeleting = false;
+
+        function roleTypeEffect() {
+            if (!roleElement) return;
+
+            const currentRole = roleOptions[roleIndex];
+
+            if (isRoleDeleting) {
+                roleElement.textContent = currentRole.substring(0, roleCharIndex - 1);
+                roleCharIndex--;
+            } else {
+                roleElement.textContent = currentRole.substring(0, roleCharIndex + 1);
+                roleCharIndex++;
+            }
+
+            let typeSpeed = isRoleDeleting ? 40 : 70;
+
+            if (!isRoleDeleting && roleCharIndex === currentRole.length) {
+                typeSpeed = 2000;
+                isRoleDeleting = true;
+            }
+            else if (isRoleDeleting && roleCharIndex === 0) {
+                isRoleDeleting = false;
+                roleIndex = (roleIndex + 1) % roleOptions.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(roleTypeEffect, typeSpeed);
+        }
+
+        // Mulai animasi
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set teks awal
+            if (dynamicText) dynamicText.textContent = '';
+            if (roleElement) roleElement.textContent = '';
+
+            setTimeout(() => {
+                roleTypeEffect();
+            }, 500);
         });
     </script>
 </body>
