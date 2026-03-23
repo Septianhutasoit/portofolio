@@ -26,20 +26,6 @@
 
 A modern, interactive portfolio website showcasing my journey as a Software Engineer, Fullstack Developer, and AI Enthusiast. Built with cutting-edge web technologies and featuring stunning visual effects, smooth animations, and a responsive design that works seamlessly across all devices.
 
-### ✨ Key Features
-
-- **🎨 Modern UI/UX Design** - Clean, minimalistic design with dark theme
-- **✨ Interactive Cursor Effects** - Custom glowing cursor with particle trails
-- **🖼️ Profile Glow Effects** - Dynamic green glow animation around profile picture
-- **🎭 Smooth Animations** - AOS (Animate on Scroll) library integration
-- **📱 Fully Responsive** - Optimized for desktop, tablet, and mobile devices
-- **💼 Dynamic Portfolio** - Showcase projects with modal gallery view
-- **📜 Certificate Gallery** - Paginated certificate display
-- **🎵 Spotify Integration** - Embedded music player widget
-- **🌓 Dark/Light Mode** - Theme toggle functionality
-- **📧 Contact Form** - Integrated with Formspree for email submissions
-
----
 
 ## 🛠️ Tech Stack
 
