@@ -1,7 +1,7 @@
 <div align="center">
   <img src="assets/img/profile.jpg" alt="Septian Hutasoit" width="150" style="border-radius: 50%; border: 3px solid #22c55e; box-shadow: 0 0 30px rgba(34, 197, 94, 0.5);">
   
-  <h1 align="center">✨ Septian Hutasoit | Portfolio 2025 ✨</h1>
+ 
   
   <p align="center">
     <strong>Software Engineer | Fullstack Developer | AI Enthusiast</strong>
