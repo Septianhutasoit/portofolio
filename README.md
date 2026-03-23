@@ -57,25 +57,6 @@ A modern, interactive portfolio website showcasing my journey as a Software Engi
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=Septianhutasoit&theme=radical&hide_border=true&background=000000&stroke=22c55e&ring=22c55e&fire=22c55e&currStreakLabel=22c55e" alt="GitHub Streak" width="48%" />
 </div>
 
----
-
-
-
-<div align="center">
-  
-| Certification | Issuer |
-|---------------|--------|
-| Cloud Computing | Huawei Academy |
-| Data Analytics | Huawei Academy |
-| AI Fundamentals | AI Track |
-| Data Science Essentials | Data Track |
-| Frontend Development | Web Engineering |
-| Backend Engineering | Web Engineering |
-| Applied AI Project | Project Portfolio |
-
-</div>
-
----
 
 ## 🎨 Visual Effects
 
