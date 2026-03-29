@@ -44,8 +44,8 @@ const projectsData = [
         title: "Nauli Dental Care Website",
         subtitle: "Clinic Management System",
         cover: "assets/img/klinik.png",
-        images: ["assets/img/galery.png", "assets/img/layanan.png"],
-        desc: "Clinic website for booking appointments between patients and doctors, also for service information.",
+        images: ["assets/img/galery.png", "assets/img/layanan.png", "assets/img/map.png", "assets/img/staff.png"],
+        desc: "Clinic website for booking appointments between patients and doctors, also for service information. Focus on UX and clean backend.",
         tags: ["Laravel", "MySQL", "Tailwind", "Bootstrap"],
         github: "https://github.com/Septianhutasoit/projectsep",
         demo: ""
@@ -55,7 +55,7 @@ const projectsData = [
         title: "Delshoop E-Commerce Platform",
         subtitle: "Online Store",
         cover: "assets/img/Delshop Home.png",
-        images: ["assets/img/Produk2.png", "assets/img/cart.png"],
+        images: ["assets/img/Produk2.png", "assets/img/Tersedia.png", "assets/img/cart.png", "assets/img/Barcode.png"],
         desc: "E-commerce platform with product management, real-time cart, and payment gateway integration.",
         tags: ["Laravel", "MySQL", "Tailwind", "JavaScript"],
         github: "https://github.com/Septianhutasoit/Aplikasi",
@@ -66,8 +66,8 @@ const projectsData = [
         title: "Aksara Batak Learning Website",
         subtitle: "Educational Platform",
         cover: "assets/img/Home.png",
-        images: ["assets/img/Fitur.png", "assets/img/kuis.png"],
-        desc: "Educational website for learning Batak script with multi-language features and quizzes.",
+        images: ["assets/img/Fitur.png", "assets/img/bahasa.png", "assets/img/Tentang.png", "assets/img/kuis.png"],
+        desc: "Educational website for learning Batak script with multi-language features, learning flow, visualization, and quizzes.",
         tags: ["Laravel", "PHP", "MySQL"],
         github: "https://github.com/bryansiagian/BoanAksara",
         demo: ""
@@ -77,7 +77,7 @@ const projectsData = [
         title: "Evedina Tuktuk Ferry Booking",
         subtitle: "Mobile App Design",
         cover: "assets/img/2ain.png",
-        images: ["assets/img/Tampilan.png", "assets/img/HomeEvedina.png"],
+        images: ["assets/img/Tampilan.png", "assets/img/HomeEvedina.png", "assets/img/awaldetail.png", "assets/img/prototype.png"],
         desc: "Ticket booking app for ferry schedules, routes, and pricing information.",
         tags: ["Figma", "UI/UX"],
         github: "https://github.com/Septianhutasoit/Evedina-Tuktuk",
@@ -88,7 +88,7 @@ const projectsData = [
         title: "E-Commerce Web App",
         subtitle: "Fullstack Application",
         cover: "assets/img/codealpha.png",
-        images: ["assets/img/codealpa2.png", "assets/img/codealpa3.png"],
+        images: ["assets/img/codealpa2.png", "assets/img/codealpa3.png", "assets/img/codealpa4.png", "assets/img/codealpa5.png"],
         desc: "Online shopping web application with complete features.",
         tags: ["Node.js", "React", "PostgreSQL", "Tailwind"],
         github: "https://github.com/Septianhutasoit/CodeAlpha",
@@ -99,9 +99,9 @@ const projectsData = [
         title: "AI Chatbot for Clinic",
         subtitle: "AI Integration",
         cover: "assets/img/chatbot.png",
-        images: ["assets/img/kodinganchatbot.png", "assets/img/tanya1.png"],
-        desc: "AI-powered chatbot for dental clinic assistance.",
-        tags: ["Python", "FastAPI", "RAG", "Langchain"],
+        images: ["assets/img/kodinganchatbot.png", "assets/img/tanya1.png", "assets/img/lanjut1.png", "assets/img/informasi.png"],
+        desc: "AI-powered chatbot for dental clinic assistance using RAG and Langchain.",
+        tags: ["Python", "FastAPI", "RAG", "Langchain", "Next.js"],
         github: "",
         demo: ""
     }
@@ -111,7 +111,11 @@ const certsData = [
     { title: "Huawei Cloud Computing", subtitle: "Huawei Academy", img: "assets/img/Huawei.png", desc: "Cloud computing foundations: core services, deployment, and scalable architecture." },
     { title: "Huawei Data Analytics", subtitle: "Huawei Academy", img: "assets/img/Huaweidata.png", desc: "End-to-end data analytics from ingestion to business insights." },
     { title: "AI Fundamentals", subtitle: "AI Track", img: "assets/img/Dasar%20AI.png", desc: "Basic AI concepts, model evaluation, and proper thinking framework." },
-    { title: "Data Science Essentials", subtitle: "Data Track", img: "assets/img/Data%20Science.png", desc: "Statistics, data cleaning, feature engineering, and insights." }
+    { title: "Data Science Essentials", subtitle: "Data Track", img: "assets/img/Data%20Science.png", desc: "Statistics, data cleaning, feature engineering, and insights." },
+    { title: "Frontend Development", subtitle: "Web Engineering", img: "assets/img/frontend.png", desc: "Responsive UI, UX details, and web performance." },
+    { title: "Backend Engineering", subtitle: "Web Engineering", img: "assets/img/backend.png", desc: "API design, authentication, and structured databases." },
+    { title: "Cloud & Deployment", subtitle: "Infrastructure", img: "assets/img/Cloud.png", desc: "Hosting, environment, and deployment workflow." },
+    { title: "Applied AI Project", subtitle: "Project Portfolio", img: "assets/img/AI.png", desc: "Real-world AI implementation, not just gimmicks." }
 ];
 
 // ==================== ICONS ====================
@@ -127,21 +131,28 @@ const ICONS = {
     javascript: { cls: "fa-brands fa-js", color: "text-yellow-400" },
     python: { cls: "fa-brands fa-python", color: "text-blue-400" },
     fastapi: { cls: "fa-solid fa-bolt", color: "text-emerald-400" },
-    figma: { cls: "fa-brands fa-figma", color: "text-purple-400" }
+    figma: { cls: "fa-brands fa-figma", color: "text-purple-400" },
+    nextjs: { cls: "fa-brands fa-react", color: "text-slate-200" },
+    langchain: { cls: "fa-solid fa-link", color: "text-cyan-400" },
+    rag: { cls: "fa-solid fa-layer-group", color: "text-indigo-400" }
 };
 
 function getIcon(tag) {
     const key = tag.toLowerCase().replace(/\s+/g, "");
     if (key.includes("laravel")) return ICONS.laravel;
     if (key.includes("mysql")) return ICONS.mysql;
+    if (key.includes("postgres")) return ICONS.postgresql;
     if (key.includes("react")) return ICONS.react;
     if (key.includes("node")) return ICONS.nodejs;
     if (key.includes("tailwind")) return ICONS.tailwind;
     if (key.includes("bootstrap")) return ICONS.bootstrap;
-    if (key.includes("javascript")) return ICONS.javascript;
+    if (key.includes("javascript") || key.includes("js")) return ICONS.javascript;
     if (key.includes("python")) return ICONS.python;
     if (key.includes("fastapi")) return ICONS.fastapi;
     if (key.includes("figma")) return ICONS.figma;
+    if (key.includes("next")) return ICONS.nextjs;
+    if (key.includes("langchain")) return ICONS.langchain;
+    if (key.includes("rag")) return ICONS.rag;
     return { cls: "fa-solid fa-code", color: "text-slate-300" };
 }
 
@@ -159,12 +170,13 @@ function renderSkills() {
         if (container) {
             const html = row.data.map(s => `
                 <div class="flex flex-col items-center justify-center min-w-[90px] group">
-                    <div class="w-14 h-14 mb-3 flex items-center justify-center bg-white/5 rounded-xl border border-white/10 transition-all group-hover:bg-white/10 group-hover:border-primary/50 group-hover:-translate-y-1">
+                    <div class="w-14 h-14 mb-3 flex items-center justify-center bg-white/5 rounded-xl border border-white/10 transition-all duration-300 group-hover:bg-white/10 group-hover:border-primary/50 group-hover:-translate-y-1">
                         <i class="${s.icon} text-3xl"></i>
                     </div>
-                    <span class="text-[11px] font-semibold text-slate-400 group-hover:text-white transition-colors uppercase tracking-wider">${s.name}</span>
+                    <span class="text-[11px] font-semibold text-slate-400 group-hover:text-white transition-colors duration-300 uppercase tracking-wider">${s.name}</span>
                 </div>
             `).join("");
+            // Duplicate for seamless scroll
             container.innerHTML = html + html + html;
         }
     });
@@ -178,12 +190,12 @@ function renderProjects() {
         const tagIcons = (p.tags || []).slice(0, 3).map(t => {
             const ic = getIcon(t);
             return `<span class="inline-flex items-center gap-2 text-[11px] text-slate-300 bg-white/5 px-3 py-1 rounded-full border border-white/10">
-                <i class="${ic.cls} ${ic.color} text-xs"></i>${t}
+                <i class="${ic.cls} ${ic.color} text-xs"></i><span>${t}</span>
             </span>`;
         }).join("");
 
         return `
-            <div class="project-card group" onclick="openModal('project', ${i})" data-aos="fade-up" data-aos-delay="${i * 80}">
+            <div class="group bg-black/90 border border-primary/15 rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10" onclick="openModal('project', ${i})" data-aos="fade-up" data-aos-delay="${i * 80}">
                 <div class="relative h-48 overflow-hidden">
                     <img src="${p.cover}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="${p.cardTitle}">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
@@ -213,9 +225,9 @@ function renderCertificates() {
     const paginatedCerts = certsData.slice(startIndex, startIndex + certsPerPage);
 
     grid.innerHTML = paginatedCerts.map((c, i) => `
-        <div class="cert-card group" onclick="openModal('cert', ${startIndex + i})" data-aos="zoom-in" data-aos-delay="${i * 50}">
+        <div class="group bg-black/90 border border-primary/15 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-primary/50" onclick="openModal('cert', ${startIndex + i})" data-aos="zoom-in" data-aos-delay="${i * 50}">
             <div class="relative aspect-[4/3] overflow-hidden">
-                <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10">
+                <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
                     <i class="fas fa-expand text-white text-2xl"></i>
                 </div>
                 <img src="${c.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="${c.title}">
@@ -235,14 +247,18 @@ function renderPagination(totalPages) {
     if (!container) return;
 
     let html = `
-        <button onclick="changeCertPage(${currentCertPage - 1})" class="pagination-btn" ${currentCertPage === 1 ? 'disabled' : ''}>« Prev</button>
+        <button onclick="changeCertPage(${currentCertPage - 1})" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-medium hover:bg-primary hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed" ${currentCertPage === 1 ? 'disabled' : ''}>
+            « Prev
+        </button>
     `;
 
     for (let i = 1; i <= totalPages; i++) {
-        html += `<button onclick="changeCertPage(${i})" class="pagination-btn ${i === currentCertPage ? 'active' : ''}">${i}</button>`;
+        html += `<button onclick="changeCertPage(${i})" class="w-9 h-9 rounded-xl text-xs font-bold transition-all ${i === currentCertPage ? 'bg-primary text-black shadow-lg shadow-primary/30' : 'bg-white/5 border border-white/10 text-slate-400 hover:bg-white/10 hover:text-white'}">${i}</button>`;
     }
 
-    html += `<button onclick="changeCertPage(${currentCertPage + 1})" class="pagination-btn" ${currentCertPage === totalPages ? 'disabled' : ''}>Next »</button>`;
+    html += `<button onclick="changeCertPage(${currentCertPage + 1})" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-medium hover:bg-primary hover:text-black transition-all disabled:opacity-30 disabled:cursor-not-allowed" ${currentCertPage === totalPages ? 'disabled' : ''}>
+        Next »
+    </button>`;
     container.innerHTML = html;
 }
 
@@ -278,6 +294,7 @@ function openModal(type, index) {
 
     let data;
 
+    // Reset UI
     mTagsGroup.classList.add('hidden');
     mActions.classList.add('hidden');
     mCertText.classList.add('hidden');
@@ -312,6 +329,7 @@ function openModal(type, index) {
             imgPrev.classList.remove('hidden');
             imgNext.classList.remove('hidden');
             imgDots.classList.remove('hidden');
+            renderDots();
         }
     } else if (type === 'cert') {
         data = certsData[index];
@@ -334,6 +352,46 @@ function openModal(type, index) {
     document.body.style.overflow = 'hidden';
 }
 
+function renderDots() {
+    const imgDots = document.getElementById('imgDots');
+    if (!imgDots) return;
+    imgDots.innerHTML = "";
+    currentImages.forEach((_, i) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "w-2 h-2 rounded-full transition-all " + (i === currentImgIndex ? "bg-white" : "bg-white/30");
+        dot.addEventListener("click", (e) => {
+            e.stopPropagation();
+            setModalImage(i);
+        });
+        imgDots.appendChild(dot);
+    });
+}
+
+function setModalImage(i) {
+    const mImage = document.getElementById('mImage');
+    if (!currentImages.length || !mImage) return;
+    currentImgIndex = (i + currentImages.length) % currentImages.length;
+    mImage.src = encodeURI(currentImages[currentImgIndex]);
+
+    const imgDots = document.getElementById('imgDots');
+    if (imgDots) {
+        [...imgDots.children].forEach((dot, idx) => {
+            dot.className = "w-2 h-2 rounded-full transition-all " + (idx === currentImgIndex ? "bg-white" : "bg-white/30");
+        });
+    }
+}
+
+// Modal navigation
+document.getElementById('imgPrev')?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    setModalImage(currentImgIndex - 1);
+});
+document.getElementById('imgNext')?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    setModalImage(currentImgIndex + 1);
+});
+
 function closeModal() {
     const modal = document.getElementById('universalModal');
     const backdrop = document.getElementById('modalBackdrop');
@@ -352,9 +410,9 @@ function closeModal() {
 window.addEventListener('scroll', () => {
     const navbar = document.getElementById('navbar');
     if (window.scrollY > 50) {
-        navbar.classList.add('glass-nav');
+        navbar.classList.add('navbar-scrolled');
     } else {
-        navbar.classList.remove('glass-nav');
+        navbar.classList.remove('navbar-scrolled');
     }
 });
 
@@ -419,6 +477,41 @@ if (canvas) {
     window.addEventListener('resize', initCanvas);
     initCanvas();
     draw();
+}
+
+// ==================== ANIMASI TYPING ROLE ====================
+const roleElement = document.getElementById('changing-role');
+const roleOptions = ['Software Engineer', 'Fullstack Developer', 'AI/ML Enthusiast', 'Backend Developer'];
+
+if (roleElement) {
+    let roleIndex = 0, roleCharIndex = 0, isRoleDeleting = false;
+
+    function roleTypeEffect() {
+        const currentRole = roleOptions[roleIndex];
+
+        if (isRoleDeleting) {
+            roleElement.textContent = currentRole.substring(0, roleCharIndex - 1);
+            roleCharIndex--;
+        } else {
+            roleElement.textContent = currentRole.substring(0, roleCharIndex + 1);
+            roleCharIndex++;
+        }
+
+        let typeSpeed = isRoleDeleting ? 40 : 70;
+
+        if (!isRoleDeleting && roleCharIndex === currentRole.length) {
+            typeSpeed = 2000;
+            isRoleDeleting = true;
+        } else if (isRoleDeleting && roleCharIndex === 0) {
+            isRoleDeleting = false;
+            roleIndex = (roleIndex + 1) % roleOptions.length;
+            typeSpeed = 500;
+        }
+
+        setTimeout(roleTypeEffect, typeSpeed);
+    }
+
+    setTimeout(roleTypeEffect, 500);
 }
 
 // ==================== INIT ====================
