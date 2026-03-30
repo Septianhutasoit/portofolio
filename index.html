@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth dark">
+<html lang="id" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8" />
@@ -11,7 +11,7 @@
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23000000%22/><path d=%22M30 35 L15 50 L30 65 M45 70 L55 30 M70 35 L85 50 L70 65%22 fill=%22none%22 stroke=%22%2338bdf8%22 stroke-width=%228%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>">
 
-    <!-- Fonts & Icons -->
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -34,15 +34,12 @@
                         primary: '#22c55e',
                         primaryDark: '#15803d',
                         primaryLight: '#4ade80',
-                        bgDark: '#000000',
-                        cardDark: '#0a0a0a',
                     },
                     animation: {
                         'scroll-left': 'scroll-left 30s linear infinite',
                         'scroll-right': 'scroll-right 30s linear infinite',
-                        'blob': 'blob 18s infinite',
                         'float': 'float 6s ease-in-out infinite',
-                        'glow-pulse': 'glowPulse 3s ease-in-out infinite',
+                        'glow': 'glow 3s ease-in-out infinite',
                     },
                     keyframes: {
                         'scroll-left': {
@@ -53,16 +50,11 @@
                             '0%': { transform: 'translateX(-50%)' },
                             '100%': { transform: 'translateX(0)' },
                         },
-                        'blob': {
-                            '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.95)' },
-                        },
                         'float': {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-8px)' },
+                            '50%': { transform: 'translateY(-10px)' },
                         },
-                        'glowPulse': {
+                        'glow': {
                             '0%, 100%': { textShadow: '0 0 20px rgba(34, 197, 94, 0.3)' },
                             '50%': { textShadow: '0 0 40px rgba(34, 197, 94, 0.6)' },
                         },
@@ -72,87 +64,120 @@
         }
     </script>
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Custom Container - SEPERTI GAMBAR (tidak full lebar) */
+        .container-custom {
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container-custom {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #22c55e;
+            border-radius: 3px;
+        }
+
+        /* Section scroll margin */
+        section[id] {
+            scroll-margin-top: 80px;
+        }
+
+        /* Navbar scroll effect */
+        .navbar-scrolled {
+            background: rgba(0, 0, 0, 0.95) !important;
+            backdrop-filter: blur(12px) !important;
+            border-bottom: 1px solid rgba(34, 197, 94, 0.2) !important;
+        }
+
+        /* Line clamp */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Pause animation on hover */
+        .group:hover .animation-pause {
+            animation-play-state: paused;
+        }
+
+        /* Cursor blink */
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .animate-blink {
+            animation: blink 1s step-end infinite;
+        }
+
+        /* Modal transition */
+        .modal-transition {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* Project card */
+        .project-card {
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 
-<body class="bg-black text-slate-300 antialiased overflow-x-hidden">
+<body class="bg-black text-slate-300 antialiased">
 
-    <!-- SPOTIFY PLAYER WIDGET -->
-    <div class="fixed bottom-5 left-4 sm:left-6 z-50">
-        <div
-            class="bg-black/90 backdrop-blur-md p-3 rounded-2xl w-[280px] sm:w-[320px] border border-primary/20 shadow-lg hover:border-primary/40 transition-all duration-300">
-            <div class="flex items-center justify-between gap-3">
-                <div class="flex items-center gap-3">
-                    <div
-                        class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                        <i class="fab fa-spotify text-primary text-lg"></i>
-                    </div>
-                    <div class="overflow-hidden">
-                        <p class="text-white font-semibold text-xs sm:text-sm truncate">La La Lost You</p>
-                        <p class="text-[11px] text-slate-400 truncate">NIKI • Spotify</p>
-                    </div>
-                </div>
-                <button id="spotifyToggle"
-                    class="px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-white/10 transition-all duration-300">
-                    Buka
-                </button>
-            </div>
-            <div id="spotifyWrap" class="mt-3 hidden">
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0e2wfbDK7ppotqyUWD7qs8"
-                    width="100%" height="152" frameborder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy"></iframe>
-                <p class="text-[10px] text-slate-500 mt-2 text-center">Spotify embed tidak bisa dikontrol play/pause via
-                    JS.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- SCROLL TO TOP -->
-    <a href="#home"
-        class="fixed bottom-5 right-4 sm:right-6 z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/90 backdrop-blur-md border border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-black transition-all duration-300 shadow-lg">
-        <i class="fas fa-arrow-up text-xs sm:text-sm"></i>
-    </a>
-
-    <!-- NAVBAR -->
-    <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 py-4 bg-transparent">
+    <!-- NAVBAR - SEDERHANA SEPERTI GAMBAR -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 bg-transparent">
         <div class="container-custom flex justify-between items-center">
-            <a href="#home" class="flex items-center gap-2">
-                <span
-                    class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
-                    <i class="fas fa-laptop-code text-primary text-lg"></i>
-                </span>
+            <a href="#home" class="text-white font-bold text-xl tracking-tight">
+                Septian<span class="text-primary">.</span>
             </a>
 
-            <!-- Desktop Navigation -->
-            <div class="hidden md:flex items-center gap-1 p-1 rounded-full bg-black/20 border border-white/10">
-                <a href="#home"
-                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-white transition-all duration-300">Home</a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#home" class="nav-link text-sm font-medium text-white hover:text-primary transition">Home</a>
+                <a href="#projects"
+                    class="nav-link text-sm font-medium text-slate-300 hover:text-primary transition">Projects</a>
                 <a href="#about"
-                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white transition-all duration-300">About</a>
-                <a href="#portfolio"
-                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white transition-all duration-300">Projects</a>
-                <a href="#skills"
-                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white transition-all duration-300">Skills</a>
-                <a href="#certificates"
-                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white transition-all duration-300">Certificates</a>
+                    class="nav-link text-sm font-medium text-slate-300 hover:text-primary transition">About</a>
                 <a href="#contact"
-                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white transition-all duration-300">Contact</a>
+                    class="nav-link text-sm font-medium text-slate-300 hover:text-primary transition">Contact</a>
             </div>
 
-            <div class="hidden md:flex items-center gap-4">
-                <button id="themeToggle" class="text-slate-300 p-2 hover:text-primary transition-colors">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <a href="#contact"
-                    class="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-primary hover:text-black transition-all duration-300">
-                    Hire Me
-                </a>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <button id="menuBtn" class="md:hidden text-white text-2xl hover:text-primary transition-colors">
+            <button id="menuBtn" class="md:hidden text-white text-2xl">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
@@ -160,92 +185,80 @@
 
     <!-- MOBILE MENU -->
     <div id="mobileMenu"
-        class="fixed inset-0 bg-black/98 backdrop-blur-xl z-50 transform translate-x-full transition-transform duration-300 md:hidden">
-        <button onclick="toggleMenu()"
-            class="absolute top-6 right-6 text-3xl text-white hover:text-primary transition-colors">
+        class="fixed inset-0 bg-black/95 backdrop-blur-xl z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-3xl text-white">
             <i class="fas fa-times"></i>
         </button>
-        <div class="flex flex-col items-center justify-center h-full space-y-8 text-center">
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
             <a href="#home" onclick="toggleMenu()"
-                class="text-2xl font-bold text-white hover:text-primary transition-colors">Home</a>
+                class="text-2xl font-bold text-white hover:text-primary transition">Home</a>
+            <a href="#projects" onclick="toggleMenu()"
+                class="text-2xl font-bold text-white hover:text-primary transition">Projects</a>
             <a href="#about" onclick="toggleMenu()"
-                class="text-2xl font-bold text-white hover:text-primary transition-colors">About</a>
-            <a href="#portfolio" onclick="toggleMenu()"
-                class="text-2xl font-bold text-white hover:text-primary transition-colors">Projects</a>
-            <a href="#skills" onclick="toggleMenu()"
-                class="text-2xl font-bold text-white hover:text-primary transition-colors">Skills</a>
-            <a href="#certificates" onclick="toggleMenu()"
-                class="text-2xl font-bold text-white hover:text-primary transition-colors">Certificates</a>
-            <a href="#contact" onclick="toggleMenu()"
-                class="text-2xl font-bold text-primary transition-colors">Contact</a>
+                class="text-2xl font-bold text-white hover:text-primary transition">About</a>
+            <a href="#contact" onclick="toggleMenu()" class="text-2xl font-bold text-primary transition">Contact</a>
         </div>
     </div>
 
-    <!-- HERO SECTION -->
-    <section id="home" class="min-h-screen flex items-center pt-20 relative overflow-hidden">
-        <canvas id="hero-canvas" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
-
-        <!-- Background Blobs -->
-        <div
-            class="absolute top-[15%] left-[5%] w-72 h-72 rounded-full bg-primary/15 mix-blend-screen blur-[110px] animate-blob">
-        </div>
-        <div
-            class="absolute bottom-[10%] right-[5%] w-72 h-72 rounded-full bg-primary/15 mix-blend-screen blur-[110px] animate-blob animation-delay-2000">
-        </div>
-
-        <div class="container-custom relative z-10">
-            <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
+    <!-- HERO SECTION - SEPERTI GAMBAR -->
+    <section id="home" class="min-h-screen flex items-center pt-20">
+        <div class="container-custom">
+            <div class="max-w-3xl mx-auto" data-aos="fade-up">
+                <!-- Status badge -->
                 <div
-                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-bold uppercase tracking-wide mb-6 animate-float">
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-medium mb-6">
                     <span class="relative flex h-2 w-2">
                         <span
                             class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                     </span>
-                    Available for Fullstack Projects
+                    Available for work
                 </div>
 
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
-                    Hi, I'm <span
-                        class="bg-gradient-to-r from-primary via-primaryLight to-primaryDark bg-clip-text text-transparent">Septian
-                        Hutasoit</span>
+                <!-- Title seperti gambar -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight tracking-tight">
+                    Hi, I'm <span class="text-gradient">Septian Hutasoit</span>
                 </h1>
 
-                <p class="text-base sm:text-lg text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-                    I'm <span id="changing-role" class="text-white font-semibold">Software Engineer</span>
-                    <span class="role-cursor inline-block w-[3px] h-5 bg-primary ml-1 animate-blink"></span>
-                    <br />a tech developer with a passion for Software Engineering, Web Development, Artificial
-                    Intelligence, and Backend Development.
+                <p class="text-base sm:text-lg text-slate-400 mb-6 leading-relaxed">
+                    Software Engineer · Backend · Distributed Systems · AI Explorer
                 </p>
 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#portfolio"
-                        class="px-8 py-3.5 rounded-full bg-gradient-to-r from-primary to-primaryDark text-white font-semibold text-sm hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-300">
+                <p class="text-slate-300 text-base leading-relaxed max-w-2xl">
+                    I'm passionate about software systems, constantly building Full-stack and AI Systems,
+                    and I love turning ideas into real products.
+                </p>
+
+                <!-- Tombol CTA -->
+                <div class="flex gap-4 mt-8">
+                    <a href="#projects"
+                        class="px-6 py-2.5 rounded-full bg-primary text-black font-semibold text-sm hover:bg-primaryLight transition-all">
                         View Projects
                     </a>
                     <a href="https://github.com/Septianhutasoit" target="_blank"
-                        class="px-8 py-3.5 rounded-full bg-white/5 border border-white/10 text-white font-semibold text-sm hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2">
-                        <i class="fab fa-github text-lg"></i> GitHub
+                        class="px-6 py-2.5 rounded-full border border-white/20 text-white text-sm font-medium hover:bg-white/10 transition-all">
+                        GitHub
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="py-20 border-t border-white/5">
+    <!-- ABOUT SECTION - SEPERTI GAMBAR -->
+    <section id="about" class="py-16 border-t border-white/5">
         <div class="container-custom">
-            <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
-                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">About</h2>
-                <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+            <div class="max-w-3xl mx-auto" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-white mb-6">About</h2>
+                <p class="text-slate-300 text-base leading-relaxed mb-4">
                     Hello! You can call me Septian. I'm passionate about software systems, constantly building
-                    Full-stack and AI Systems,
-                    and I love turning ideas into real products. Started exploring software and systems in my first year
-                    at Del Institute of Technology.
+                    Full-stack and AI Systems, and I love turning ideas into real products.
+                </p>
+                <p class="text-slate-300 text-base leading-relaxed">
+                    Started exploring software and systems in my first year at Del Institute of Technology.
                     Since then, I've simply kept building, learning how to turn ideas into systems that actually work in
                     practice.
                 </p>
-                <div class="mt-6">
+                <div class="mt-6 pt-4 border-t border-white/10">
                     <p class="text-primary font-semibold">Institute of Technology Del</p>
                     <p class="text-slate-400 text-sm">2022-Present • Undergraduate - Informatics Engineering</p>
                 </div>
@@ -253,157 +266,121 @@
         </div>
     </section>
 
-    <!-- SKILLS MARQUEE -->
-    <section id="skills" class="py-20 border-t border-white/5 overflow-hidden">
-        <div class="container-custom text-center mb-16" data-aos="fade-up">
-            <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Tech Stack</span>
-            <h2 class="text-2xl md:text-3xl font-bold text-white mt-3">Technologies I <span
-                    class="bg-gradient-to-r from-primary to-primaryLight bg-clip-text text-transparent">Work With</span>
-            </h2>
+    <!-- SKILLS SECTION - MARQUEE -->
+    <section id="skills" class="py-16 border-t border-white/5 overflow-hidden">
+        <div class="container-custom text-center mb-12" data-aos="fade-up">
+            <h2 class="text-2xl font-bold text-white">Tech Stack</h2>
+            <p class="text-slate-400 text-sm mt-2">Technologies I work with</p>
         </div>
 
-        <div class="flex flex-col gap-6 sm:gap-8">
+        <div class="flex flex-col gap-6">
             <div class="relative flex overflow-hidden group">
                 <div id="row1"
-                    class="flex gap-8 py-2 animate-scroll-left whitespace-nowrap group-hover:animation-pause"></div>
+                    class="flex gap-6 py-2 animate-scroll-left whitespace-nowrap group-hover:animation-pause"></div>
             </div>
             <div class="relative flex overflow-hidden group">
                 <div id="row2"
-                    class="flex gap-8 py-2 animate-scroll-right whitespace-nowrap group-hover:animation-pause"></div>
+                    class="flex gap-6 py-2 animate-scroll-right whitespace-nowrap group-hover:animation-pause"></div>
             </div>
             <div class="relative flex overflow-hidden group">
                 <div id="row3"
-                    class="flex gap-8 py-2 animate-scroll-left whitespace-nowrap group-hover:animation-pause"></div>
+                    class="flex gap-6 py-2 animate-scroll-left whitespace-nowrap group-hover:animation-pause"></div>
             </div>
             <div class="relative flex overflow-hidden group">
                 <div id="row4"
-                    class="flex gap-8 py-2 animate-scroll-right whitespace-nowrap group-hover:animation-pause"></div>
+                    class="flex gap-6 py-2 animate-scroll-right whitespace-nowrap group-hover:animation-pause"></div>
             </div>
         </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="portfolio" class="py-20 border-t border-white/5">
+    <!-- PROJECTS SECTION - 2 KOLOM SAAT NORMAL, MELEBAR SAAT MODAL -->
+    <section id="projects" class="py-16 border-t border-white/5">
         <div class="container-custom">
             <div class="text-center mb-12" data-aos="fade-up">
-                <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Selected Projects</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">End-to-End <span
-                        class="bg-gradient-to-r from-primary to-primaryLight bg-clip-text text-transparent">Product
-                        Work</span></h2>
-                <p class="text-slate-400 text-sm sm:text-base mt-3 max-w-2xl mx-auto">
-                    Projects that showcase how to combine backend, frontend, and UX into a coherent flow.
-                </p>
+                <h2 class="text-3xl font-bold text-white">Projects</h2>
+                <p class="text-slate-400 text-sm mt-2">End-to-end product work</p>
             </div>
-            <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"></div>
+            <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
         </div>
     </section>
 
-    <!-- CERTIFICATES -->
-    <section id="certificates" class="py-20 border-t border-white/5">
+    <!-- CERTIFICATES SECTION -->
+    <section id="certificates" class="py-16 border-t border-white/5">
         <div class="container-custom">
             <div class="text-center mb-12" data-aos="fade-up">
-                <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Licenses &
-                    Certificates</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">Licenses & <span
-                        class="bg-gradient-to-r from-primary to-primaryLight bg-clip-text text-transparent">Certifications</span>
-                </h2>
+                <h2 class="text-3xl font-bold text-white">Certificates</h2>
+                <p class="text-slate-400 text-sm mt-2">Licenses & certifications</p>
             </div>
-            <div id="certGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6"></div>
-            <div id="certPagination" class="flex justify-center items-center gap-2 mt-12 flex-wrap"></div>
+            <div id="certGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
+            <div id="certPagination" class="flex justify-center items-center gap-2 mt-10"></div>
         </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="py-20 border-t border-white/5 relative overflow-hidden">
-        <div
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] bg-primary/10 rounded-full blur-[120px] pointer-events-none">
-        </div>
-
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-16 border-t border-white/5">
         <div class="container-custom">
-            <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-                    Let's ship <span
-                        class="bg-gradient-to-r from-primary to-primaryLight bg-clip-text text-transparent">something
-                        real.</span>
-                </h2>
-                <p class="text-slate-400 text-sm sm:text-base mb-9 max-w-xl mx-auto">
-                    Have a product idea or internal system that needs a clean backend & friendly UI? Send the context,
-                    let's break it down together.
+            <div class="max-w-2xl mx-auto text-center" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-white mb-4">Let's Connect</h2>
+                <p class="text-slate-400 text-base mb-8">
+                    Have a project in mind? Let's discuss and build something great together.
                 </p>
-
                 <a href="mailto:septianhts95@gmail.com"
-                    class="inline-flex items-center gap-3 px-7 sm:px-8 py-3.5 rounded-full bg-white text-black font-semibold text-sm sm:text-base hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-white/20">
-                    <i class="fas fa-envelope text-sm"></i> Send Email
+                    class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-black font-semibold hover:bg-primaryLight transition-all">
+                    <i class="fas fa-envelope"></i> septianhts95@gmail.com
                 </a>
-
-                <div class="flex justify-center gap-5 mt-10">
-                    <a href="https://www.instagram.com/tianhts_/"
-                        class="text-slate-400 hover:text-primary text-xl transition-colors duration-300"><i
-                            class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/septian-a-hutasoit/"
-                        class="text-slate-400 hover:text-primary text-xl transition-colors duration-300"><i
-                            class="fab fa-linkedin"></i></a>
+                <div class="flex justify-center gap-6 mt-8">
                     <a href="https://github.com/Septianhutasoit"
-                        class="text-slate-400 hover:text-primary text-xl transition-colors duration-300"><i
-                            class="fab fa-github"></i></a>
+                        class="text-slate-400 hover:text-primary text-xl transition"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/septian-a-hutasoit/"
+                        class="text-slate-400 hover:text-primary text-xl transition"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/tianhts_/"
+                        class="text-slate-400 hover:text-primary text-xl transition"><i
+                            class="fab fa-instagram"></i></a>
                 </div>
-
-                <footer class="mt-14 pt-6 border-t border-white/5 text-slate-600 text-[11px] sm:text-xs">
-                    &copy; 2025 Septian Hutasoit. Built as a fullstack product, not a copy–paste template.
+                <footer class="mt-12 pt-6 border-t border-white/10 text-slate-500 text-xs">
+                    &copy; 2025 Septian Hutasoit
                 </footer>
             </div>
         </div>
     </section>
 
-    <!-- MODAL -->
-    <div id="universalModal" class="fixed inset-0 z-[60] hidden">
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0"
-            id="modalBackdrop" onclick="closeModal()"></div>
+    <!-- MODAL DETAIL PROYEK - AKAN MELEBAR -->
+    <div id="projectModal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="closeProjectModal()"></div>
         <div class="absolute inset-0 flex items-center justify-center p-4">
             <div id="modalContent"
-                class="bg-black border border-white/10 w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl transform scale-90 opacity-0 transition-all duration-500 flex flex-col md:flex-row max-h-[90vh]">
-                <!-- Image Side -->
-                <div class="w-full md:w-1/2 h-60 md:h-auto bg-black relative flex items-center justify-center">
-                    <img id="mImage" src="" alt="" class="w-full h-full object-contain bg-black/80 rounded-2xl" />
-                    <button id="imgPrev"
-                        class="hidden absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md text-white hover:bg-black/80 transition-colors"><i
-                            class="fas fa-chevron-left"></i></button>
-                    <button id="imgNext"
-                        class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md text-white hover:bg-black/80 transition-colors"><i
-                            class="fas fa-chevron-right"></i></button>
-                    <div id="imgDots" class="hidden absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
-                    <button onclick="closeModal()"
-                        class="absolute top-4 left-4 md:hidden w-9 h-9 bg-black/60 rounded-full text-white hover:bg-black/80 transition-colors"><i
-                            class="fas fa-arrow-left"></i></button>
-                </div>
-                <!-- Content Side -->
-                <div class="w-full md:w-1/2 p-6 sm:p-8 flex flex-col overflow-y-auto">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <span id="mSubtitle"
-                                class="text-primary text-[11px] font-bold uppercase tracking-[0.2em]">Subtitle</span>
-                            <h3 id="mTitle" class="text-2xl sm:text-3xl font-bold text-white mt-2">Title</h3>
+                class="bg-[#0a0a0a] border border-white/10 w-full max-w-5xl rounded-2xl overflow-hidden shadow-2xl transform scale-95 opacity-0 transition-all duration-300 max-h-[90vh] overflow-y-auto">
+                <div class="relative">
+                    <button onclick="closeProjectModal()"
+                        class="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-black/50 text-white hover:bg-black/70 transition">
+                        <i class="fas fa-times"></i>
+                    </button>
+
+                    <div class="relative h-64 md:h-80 overflow-hidden">
+                        <img id="modalImage" src="" alt="" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent"></div>
+                    </div>
+
+                    <div class="p-6 md:p-8">
+                        <div class="flex flex-wrap justify-between items-start gap-4 mb-4">
+                            <div>
+                                <span id="modalSubtitle"
+                                    class="text-primary text-xs font-semibold uppercase tracking-wider">Project</span>
+                                <h3 id="modalTitle" class="text-2xl md:text-3xl font-bold text-white mt-1">Title</h3>
+                            </div>
                         </div>
-                        <button onclick="closeModal()"
-                            class="hidden md:block text-slate-400 hover:text-white transition-colors"><i
-                                class="fas fa-times text-xl"></i></button>
-                    </div>
-                    <p id="mDesc" class="text-slate-300 text-sm leading-relaxed mb-6">Description...</p>
-                    <div id="mTagsGroup" class="mb-6 hidden">
-                        <h4 class="text-white font-semibold mb-2 text-sm">Technologies</h4>
-                        <div id="mTags" class="flex flex-wrap gap-2"></div>
-                    </div>
-                    <div id="mActions" class="mt-auto flex gap-3 hidden">
-                        <a id="mDemo" href="#" target="_blank"
-                            class="flex-1 py-2.5 bg-primary text-black font-semibold rounded-xl text-center text-sm hover:bg-primaryLight transition-colors">Live
-                            Demo</a>
-                        <a id="mCode" href="#" target="_blank"
-                            class="flex-1 py-2.5 bg-white/5 border border-white/10 text-white font-semibold rounded-xl text-center text-sm hover:bg-white/10 transition-colors">Source
-                            Code</a>
-                    </div>
-                    <div id="mCertText" class="mt-auto hidden">
-                        <p class="text-[11px] text-slate-500 italic mt-4">Click image to view certificate in larger
-                            size.</p>
+
+                        <p id="modalDesc" class="text-slate-300 text-base leading-relaxed mb-6">Description...</p>
+
+                        <div id="modalTags" class="flex flex-wrap gap-2 mb-6"></div>
+
+                        <div id="modalLinks" class="flex gap-4">
+                            <a id="modalGithub" href="#" target="_blank"
+                                class="px-5 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-medium hover:bg-white/10 transition">GitHub</a>
+                            <a id="modalDemo" href="#" target="_blank"
+                                class="px-5 py-2.5 rounded-lg bg-primary text-black text-sm font-medium hover:bg-primaryLight transition">Live
+                                Demo</a>
+                        </div>
                     </div>
                 </div>
             </div>
