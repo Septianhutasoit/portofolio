@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id" class="scroll-smooth dark">
 
 <head>
     <meta charset="UTF-8" />
@@ -282,26 +282,18 @@
             filter: drop-shadow(0 0 12px #38bdf8);
         }
 
-        .portfolio-img-wrapper {
-            position: relative;
-            overflow: hidden;
-            border-radius: 1.25rem;
-            height: 200px;
+        .project-card-img {
+            width: 100%;
+            height: 180px;
             background: linear-gradient(135deg, #1e293b, #0f172a);
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .portfolio-img {
             transition: transform 0.6s ease;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
         }
 
-        .group:hover .portfolio-img {
-            transform: scale(1.08);
+        .group:hover .project-card-img {
+            transform: scale(1.05);
         }
 
         .form-input {
@@ -445,7 +437,7 @@
         </div>
     </section>
 
-    <!-- SKILLS SECTION -->
+    <!-- SKILLS MARQUEE SECTION -->
     <section id="skills" class="py-20 border-t border-white/5 overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 sm:px-10 mb-12 text-center" data-aos="fade-up">
             <span class="text-primary font-semibold tracking-wider text-xs uppercase">Tech Stack</span>
@@ -477,7 +469,7 @@
         </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
+    <!-- PROJECTS SECTION - MODERN GRID -->
     <section id="portfolio" class="py-20 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-6 sm:px-10">
             <div class="text-center mb-12" data-aos="fade-up">
@@ -491,7 +483,7 @@
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
+    <!-- CONTACT SECTION - MODERN FORM -->
     <section id="contact" class="py-20 border-t border-white/5">
         <div class="max-w-4xl mx-auto px-6 sm:px-10 text-center" data-aos="fade-up">
             <span class="text-primary font-semibold tracking-wider text-xs uppercase">Get In Touch</span>
@@ -516,42 +508,51 @@
                             placeholder="john@example.com" />
                     </div>
                 </div>
+
                 <div class="mt-5">
                     <label class="text-slate-300 text-sm font-medium mb-2 block">Subject</label>
                     <input type="text" name="subject" id="subjectInput"
                         class="form-input w-full rounded-xl px-4 py-3 text-white text-sm outline-none"
                         placeholder="Project Inquiry" />
                 </div>
+
                 <div class="mt-5">
                     <label class="text-slate-300 text-sm font-medium mb-2 block">Message</label>
                     <textarea name="message" rows="5" required id="messageInput"
                         class="form-input w-full rounded-xl px-4 py-3 text-white text-sm outline-none resize-none"
                         placeholder="Tell me about your project, ideas, or just say hello..."></textarea>
                 </div>
+
                 <button type="submit"
                     class="mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-semibold text-sm hover:shadow-lg transition-all btn-modern">
                     <i class="fas fa-paper-plane text-sm"></i> Send Message
                 </button>
+
                 <p id="formStatus" class="text-center text-xs mt-4 text-slate-500"></p>
             </form>
 
             <div class="flex justify-center gap-6 mt-12">
                 <a href="https://www.instagram.com/tianhts_/" target="_blank"
-                    class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all"><i
-                        class="fab fa-instagram text-lg"></i></a>
+                    class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all">
+                    <i class="fab fa-instagram text-lg"></i>
+                </a>
                 <a href="https://www.linkedin.com/in/septian-a-hutasoit/" target="_blank"
-                    class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all"><i
-                        class="fab fa-linkedin text-lg"></i></a>
+                    class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all">
+                    <i class="fab fa-linkedin text-lg"></i>
+                </a>
                 <a href="https://github.com/Septianhutasoit" target="_blank"
-                    class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all"><i
-                        class="fab fa-github text-lg"></i></a>
+                    class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all">
+                    <i class="fab fa-github text-lg"></i>
+                </a>
                 <a href="mailto:septianhts95@gmail.com"
-                    class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all"><i
-                        class="fas fa-envelope text-lg"></i></a>
+                    class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all">
+                    <i class="fas fa-envelope text-lg"></i>
+                </a>
             </div>
 
-            <footer class="mt-16 pt-6 border-t border-white/5 text-slate-500 text-xs">&copy; 2025 Septian Hutasoit.
-                Built with modern tech stack.</footer>
+            <footer class="mt-16 pt-6 border-t border-white/5 text-slate-500 text-xs">
+                &copy; 2025 Septian Hutasoit. Built with modern tech stack.
+            </footer>
         </div>
     </section>
 
@@ -584,7 +585,7 @@
     <script>
         AOS.init({ duration: 800, once: true, offset: 60 });
 
-        // Skills Data
+        // ========== SKILLS DATA ==========
         const skillsRow1 = [
             { name: "JavaScript", icon: "devicon-javascript-plain colored" }, { name: "TypeScript", icon: "devicon-typescript-plain colored" },
             { name: "Python", icon: "devicon-python-plain colored" }, { name: "Java", icon: "devicon-java-plain colored" },
@@ -622,7 +623,7 @@
             });
         }
 
-        // Projects Data
+        // ========== PROJECTS DATA ==========
         const projectsData = [
             { title: "Nauli Dental Care", subtitle: "Web App • Clinic Management", category: "Clinic", desc: "Website klinik untuk booking janji temu pasien dengan dokter.", tags: ["Laravel", "MySQL", "Tailwind"], github: "https://github.com/Septianhutasoit/projectsep" },
             { title: "Delshoop E-Commerce", subtitle: "E-Commerce Platform", category: "E-Commerce", desc: "Platform e-commerce dengan manajemen produk dan payment gateway.", tags: ["Laravel", "MySQL", "Tailwind"], github: "https://github.com/Septianhutasoit/Aplikasi" },
@@ -656,13 +657,26 @@
 
         function renderProjects() {
             const grid = document.getElementById('projectsGrid');
-            if (grid) grid.innerHTML = projectsData.map((p, i) => `<div class="group glass-card rounded-2xl overflow-hidden cursor-pointer transition-all hover:-translate-y-2" onclick="openModal('project',${i})">
-                <div class="portfolio-img-wrapper flex items-center justify-center"><i class="fas fa-code text-5xl text-primary/40"></i></div>
-                <div class="p-5"><h3 class="text-lg font-bold text-white group-hover:text-primary">${p.title}</h3><p class="text-slate-400 text-sm mt-2 line-clamp-2">${p.desc}</p><div class="flex flex-wrap gap-2 mt-3">${p.tags.slice(0, 3).map(t => `<span class="text-xs bg-white/5 px-2 py-1 rounded-full">${t}</span>`).join('')}</div></div>
-            </div>`).join('');
+            if (grid) grid.innerHTML = projectsData.map((p, i) => `
+                <div class="group glass-card rounded-2xl overflow-hidden cursor-pointer transition-all hover:-translate-y-2" onclick="openModal('project',${i})">
+                    <div class="project-card-img">
+                        <i class="fas fa-code text-5xl text-primary/40"></i>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-xs text-primary bg-primary/10 px-2 py-1 rounded-full">${p.category}</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white group-hover:text-primary transition-colors">${p.title}</h3>
+                        <p class="text-slate-400 text-sm mt-2 line-clamp-2">${p.desc}</p>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            ${p.tags.slice(0, 3).map(t => `<span class="text-xs bg-white/5 px-2 py-1 rounded-full">${t}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
         }
 
-        // Role typing
+        // Role typing animation
         const roleElement = document.getElementById('changing-role');
         const roleOptions = ['Software Engineer', 'Fullstack Developer', 'AI/ML Enthusiast', 'Backend Developer'];
         let roleIdx = 0, roleChar = 0, isDeleting = false;
@@ -677,7 +691,7 @@
             setTimeout(roleTypeEffect, speed);
         }
 
-        // Profile click ripple
+        // Profile click ripple effect
         const profileContainer = document.querySelector('.profile-container');
         if (profileContainer) {
             profileContainer.addEventListener('click', (e) => {
@@ -693,7 +707,7 @@
             });
         }
 
-        // Cursor effect
+        // Modern cursor effect
         (function () {
             const cursor = document.createElement('div'); cursor.className = 'cursor-modern'; document.body.appendChild(cursor);
             document.addEventListener('mousemove', (e) => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; const target = e.target.closest('a,button,.btn-modern'); if (target) cursor.classList.add('hover'); else cursor.classList.remove('hover'); });
@@ -732,7 +746,7 @@
         window.toggleMenu = () => document.getElementById('mobileMenu').classList.toggle('translate-x-full');
         document.getElementById('menuBtn')?.addEventListener('click', () => toggleMenu());
 
-        // Navbar scroll
+        // Navbar scroll effect
         window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('glass-nav', window.scrollY > 20); });
 
         document.addEventListener('DOMContentLoaded', () => { renderSkills(); renderProjects(); roleTypeEffect(); });
