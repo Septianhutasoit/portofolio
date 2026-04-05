@@ -43,7 +43,6 @@ A modern, interactive portfolio website showcasing my journey as a Software Engi
 ### Deployment
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 ![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222222?style=for-the-badge&logo=githubpages&logoColor=white)
-
 </div>
 
 <div align="center">
