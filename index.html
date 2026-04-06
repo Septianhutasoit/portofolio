@@ -44,12 +44,10 @@
                     animation: {
                         'blob': 'blob 18s infinite',
                         'float': 'float 16s ease-in-out infinite',
-                        'spin-slow': 'spin 18s linear infinite',
                         'slow-float': 'slowFloat 20s ease-in-out infinite',
                         'scroll-left': 'scroll-left 40s linear infinite',
                         'scroll-right': 'scroll-right 40s linear infinite',
                         'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
-                        'fade-in-scale': 'fadeInScale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
                     },
                     keyframes: {
                         'scroll-left': {
@@ -81,10 +79,6 @@
                             '0%': { opacity: '0', transform: 'translateY(30px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         },
-                        fadeInScale: {
-                            '0%': { opacity: '0', transform: 'scale(0.9)' },
-                            '100%': { opacity: '1', transform: 'scale(1)' },
-                        },
                         imgFloatSlow: {
                             '0%': { transform: 'translateY(0px)' },
                             '25%': { transform: 'translateY(-6px)' },
@@ -105,26 +99,6 @@
                         spinRing: {
                             'from': { transform: 'rotate(0deg)' },
                             'to': { transform: 'rotate(360deg)' },
-                        },
-                        borderRotate: {
-                            '0%': { transform: 'rotate(0deg)' },
-                            '100%': { transform: 'rotate(360deg)' },
-                        },
-                        rippleEffect: {
-                            '0%': { transform: 'scale(0.8)', opacity: '0.8' },
-                            '100%': { transform: 'scale(1.5)', opacity: '0' },
-                        },
-                        floatParticle: {
-                            '0%': { transform: 'translate(0, 0) scale(1)', opacity: '1' },
-                            '100%': { transform: 'translate(var(--tx, 50px), var(--ty, -50px)) scale(0)', opacity: '0' },
-                        },
-                        sparkleFloat: {
-                            '0%': { transform: 'scale(1) translate(0, 0)', opacity: '1' },
-                            '100%': { transform: 'scale(0) translate(var(--tx, 30px), var(--ty, -30px))', opacity: '0' },
-                        },
-                        blinkCursor: {
-                            '0%, 100%': { opacity: '1' },
-                            '50%': { opacity: '0' },
                         },
                         blinkRole: {
                             '0%, 100%': { opacity: '1' },
@@ -156,7 +130,6 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -178,12 +151,10 @@
             scroll-margin-top: 96px;
         }
 
-        /* Navbar Styles */
         .glass-nav {
             background: rgba(0, 0, 0, 0.96);
             backdrop-filter: blur(24px);
             border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-            transition: all 0.3s ease;
         }
 
         .nav-link {
@@ -213,12 +184,11 @@
             color: #38bdf8;
         }
 
-        /* Card Styles */
         .glass-card {
             background: linear-gradient(145deg, rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.94));
             backdrop-filter: blur(18px);
             border: 1px solid rgba(148, 163, 184, 0.28);
-            box-shadow: 0 22px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(34, 197, 94, 0.12);
+            box-shadow: 0 22px 60px rgba(0, 0, 0, 0.95);
             transition: all 0.6s ease;
         }
 
@@ -231,23 +201,19 @@
 
         .soft-card:hover {
             transform: translateY(-6px) scale(1.01);
-            box-shadow: 0 26px 70px rgba(0, 0, 0, 0.95);
         }
 
         .text-gradient {
             background: linear-gradient(135deg, #22c55e 0%, #4ade80 45%, #15803d 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
-        /* Portfolio Image Styles */
         .portfolio-img-wrapper {
             position: relative;
             overflow: hidden;
             border-radius: 1rem;
             border: 1px solid rgba(148, 163, 184, 0.35);
-            background: radial-gradient(circle at top, rgba(10, 10, 10, 0.95), rgba(0, 0, 0, 1));
             animation: imgFloatSlow 16s ease-in-out infinite;
         }
 
@@ -255,21 +221,18 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.9s ease, filter 0.9s ease;
-            transform-origin: center;
+            transition: transform 0.9s ease;
             animation: imgKenburns 26s ease-in-out infinite;
         }
 
         .group:hover .portfolio-img {
-            transform: scale(1.12) rotate(0.6deg);
-            filter: saturate(1.18) contrast(1.05);
+            transform: scale(1.12);
         }
 
         .group:hover .portfolio-img-wrapper {
             animation-play-state: paused;
         }
 
-        /* Profile Container Styles */
         .profile-container {
             position: relative;
         }
@@ -278,10 +241,9 @@
             position: absolute;
             inset: -20px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(34, 197, 94, 0.8) 0%, rgba(34, 197, 94, 0.5) 30%, rgba(34, 197, 94, 0.2) 60%, transparent 80%);
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.8) 0%, rgba(34, 197, 94, 0.2) 60%, transparent 80%);
             filter: blur(25px);
             opacity: 0.6;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: -2;
             animation: greenPulse 3s ease-in-out infinite;
         }
@@ -292,7 +254,7 @@
             border-radius: 50%;
             border: 3px solid rgba(34, 197, 94, 0.5);
             opacity: 0;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s ease;
             pointer-events: none;
         }
 
@@ -308,16 +270,12 @@
         .profile-container:hover .profile-green-glow {
             opacity: 1;
             transform: scale(1.15);
-            filter: blur(30px);
-            animation: none;
         }
 
         .profile-container:hover .profile-green-ring {
             opacity: 1;
-            transform: scale(1.05);
         }
 
-        /* Cursor Effects */
         .cursor-glow {
             position: fixed;
             width: 40px;
@@ -327,7 +285,6 @@
             pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%);
-            transition: width 0.2s ease, height 0.2s ease;
             mix-blend-mode: screen;
         }
 
@@ -345,7 +302,6 @@
             pointer-events: none;
             z-index: 9998;
             transform: translate(-50%, -50%);
-            transition: all 0.1s ease;
             filter: blur(4px);
         }
 
@@ -357,11 +313,9 @@
             }
         }
 
-        /* Typing Animation */
         .role-wrapper {
             display: inline-flex;
             align-items: center;
-            position: relative;
         }
 
         .role-cursor {
@@ -374,16 +328,9 @@
             margin-left: 4px;
         }
 
-        /* Responsive */
         @media (max-width: 640px) {
             h1 {
                 font-size: clamp(1.9rem, 7vw, 2.5rem);
-                line-height: 1.1;
-            }
-
-            .glass-card,
-            .soft-card {
-                border-radius: 1.25rem;
             }
         }
     </style>
@@ -400,13 +347,13 @@
                         class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
                         <i class="fab fa-spotify text-green-400 text-lg"></i>
                     </div>
-                    <div class="overflow-hidden">
-                        <p class="text-white font-semibold text-xs sm:text-sm truncate">La La Lost You</p>
+                    <div>
+                        <p class="text-white font-semibold text-xs truncate">La La Lost You</p>
                         <p class="text-[11px] text-slate-400 truncate">NIKI • Spotify</p>
                     </div>
                 </div>
                 <button id="spotifyToggle"
-                    class="px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-white/10 transition">
+                    class="px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-white/10">
                     Buka
                 </button>
             </div>
@@ -421,48 +368,41 @@
 
     <!-- Scroll to Top -->
     <a href="#home"
-        class="fixed bottom-5 right-4 sm:right-6 z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full glass-card flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-lg shadow-black/60">
-        <i class="fas fa-arrow-up text-xs sm:text-sm"></i>
+        class="fixed bottom-5 right-4 sm:right-6 z-50 w-10 h-10 rounded-full glass-card flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all">
+        <i class="fas fa-arrow-up text-xs"></i>
     </a>
 
     <!-- Navbar -->
     <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 py-3">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center">
-            <a href="#home" class="flex items-center gap-2 group">
-                <span
-                    class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shadow-lg shadow-black/40 group-hover:border-primary/50 transition-all">
+            <a href="#home" class="flex items-center gap-2">
+                <span class="w-9 h-9 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
                     <i class="fas fa-laptop-code text-primary text-lg"></i>
                 </span>
             </a>
 
-            <!-- Desktop Menu -->
             <div class="hidden md:flex items-center gap-1 p-1 rounded-full bg-black/20 border border-white/10">
                 <a href="#home"
-                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-white transition-all">Beranda</a>
+                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-white">Beranda</a>
                 <a href="#portfolio"
-                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white transition-all">Proyek</a>
+                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white">Proyek</a>
                 <a href="#skills"
-                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white transition-all">Skills</a>
+                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white">Skills</a>
                 <a href="#certificates"
-                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white transition-all">Sertifikat</a>
+                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white">Sertifikat</a>
                 <a href="#contact"
-                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white transition-all">Kontak</a>
+                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white">Kontak</a>
             </div>
 
             <div class="hidden md:flex items-center gap-4">
-                <button id="themeToggle" class="text-slate-300 p-2 hover:text-primary transition-colors">
-                    <i class="fas fa-moon"></i>
-                </button>
+                <button id="themeToggle" class="text-slate-300 p-2 hover:text-primary"><i
+                        class="fas fa-moon"></i></button>
                 <a href="#contact"
-                    class="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-primary hover:border-primary transition-all">
-                    Hire Me
-                </a>
+                    class="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-primary transition-all">Hire
+                    Me</a>
             </div>
 
-            <!-- Mobile Menu Button -->
-            <button id="menuBtn" class="md:hidden text-white text-2xl">
-                <i class="fas fa-bars"></i>
-            </button>
+            <button id="menuBtn" class="md:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
 
@@ -470,20 +410,18 @@
     <div id="mobileMenu"
         class="fixed inset-0 bg-black/98 backdrop-blur-xl z-50 transform translate-x-full transition-transform duration-300 md:hidden">
         <div class="flex flex-col items-center justify-center h-full">
-            <button onclick="toggleMenu()" class="absolute top-6 right-6 text-3xl text-white">
-                <i class="fas fa-times"></i>
-            </button>
+            <button onclick="toggleMenu()" class="absolute top-6 right-6 text-3xl text-white"><i
+                    class="fas fa-times"></i></button>
             <div class="flex flex-col space-y-6 text-center">
                 <a href="#home" onclick="toggleMenu()"
-                    class="text-2xl font-bold text-white hover:text-primary transition-colors">Beranda</a>
+                    class="text-2xl font-bold text-white hover:text-primary">Beranda</a>
                 <a href="#portfolio" onclick="toggleMenu()"
-                    class="text-2xl font-bold text-white hover:text-primary transition-colors">Proyek</a>
+                    class="text-2xl font-bold text-white hover:text-primary">Proyek</a>
                 <a href="#skills" onclick="toggleMenu()"
-                    class="text-2xl font-bold text-white hover:text-primary transition-colors">Skills</a>
+                    class="text-2xl font-bold text-white hover:text-primary">Skills</a>
                 <a href="#certificates" onclick="toggleMenu()"
-                    class="text-2xl font-bold text-white hover:text-primary transition-colors">Sertifikat</a>
-                <a href="#contact" onclick="toggleMenu()"
-                    class="text-2xl font-bold text-primary transition-colors">Kontak</a>
+                    class="text-2xl font-bold text-white hover:text-primary">Sertifikat</a>
+                <a href="#contact" onclick="toggleMenu()" class="text-2xl font-bold text-primary">Kontak</a>
             </div>
         </div>
     </div>
@@ -491,18 +429,14 @@
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center pt-20 relative overflow-hidden">
         <canvas id="hero-canvas" class="absolute top-0 left-0 w-full h-full z-0"></canvas>
-
-        <div
-            class="absolute top-[15%] left-[5%] w-72 h-72 sm:w-96 sm:h-96 bg-primary/15 rounded-full mix-blend-screen blur-[110px] animate-blob">
-        </div>
-        <div
-            class="absolute bottom-[10%] right-[5%] w-72 h-72 sm:w-96 sm:h-96 bg-secondary/15 rounded-full mix-blend-screen blur-[110px] animate-blob">
+        <div class="absolute top-[15%] left-[5%] w-72 h-72 bg-primary/15 rounded-full blur-[110px] animate-blob"></div>
+        <div class="absolute bottom-[10%] right-[5%] w-72 h-72 bg-secondary/15 rounded-full blur-[110px] animate-blob">
         </div>
 
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center relative z-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 items-center relative z-10">
             <div data-aos="fade-right">
                 <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] mb-5">
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-[10px] font-bold uppercase tracking-[0.18em] mb-5">
                     <span class="relative flex h-2 w-2">
                         <span
                             class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -510,59 +444,44 @@
                     </span>
                     Available for Fullstack Projects
                 </div>
-
-                <h1
-                    class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 leading-[1.05] tracking-tight">
-                    Software Engineer <br />
-                    <span class="text-gradient">Fullstack Projects.</span>
-                </h1>
-
-                <p class="text-sm sm:text-base text-slate-400 mb-7 max-w-xl leading-relaxed">
-                    I'm <span class="text-white font-semibold">Septian Hutasoit</span>,
-                    <span class="text-slate-100 font-semibold role-wrapper">
-                        <span id="changing-role">Software Developer</span>
-                        <span class="role-cursor"></span>
-                    </span>
-                    a tech developer with a passion for Software Engineering, Web Development, Artificial Intelligence,
-                    and Backend Development.
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">Software Engineer <br /><span
+                        class="text-gradient">Fullstack Projects.</span></h1>
+                <p class="text-sm text-slate-400 mb-7 max-w-xl">I'm <span class="text-white font-semibold">Septian
+                        Hutasoit</span>,
+                    <span class="text-slate-100 font-semibold role-wrapper"><span id="changing-role">Software
+                            Developer</span><span class="role-cursor"></span></span>
+                    a tech developer passionate about Software Engineering, Web Development, AI, and Backend
+                    Development.
                 </p>
-
-                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <div class="flex flex-col sm:flex-row gap-3">
                     <a href="#portfolio"
-                        class="px-7 py-3.5 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold text-sm hover:shadow-[0_0_30px_rgba(56,189,248,0.75)] transition-all text-center">
-                        Lihat Proyek
-                    </a>
+                        class="px-7 py-3.5 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold text-sm text-center">Lihat
+                        Proyek</a>
                     <a href="https://github.com/Septianhutasoit" target="_blank"
-                        class="px-7 py-3.5 rounded-full bg-white/5 border border-white/10 font-semibold text-white text-sm hover:bg-white/10 transition-all flex items-center justify-center gap-2">
-                        <i class="fab fa-github text-lg"></i> GitHub
-                    </a>
+                        class="px-7 py-3.5 rounded-full bg-white/5 border border-white/10 text-white text-sm flex items-center justify-center gap-2"><i
+                            class="fab fa-github"></i> GitHub</a>
                 </div>
             </div>
-
             <div class="relative flex justify-center lg:justify-end" data-aos="fade-left">
                 <div
-                    class="profile-container relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-full overflow-hidden soft-card animate-slow-float">
+                    class="profile-container relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full overflow-hidden soft-card animate-slow-float">
                     <div class="profile-green-glow"></div>
                     <div class="profile-green-ring"></div>
-                    <div
-                        class="absolute -inset-10 bg-gradient-to-tr from-primary/40 via-secondary/40 to-accent/40 blur-3xl opacity-40">
-                    </div>
                     <img src="assets/img/profile.jpg" alt="Septian"
-                        class="relative w-full h-full object-cover rounded-full border-2 border-white/20 shadow-2xl" />
+                        class="relative w-full h-full object-cover rounded-full border-2 border-white/20" />
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-bgDark border-t border-white/5 overflow-hidden">
+    <section id="skills" class="py-20 border-t border-white/5 overflow-hidden">
         <div class="max-w-6xl mx-auto px-4 mb-16 text-center" data-aos="fade-up">
             <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Tech Stack</span>
             <h2 class="text-2xl md:text-3xl font-bold text-white mt-3">Technology Used <span
                     class="text-gradient">Product Stack</span></h2>
         </div>
-
-        <div class="flex flex-col gap-6 sm:gap-8">
+        <div class="flex flex-col gap-6">
             <div class="relative flex overflow-hidden group">
                 <div id="row1"
                     class="flex gap-8 py-2 animate-scroll-left whitespace-nowrap group-hover:[animation-play-state:paused]">
@@ -587,106 +506,63 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="portfolio" class="py-20 sm:py-24 relative bg-bgDark border-t border-white/5">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 sm:mb-12"
-                data-aos="fade-up">
-                <div>
-                    <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Selected
-                        Projects</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">End-to-End <span
-                            class="text-gradient">Product Work</span></h2>
-                    <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-xl">Proyek yang nunjukin cara ngerangkai
-                        backend, frontend, dan UX jadi satu alur yang masuk akal.</p>
-                </div>
+    <section id="portfolio" class="py-20 bg-bgDark border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="mb-12" data-aos="fade-up">
+                <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Selected Projects</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">End-to-End <span
+                        class="text-gradient">Product Work</span></h2>
+                <p class="text-slate-400 text-sm mt-2">Proyek yang nunjukin cara ngerangkai backend, frontend, dan UX
+                    jadi satu alur yang masuk akal.</p>
             </div>
-            <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"></div>
+            <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
             <div id="projectPagination" class="mt-12"></div>
         </div>
     </section>
 
     <!-- Certificates Section -->
-    <section id="certificates" class="py-20 sm:py-24 relative border-t border-white/5">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
+    <section id="certificates" class="py-20 border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
                 <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Licenses &
                     Certificates</span>
                 <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">Lisensi & <span
                         class="text-gradient">Sertifikasi</span></h2>
-                <p class="text-slate-400 text-sm sm:text-base mt-3 max-w-2xl mx-auto">Sertifikat di bawah ini sudah
-                    dinamis dari data (klik kartu = modal kebuka).</p>
             </div>
-            <div id="certGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6"></div>
-            <div id="certPagination" class="flex justify-center items-center gap-2 mt-12 flex-wrap"></div>
+            <div id="certGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
+            <div id="certPagination" class="flex justify-center gap-2 mt-12 flex-wrap"></div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 sm:py-24 relative overflow-hidden border-t border-white/5">
+    <section id="contact" class="py-20 relative overflow-hidden border-t border-white/5">
         <div
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] sm:w-[520px] h-[420px] sm:h-[520px] bg-primary/10 rounded-full blur-[120px] -z-10">
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] bg-primary/10 rounded-full blur-[120px] -z-10">
         </div>
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto px-4 text-center" data-aos="fade-up">
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">Let's ship <span
                     class="text-gradient">something real.</span></h2>
-            <p class="text-slate-400 text-sm sm:text-base mb-9 max-w-xl mx-auto">Punya ide produk atau sistem internal
-                yang butuh kombinasi backend rapi & UI yang enak dipakai? Kirim konteksnya, kita breakdown bareng.</p>
-
+            <p class="text-slate-400 text-sm mb-9">Punya ide produk atau sistem internal? Kirim konteksnya, kita
+                breakdown bareng.</p>
             <a href="mailto:septianhts95@gmail.com"
-                class="inline-flex items-center gap-3 px-7 sm:px-8 py-3.5 rounded-full bg-white text-bgDark font-semibold text-sm sm:text-base hover:scale-105 transition-transform">
-                <i class="fas fa-envelope text-sm"></i> Kirim Email
-            </a>
-
+                class="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-white text-bgDark font-semibold text-sm hover:scale-105 transition-transform"><i
+                    class="fas fa-envelope"></i> Kirim Email</a>
             <div class="flex justify-center gap-5 mt-10">
-                <a href="https://www.instagram.com/tianhts_/"
-                    class="text-slate-400 hover:text-white text-xl transition-colors"><i
+                <a href="https://www.instagram.com/tianhts_/" class="text-slate-400 hover:text-white text-xl"><i
                         class="fab fa-instagram"></i></a>
                 <a href="https://www.linkedin.com/in/septian-a-hutasoit/"
-                    class="text-slate-400 hover:text-white text-xl transition-colors"><i
-                        class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Septianhutasoit"
-                    class="text-slate-400 hover:text-white text-xl transition-colors"><i class="fab fa-github"></i></a>
+                    class="text-slate-400 hover:text-white text-xl"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Septianhutasoit" class="text-slate-400 hover:text-white text-xl"><i
+                        class="fab fa-github"></i></a>
             </div>
-
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST"
-                class="mt-8 max-w-xl mx-auto text-left bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="text-slate-300 text-xs">Nama</label>
-                        <input name="name" required
-                            class="mt-2 w-full rounded-xl bg-black/30 border border-white/10 px-4 py-3 text-sm text-white outline-none focus:border-primary/60"
-                            placeholder="Nama kamu" />
-                    </div>
-                    <div>
-                        <label class="text-slate-300 text-xs">Email</label>
-                        <input type="email" name="email" required
-                            class="mt-2 w-full rounded-xl bg-black/30 border border-white/10 px-4 py-3 text-sm text-white outline-none focus:border-primary/60"
-                            placeholder="nama@email.com" />
-                    </div>
-                </div>
-                <div class="mt-4">
-                    <label class="text-slate-300 text-xs">Pesan</label>
-                    <textarea name="message" rows="4" required
-                        class="mt-2 w-full rounded-xl bg-black/30 border border-white/10 px-4 py-3 text-sm text-white outline-none focus:border-primary/60"
-                        placeholder="Tulis konteks, scope, deadline..."></textarea>
-                </div>
-                <button type="submit"
-                    class="mt-5 w-full inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-xl bg-white text-bgDark font-semibold text-sm sm:text-base hover:scale-[1.02] transition-transform">
-                    <i class="fas fa-paper-plane text-sm"></i> Kirim Pesan
-                </button>
-                <p class="text-[11px] text-slate-500 mt-3 text-center">Pesan akan masuk ke email saya via Formspree.</p>
-            </form>
-
-            <footer class="mt-14 pt-6 border-t border-white/5 text-slate-600 text-[11px] sm:text-xs">
-                &copy; 2025 Septian Hutasoit. Built as a fullstack product, not a copy–paste template.
+            <footer class="mt-14 pt-6 border-t border-white/5 text-slate-600 text-[11px]">&copy; 2025 Septian Hutasoit.
             </footer>
         </div>
     </section>
 
-    <!-- Universal Modal -->
+    <!-- Modal -->
     <div id="universalModal" class="fixed inset-0 z-[60] hidden">
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity opacity-0" id="modalBackdrop"
-            onclick="closeModal()"></div>
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="modalBackdrop" onclick="closeModal()"></div>
         <div class="absolute inset-0 flex items-center justify-center p-4">
             <div id="modalContent"
                 class="bg-cardSoft border border-white/10 w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl transform scale-90 opacity-0 transition-all duration-500 flex flex-col md:flex-row max-h-[90vh]">
@@ -700,19 +576,17 @@
                             class="fas fa-chevron-right"></i></button>
                     <div id="imgDots" class="hidden absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
                 </div>
-                <div class="w-full md:w-1/2 p-6 sm:p-8 flex flex-col overflow-y-auto">
+                <div class="w-full md:w-1/2 p-6 flex flex-col overflow-y-auto">
                     <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <span id="mSubtitle"
-                                class="text-primary text-[11px] font-bold uppercase tracking-[0.2em]">Subtitle</span>
-                            <h3 id="mTitle" class="text-2xl sm:text-3xl font-bold text-white mt-2">Title</h3>
+                        <div><span id="mSubtitle" class="text-primary text-[11px] font-bold uppercase">Subtitle</span>
+                            <h3 id="mTitle" class="text-2xl font-bold text-white mt-2">Title</h3>
                         </div>
                         <button onclick="closeModal()" class="hidden md:block text-slate-400 hover:text-white"><i
                                 class="fas fa-times text-xl"></i></button>
                     </div>
-                    <p id="mDesc" class="text-slate-300 text-sm sm:text-[15px] leading-relaxed mb-6">Description...</p>
+                    <p id="mDesc" class="text-slate-300 text-sm leading-relaxed mb-6">Description...</p>
                     <div id="mTagsGroup" class="mb-6 hidden">
-                        <h4 class="text-white font-semibold mb-2 text-sm">Teknologi / Badge</h4>
+                        <h4 class="text-white font-semibold mb-2 text-sm">Teknologi</h4>
                         <div id="mTags" class="flex flex-wrap gap-2"></div>
                     </div>
                     <div id="mActions" class="mt-auto flex gap-3 hidden">
@@ -724,8 +598,7 @@
                             Code</a>
                     </div>
                     <div id="mCertText" class="mt-auto hidden">
-                        <p class="text-[11px] text-slate-500 italic">Klik gambar untuk melihat sertifikat dalam ukuran
-                            lebih besar.</p>
+                        <p class="text-[11px] text-slate-500 italic">Klik gambar untuk melihat lebih besar.</p>
                     </div>
                 </div>
             </div>
@@ -734,8 +607,7 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({ duration: 800, once: true, offset: 80 });
+        AOS.init({ duration: 800, once: true });
 
         // ==================== DATA ====================
         const ICONS = {
@@ -765,12 +637,10 @@
             if (key.includes("laravel")) return ICONS.laravel;
             if (key.includes("php")) return ICONS.php;
             if (key.includes("mysql")) return ICONS.mysql;
-            if (key.includes("postgres")) return ICONS.postgres;
             if (key.includes("react")) return ICONS.react;
             if (key.includes("next")) return ICONS.next;
             if (key.includes("node")) return ICONS.node;
             if (key.includes("tailwind")) return ICONS.tailwind;
-            if (key.includes("bootstrap")) return ICONS.bootstrap;
             if (key.includes("python")) return ICONS.python;
             if (key.includes("fastapi")) return ICONS.fastapi;
             if (key.includes("figma")) return ICONS.figma;
@@ -781,197 +651,128 @@
             return ICONS.code;
         }
 
-        // Skills Data
+        // Skills Data (7 items each row for smooth scroll)
         const skillsRow1 = [
-            { name: "JavaScript", icon: "devicon-javascript-plain colored" },
-            { name: "TypeScript", icon: "devicon-typescript-plain colored" },
-            { name: "Python", icon: "devicon-python-plain colored" },
-            { name: "Java", icon: "devicon-java-plain colored" },
-            { name: "PHP", icon: "devicon-php-plain colored" },
-            { name: "FastAPI", icon: "devicon-fastapi-plain colored" },
-            { name: "Node.js", icon: "devicon-nodejs-plain colored" }
+            { name: "JavaScript", icon: "devicon-javascript-plain colored" }, { name: "TypeScript", icon: "devicon-typescript-plain colored" },
+            { name: "Python", icon: "devicon-python-plain colored" }, { name: "Java", icon: "devicon-java-plain colored" },
+            { name: "PHP", icon: "devicon-php-plain colored" }, { name: "FastAPI", icon: "devicon-fastapi-plain colored" }, { name: "Node.js", icon: "devicon-nodejs-plain colored" }
         ];
-
         const skillsRow2 = [
-            { name: "React", icon: "devicon-react-original colored" },
-            { name: "Next.js", icon: "devicon-nextjs-plain text-white" },
-            { name: "Tailwind CSS", icon: "devicon-tailwindcss-original colored" },
-            { name: "Bootstrap", icon: "devicon-bootstrap-plain colored" },
-            { name: "HTML", icon: "devicon-html5-plain colored" },
-            { name: "CSS", icon: "devicon-css3-plain colored" }
+            { name: "React", icon: "devicon-react-original colored" }, { name: "Next.js", icon: "devicon-nextjs-plain text-white" },
+            { name: "Tailwind", icon: "devicon-tailwindcss-original colored" }, { name: "Bootstrap", icon: "devicon-bootstrap-plain colored" },
+            { name: "HTML", icon: "devicon-html5-plain colored" }, { name: "CSS", icon: "devicon-css3-plain colored" }, { name: "Vite", icon: "devicon-vitejs-plain colored" }
         ];
-
         const skillsRow3 = [
-            { name: "MySQL", icon: "devicon-mysql-plain colored" },
-            { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
-            { name: "Laravel", icon: "devicon-laravel-original colored" },
-            { name: "Postman", icon: "devicon-postman-plain colored" },
-            { name: "REST API", icon: "fa-solid fa-plug text-teal-300" },
-            { name: "Git", icon: "devicon-git-plain colored" }
+            { name: "MySQL", icon: "devicon-mysql-plain colored" }, { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
+            { name: "Laravel", icon: "devicon-laravel-original colored" }, { name: "Postman", icon: "devicon-postman-plain colored" },
+            { name: "REST API", icon: "fa-solid fa-plug text-teal-300" }, { name: "Git", icon: "devicon-git-plain colored" }, { name: "Docker", icon: "devicon-docker-plain colored" }
         ];
-
         const skillsRow4 = [
-            { name: "Docker", icon: "devicon-docker-plain colored" },
-            { name: "GitHub", icon: "devicon-github-original" },
-            { name: "Figma", icon: "devicon-figma-plain colored" },
-            { name: "Linux", icon: "devicon-linux-plain colored" }
+            { name: "GitHub", icon: "devicon-github-original" }, { name: "Figma", icon: "devicon-figma-plain colored" },
+            { name: "Linux", icon: "devicon-linux-plain colored" }, { name: "NPM", icon: "devicon-npm-original-wordmark colored" },
+            { name: "HuggingFace", icon: "fa-solid fa-face-smile text-yellow-400" }, { name: "Langchain", icon: "fa-solid fa-link text-cyan-400" }, { name: "RAG", icon: "fa-solid fa-layer-group text-indigo-400" }
         ];
 
-        // Projects Data
+        // ==================== SEMUA PROYEK TETAP ADA ====================
         const projectsData = [
             {
-                cardTitle: "Kawan Pulih",
-                title: "Platform Home Care & Caregiver",
-                subtitle: "Healthcare • Web App",
-                categoryChip: "Healthcare",
-                cover: "assets/img/kawanpulih-cover.png",
+                cardTitle: "Kawan Pulih", title: "Platform Home Care & Caregiver", subtitle: "Healthcare • Web App",
+                categoryChip: "Healthcare", cover: "assets/img/kawanpulih-cover.png",
                 images: ["assets/img/kawanpulih-1.png", "assets/img/kawanpulih-2.png", "assets/img/kawanpulih-3.png"],
-                desc: "Platform digital yang menghubungkan keluarga pasien dengan tenaga kesehatan profesional untuk layanan perawatan di rumah. Dibangun dengan pendekatan humanis dan penuh empati.",
-                tags: ["Next.js", "TypeScript", "Tailwind", "React", "API"],
-                badges: ["Healthcare", "Home Care"],
-                github: "https://github.com/Septianhutasoit/403",
-                demo: "https://www.caregiver-ai.my.id/"
+                desc: "Platform digital yang menghubungkan keluarga pasien dengan tenaga kesehatan profesional untuk layanan perawatan di rumah.",
+                tags: ["Next.js", "TypeScript", "Tailwind", "React", "API"], badges: ["Healthcare", "Home Care"],
+                github: "https://github.com/Septianhutasoit/403", demo: "https://www.caregiver-ai.my.id/"
             },
             {
-                cardTitle: "Nauli Dental Care",
-                title: "Website Klinik Nauli Dental Care",
-                subtitle: "Web App • Project One",
-                categoryChip: "Klinik Gigi",
-                cover: "assets/img/klinik.png",
+                cardTitle: "Nauli Dental Care", title: "Website Klinik Nauli Dental Care", subtitle: "Web App",
+                categoryChip: "Klinik Gigi", cover: "assets/img/klinik.png",
                 images: ["assets/img/galery.png", "assets/img/layanan.png", "assets/img/map.png"],
-                desc: "Website klinik untuk booking janji temu antara pasien dan dokter.",
-                tags: ["Laravel", "MySQL", "Tailwind", "REST API"],
-                badges: ["Clinic"],
-                github: "https://github.com/Septianhutasoit/projectsep",
-                demo: ""
+                desc: "Website klinik untuk booking janji temu antara pasien dan dokter.", tags: ["Laravel", "MySQL", "Tailwind"], badges: ["Clinic"],
+                github: "https://github.com/Septianhutasoit/projectsep", demo: ""
             },
             {
-                cardTitle: "Delshoop E-Commerce",
-                title: "Website Aplikasi Ecommerce Delshoop",
-                subtitle: "E-Commerce",
-                categoryChip: "E-Commerce",
-                cover: "assets/img/Delshop Home.png",
+                cardTitle: "Delshoop E-Commerce", title: "Website Aplikasi Ecommerce Delshoop", subtitle: "E-Commerce",
+                categoryChip: "E-Commerce", cover: "assets/img/Delshop Home.png",
                 images: ["assets/img/Produk2.png", "assets/img/cart.png", "assets/img/dashboard.png"],
-                desc: "Platform e-commerce dengan manajemen produk dan integrasi payment gateway.",
-                tags: ["Laravel", "MySQL", "Tailwind", "JavaScript"],
-                badges: ["E-Commerce"],
-                github: "https://github.com/Septianhutasoit/Aplikasi",
-                demo: ""
+                desc: "Platform e-commerce dengan manajemen produk dan integrasi payment gateway.", tags: ["Laravel", "MySQL", "JavaScript"], badges: ["E-Commerce"],
+                github: "https://github.com/Septianhutasoit/Aplikasi", demo: ""
             },
             {
-                cardTitle: "Website Aksara Batak",
-                title: "Website Aksara Batak",
-                subtitle: "Informasi • Multi Bahasa",
-                categoryChip: "Informasi",
-                cover: "assets/img/Home.png",
+                cardTitle: "Website Aksara Batak", title: "Website Aksara Batak", subtitle: "Informasi • Multi Bahasa",
+                categoryChip: "Informasi", cover: "assets/img/Home.png",
                 images: ["assets/img/Home.png", "assets/img/Fitur.png", "assets/img/kuis.png"],
-                desc: "Website edukasi Aksara Batak dengan fitur multi-bahasa dan kuis.",
-                tags: ["Laravel", "PHP", "MySQL"],
-                badges: ["Education", "Multi Language"],
-                github: "https://github.com/bryansiagian/BoanAksara",
-                demo: ""
+                desc: "Website edukasi Aksara Batak dengan fitur multi-bahasa dan kuis.", tags: ["Laravel", "PHP", "MySQL"], badges: ["Education"],
+                github: "https://github.com/bryansiagian/BoanAksara", demo: ""
             },
             {
-                cardTitle: "Evedina Tuktuk",
-                title: "Pemesanan Tiket Kapal",
-                subtitle: "Mobile App Design",
-                categoryChip: "App Design",
-                cover: "assets/img/2ain.png",
+                cardTitle: "Evedina Tuktuk", title: "Pemesanan Tiket Kapal", subtitle: "Mobile App Design",
+                categoryChip: "App Design", cover: "assets/img/2ain.png",
                 images: ["assets/img/Tampilan.png", "assets/img/HomeEvedina.png", "assets/img/prototype.png"],
-                desc: "Aplikasi booking tiket kapal dengan informasi jadwal dan rute.",
-                tags: ["Figma", "UI/UX Design"],
-                badges: ["Mobile App"],
-                github: "https://github.com/Septianhutasoit/Evedina-Tuktuk",
-                demo: ""
+                desc: "Aplikasi booking tiket kapal dengan informasi jadwal dan rute.", tags: ["Figma", "UI/UX Design"], badges: ["Mobile App"],
+                github: "https://github.com/Septianhutasoit/Evedina-Tuktuk", demo: ""
             },
             {
-                cardTitle: "ChatBot AI Clinic",
-                title: "Sistem ChatBot AI Klinik",
-                subtitle: "AI ChatBot",
-                categoryChip: "AI",
-                cover: "assets/img/chatbot.png",
-                images: ["assets/img/kodinganchatbot.png", "assets/img/tanya1.png"],
-                desc: "Aplikasi ChatBot AI untuk membantu layanan klinik gigi.",
-                tags: ["Next.js", "Python", "FastAPI", "AI"],
-                badges: ["AI", "ChatBot"],
-                github: "",
-                demo: ""
+                cardTitle: "Project Ecommerce", title: "Sistem E-Commerce App", subtitle: "Web",
+                categoryChip: "Ecommerce", cover: "assets/img/codealpha.png",
+                images: ["assets/img/codealpa2.png", "assets/img/codealpa3.png", "assets/img/codealpa4.png"],
+                desc: "Aplikasi Website untuk pembelian aplikasi online.", tags: ["Node.js", "React.js", "Postgresql"], badges: ["Web App"],
+                github: "https://github.com/Septianhutasoit/CodeAlpha", demo: ""
+            },
+            {
+                cardTitle: "ChatBot AI Clinic", title: "Sistem ChatBot AI Klinik", subtitle: "AI ChatBot",
+                categoryChip: "AI", cover: "assets/img/chatbot.png",
+                images: ["assets/img/kodinganchatbot.png", "assets/img/tanya1.png", "assets/img/tanya2.png"],
+                desc: "Aplikasi ChatBot AI untuk membantu layanan klinik gigi.", tags: ["Next.js", "Python", "FastAPI", "AI"], badges: ["AI", "ChatBot"],
+                github: "", demo: ""
             }
         ];
 
-        // Certificates Data
         const certsData = [
-            { title: "Huawei Cloud Computing", subtitle: "Huawei Academy", img: "assets/img/Huawei.png", desc: "Fondasi cloud computing: layanan inti dan arsitektur scalable." },
-            { title: "Huawei Data Analytics", subtitle: "Huawei Academy", img: "assets/img/Huaweidata.png", desc: "Analisis data end-to-end dari ingestion sampai insight." },
-            { title: "AI Fundamentals", subtitle: "AI Track", img: "assets/img/Dasar%20AI.png", desc: "Konsep AI dasar dan evaluasi model." },
-            { title: "Data Science Essentials", subtitle: "Data Track", img: "assets/img/Data%20Science.png", desc: "Statistik, data cleaning, dan feature engineering." },
-            { title: "Frontend Development", subtitle: "Web Engineering", img: "assets/img/frontend.png", desc: "UI responsif dan performa web." },
-            { title: "Backend Engineering", subtitle: "Web Engineering", img: "assets/img/backend.png", desc: "API design dan database terstruktur." },
-            { title: "Cloud & Deployment", subtitle: "Infrastructure", img: "assets/img/Cloud.png", desc: "Hosting dan deployment workflow." },
-            { title: "Applied AI Project", subtitle: "Portfolio", img: "assets/img/AI.png", desc: "Implementasi AI nyata." }
+            { title: "Huawei Cloud Computing", subtitle: "Huawei Academy", img: "assets/img/Huawei.png", desc: "Fondasi cloud computing." },
+            { title: "Huawei Data Analytics", subtitle: "Huawei Academy", img: "assets/img/Huaweidata.png", desc: "Analisis data end-to-end." },
+            { title: "AI Fundamentals", subtitle: "AI Track", img: "assets/img/Dasar%20AI.png", desc: "Konsep AI dasar." },
+            { title: "Data Science Essentials", subtitle: "Data Track", img: "assets/img/Data%20Science.png", desc: "Statistik dan data cleaning." },
+            { title: "Frontend Development", subtitle: "Web Engineering", img: "assets/img/frontend.png", desc: "UI responsif." },
+            { title: "Backend Engineering", subtitle: "Web Engineering", img: "assets/img/backend.png", desc: "API design." },
+            { title: "Cloud & Deployment", subtitle: "Infrastructure", img: "assets/img/Cloud.png", desc: "Hosting dan deployment." },
+            { title: "Applied AI Project", subtitle: "Portfolio", img: "assets/img/AI.png", desc: "Implementasi AI nyata." },
+            { title: "Applied AI Azure", subtitle: "AI Portfolio", img: "assets/img/greatnusa.png", desc: "Basic Fundamental AI." },
+            { title: "Python With AI", subtitle: "Certificate", img: "assets/img/PhytonAi.png", desc: "Python untuk AI." },
+            { title: "Applied DataScience", subtitle: "DataScience", img: "assets/img/DSDqLab.png", desc: "Fundamental Data Science." },
+            { title: "Computer Vision", subtitle: "AI", img: "assets/img/ComputerVision.png", desc: "Computer Vision dasar." }
         ];
 
         // ==================== RENDER FUNCTIONS ====================
         function renderSkills() {
-            const rows = [
-                { id: "row1", data: skillsRow1 },
-                { id: "row2", data: skillsRow2 },
-                { id: "row3", data: skillsRow3 },
-                { id: "row4", data: skillsRow4 }
-            ];
-            rows.forEach(row => {
-                const container = document.getElementById(row.id);
+            const rows = [[skillsRow1, "row1"], [skillsRow2, "row2"], [skillsRow3, "row3"], [skillsRow4, "row4"]];
+            rows.forEach(([data, id]) => {
+                const container = document.getElementById(id);
                 if (container) {
-                    const html = row.data.map(s => `
-                        <div class="flex flex-col items-center justify-center min-w-[90px] group/item">
-                            <div class="w-14 h-14 mb-3 flex items-center justify-center bg-white/5 rounded-xl border border-white/10 transition-all duration-300 group-hover/item:bg-white/10 group-hover/item:border-primary/50 group-hover/item:-translate-y-1">
-                                <i class="${s.icon} text-3xl"></i>
-                            </div>
-                            <span class="text-[11px] font-semibold text-slate-400 group-hover/item:text-white transition-colors uppercase tracking-wider">${s.name}</span>
-                        </div>
-                    `).join("");
+                    const html = data.map(s => `<div class="flex flex-col items-center min-w-[90px] group/item"><div class="w-14 h-14 mb-3 flex items-center justify-center bg-white/5 rounded-xl border border-white/10 transition-all duration-300 group-hover/item:bg-white/10"><i class="${s.icon} text-3xl"></i></div><span class="text-[11px] font-semibold text-slate-400">${s.name}</span></div>`).join("");
                     container.innerHTML = html + html + html;
                 }
             });
         }
 
-        // Project Pagination
+        // Project Pagination - 6 proyek per halaman (7 proyek total = halaman 1: 6, halaman 2: 1)
         let currentProjectPage = 1;
         const projectsPerPage = 6;
 
         function renderProjects() {
             const grid = document.getElementById('projectsGrid');
             if (!grid) return;
-
             const totalPages = Math.ceil(projectsData.length / projectsPerPage);
             const startIndex = (currentProjectPage - 1) * projectsPerPage;
             const paginatedProjects = projectsData.slice(startIndex, startIndex + projectsPerPage);
 
             grid.innerHTML = paginatedProjects.map((p, idx) => {
                 const globalIndex = startIndex + idx;
-                const topBadges = (p.badges || []).slice(0, 2).map(b => {
-                    const ic = getIcon(b);
-                    return `<span class="inline-flex items-center gap-1 px-2 py-1 bg-black/60 backdrop-blur-md rounded-full text-[10px]"><i class="${ic.cls} ${ic.color} text-xs"></i>${b}</span>`;
-                }).join("");
-                const tagIcons = (p.tags || []).slice(0, 3).map(t => {
-                    const ic = getIcon(t);
-                    return `<span class="inline-flex items-center gap-1 text-[10px] text-slate-300 bg-white/5 px-2 py-1 rounded-full"><i class="${ic.cls} ${ic.color} text-xs"></i>${t}</span>`;
-                }).join("");
-                return `
-                    <div class="group relative rounded-2xl overflow-hidden glass-card cursor-pointer hover:-translate-y-2 transition-all duration-500" onclick="openModal('project', ${globalIndex})" data-aos="fade-up" data-aos-delay="${idx * 100}">
-                        <div class="relative h-52 portfolio-img-wrapper">
-                            <img src="${p.cover}" class="portfolio-img w-full h-full object-cover" alt="${p.cardTitle}">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                            <div class="absolute top-3 right-3"><span class="px-2 py-1 bg-black/60 rounded-full text-[10px] font-semibold">${p.categoryChip}</span></div>
-                            <div class="absolute top-3 left-3 flex gap-1">${topBadges}</div>
-                        </div>
-                        <div class="p-5">
-                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">${p.cardTitle}</h3>
-                            <p class="text-slate-400 text-sm line-clamp-2">${p.desc}</p>
-                            <div class="flex flex-wrap gap-2 mt-4">${tagIcons}</div>
-                        </div>
-                    </div>
-                `;
+                const topBadges = (p.badges || []).slice(0, 2).map(b => `<span class="inline-flex items-center gap-1 px-2 py-1 bg-black/60 rounded-full text-[10px]"><i class="${getIcon(b).cls} ${getIcon(b).color} text-xs"></i>${b}</span>`).join("");
+                const tagIcons = (p.tags || []).slice(0, 3).map(t => `<span class="inline-flex items-center gap-1 text-[10px] bg-white/5 px-2 py-1 rounded-full"><i class="${getIcon(t).cls} ${getIcon(t).color} text-xs"></i>${t}</span>`).join("");
+                return `<div class="group rounded-2xl overflow-hidden glass-card cursor-pointer hover:-translate-y-2 transition-all duration-500" onclick="openModal('project', ${globalIndex})" data-aos="fade-up" data-aos-delay="${idx * 100}">
+                    <div class="relative h-52 portfolio-img-wrapper"><img src="${p.cover}" class="portfolio-img w-full h-full object-cover" alt="${p.cardTitle}"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <div class="absolute top-3 right-3"><span class="px-2 py-1 bg-black/60 rounded-full text-[10px]">${p.categoryChip}</span></div><div class="absolute top-3 left-3 flex gap-1">${topBadges}</div></div>
+                    <div class="p-5"><h3 class="text-lg font-bold text-white mb-2 group-hover:text-primary">${p.cardTitle}</h3><p class="text-slate-400 text-sm line-clamp-2">${p.desc}</p><div class="flex flex-wrap gap-2 mt-4">${tagIcons}</div></div></div>`;
             }).join("");
             renderProjectPagination(totalPages);
         }
@@ -979,11 +780,9 @@
         function renderProjectPagination(totalPages) {
             const container = document.getElementById('projectPagination');
             if (!container || totalPages <= 1) { if (container) container.innerHTML = ''; return; }
-            let html = `<div class="flex justify-center gap-2 mt-8"><button onclick="changeProjectPage(${currentProjectPage - 1})" ${currentProjectPage === 1 ? 'disabled' : ''} class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-sm hover:bg-primary transition-all disabled:opacity-30">« Prev</button>`;
-            for (let i = 1; i <= totalPages; i++) {
-                html += `<button onclick="changeProjectPage(${i})" class="w-10 h-10 rounded-xl ${i === currentProjectPage ? 'bg-primary text-black' : 'bg-white/5 text-white hover:bg-white/10'} transition-all">${i}</button>`;
-            }
-            html += `<button onclick="changeProjectPage(${currentProjectPage + 1})" ${currentProjectPage === totalPages ? 'disabled' : ''} class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-sm hover:bg-primary transition-all disabled:opacity-30">Next »</button></div>`;
+            let html = `<div class="flex justify-center gap-2"><button onclick="changeProjectPage(${currentProjectPage - 1})" ${currentProjectPage === 1 ? 'disabled' : ''} class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-sm hover:bg-primary disabled:opacity-30">« Prev</button>`;
+            for (let i = 1; i <= totalPages; i++) html += `<button onclick="changeProjectPage(${i})" class="w-10 h-10 rounded-xl ${i === currentProjectPage ? 'bg-primary text-black' : 'bg-white/5 text-white hover:bg-white/10'}">${i}</button>`;
+            html += `<button onclick="changeProjectPage(${currentProjectPage + 1})" ${currentProjectPage === totalPages ? 'disabled' : ''} class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-sm hover:bg-primary disabled:opacity-30">Next »</button></div>`;
             container.innerHTML = html;
         }
 
@@ -995,7 +794,7 @@
             document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Certificate Pagination
+        // Certificate Pagination - 8 per halaman
         let currentCertPage = 1;
         const certsPerPage = 8;
 
@@ -1005,17 +804,7 @@
             const totalPages = Math.ceil(certsData.length / certsPerPage);
             const startIndex = (currentCertPage - 1) * certsPerPage;
             const paginatedCerts = certsData.slice(startIndex, startIndex + certsPerPage);
-            grid.innerHTML = paginatedCerts.map((c, i) => `
-                <div class="group cursor-pointer" onclick="openModal('cert', ${startIndex + i})" data-aos="zoom-in" data-aos-delay="${i * 50}">
-                    <div class="bg-cardSoft border border-white/10 rounded-2xl p-4 transition-all hover:border-primary/60 hover:-translate-y-2">
-                        <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4">
-                            <img src="${c.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="${c.title}">
-                        </div>
-                        <h4 class="text-white font-semibold text-sm group-hover:text-primary transition-colors">${c.title}</h4>
-                        <p class="text-slate-500 text-xs mt-1">${c.subtitle}</p>
-                    </div>
-                </div>
-            `).join("");
+            grid.innerHTML = paginatedCerts.map((c, i) => `<div class="group cursor-pointer" onclick="openModal('cert', ${startIndex + i})" data-aos="zoom-in"><div class="bg-cardSoft border border-white/10 rounded-2xl p-4 transition-all hover:border-primary/60 hover:-translate-y-2"><div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4"><img src="${c.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="${c.title}"></div><h4 class="text-white font-semibold text-sm group-hover:text-primary">${c.title}</h4><p class="text-slate-500 text-xs mt-1">${c.subtitle}</p></div></div>`).join("");
             renderCertPagination(totalPages);
             if (window.AOS) AOS.refresh();
         }
@@ -1023,12 +812,10 @@
         function renderCertPagination(totalPages) {
             const container = document.getElementById('certPagination');
             if (!container || totalPages <= 1) { if (container) container.innerHTML = ''; return; }
-            let html = `<div class="flex justify-center gap-2 mt-8"><button onclick="changeCertPage(${currentCertPage - 1})" ${currentCertPage === 1 ? 'disabled' : ''} class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-sm hover:bg-primary transition-all disabled:opacity-30">« Prev</button>`;
-            for (let i = 1; i <= totalPages; i++) {
-                html += `<button onclick="changeCertPage(${i})" class="w-10 h-10 rounded-xl ${i === currentCertPage ? 'bg-primary text-black' : 'bg-white/5 text-white hover:bg-white/10'} transition-all">${i}</button>`;
-            }
-            html += `<button onclick="changeCertPage(${currentCertPage + 1})" ${currentCertPage === totalPages ? 'disabled' : ''} class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-sm hover:bg-primary transition-all disabled:opacity-30">Next »</button></div>`;
-            container.innerHTML = html;
+            let html = `<button onclick="changeCertPage(${currentCertPage - 1})" ${currentCertPage === 1 ? 'disabled' : ''} class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-sm hover:bg-primary disabled:opacity-30">« Prev</button>`;
+            for (let i = 1; i <= totalPages; i++) html += `<button onclick="changeCertPage(${i})" class="w-10 h-10 rounded-xl ${i === currentCertPage ? 'bg-primary text-black' : 'bg-white/5 text-white hover:bg-white/10'}">${i}</button>`;
+            html += `<button onclick="changeCertPage(${currentCertPage + 1})" ${currentCertPage === totalPages ? 'disabled' : ''} class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-sm hover:bg-primary disabled:opacity-30">Next »</button>`;
+            container.innerHTML = `<div class="flex justify-center gap-2">${html}</div>`;
         }
 
         function changeCertPage(page) {
@@ -1044,84 +831,65 @@
         const modal = document.getElementById('universalModal');
         const backdrop = document.getElementById('modalBackdrop');
         const content = document.getElementById('modalContent');
-        const mImage = document.getElementById('mImage');
-        const mTitle = document.getElementById('mTitle');
-        const mSubtitle = document.getElementById('mSubtitle');
-        const mDesc = document.getElementById('mDesc');
-        const mTagsGroup = document.getElementById('mTagsGroup');
-        const mTags = document.getElementById('mTags');
-        const mActions = document.getElementById('mActions');
-        const mCertText = document.getElementById('mCertText');
-        const mDemo = document.getElementById('mDemo');
-        const mCode = document.getElementById('mCode');
-        const imgPrev = document.getElementById('imgPrev');
-        const imgNext = document.getElementById('imgNext');
-        const imgDots = document.getElementById('imgDots');
-
-        function setModalImage(i) {
-            currentImgIndex = (i + currentImages.length) % currentImages.length;
-            mImage.src = currentImages[currentImgIndex];
-            if (imgDots) {
-                Array.from(imgDots.children).forEach((dot, idx) => {
-                    dot.className = "w-2 h-2 rounded-full transition-all " + (idx === currentImgIndex ? "bg-white" : "bg-white/30");
-                });
-            }
-        }
 
         window.openModal = function (type, index) {
             let data;
-            mTagsGroup.classList.add('hidden');
-            mActions.classList.add('hidden');
-            mCertText.classList.add('hidden');
-            imgPrev?.classList.add('hidden');
-            imgNext?.classList.add('hidden');
-            imgDots?.classList.add('hidden');
-
+            document.getElementById('mTagsGroup')?.classList.add('hidden');
+            document.getElementById('mActions')?.classList.add('hidden');
+            document.getElementById('mCertText')?.classList.add('hidden');
             if (type === 'project') {
                 data = projectsData[index];
-                mTagsGroup.classList.remove('hidden');
-                mTags.innerHTML = '';
-                [...(data.tags || []), ...(data.badges || [])].forEach(tag => {
-                    const ic = getIcon(tag);
-                    const span = document.createElement('span');
-                    span.className = "px-3 py-1 bg-white/5 rounded-lg text-[11px] flex items-center gap-2";
-                    span.innerHTML = `<i class="${ic.cls} ${ic.color}"></i><span>${tag}</span>`;
-                    mTags.appendChild(span);
-                });
-                mActions.classList.remove('hidden');
-                mCode.href = data.github || "#";
-                if (data.demo && data.demo.trim()) {
-                    mDemo.href = data.demo;
-                    mDemo.classList.remove("hidden");
-                } else {
-                    mDemo.classList.add("hidden");
+                const tagsContainer = document.getElementById('mTags');
+                if (tagsContainer) {
+                    document.getElementById('mTagsGroup')?.classList.remove('hidden');
+                    tagsContainer.innerHTML = '';
+                    [...(data.tags || []), ...(data.badges || [])].forEach(tag => {
+                        const ic = getIcon(tag);
+                        tagsContainer.innerHTML += `<span class="px-3 py-1 bg-white/5 rounded-lg text-[11px] flex items-center gap-2"><i class="${ic.cls} ${ic.color}"></i>${tag}</span>`;
+                    });
                 }
+                document.getElementById('mActions')?.classList.remove('hidden');
+                const demoBtn = document.getElementById('mDemo');
+                if (demoBtn) {
+                    if (data.demo && data.demo.trim()) { demoBtn.href = data.demo; demoBtn.classList.remove("hidden"); }
+                    else demoBtn.classList.add("hidden");
+                }
+                document.getElementById('mCode').href = data.github || "#";
                 currentImages = data.images?.length ? data.images : [data.cover];
                 currentImgIndex = 0;
-                if (imgDots) {
-                    imgDots.innerHTML = "";
+                const dotsContainer = document.getElementById('imgDots');
+                if (dotsContainer) {
+                    dotsContainer.innerHTML = "";
                     currentImages.forEach((_, i) => {
                         const dot = document.createElement("button");
                         dot.className = "w-2 h-2 rounded-full bg-white/30";
                         dot.onclick = (e) => { e.stopPropagation(); setModalImage(i); };
-                        imgDots.appendChild(dot);
+                        dotsContainer.appendChild(dot);
                     });
                     setModalImage(0);
                 }
+                const prevBtn = document.getElementById('imgPrev'), nextBtn = document.getElementById('imgNext'), dotsDiv = document.getElementById('imgDots');
                 if (currentImages.length > 1) {
-                    imgPrev?.classList.remove('hidden');
-                    imgNext?.classList.remove('hidden');
-                    imgDots?.classList.remove('hidden');
+                    if (prevBtn) prevBtn.classList.remove('hidden');
+                    if (nextBtn) nextBtn.classList.remove('hidden');
+                    if (dotsDiv) dotsDiv.classList.remove('hidden');
+                } else {
+                    if (prevBtn) prevBtn.classList.add('hidden');
+                    if (nextBtn) nextBtn.classList.add('hidden');
+                    if (dotsDiv) dotsDiv.classList.add('hidden');
                 }
             } else if (type === 'cert') {
                 data = certsData[index];
-                mCertText.classList.remove('hidden');
+                document.getElementById('mCertText')?.classList.remove('hidden');
                 currentImages = [data.img];
                 setModalImage(0);
+                document.getElementById('imgPrev')?.classList.add('hidden');
+                document.getElementById('imgNext')?.classList.add('hidden');
+                document.getElementById('imgDots')?.classList.add('hidden');
             }
-            mTitle.innerText = data.title;
-            mSubtitle.innerText = data.subtitle;
-            mDesc.innerText = data.desc;
+            document.getElementById('mTitle').innerText = data.title;
+            document.getElementById('mSubtitle').innerText = data.subtitle;
+            document.getElementById('mDesc').innerText = data.desc;
             modal.classList.remove('hidden');
             setTimeout(() => {
                 backdrop.classList.replace('opacity-0', 'opacity-100');
@@ -1131,6 +899,14 @@
             document.body.style.overflow = 'hidden';
         };
 
+        function setModalImage(i) {
+            if (!currentImages.length) return;
+            currentImgIndex = (i + currentImages.length) % currentImages.length;
+            document.getElementById('mImage').src = currentImages[currentImgIndex];
+            const dots = document.getElementById('imgDots')?.children;
+            if (dots) Array.from(dots).forEach((dot, idx) => { dot.className = "w-2 h-2 rounded-full " + (idx === currentImgIndex ? "bg-white" : "bg-white/30"); });
+        }
+
         window.closeModal = function () {
             backdrop.classList.add('opacity-0');
             content.classList.remove('scale-100');
@@ -1139,24 +915,19 @@
             document.body.style.overflow = 'auto';
         };
 
-        imgPrev?.addEventListener("click", () => setModalImage(currentImgIndex - 1));
-        imgNext?.addEventListener("click", () => setModalImage(currentImgIndex + 1));
+        document.getElementById('imgPrev')?.addEventListener("click", () => setModalImage(currentImgIndex - 1));
+        document.getElementById('imgNext')?.addEventListener("click", () => setModalImage(currentImgIndex + 1));
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal(); });
 
-        // ==================== ANIMATIONS & EFFECTS ====================
-        // Typing Effect for Role
+        // ==================== ANIMATIONS ====================
         const roleElement = document.getElementById('changing-role');
         const roleOptions = ['Software Engineer', 'Fullstack Developer', 'AI/ML Enthusiast', 'Backend Developer'];
         let roleIndex = 0, roleCharIndex = 0, isRoleDeleting = false;
         function roleTypeEffect() {
             if (!roleElement) return;
             const currentRole = roleOptions[roleIndex];
-            if (isRoleDeleting) {
-                roleElement.textContent = currentRole.substring(0, roleCharIndex - 1);
-                roleCharIndex--;
-            } else {
-                roleElement.textContent = currentRole.substring(0, roleCharIndex + 1);
-                roleCharIndex++;
-            }
+            if (isRoleDeleting) roleElement.textContent = currentRole.substring(0, roleCharIndex - 1), roleCharIndex--;
+            else roleElement.textContent = currentRole.substring(0, roleCharIndex + 1), roleCharIndex++;
             let speed = isRoleDeleting ? 40 : 70;
             if (!isRoleDeleting && roleCharIndex === currentRole.length) { speed = 2000; isRoleDeleting = true; }
             else if (isRoleDeleting && roleCharIndex === 0) { isRoleDeleting = false; roleIndex = (roleIndex + 1) % roleOptions.length; speed = 500; }
@@ -1165,15 +936,14 @@
 
         // Canvas Background
         const canvas = document.getElementById('hero-canvas');
-        const ctx = canvas?.getContext('2d');
-        let particles = [];
-        if (canvas && ctx) {
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let particles = [];
             function initCanvas() {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
                 particles = [];
-                const particleCount = (canvas.width * canvas.height) / 12000;
-                for (let i = 0; i < particleCount; i++) particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 2 + 1, speedX: Math.random() * 0.8 - 0.4, speedY: Math.random() * 0.8 - 0.4 });
+                for (let i = 0; i < (canvas.width * canvas.height) / 12000; i++) particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, size: Math.random() * 2 + 1, speedX: Math.random() * 0.8 - 0.4, speedY: Math.random() * 0.8 - 0.4 });
             }
             function animateCanvas() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -1195,71 +965,33 @@
 
         // Cursor Effects
         (function () {
-            const cursorGlow = document.createElement('div');
-            cursorGlow.className = 'cursor-glow';
-            const cursorTrail = document.createElement('div');
-            cursorTrail.className = 'cursor-trail';
-            document.body.appendChild(cursorGlow);
-            document.body.appendChild(cursorTrail);
+            const cursorGlow = document.createElement('div'); cursorGlow.className = 'cursor-glow';
+            const cursorTrail = document.createElement('div'); cursorTrail.className = 'cursor-trail';
+            document.body.appendChild(cursorGlow); document.body.appendChild(cursorTrail);
             let mouseX = 0, mouseY = 0, trailX = 0, trailY = 0;
             document.addEventListener('mousemove', (e) => {
                 mouseX = e.clientX; mouseY = e.clientY;
-                cursorGlow.style.left = mouseX + 'px';
-                cursorGlow.style.top = mouseY + 'px';
-                const hoverTarget = e.target.closest('a, button, [onclick]');
-                hoverTarget ? cursorGlow.classList.add('hover-effect') : cursorGlow.classList.remove('hover-effect');
+                cursorGlow.style.left = mouseX + 'px'; cursorGlow.style.top = mouseY + 'px';
+                e.target.closest('a, button, [onclick]') ? cursorGlow.classList.add('hover-effect') : cursorGlow.classList.remove('hover-effect');
             });
-            function animateTrail() {
-                trailX += (mouseX - trailX) * 0.2;
-                trailY += (mouseY - trailY) * 0.2;
-                cursorTrail.style.left = trailX + 'px';
-                cursorTrail.style.top = trailY + 'px';
-                requestAnimationFrame(animateTrail);
-            }
+            function animateTrail() { trailX += (mouseX - trailX) * 0.2; trailY += (mouseY - trailY) * 0.2; cursorTrail.style.left = trailX + 'px'; cursorTrail.style.top = trailY + 'px'; requestAnimationFrame(animateTrail); }
             animateTrail();
         })();
 
-        // Navbar Active Link & Scroll Effect
-        function updateActiveNav() {
-            const sections = document.querySelectorAll('section[id]');
-            const scrollPos = window.scrollY + 150;
-            sections.forEach(section => {
-                const top = section.offsetTop, bottom = top + section.offsetHeight;
-                if (scrollPos >= top && scrollPos < bottom) {
-                    document.querySelectorAll('.nav-link').forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${section.id}`) link.classList.add('active');
-                    });
-                }
-            });
-        }
+        // Navbar
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) navbar.classList.add('glass-nav');
             else navbar.classList.remove('glass-nav');
-            updateActiveNav();
         });
 
         // Mobile Menu
-        const mobileMenu = document.getElementById('mobileMenu');
-        window.toggleMenu = () => mobileMenu.classList.toggle('translate-x-full');
+        window.toggleMenu = () => document.getElementById('mobileMenu').classList.toggle('translate-x-full');
         document.getElementById('menuBtn')?.addEventListener('click', toggleMenu);
+        document.getElementById('spotifyToggle')?.addEventListener('click', () => document.getElementById('spotifyWrap').classList.toggle('hidden'));
+        document.getElementById('themeToggle')?.addEventListener('click', () => document.documentElement.classList.toggle('dark'));
 
-        // Spotify Toggle
-        document.getElementById('spotifyToggle')?.addEventListener('click', () => {
-            const wrap = document.getElementById('spotifyWrap');
-            wrap.classList.toggle('hidden');
-        });
-
-        // Theme Toggle
-        document.getElementById('themeToggle')?.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-        });
-
-        // ESC to close modal
-        document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal(); });
-
-        // Initialize Everything
+        // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             renderSkills();
             renderProjects();
