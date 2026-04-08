@@ -20,7 +20,6 @@
   </p>
 </div>
 
-
 ## 🚀 About The Project
 
 A modern, interactive portfolio website showcasing my journey as a Software Engineer, Backend Developer, Fullstack Developer, and AI/ML Enthusiast. Built with cutting-edge web technologies and featuring stunning visual effects, smooth animations, and a responsive design that works seamlessly across all devices.
