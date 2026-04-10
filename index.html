@@ -742,14 +742,86 @@
             }
         }
 
+        /* Ganti atau tambahkan di bagian style */
+
+/* Hapus atau nonaktifkan efek cursor glow sebelumnya */
+.cursor-glow, .cursor-trail, .cursor-particle {
+    display: none;
+}
+
+/* Efek Kupu-Kupu */
+.butterfly-cursor {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.08s linear;
+    filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.6));
+}
+
+.butterfly-cursor svg {
+    width: 100%;
+    height: 100%;
+    animation: butterflyWing 0.3s ease-in-out infinite;
+}
+
+/* Efek trail kupu-kupu */
+.butterfly-trail {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    opacity: 0.6;
+    filter: blur(1px);
+    transition: opacity 0.3s ease;
+}
+
+.butterfly-trail svg {
+    width: 100%;
+    height: 100%;
+    animation: butterflyWing 0.4s ease-in-out infinite;
+}
+
+/* Partikel debu kupu-kupu */
+.butterfly-dust {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, #22c55e, #4ade80);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9997;
+    opacity: 0;
+    filter: blur(1px);
+}
+
+@keyframes butterflyWing {
+    0%, 100% {
+        transform: scaleX(1);
+    }
+    50% {
+        transform: scaleX(0.7);
+    }
+}
+
+/* Animasi dust particle */
+@keyframes dustFloat {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(var(--tx, 30px), var(--ty, -30px)) scale(0);
+        opacity: 0;
+    }
+}
+
         /* Media query untuk layar sentuh */
         @media (hover: none) and (pointer: coarse) {
-
-            .cursor-glow,
-            .cursor-trail,
-            .cursor-particle {
-                display: none;
-            }
 
             #home {
                 cursor: auto !important;
@@ -2015,205 +2087,319 @@
             }, 500);
         });
 
-        // ===== EFEK KURSOR BERCAHAYA MODERN =====
-        (function () {
-            // Buat elemen cursor glow
-            const cursorGlow = document.createElement('div');
-            cursorGlow.className = 'cursor-glow';
-            document.body.appendChild(cursorGlow);
+        // ===== EFEK KUPU-KUPU PADA KURSOR =====
+            (function () {
+                // SVG Kupu-Kupu
+                const butterflySVG = `
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Sayap Kiri -->
+            <path d="M50 50 C30 20, 10 30, 15 45 C20 60, 35 55, 50 50Z" 
+                  fill="url(#gradLeft)" stroke="#22c55e" stroke-width="1.5"/>
+            <path d="M50 50 C35 35, 20 40, 25 50 C30 60, 40 58, 50 50Z" 
+                  fill="url(#gradLeft2)" stroke="#4ade80" stroke-width="1"/>
+            <!-- Sayap Kanan -->
+            <path d="M50 50 C70 20, 90 30, 85 45 C80 60, 65 55, 50 50Z" 
+                  fill="url(#gradRight)" stroke="#22c55e" stroke-width="1.5"/>
+            <path d="M50 50 C65 35, 80 40, 75 50 C70 60, 60 58, 50 50Z" 
+                  fill="url(#gradRight2)" stroke="#4ade80" stroke-width="1"/>
+            <!-- Badan -->
+            <ellipse cx="50" cy="50" rx="4" ry="12" fill="#15803d"/>
+            <!-- Antena -->
+            <path d="M48 40 C45 32, 40 30, 38 32" stroke="#22c55e" stroke-width="1.5" fill="none"/>
+            <path d="M52 40 C55 32, 60 30, 62 32" stroke="#22c55e" stroke-width="1.5" fill="none"/>
+            <circle cx="38" cy="32" r="2" fill="#4ade80"/>
+            <circle cx="62" cy="32" r="2" fill="#4ade80"/>
+            <defs>
+                <linearGradient id="gradLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#22c55e"/>
+                    <stop offset="100%" stop-color="#15803d"/>
+                </linearGradient>
+                <linearGradient id="gradLeft2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#4ade80"/>
+                    <stop offset="100%" stop-color="#166534"/>
+                </linearGradient>
+                <linearGradient id="gradRight" x1="100%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#22c55e"/>
+                    <stop offset="100%" stop-color="#15803d"/>
+                </linearGradient>
+                <linearGradient id="gradRight2" x1="100%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#4ade80"/>
+                    <stop offset="100%" stop-color="#166534"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    `;
 
-            // Buat elemen trail cursor
-            const cursorTrail = document.createElement('div');
-            cursorTrail.className = 'cursor-trail';
-            document.body.appendChild(cursorTrail);
+                // Buat elemen kupu-kupu utama
+                const butterflyCursor = document.createElement('div');
+                butterflyCursor.className = 'butterfly-cursor';
+                butterflyCursor.innerHTML = butterflySVG;
+                document.body.appendChild(butterflyCursor);
 
-            // Variabel untuk trail
-            let mouseX = 0, mouseY = 0;
-            let trailX = 0, trailY = 0;
+                // Array untuk trail (maksimal 8 trail)
+                const trails = [];
+                const MAX_TRAILS = 8;
 
-            // Update posisi cursor utama
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-                cursorGlow.style.left = mouseX + 'px';
-                cursorGlow.style.top = mouseY + 'px';
-
-                // Efek hover pada elemen interaktif
-                const hoverTarget = e.target.closest('a, button, .cursor-pointer, [onclick]');
-                if (hoverTarget) {
-                    cursorGlow.classList.add('hover-effect');
-                } else {
-                    cursorGlow.classList.remove('hover-effect');
+                for (let i = 0; i < MAX_TRAILS; i++) {
+                    const trail = document.createElement('div');
+                    trail.className = 'butterfly-trail';
+                    trail.innerHTML = butterflySVG;
+                    trail.style.opacity = 0.4 - (i * 0.05);
+                    trail.style.transform = `translate(-50%, -50%) scale(${1 - (i * 0.08)})`;
+                    document.body.appendChild(trail);
+                    trails.push({
+                        element: trail,
+                        x: 0,
+                        y: 0,
+                        history: []
+                    });
                 }
-            });
 
-            // Animasi trail dengan delay
-            function animateTrail() {
-                const dx = mouseX - trailX;
-                const dy = mouseY - trailY;
-                trailX += dx * 0.2;
-                trailY += dy * 0.2;
-                cursorTrail.style.left = trailX + 'px';
-                cursorTrail.style.top = trailY + 'px';
-                requestAnimationFrame(animateTrail);
-            }
-            animateTrail();
+                // Variabel untuk posisi mouse
+                let mouseX = 0, mouseY = 0;
+                let butterflyX = 0, butterflyY = 0;
 
-            // Sembunyikan cursor default saat hover di area tertentu (opsional)
-            const heroSection = document.querySelector('#home');
-            if (heroSection) {
-                heroSection.style.cursor = 'none';
-            }
+                // History positions untuk trail
+                let positions = [];
+                const MAX_POSITIONS = MAX_TRAILS;
 
-            // Tampilkan kembali cursor default saat keluar dari hero
-            document.addEventListener('mouseleave', () => {
-                cursorGlow.style.opacity = '0';
-                cursorTrail.style.opacity = '0';
-            });
+                // Update posisi mouse
+                document.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
 
-            document.addEventListener('mouseenter', () => {
-                cursorGlow.style.opacity = '1';
-                cursorTrail.style.opacity = '1';
-            });
+                    // Simpan history posisi
+                    positions.unshift({ x: mouseX, y: mouseY, time: Date.now() });
+                    if (positions.length > MAX_POSITIONS) positions.pop();
 
-            // Efek sparkle saat mengklik
-            function createSparkle(x, y) {
-                for (let i = 0; i < 8; i++) {
-                    const sparkle = document.createElement('div');
-                    sparkle.className = 'sparkle';
-                    sparkle.style.left = x + 'px';
-                    sparkle.style.top = y + 'px';
+                    // Efek hover pada elemen interaktif
+                    const hoverTarget = e.target.closest('a, button, .cursor-pointer, [onclick]');
+                    if (hoverTarget) {
+                        butterflyCursor.style.transform = `translate(-50%, -50%) scale(1.2)`;
+                        butterflyCursor.style.filter = `drop-shadow(0 0 12px rgba(34, 197, 94, 0.8))`;
+                    } else {
+                        butterflyCursor.style.transform = `translate(-50%, -50%) scale(1)`;
+                        butterflyCursor.style.filter = `drop-shadow(0 0 8px rgba(34, 197, 94, 0.6))`;
+                    }
+                });
 
-                    const angle = (i * 45) + Math.random() * 45;
-                    const distance = 30 + Math.random() * 40;
-                    const tx = Math.cos(angle * Math.PI / 180) * distance;
-                    const ty = Math.sin(angle * Math.PI / 180) * distance;
+                // Animasi smooth butterfly cursor
+                let targetX = 0, targetY = 0;
+                let currentX = 0, currentY = 0;
 
-                    sparkle.style.setProperty('--tx', tx + 'px');
-                    sparkle.style.setProperty('--ty', ty + 'px');
+                function smoothButterfly() {
+                    targetX = mouseX;
+                    targetY = mouseY;
 
-                    document.body.appendChild(sparkle);
+                    // Smooth follow
+                    currentX += (targetX - currentX) * 0.25;
+                    currentY += (targetY - currentY) * 0.25;
 
-                    setTimeout(() => {
-                        sparkle.remove();
-                    }, 2000);
+                    butterflyCursor.style.left = currentX + 'px';
+                    butterflyCursor.style.top = currentY + 'px';
+
+                    // Update trail positions
+                    trails.forEach((trail, index) => {
+                        const pos = positions[index + 1];
+                        if (pos) {
+                            trail.element.style.left = pos.x + 'px';
+                            trail.element.style.top = pos.y + 'px';
+                        }
+                    });
+
+                    requestAnimationFrame(smoothButterfly);
                 }
-            }
+                smoothButterfly();
 
-            // Sparkle saat klik
-            document.addEventListener('click', (e) => {
-                createSparkle(e.clientX, e.clientY);
-            });
+                // Efek rotasi berdasarkan arah gerakan
+                let lastX = 0, lastY = 0;
+                let rotation = 0;
+                let targetRotation = 0;
 
-            // Efek tambahan: partikel mengikuti cursor
-            let particles = [];
-            const PARTICLE_COUNT = 5;
+                setInterval(() => {
+                    const deltaX = currentX - lastX;
+                    const deltaY = currentY - lastY;
 
-            for (let i = 0; i < PARTICLE_COUNT; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'cursor-particle';
-                particle.style.cssText = `
-            position: fixed;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: radial-gradient(circle, #38bdf8, #818cf8);
-            pointer-events: none;
-            z-index: 9997;
-            opacity: 0.6;
-            filter: blur(1px);
-        `;
-                document.body.appendChild(particle);
-                particles.push({
-                    element: particle,
-                    x: 0,
-                    y: 0,
-                    delay: i * 3
-                });
-            }
-
-            let frame = 0;
-            function animateParticles() {
-                frame++;
-                particles.forEach((particle, idx) => {
-                    const delayFrames = particle.delay;
-                    const historyIndex = Math.max(0, frame - delayFrames);
-
-                    // Simulasi posisi berdasarkan history cursor
-                    const x = mouseX;
-                    const y = mouseY;
-
-                    particle.element.style.left = x + 'px';
-                    particle.element.style.top = y + 'px';
-                    particle.element.style.opacity = 0.6 - (idx * 0.1);
-                });
-                requestAnimationFrame(animateParticles);
-            }
-            animateParticles();
-        })();
-
-        // ===== EFEK PARTIKEL HIJAU PADA FOTO PROFIL =====
-        const profileContainer = document.querySelector('.profile-container');
-
-        if (profileContainer) {
-            // Fungsi untuk membuat partikel hijau
-            function createGreenParticle(x, y) {
-                const particle = document.createElement('div');
-                particle.className = 'green-particle';
-
-                // Posisi relatif terhadap container
-                const rect = profileContainer.getBoundingClientRect();
-                const relativeX = x - rect.left;
-                const relativeY = y - rect.top;
-
-                particle.style.left = relativeX + 'px';
-                particle.style.top = relativeY + 'px';
-
-                // Arah gerakan random
-                const angle = Math.random() * Math.PI * 2;
-                const distance = 40 + Math.random() * 60;
-                const tx = Math.cos(angle) * distance;
-                const ty = Math.sin(angle) * distance;
-
-                particle.style.setProperty('--tx', tx + 'px');
-                particle.style.setProperty('--ty', ty + 'px');
-
-                profileContainer.appendChild(particle);
-
-                setTimeout(() => {
-                    particle.remove();
-                }, 3000);
-            }
-
-            // Efek partikel saat mouse bergerak di atas foto
-            let mouseMoveTimeout;
-            let lastX = 0, lastY = 0;
-
-            profileContainer.addEventListener('mousemove', (e) => {
-                const rect = profileContainer.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-
-                // Buat partikel dengan interval tertentu
-                if (Math.abs(x - lastX) > 5 || Math.abs(y - lastY) > 5) {
-                    if (mouseMoveTimeout) clearTimeout(mouseMoveTimeout);
-
-                    // Buat 1-3 partikel setiap gerakan
-                    const particleCount = Math.floor(Math.random() * 3) + 1;
-                    for (let i = 0; i < particleCount; i++) {
-                        setTimeout(() => {
-                            createGreenParticle(x + (Math.random() - 0.5) * 20, y + (Math.random() - 0.5) * 20);
-                        }, i * 50);
+                    if (Math.abs(deltaX) > 0.5 || Math.abs(deltaY) > 0.5) {
+                        targetRotation = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
+                        // Smooth rotation
+                        rotation += (targetRotation - rotation) * 0.3;
+                        butterflyCursor.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(1)`;
                     }
 
-                    lastX = x;
-                    lastY = y;
+                    lastX = currentX;
+                    lastY = currentY;
+                }, 50);
+
+                // Buat partikel debu (dust particles) saat bergerak
+                let lastParticleTime = 0;
+
+                document.addEventListener('mousemove', (e) => {
+                    const now = Date.now();
+                    if (now - lastParticleTime > 30) { // Batasi frekuensi partikel
+                        createDustParticle(e.clientX, e.clientY);
+                        lastParticleTime = now;
+                    }
+                });
+
+                function createDustParticle(x, y) {
+                    const dust = document.createElement('div');
+                    dust.className = 'butterfly-dust';
+                    dust.style.left = x + 'px';
+                    dust.style.top = y + 'px';
+
+                    // Arah random
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = 20 + Math.random() * 40;
+                    const tx = Math.cos(angle) * distance;
+                    const ty = Math.sin(angle) * distance;
+
+                    dust.style.setProperty('--tx', tx + 'px');
+                    dust.style.setProperty('--ty', ty + 'px');
+                    dust.style.animation = 'dustFloat 0.8s ease-out forwards';
+
+                    document.body.appendChild(dust);
+
+                    setTimeout(() => {
+                        dust.remove();
+                    }, 800);
                 }
 
-                mouseMoveTimeout = setTimeout(() => {
-                    // Reset setelah mouse berhenti bergerak
-                }, 100);
-            });
+                // Efek burst partikel saat klik
+                function createBurstParticles(x, y) {
+                    for (let i = 0; i < 12; i++) {
+                        setTimeout(() => {
+                            const dust = document.createElement('div');
+                            dust.className = 'butterfly-dust';
+                            dust.style.left = x + 'px';
+                            dust.style.top = y + 'px';
+
+                            const angle = (i * 30) + Math.random() * 30;
+                            const distance = 30 + Math.random() * 50;
+                            const tx = Math.cos(angle * Math.PI / 180) * distance;
+                            const ty = Math.sin(angle * Math.PI / 180) * distance;
+
+                            dust.style.setProperty('--tx', tx + 'px');
+                            dust.style.setProperty('--ty', ty + 'px');
+                            dust.style.animation = 'dustFloat 1s ease-out forwards';
+                            dust.style.width = '6px';
+                            dust.style.height = '6px';
+
+                            document.body.appendChild(dust);
+
+                            setTimeout(() => {
+                                dust.remove();
+                            }, 1000);
+                        }, i * 20);
+                    }
+                }
+
+                // Event klik untuk burst effect
+                document.addEventListener('click', (e) => {
+                    createBurstParticles(e.clientX, e.clientY);
+
+                    // Animasi kepakan sayap lebih cepat saat klik
+                    butterflyCursor.style.animation = 'butterflyWing 0.15s ease-in-out';
+                    setTimeout(() => {
+                        butterflyCursor.style.animation = 'butterflyWing 0.3s ease-in-out infinite';
+                    }, 150);
+                });
+
+                // Sembunyikan cursor default di area tertentu (opsional)
+                const heroSection = document.querySelector('#home');
+                if (heroSection) {
+                    heroSection.style.cursor = 'none';
+                }
+
+                // Tampilkan kembali cursor default saat keluar dari hero
+                document.addEventListener('mouseleave', () => {
+                    butterflyCursor.style.opacity = '0';
+                    trails.forEach(trail => {
+                        trail.element.style.opacity = '0';
+                    });
+                });
+
+                document.addEventListener('mouseenter', () => {
+                    butterflyCursor.style.opacity = '1';
+                    trails.forEach(trail => {
+                        trail.element.style.opacity = '0.6';
+                    });
+                });
+
+                // Efek tambahan: kupu-kupu akan mengepak lebih cepat saat hover di link/button
+                const interactiveElements = document.querySelectorAll('a, button, .cursor-pointer, [onclick]');
+                interactiveElements.forEach(el => {
+                    el.addEventListener('mouseenter', () => {
+                        butterflyCursor.style.animation = 'butterflyWing 0.15s ease-in-out infinite';
+                    });
+                    el.addEventListener('mouseleave', () => {
+                        butterflyCursor.style.animation = 'butterflyWing 0.3s ease-in-out infinite';
+                    });
+                });
+            })();
+
+            // ===== EFEK KUPU-KUPU BERKELILING =====
+                function createFloatingButterfly() {
+                    const butterfly = document.createElement('div');
+                    butterfly.className = 'butterfly-cursor';
+                    butterfly.style.position = 'fixed';
+                    butterfly.style.opacity = '0.3';
+                    butterfly.style.pointerEvents = 'none';
+                    butterfly.style.zIndex = '9995';
+                    butterfly.innerHTML = butterflySVG;
+
+                    // Posisi random di layar
+                    const startX = Math.random() * window.innerWidth;
+                    const startY = Math.random() * window.innerHeight;
+                    butterfly.style.left = startX + 'px';
+                    butterfly.style.top = startY + 'px';
+
+                    document.body.appendChild(butterfly);
+
+                    // Animasi terbang random
+                    let x = startX;
+                    let y = startY;
+                    let vx = (Math.random() - 0.5) * 2;
+                    let vy = (Math.random() - 0.5) * 2;
+
+                    function animateButterfly() {
+                        x += vx;
+                        y += vy;
+
+                        // Bounce di tepi layar
+                        if (x < 0 || x > window.innerWidth) vx *= -1;
+                        if (y < 0 || y > window.innerHeight) vy *= -1;
+
+                        butterfly.style.left = x + 'px';
+                        butterfly.style.top = y + 'px';
+
+                        // Rotasi berdasarkan arah
+                        const angle = Math.atan2(vy, vx) * 180 / Math.PI;
+                        butterfly.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+
+                        requestAnimationFrame(animateButterfly);
+                    }
+
+                    animateButterfly();
+
+                    // Hapus setelah 30 detik
+                    setTimeout(() => {
+                        butterfly.remove();
+                    }, 30000);
+                }
+
+                // Buat beberapa kupu-kupu floating setiap 10 detik
+                setInterval(() => {
+                    if (Math.random() > 0.7) { // 30% chance
+                        createFloatingButterfly();
+                    }
+                }, 10000);
+
+                // Buat 2 kupu-kupu awal saat halaman dimuat
+                setTimeout(() => {
+                    createFloatingButterfly();
+                    setTimeout(() => createFloatingButterfly(), 2000);
+                }, 1000);
 
             // Efek burst partikel saat klik pada foto
             profileContainer.addEventListener('click', (e) => {
