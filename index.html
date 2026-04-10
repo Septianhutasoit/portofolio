@@ -38,8 +38,9 @@
                         'slow-float': 'slowFloat 20s ease-in-out infinite',
                         'scroll-left': 'scroll-left 40s linear infinite',
                         'scroll-right': 'scroll-right 40s linear infinite',
-                        'butterfly-wing': 'butterflyWing 0.3s ease-in-out infinite',
-                        'butterfly-wing-fast': 'butterflyWing 0.15s ease-in-out infinite',
+                        'butterfly-wing': 'butterflyWing 0.25s ease-in-out infinite',
+                        'butterfly-wing-fast': 'butterflyWing 0.12s ease-in-out infinite',
+                        'drift': 'drift 8s ease-in-out infinite',
                     },
                     keyframes: {
                         'scroll-left': { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
@@ -52,7 +53,7 @@
                         },
                         slowFloat: {
                             '0%': { transform: 'translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg)' },
-                            '50%': { transform: 'translate3d(0, 6px, 0) rotate3d(0, 0, 1, 1deg)' },
+                            '50%': { transform: 'translate3d(0, 8px, 0) rotate3d(0, 0, 1, 1.5deg)' },
                             '100%': { transform: 'translate3d(0, 0, 0) rotate3d(0, 0, 1, 0deg)' },
                         },
                         imgKenburns: {
@@ -62,11 +63,12 @@
                         },
                         butterflyWing: {
                             '0%,100%': { transform: 'scaleX(1)' },
-                            '50%': { transform: 'scaleX(0.6)' },
+                            '50%': { transform: 'scaleX(0.5)' },
                         },
-                        dustFloat: {
-                            '0%': { transform: 'translate(0,0) scale(1)', opacity: 0.8 },
-                            '100%': { transform: 'translate(var(--tx,30px),var(--ty,-30px)) scale(0)', opacity: 0 },
+                        drift: {
+                            '0%,100%': { transform: 'translate(0, 0) rotate(0deg)' },
+                            '25%': { transform: 'translate(5px, -3px) rotate(2deg)' },
+                            '75%': { transform: 'translate(-3px, 2px) rotate(-1deg)' },
                         }
                     }
                 }
@@ -212,50 +214,53 @@
             filter: brightness(1.05);
         }
 
-        /* Butterfly Cursor */
+        /* Butterfly Cursor - Enhanced */
         .butterfly-cursor {
             position: fixed;
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%);
-            filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.6));
-            transition: transform 0.1s ease;
+            filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.7));
+            transition: filter 0.2s ease;
+            will-change: transform;
         }
 
         .butterfly-cursor svg {
             width: 100%;
             height: 100%;
-            animation: butterflyWing 0.3s ease-in-out infinite;
+            animation: butterflyWing 0.25s ease-in-out infinite;
+            transform-origin: center;
         }
 
         .butterfly-trail {
             position: fixed;
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
             pointer-events: none;
             z-index: 9998;
             transform: translate(-50%, -50%);
-            opacity: 0.4;
-            filter: blur(1px);
+            filter: blur(1.5px);
+            transition: opacity 0.2s ease;
         }
 
         .butterfly-trail svg {
             width: 100%;
             height: 100%;
-            animation: butterflyWing 0.4s ease-in-out infinite;
+            animation: butterflyWing 0.35s ease-in-out infinite;
+            transform-origin: center;
         }
 
         .butterfly-dust {
             position: fixed;
-            width: 4px;
-            height: 4px;
+            width: 5px;
+            height: 5px;
             background: radial-gradient(circle, #22c55e, #4ade80);
             border-radius: 50%;
             pointer-events: none;
             z-index: 9997;
-            animation: dustFloat 0.8s ease-out forwards;
+            animation: dustFloat 0.6s ease-out forwards;
         }
 
         .green-particle {
@@ -265,7 +270,7 @@
             border-radius: 50%;
             background: radial-gradient(circle, #22c55e, #15803d);
             pointer-events: none;
-            animation: floatParticle 3s ease-out forwards;
+            animation: floatParticle 2.5s ease-out forwards;
             z-index: 15;
         }
 
@@ -278,18 +283,6 @@
             100% {
                 transform: translate(var(--tx, 50px), var(--ty, -50px)) scale(0);
                 opacity: 0;
-            }
-        }
-
-        @keyframes butterflyWing {
-
-            0%,
-            100% {
-                transform: scaleX(1);
-            }
-
-            50% {
-                transform: scaleX(0.6);
             }
         }
 
@@ -769,15 +762,23 @@
             { cardTitle: "ChatBotAI Clinic", title: "Sistem ChatBotAI Klinik", subtitle: "Web", categoryChip: "AI ChatBot", cover: "assets/img/chatbot.png", images: ["assets/img/kodinganchatbot.png", "assets/img/tanya1.png", "assets/img/lanjut1.png"], desc: "Aplikasi ChatBotAI untuk Klinik Gigi.", tags: ["Node.js", "Next.js", "Python", "FastAPI", "AI"], badges: ["AI ChatBot"], github: "", demo: "" }
         ];
 
+        // SEMUA SERTIFIKAT (15 sertifikat lengkap)
         const certsData = [
-            { title: "Huawei Cloud Computing", subtitle: "Huawei Academy", img: "assets/img/Huawei.png", desc: "Fondasi cloud computing." },
-            { title: "Huawei Data Analytics", subtitle: "Huawei Academy", img: "assets/img/Huaweidata.png", desc: "Analisis data end-to-end." },
-            { title: "AI Fundamentals", subtitle: "AI Track", img: "assets/img/Dasar%20AI.png", desc: "Konsep AI dasar." },
-            { title: "Data Science Essentials", subtitle: "Data Track", img: "assets/img/Data%20Science.png", desc: "Statistik dan data cleaning." },
-            { title: "Frontend Development", subtitle: "Web Engineering", img: "assets/img/frontend.png", desc: "UI responsif." },
-            { title: "Backend Engineering", subtitle: "Web Engineering", img: "assets/img/backend.png", desc: "API design." },
-            { title: "Cloud & Deployment", subtitle: "Infrastructure", img: "assets/img/Cloud.png", desc: "Hosting dan deployment." },
-            { title: "Applied AI Project", subtitle: "Project Portfolio", img: "assets/img/AI.png", desc: "Implementasi AI nyata." }
+            { title: "Huawei Cloud Computing", subtitle: "Huawei Academy", img: "assets/img/Huawei.png", desc: "Fondasi cloud computing: layanan inti, deployment, dan arsitektur scalable." },
+            { title: "Huawei Data Analytics", subtitle: "Huawei Academy", img: "assets/img/Huaweidata.png", desc: "Analisis data end-to-end dari ingestion sampai insight bisnis." },
+            { title: "AI Fundamentals", subtitle: "AI Track", img: "assets/img/Dasar%20AI.png", desc: "Konsep AI dasar, evaluasi model, dan cara berpikir yang benar." },
+            { title: "Data Science Essentials", subtitle: "Data Track", img: "assets/img/Data%20Science.png", desc: "Statistik, data cleaning, feature engineering, dan insight." },
+            { title: "Frontend Development", subtitle: "Web Engineering", img: "assets/img/frontend.png", desc: "UI responsif, UX detail, dan performa web." },
+            { title: "Backend Engineering", subtitle: "Web Engineering", img: "assets/img/backend.png", desc: "API design, autentikasi, dan database terstruktur." },
+            { title: "Cloud & Deployment", subtitle: "Infrastructure", img: "assets/img/Cloud.png", desc: "Hosting, environment, dan deployment workflow." },
+            { title: "Applied AI Project", subtitle: "Project Portfolio", img: "assets/img/AI.png", desc: "Implementasi AI nyata, bukan gimmick." },
+            { title: "Applied AI Azure", subtitle: "AI Portfolio", img: "assets/img/greatnusa.png", desc: "Implementasi Basic Fundamental AI nyata." },
+            { title: "Python With AI", subtitle: "Sertifikat Portfolio", img: "assets/img/PhytonAi.png", desc: "Implementasi Basic Fundamental AI." },
+            { title: "Applied Data Science", subtitle: "DataScience Portfolio", img: "assets/img/DSDqLab.png", desc: "Implementasi Basic Fundamental AI nyata." },
+            { title: "Computer Vision (AI)", subtitle: "Kecerdasan Buatan", img: "assets/img/ComputerVision.png", desc: "Cabang Kecerdasan Buatan (AI) yang melatih komputer untuk memahami." },
+            { title: "Pertahanan Digital", subtitle: "Digitalent Scholarship 2025", img: "assets/img/digitalent.png", desc: "Pertahanan Digital 101 untuk Individu dan UMKM." },
+            { title: "Python Fundamental", subtitle: "Aguna Course 2025", img: "assets/img/phyton.png", desc: "Dasar Pemrograman menggunakan bahasa pemrograman Python." },
+            { title: "Dasar Pemrograman Dart", subtitle: "ID-Networkers", img: "assets/img/dart dasr.png", desc: "Memahami konsep dasar pemrograman dart mobile & algoritma." }
         ];
 
         // MODAL ELEMENTS
@@ -956,18 +957,19 @@
         };
 
         // ============================================
-        // BUTTERFLY CURSOR EFFECT
+        // BUTTERFLY CURSOR EFFECT - SMOOTH & REALISTIC
         // ============================================
         (function () {
             const butterflySVG = `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M50 50 C30 20, 10 30, 15 45 C20 60, 35 55, 50 50Z" fill="url(#gradL)" stroke="#22c55e" stroke-width="1.5"/>
-                <path d="M50 50 C35 35, 20 40, 25 50 C30 60, 40 58, 50 50Z" fill="url(#gradL2)" stroke="#4ade80" stroke-width="1"/>
-                <path d="M50 50 C70 20, 90 30, 85 45 C80 60, 65 55, 50 50Z" fill="url(#gradR)" stroke="#22c55e" stroke-width="1.5"/>
-                <path d="M50 50 C65 35, 80 40, 75 50 C70 60, 60 58, 50 50Z" fill="url(#gradR2)" stroke="#4ade80" stroke-width="1"/>
-                <ellipse cx="50" cy="50" rx="4" ry="12" fill="#15803d"/>
-                <path d="M48 40 C45 32, 40 30, 38 32" stroke="#22c55e" stroke-width="1.5" fill="none"/>
-                <path d="M52 40 C55 32, 60 30, 62 32" stroke="#22c55e" stroke-width="1.5" fill="none"/>
-                <circle cx="38" cy="32" r="2" fill="#4ade80"/><circle cx="62" cy="32" r="2" fill="#4ade80"/>
+                <path d="M50 50 C30 20, 8 28, 12 45 C16 62, 35 58, 50 50Z" fill="url(#gradL)" stroke="#22c55e" stroke-width="1.5"/>
+                <path d="M50 50 C35 32, 18 36, 22 52 C26 65, 40 60, 50 50Z" fill="url(#gradL2)" stroke="#4ade80" stroke-width="1"/>
+                <path d="M50 50 C70 20, 92 28, 88 45 C84 62, 65 58, 50 50Z" fill="url(#gradR)" stroke="#22c55e" stroke-width="1.5"/>
+                <path d="M50 50 C65 32, 82 36, 78 52 C74 65, 60 60, 50 50Z" fill="url(#gradR2)" stroke="#4ade80" stroke-width="1"/>
+                <ellipse cx="50" cy="50" rx="5" ry="14" fill="#15803d"/>
+                <path d="M48 38 C44 28, 38 26, 35 28" stroke="#22c55e" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+                <path d="M52 38 C56 28, 62 26, 65 28" stroke="#22c55e" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+                <circle cx="35" cy="28" r="2.5" fill="#4ade80"/><circle cx="65" cy="28" r="2.5" fill="#4ade80"/>
+                <circle cx="48" cy="48" r="1.5" fill="#166534"/><circle cx="52" cy="48" r="1.5" fill="#166534"/>
                 <defs><linearGradient id="gradL" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#22c55e"/><stop offset="100%" stop-color="#15803d"/></linearGradient>
                 <linearGradient id="gradL2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4ade80"/><stop offset="100%" stop-color="#166534"/></linearGradient>
                 <linearGradient id="gradR" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#22c55e"/><stop offset="100%" stop-color="#15803d"/></linearGradient>
@@ -979,38 +981,53 @@
             cursor.innerHTML = butterflySVG;
             document.body.appendChild(cursor);
 
+            // Trail butterflies (lebih banyak untuk efek yang lebih halus)
             const trails = [];
-            for (let i = 0; i < 5; i++) {
+            const trailCount = 8;
+            for (let i = 0; i < trailCount; i++) {
                 const trail = document.createElement('div');
                 trail.className = 'butterfly-trail';
                 trail.innerHTML = butterflySVG;
-                trail.style.opacity = 0.3 - (i * 0.05);
-                trail.style.transform = `scale(${1 - i * 0.1})`;
+                trail.style.opacity = 0.35 - (i * 0.04);
+                trail.style.transform = `scale(${1 - i * 0.08})`;
+                trail.style.filter = `blur(${i * 0.3}px)`;
                 document.body.appendChild(trail);
                 trails.push(trail);
             }
 
-            let mouseX = 0, mouseY = 0, currentX = 0, currentY = 0;
+            let mouseX = 0, mouseY = 0;
+            let currentX = 0, currentY = 0;
             let positions = [];
+            let lastTimestamp = 0;
 
             document.addEventListener('mousemove', (e) => {
                 mouseX = e.clientX;
                 mouseY = e.clientY;
-                positions.unshift({ x: mouseX, y: mouseY });
-                if (positions.length > 5) positions.pop();
+                positions.unshift({ x: mouseX, y: mouseY, time: Date.now() });
+                if (positions.length > trailCount + 2) positions.pop();
 
-                const hoverTarget = e.target.closest('a, button, [onclick]');
-                cursor.style.transform = `translate(-50%, -50%) scale(${hoverTarget ? 1.3 : 1})`;
-                if (hoverTarget) cursor.style.animation = 'butterflyWing 0.15s ease-in-out infinite';
-                else cursor.style.animation = 'butterflyWing 0.3s ease-in-out infinite';
+                const hoverTarget = e.target.closest('a, button, [onclick], .cursor-pointer');
+                if (hoverTarget) {
+                    cursor.style.transform = `translate(-50%, -50%) scale(1.35)`;
+                    cursor.style.filter = `drop-shadow(0 0 15px rgba(34, 197, 94, 0.9))`;
+                    cursor.style.animation = 'butterflyWing 0.12s ease-in-out infinite';
+                } else {
+                    cursor.style.transform = `translate(-50%, -50%) scale(1)`;
+                    cursor.style.filter = `drop-shadow(0 0 10px rgba(34, 197, 94, 0.6))`;
+                    cursor.style.animation = 'butterflyWing 0.25s ease-in-out infinite';
+                }
             });
 
+            // Smooth cursor animation with lerp
             function animateCursor() {
-                currentX += (mouseX - currentX) * 0.2;
-                currentY += (mouseY - currentY) * 0.2;
+                // Smooth follow dengan easing
+                currentX += (mouseX - currentX) * 0.18;
+                currentY += (mouseY - currentY) * 0.18;
+
                 cursor.style.left = currentX + 'px';
                 cursor.style.top = currentY + 'px';
 
+                // Update trail positions dengan delay
                 trails.forEach((trail, i) => {
                     const pos = positions[i + 1];
                     if (pos) {
@@ -1018,76 +1035,136 @@
                         trail.style.top = pos.y + 'px';
                     }
                 });
+
                 requestAnimationFrame(animateCursor);
             }
             animateCursor();
 
-            let lastX = 0, lastY = 0, rot = 0;
+            // Rotation based on movement direction
+            let lastX = 0, lastY = 0;
+            let currentRotation = 0;
+            let targetRotation = 0;
+
             setInterval(() => {
-                const dx = currentX - lastX, dy = currentY - lastY;
-                if (Math.abs(dx) > 1 || Math.abs(dy) > 1) {
-                    rot += (Math.atan2(dy, dx) * 180 / Math.PI - rot) * 0.3;
-                    cursor.style.transform = `translate(-50%, -50%) rotate(${rot}deg) scale(${cursor.style.transform.includes('scale') ? '1.3' : '1'})`;
+                const deltaX = currentX - lastX;
+                const deltaY = currentY - lastY;
+                const speed = Math.hypot(deltaX, deltaY);
+
+                if (speed > 0.5) {
+                    targetRotation = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
+                    // Add slight banking effect based on speed
+                    const bankAngle = Math.min(speed * 2, 15);
+                    targetRotation += deltaX > 0 ? -bankAngle : bankAngle;
                 }
-                lastX = currentX; lastY = currentY;
-            }, 50);
+
+                // Smooth rotation transition
+                currentRotation += (targetRotation - currentRotation) * 0.15;
+                const scaleMatch = cursor.style.transform.includes('scale') ? ' scale(1.35)' : ' scale(1)';
+                cursor.style.transform = `translate(-50%, -50%) rotate(${currentRotation}deg)${scaleMatch}`;
+
+                lastX = currentX;
+                lastY = currentY;
+            }, 40);
+
+            // Dust particles effect
+            let lastParticleTime = 0;
 
             function createDust(x, y) {
                 const dust = document.createElement('div');
                 dust.className = 'butterfly-dust';
                 dust.style.left = x + 'px';
                 dust.style.top = y + 'px';
-                const ang = Math.random() * Math.PI * 2;
-                dust.style.setProperty('--tx', Math.cos(ang) * (20 + Math.random() * 40) + 'px');
-                dust.style.setProperty('--ty', Math.sin(ang) * (20 + Math.random() * 40) + 'px');
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 15 + Math.random() * 35;
+                dust.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
+                dust.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
                 document.body.appendChild(dust);
-                setTimeout(() => dust.remove(), 800);
+                setTimeout(() => dust.remove(), 600);
             }
 
-            let lastTime = 0;
             document.addEventListener('mousemove', (e) => {
                 const now = Date.now();
-                if (now - lastTime > 25) { createDust(e.clientX, e.clientY); lastTime = now; }
+                if (now - lastParticleTime > 20) {
+                    createDust(e.clientX, e.clientY);
+                    lastParticleTime = now;
+                }
             });
 
+            // Click burst effect
             document.addEventListener('click', (e) => {
-                for (let i = 0; i < 15; i++) setTimeout(() => createDust(e.clientX, e.clientY), i * 15);
-                cursor.style.animation = 'butterflyWing 0.1s ease-in-out';
-                setTimeout(() => cursor.style.animation = 'butterflyWing 0.3s ease-in-out infinite', 100);
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => createDust(e.clientX, e.clientY), i * 12);
+                }
+                cursor.style.animation = 'butterflyWing 0.08s ease-in-out';
+                setTimeout(() => {
+                    cursor.style.animation = 'butterflyWing 0.25s ease-in-out infinite';
+                }, 120);
             });
 
-            document.querySelector('#home').style.cursor = 'none';
-            document.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; trails.forEach(t => t.style.opacity = '0'); });
-            document.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; trails.forEach(t => t.style.opacity = '0.4'); });
+            // Hide default cursor on hero
+            const heroSection = document.querySelector('#home');
+            if (heroSection) heroSection.style.cursor = 'none';
+
+            document.addEventListener('mouseleave', () => {
+                cursor.style.opacity = '0';
+                trails.forEach(t => t.style.opacity = '0');
+            });
+
+            document.addEventListener('mouseenter', () => {
+                cursor.style.opacity = '1';
+                trails.forEach(t => t.style.opacity = '0.35');
+            });
 
             // Floating butterflies
-            function createFloating() {
+            function createFloatingButterfly() {
                 const fb = document.createElement('div');
                 fb.className = 'butterfly-cursor';
                 fb.style.position = 'fixed';
                 fb.style.opacity = '0.2';
                 fb.style.pointerEvents = 'none';
                 fb.style.zIndex = '9995';
+                fb.style.animation = 'drift 8s ease-in-out infinite';
                 fb.innerHTML = butterflySVG;
-                let x = Math.random() * window.innerWidth, y = Math.random() * window.innerHeight;
-                let vx = (Math.random() - 0.5) * 1.5, vy = (Math.random() - 0.5) * 1.5;
+
+                let x = Math.random() * window.innerWidth;
+                let y = Math.random() * window.innerHeight;
+                let vx = (Math.random() - 0.5) * 1.2;
+                let vy = (Math.random() - 0.5) * 1.2;
+                let rot = Math.random() * 360;
+
                 fb.style.left = x + 'px';
                 fb.style.top = y + 'px';
                 document.body.appendChild(fb);
-                function move() {
-                    x += vx; y += vy;
-                    if (x < 0 || x > window.innerWidth) vx *= -1;
-                    if (y < 0 || y > window.innerHeight) vy *= -1;
+
+                function moveFloating() {
+                    x += vx;
+                    y += vy;
+
+                    if (x < -50 || x > window.innerWidth + 50) vx *= -1;
+                    if (y < -50 || y > window.innerHeight + 50) vy *= -1;
+
+                    rot += (Math.atan2(vy, vx) * 180 / Math.PI - rot) * 0.1;
+
                     fb.style.left = x + 'px';
                     fb.style.top = y + 'px';
-                    fb.style.transform = `translate(-50%, -50%) rotate(${Math.atan2(vy, vx) * 180 / Math.PI}deg)`;
-                    requestAnimationFrame(move);
+                    fb.style.transform = `translate(-50%, -50%) rotate(${rot}deg)`;
+
+                    requestAnimationFrame(moveFloating);
                 }
-                move();
-                setTimeout(() => fb.remove(), 25000);
+                moveFloating();
+
+                setTimeout(() => fb.remove(), 30000);
             }
-            setTimeout(() => { createFloating(); setTimeout(createFloating, 3000); }, 1000);
-            setInterval(() => { if (Math.random() > 0.7) createFloating(); }, 10000);
+
+            setTimeout(() => {
+                createFloatingButterfly();
+                setTimeout(createFloatingButterfly, 2000);
+                setTimeout(createFloatingButterfly, 4000);
+            }, 1000);
+
+            setInterval(() => {
+                if (Math.random() > 0.65) createFloatingButterfly();
+            }, 8000);
         })();
 
         // ============================================
@@ -1104,17 +1181,25 @@
                 p.style.setProperty('--tx', Math.cos(ang) * (40 + Math.random() * 60) + 'px');
                 p.style.setProperty('--ty', Math.sin(ang) * (40 + Math.random() * 60) + 'px');
                 profileContainer.appendChild(p);
-                setTimeout(() => p.remove(), 3000);
+                setTimeout(() => p.remove(), 2500);
             }
+
             profileContainer.addEventListener('mousemove', (e) => {
                 const rect = profileContainer.getBoundingClientRect();
                 const x = e.clientX - rect.left, y = e.clientY - rect.top;
-                if (Math.random() > 0.7) createGreenParticle(x + (Math.random() - 0.5) * 20, y + (Math.random() - 0.5) * 20);
+                if (Math.random() > 0.75) {
+                    createGreenParticle(x + (Math.random() - 0.5) * 25, y + (Math.random() - 0.5) * 25);
+                }
             });
+
             profileContainer.addEventListener('click', (e) => {
                 const rect = profileContainer.getBoundingClientRect();
                 const x = e.clientX - rect.left, y = e.clientY - rect.top;
-                for (let i = 0; i < 12; i++) setTimeout(() => createGreenParticle(x + (Math.random() - 0.5) * 40, y + (Math.random() - 0.5) * 40), i * 30);
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        createGreenParticle(x + (Math.random() - 0.5) * 50, y + (Math.random() - 0.5) * 50);
+                    }, i * 25);
+                }
             });
         }
 
@@ -1124,25 +1209,63 @@
         const canvas = document.getElementById('hero-canvas');
         if (canvas) {
             const ctx = canvas.getContext('2d');
-            let particles = [];
-            function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+            let bgParticles = [];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
             window.addEventListener('resize', resizeCanvas);
             resizeCanvas();
+
             class BgParticle {
-                constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 2 + 1; this.vx = Math.random() * 1 - 0.5; this.vy = Math.random() * 1 - 0.5; }
-                update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > canvas.width) this.vx *= -1; if (this.y < 0 || this.y > canvas.height) this.vy *= -1; }
-                draw() { ctx.fillStyle = 'rgba(56,189,248,0.4)'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 0.5;
+                    this.vx = (Math.random() - 0.5) * 0.8;
+                    this.vy = (Math.random() - 0.5) * 0.8;
+                }
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                }
+                draw() {
+                    ctx.fillStyle = 'rgba(56,189,248,0.35)';
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
             }
-            for (let i = 0; i < 150; i++) particles.push(new BgParticle());
+
+            for (let i = 0; i < 200; i++) bgParticles.push(new BgParticle());
+
             function connectParticles() {
-                for (let a = 0; a < particles.length; a++) {
-                    for (let b = a; b < particles.length; b++) {
-                        const dx = particles[a].x - particles[b].x, dy = particles[a].y - particles[b].y, d = Math.hypot(dx, dy);
-                        if (d < 120) { ctx.strokeStyle = `rgba(56,189,248,${1 - d / 120})`; ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(particles[a].x, particles[a].y); ctx.lineTo(particles[b].x, particles[b].y); ctx.stroke(); }
+                for (let a = 0; a < bgParticles.length; a++) {
+                    for (let b = a + 1; b < bgParticles.length; b++) {
+                        const dx = bgParticles[a].x - bgParticles[b].x;
+                        const dy = bgParticles[a].y - bgParticles[b].y;
+                        const d = Math.hypot(dx, dy);
+                        if (d < 100) {
+                            ctx.strokeStyle = `rgba(56,189,248,${0.3 * (1 - d / 100)})`;
+                            ctx.lineWidth = 0.4;
+                            ctx.beginPath();
+                            ctx.moveTo(bgParticles[a].x, bgParticles[a].y);
+                            ctx.lineTo(bgParticles[b].x, bgParticles[b].y);
+                            ctx.stroke();
+                        }
                     }
                 }
             }
-            function animateBg() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); connectParticles(); requestAnimationFrame(animateBg); }
+
+            function animateBg() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                bgParticles.forEach(p => { p.update(); p.draw(); });
+                connectParticles();
+                requestAnimationFrame(animateBg);
+            }
             animateBg();
         }
 
@@ -1152,14 +1275,26 @@
         const roleElement = document.getElementById('changing-role');
         const roleOptions = ['Software Engineer', 'Fullstack Developer', 'AI/ML Enthusiast', 'Backend Developer'];
         let roleIdx = 0, roleChar = 0, roleDeleting = false;
+
         function typeRole() {
             if (!roleElement) return;
             const current = roleOptions[roleIdx];
-            if (roleDeleting) roleElement.textContent = current.substring(0, roleChar - 1), roleChar--;
-            else roleElement.textContent = current.substring(0, roleChar + 1), roleChar++;
+            if (roleDeleting) {
+                roleElement.textContent = current.substring(0, roleChar - 1);
+                roleChar--;
+            } else {
+                roleElement.textContent = current.substring(0, roleChar + 1);
+                roleChar++;
+            }
             let speed = roleDeleting ? 40 : 70;
-            if (!roleDeleting && roleChar === current.length) { speed = 2000; roleDeleting = true; }
-            else if (roleDeleting && roleChar === 0) { roleDeleting = false; roleIdx = (roleIdx + 1) % roleOptions.length; speed = 500; }
+            if (!roleDeleting && roleChar === current.length) {
+                speed = 2000;
+                roleDeleting = true;
+            } else if (roleDeleting && roleChar === 0) {
+                roleDeleting = false;
+                roleIdx = (roleIdx + 1) % roleOptions.length;
+                speed = 500;
+            }
             setTimeout(typeRole, speed);
         }
         setTimeout(typeRole, 500);
@@ -1174,17 +1309,33 @@
 
             const spotifyToggle = document.getElementById('spotifyToggle');
             const spotifyWrap = document.getElementById('spotifyWrap');
-            if (spotifyToggle && spotifyWrap) spotifyToggle.onclick = () => { spotifyWrap.classList.toggle('hidden'); spotifyToggle.textContent = spotifyWrap.classList.contains('hidden') ? 'Buka' : 'Tutup'; };
+            if (spotifyToggle && spotifyWrap) {
+                spotifyToggle.onclick = () => {
+                    spotifyWrap.classList.toggle('hidden');
+                    spotifyToggle.textContent = spotifyWrap.classList.contains('hidden') ? 'Buka' : 'Tutup';
+                };
+            }
 
-            window.toggleMenu = () => document.getElementById('mobileMenu').classList.toggle('translate-x-full');
+            window.toggleMenu = () => {
+                document.getElementById('mobileMenu').classList.toggle('translate-x-full');
+            };
 
             const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => { if (window.scrollY > 20) navbar.classList.add('glass-nav'); else navbar.classList.remove('glass-nav'); });
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) navbar.classList.add('glass-nav');
+                else navbar.classList.remove('glass-nav');
+            });
 
-            document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal(); });
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
+            });
 
             const themeToggle = document.getElementById('themeToggle');
-            if (themeToggle) themeToggle.onclick = () => document.documentElement.classList.toggle('dark');
+            if (themeToggle) {
+                themeToggle.onclick = () => {
+                    document.documentElement.classList.toggle('dark');
+                };
+            }
         });
     </script>
 </body>
