@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth dark">
+<html lang="id" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8" />
@@ -8,7 +8,7 @@
     <title>Septian Hutasoit | Software Developer & UI/UX</title>
 
     <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23000000%22/><path d=%22M30 35 L15 50 L30 65 M45 70 L55 30 M70 35 L85 50 L70 65%22 fill=%22none%22 stroke=%22%2338bdf8%22 stroke-width=%228%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>">
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23000000%22/><path d=%22M30 35 L15 50 L30 65 M45 70 L55 30 M70 35 L85 50 L70 65%22 fill=%22none%22 stroke=%22%2316a34a%22 stroke-width=%228%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>">
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet" />
@@ -27,9 +27,9 @@
                         bgDark: '#000000',
                         cardDark: '#000000',
                         cardSoft: '#0a0a0a',
-                        primary: '#38bdf8',
-                        secondary: '#818cf8',
-                        accent: '#2dd4bf',
+                        primary: '#16a34a',
+                        secondary: '#15803d',
+                        accent: '#22c55e',
                     },
                     animation: {
                         'blob': 'blob 18s infinite',
@@ -41,6 +41,7 @@
                         'drift': 'drift 8s ease-in-out infinite',
                         'starTwinkle': 'starTwinkle 1.5s ease-in-out infinite',
                         'starSpin': 'starSpin 4s linear infinite',
+                        'likePop': 'likePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
                     },
                     keyframes: {
                         'scroll-left': { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
@@ -63,6 +64,11 @@
                         starSpin: {
                             '0%': { transform: 'rotate(0deg)' },
                             '100%': { transform: 'rotate(360deg)' },
+                        },
+                        likePop: {
+                            '0%': { transform: 'scale(1)', opacity: '1' },
+                            '50%': { transform: 'scale(1.3)', opacity: '0.8' },
+                            '100%': { transform: 'scale(0)', opacity: '0' },
                         }
                     }
                 }
@@ -88,7 +94,7 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #334155;
+            background: #16a34a;
             border-radius: 4px;
         }
 
@@ -103,20 +109,20 @@
         .glass-nav {
             background: rgba(0, 0, 0, 0.96);
             backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+            border-bottom: 1px solid rgba(34, 197, 94, 0.18);
         }
 
         .glass-card {
             background: linear-gradient(145deg, rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.94));
             backdrop-filter: blur(18px);
-            border: 1px solid rgba(148, 163, 184, 0.28);
+            border: 1px solid rgba(34, 197, 94, 0.28);
             box-shadow: 0 22px 60px rgba(0, 0, 0, 0.95);
             transition: all 0.6s ease;
         }
 
         .soft-card {
             background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.15), rgba(0, 0, 0, 0.95));
-            border: 1px solid rgba(148, 163, 184, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.2);
             transition: transform 0.7s ease, box-shadow 0.7s ease;
         }
 
@@ -125,7 +131,7 @@
         }
 
         .text-gradient {
-            background: linear-gradient(135deg, #22c55e 0%, #4ade80 45%, #15803d 100%);
+            background: linear-gradient(135deg, #16a34a 0%, #22c55e 45%, #15803d 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -134,7 +140,7 @@
             position: relative;
             overflow: hidden;
             border-radius: 1rem;
-            border: 1px solid rgba(148, 163, 184, 0.35);
+            border: 1px solid rgba(34, 197, 94, 0.35);
         }
 
         .portfolio-img {
@@ -206,7 +212,7 @@
             filter: brightness(1.05);
         }
 
-        /* ====== STAR CURSOR - UCL STYLE ====== */
+        /* ====== STAR CURSOR - GREEN STYLE ====== */
         .star-cursor {
             position: fixed;
             width: 48px;
@@ -214,7 +220,7 @@
             pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%);
-            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 30px rgba(0, 100, 255, 0.5));
+            filter: drop-shadow(0 0 15px rgba(34, 197, 94, 0.8)) drop-shadow(0 0 30px rgba(22, 163, 74, 0.5));
             will-change: transform, left, top;
             transition: filter 0.15s ease;
         }
@@ -233,7 +239,7 @@
             z-index: 9998;
             transform: translate(-50%, -50%);
             will-change: transform, left, top;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.3), transparent 70%);
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.3), transparent 70%);
             border-radius: 50%;
         }
 
@@ -251,8 +257,8 @@
             pointer-events: none;
             z-index: 9997;
             will-change: transform;
-            background: radial-gradient(circle, #ffd700 0%, #ff8c00 50%, transparent 100%);
-            box-shadow: 0 0 8px rgba(255, 215, 0, 0.8), 0 0 16px rgba(0, 100, 255, 0.5);
+            background: radial-gradient(circle, #22c55e 0%, #16a34a 50%, transparent 100%);
+            box-shadow: 0 0 8px rgba(34, 197, 94, 0.8), 0 0 16px rgba(22, 163, 74, 0.5);
             animation: dustFloat 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
         }
 
@@ -268,16 +274,16 @@
             }
         }
 
-        .gold-particle {
+        .green-particle {
             position: absolute;
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: radial-gradient(circle, #ffd700, #ff8c00);
+            background: radial-gradient(circle, #22c55e, #16a34a);
             pointer-events: none;
             animation: floatParticle 2.5s ease-out forwards;
             z-index: 15;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+            box-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
         }
 
         @keyframes floatParticle {
@@ -328,6 +334,43 @@
             }
         }
 
+        /* Navbar Hover Effect - Timbul satu persatu */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link:hover {
+            transform: translateY(-2px);
+            color: #22c55e !important;
+        }
+
+        .nav-link:active {
+            transform: translateY(1px);
+        }
+
+        /* Skills Icon Hover Effect - Like LinkedIn */
+        .skill-item {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-8px) scale(1.05);
+        }
+
+        .skill-item:hover .skill-icon {
+            filter: drop-shadow(0 0 12px rgba(34, 197, 94, 0.8));
+        }
+
+        /* Like effect animation */
+        .like-effect {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            font-size: 24px;
+            animation: likePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
         @media (hover: none) and (pointer: coarse) {
 
             .star-cursor,
@@ -347,7 +390,7 @@
     </style>
 </head>
 
-<body class="text-slate-300 antialiased overflow-x-hidden selection:bg-primary selection:text-bgDark dark">
+<body class="text-slate-300 antialiased overflow-x-hidden selection:bg-primary selection:text-bgDark">
 
     <!-- SPOTIFY PLAYER -->
     <div class="fixed bottom-5 left-4 sm:left-6 z-50">
@@ -364,7 +407,7 @@
                     </div>
                 </div>
                 <button id="spotifyToggle"
-                    class="px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-white/10 transition">Buka</button>
+                    class="px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-primary hover:text-black transition">Buka</button>
             </div>
             <div id="spotifyWrap" class="mt-3 hidden">
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0e2wfbDK7ppotqyUWD7qs8"
@@ -404,11 +447,11 @@
             </div>
 
             <div class="hidden md:flex items-center gap-4">
-                <button id="themeToggle" class="text-slate-300 p-2">
+                <button id="themeToggle" class="text-slate-300 p-2 hover:text-primary transition-colors">
                     <i class="fas fa-moon"></i>
                 </button>
                 <a href="#contact"
-                    class="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-primary transition-all">Hire
+                    class="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-primary hover:text-black transition-all">Hire
                     Me</a>
             </div>
         </div>
@@ -420,10 +463,12 @@
         <button onclick="toggleMenu()" class="absolute top-6 right-6 text-3xl text-white"><i
                 class="fas fa-times"></i></button>
         <div class="flex flex-col space-y-6 text-center">
-            <a href="#home" onclick="toggleMenu()" class="text-2xl font-bold text-white hover:text-primary">Beranda</a>
+            <a href="#home" onclick="toggleMenu()"
+                class="text-2xl font-bold text-white hover:text-primary transition-colors">Beranda</a>
             <a href="#portfolio" onclick="toggleMenu()"
-                class="text-2xl font-bold text-white hover:text-primary">Proyek</a>
-            <a href="#skills" onclick="toggleMenu()" class="text-2xl font-bold text-white hover:text-primary">Skills</a>
+                class="text-2xl font-bold text-white hover:text-primary transition-colors">Proyek</a>
+            <a href="#skills" onclick="toggleMenu()"
+                class="text-2xl font-bold text-white hover:text-primary transition-colors">Skills</a>
             <a href="#contact" onclick="toggleMenu()" class="text-2xl font-bold text-primary">Kontak</a>
         </div>
     </div>
@@ -465,7 +510,7 @@
                 </p>
                 <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
                     <a href="#portfolio"
-                        class="px-7 py-3.2 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-semibold text-sm hover:shadow-[0_0_30px_rgba(56,189,248,0.75)] transition-all text-center">Lihat
+                        class="px-7 py-3.2 rounded-full bg-gradient-to-r from-primary to-secondary text-black font-semibold text-sm hover:shadow-[0_0_30px_rgba(34,197,94,0.75)] transition-all text-center">Lihat
                         Proyek</a>
                     <a href="https://github.com/Septianhutasoit" target="_blank"
                         class="px-7 py-3.2 rounded-full bg-white/5 border border-white/10 font-semibold text-white text-sm hover:bg-white/10 transition-all flex items-center justify-center gap-2"><i
@@ -552,13 +597,14 @@
                     class="fas fa-envelope text-sm"></i> Kirim Email</a>
             <div class="flex justify-center gap-5 mt-10">
                 <a href="https://www.instagram.com/tianhts_/"
-                    class="text-slate-400 hover:text-white text-xl transition-colors"><i
+                    class="text-slate-400 hover:text-primary text-xl transition-colors"><i
                         class="fab fa-instagram"></i></a>
                 <a href="https://www.linkedin.com/in/septian-a-hutasoit/"
-                    class="text-slate-400 hover:text-white text-xl transition-colors"><i
+                    class="text-slate-400 hover:text-primary text-xl transition-colors"><i
                         class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/Septianhutasoit"
-                    class="text-slate-400 hover:text-white text-xl transition-colors"><i class="fab fa-github"></i></a>
+                    class="text-slate-400 hover:text-primary text-xl transition-colors"><i
+                        class="fab fa-github"></i></a>
             </div>
             <footer class="mt-14 pt-6 border-t border-white/5 text-slate-600 text-[11px] sm:text-xs">&copy; 2025 Septian
                 Hutasoit. Built as a fullstack product, not a copy–paste template.</footer>
@@ -614,26 +660,26 @@
         AOS.init({ duration: 1100, once: true, offset: 80 });
 
         const ICONS = {
-            laravel: { cls: "fa-brands fa-laravel", color: "text-red-400" },
-            php: { cls: "fa-brands fa-php", color: "text-indigo-300" },
-            mysql: { cls: "fa-solid fa-database", color: "text-sky-300" },
-            postgres: { cls: "fa-solid fa-database", color: "text-sky-300" },
-            react: { cls: "fa-brands fa-react", color: "text-cyan-300" },
-            next: { cls: "fa-solid fa-layer-group", color: "text-slate-200" },
-            node: { cls: "fa-brands fa-node-js", color: "text-green-400" },
-            express: { cls: "fa-solid fa-bolt", color: "text-slate-200" },
-            tailwind: { cls: "fa-solid fa-wand-magic-sparkles", color: "text-sky-300" },
-            bootstrap: { cls: "fa-brands fa-bootstrap", color: "text-violet-300" },
-            api: { cls: "fa-solid fa-plug", color: "text-teal-300" },
-            postman: { cls: "fa-solid fa-paper-plane", color: "text-orange-300" },
-            github: { cls: "fa-brands fa-github", color: "text-slate-200" },
-            git: { cls: "fa-brands fa-git-alt", color: "text-orange-400" },
-            docker: { cls: "fa-brands fa-docker", color: "text-sky-300" },
-            figma: { cls: "fa-brands fa-figma", color: "text-purple-400" },
-            python: { cls: "fa-brands fa-python", color: "text-blue-400" },
-            fastapi: { cls: "fa-solid fa-bolt", color: "text-emerald-400" },
-            ai: { cls: "fa-solid fa-brain", color: "text-purple-400" },
-            code: { cls: "fa-solid fa-code", color: "text-slate-300" }
+            laravel: { cls: "fa-brands fa-laravel", color: "text-primary" },
+            php: { cls: "fa-brands fa-php", color: "text-primary" },
+            mysql: { cls: "fa-solid fa-database", color: "text-primary" },
+            postgres: { cls: "fa-solid fa-database", color: "text-primary" },
+            react: { cls: "fa-brands fa-react", color: "text-primary" },
+            next: { cls: "fa-solid fa-layer-group", color: "text-primary" },
+            node: { cls: "fa-brands fa-node-js", color: "text-primary" },
+            express: { cls: "fa-solid fa-bolt", color: "text-primary" },
+            tailwind: { cls: "fa-solid fa-wand-magic-sparkles", color: "text-primary" },
+            bootstrap: { cls: "fa-brands fa-bootstrap", color: "text-primary" },
+            api: { cls: "fa-solid fa-plug", color: "text-primary" },
+            postman: { cls: "fa-solid fa-paper-plane", color: "text-primary" },
+            github: { cls: "fa-brands fa-github", color: "text-primary" },
+            git: { cls: "fa-brands fa-git-alt", color: "text-primary" },
+            docker: { cls: "fa-brands fa-docker", color: "text-primary" },
+            figma: { cls: "fa-brands fa-figma", color: "text-primary" },
+            python: { cls: "fa-brands fa-python", color: "text-primary" },
+            fastapi: { cls: "fa-solid fa-bolt", color: "text-primary" },
+            ai: { cls: "fa-solid fa-brain", color: "text-primary" },
+            code: { cls: "fa-solid fa-code", color: "text-primary" }
         };
 
         function normKey(t) { return String(t || "").toLowerCase().replace(/\./g, "").replace(/\s+/g, ""); }
@@ -688,7 +734,7 @@
             { name: "Laravel", icon: "devicon-laravel-original colored" },
             { name: "WordPress", icon: "devicon-wordpress-plain colored" },
             { name: "Postman", icon: "devicon-postman-plain colored" },
-            { name: "REST API", icon: "fa-solid fa-plug text-teal-300" },
+            { name: "REST API", icon: "fa-solid fa-plug text-primary" },
             { name: "NPM", icon: "devicon-npm-original-wordmark colored" },
             { name: "Linux", icon: "devicon-linux-plain colored" }
         ];
@@ -697,26 +743,46 @@
             { name: "Git", icon: "devicon-git-plain colored" },
             { name: "GitHub", icon: "devicon-github-original" },
             { name: "Figma", icon: "devicon-figma-plain colored" },
-            { name: "HuggingFace", icon: "fa-solid fa-face-smile text-yellow-400" },
-            { name: "Langchain", icon: "fa-solid fa-link text-cyan-400" },
-            { name: "Pinecone", icon: "fa-solid fa-tree text-emerald-500" },
-            { name: "RAG", icon: "fa-solid fa-layer-group text-indigo-400" }
+            { name: "HuggingFace", icon: "fa-solid fa-face-smile text-primary" },
+            { name: "Langchain", icon: "fa-solid fa-link text-primary" },
+            { name: "Pinecone", icon: "fa-solid fa-tree text-primary" },
+            { name: "RAG", icon: "fa-solid fa-layer-group text-primary" }
         ];
 
         function createSkillItem(s) {
-            return `<div class="flex flex-col items-center justify-center min-w-[90px] group/item">
-                <div class="w-14 h-14 mb-3 flex items-center justify-center bg-white/5 rounded-xl border border-white/10 transition-all duration-300 group-hover/item:bg-white/10 group-hover/item:border-primary/50 group-hover/item:-translate-y-1">
+            return `<div class="skill-item flex flex-col items-center justify-center min-w-[90px] transition-all duration-300 cursor-pointer" onclick="createLikeEffect(event)">
+                <div class="skill-icon w-14 h-14 mb-3 flex items-center justify-center bg-white/5 rounded-xl border border-white/10 transition-all duration-300 hover:bg-primary/20 hover:border-primary/50 hover:shadow-[0_0_20px_rgba(34,197,94,0.3)]">
                     <i class="${s.icon} text-3xl"></i>
                 </div>
                 <span class="text-[11px] font-semibold text-slate-400 group-hover/item:text-white transition-colors uppercase tracking-wider">${s.name}</span>
             </div>`;
         }
 
+        // Like effect seperti LinkedIn
+        function createLikeEffect(event) {
+            const rect = event.currentTarget.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+
+            const likeElement = document.createElement('div');
+            likeElement.className = 'like-effect';
+            likeElement.innerHTML = '<i class="fas fa-heart text-primary"></i>';
+            likeElement.style.left = x + 'px';
+            likeElement.style.top = y + 'px';
+            likeElement.style.transform = 'translate(-50%, -50%)';
+            document.body.appendChild(likeElement);
+
+            setTimeout(() => likeElement.remove(), 400);
+        }
+
         function renderSkills() {
             const rows = [{ id: "row1", data: skillsRow1 }, { id: "row2", data: skillsRow2 }, { id: "row3", data: skillsRow3 }, { id: "row4", data: skillsRow4 }];
             rows.forEach(row => {
                 const container = document.getElementById(row.id);
-                if (container) container.innerHTML = row.data.map(createSkillItem).join("") + row.data.map(createSkillItem).join("") + row.data.map(createSkillItem).join("");
+                if (container) {
+                    const items = row.data.map(createSkillItem).join("");
+                    container.innerHTML = items + items + items;
+                }
             });
         }
 
@@ -752,7 +818,7 @@
             imgDots.innerHTML = "";
             currentImages.forEach((_, i) => {
                 const dot = document.createElement("button");
-                dot.className = "w-2 h-2 rounded-full transition-all " + (i === currentImgIndex ? "bg-white" : "bg-white/30");
+                dot.className = "w-2 h-2 rounded-full transition-all " + (i === currentImgIndex ? "bg-primary" : "bg-white/30");
                 dot.onclick = (e) => { e.stopPropagation(); setModalImage(i); };
                 imgDots.appendChild(dot);
             });
@@ -764,7 +830,7 @@
             mImage.src = currentImages[currentImgIndex];
             if (imgDots) {
                 [...imgDots.children].forEach((dot, idx) => {
-                    dot.className = "w-2 h-2 rounded-full transition-all " + (idx === currentImgIndex ? "bg-white" : "bg-white/30");
+                    dot.className = "w-2 h-2 rounded-full transition-all " + (idx === currentImgIndex ? "bg-primary" : "bg-white/30");
                 });
             }
         }
@@ -844,7 +910,7 @@
                     <div class="relative h-52 sm:h-60 portfolio-img-wrapper">
                         <img src="${p.cover}" class="portfolio-img w-full h-full object-cover" alt="${p.cardTitle}">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                        <div class="absolute top-3 right-3"><span class="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-[11px] text-slate-100">${p.categoryChip}</span></div>
+                        <div class="absolute top-3 right-3"><span class="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-[11px] text-primary">${p.categoryChip}</span></div>
                         <div class="absolute bottom-3 left-3"><p class="text-[11px] text-slate-300 uppercase tracking-[0.16em]">${p.subtitle}</p></div>
                     </div>
                     <div class="p-5 sm:p-6 bg-black/50 flex flex-col flex-1">
@@ -857,66 +923,49 @@
         }
 
         // ========================================
-        // STAR CURSOR - UCL STYLE (BINTANG)
+        // STAR CURSOR - GREEN STYLE
         // ========================================
         (function () {
-            // UCL Style Star SVG dengan gradien biru keemasan
             const starSVG = `<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
             <linearGradient id="starGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
-                <stop offset="30%" stop-color="#ffd700" stop-opacity="0.9"/>
-                <stop offset="60%" stop-color="#ff8c00" stop-opacity="0.7"/>
-                <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0.5"/>
+                <stop offset="30%" stop-color="#22c55e" stop-opacity="0.9"/>
+                <stop offset="60%" stop-color="#16a34a" stop-opacity="0.7"/>
+                <stop offset="100%" stop-color="#14532d" stop-opacity="0.5"/>
             </linearGradient>
             
             <linearGradient id="starGradient2" x1="100%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.8"/>
-                <stop offset="50%" stop-color="#ffd700" stop-opacity="0.9"/>
+                <stop offset="0%" stop-color="#4ade80" stop-opacity="0.8"/>
+                <stop offset="50%" stop-color="#22c55e" stop-opacity="0.9"/>
                 <stop offset="100%" stop-color="#ffffff" stop-opacity="1"/>
             </linearGradient>
             
             <filter id="starGlow">
                 <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                <feFlood flood-color="#ffd700" flood-opacity="0.8" result="glowColor"/>
+                <feFlood flood-color="#22c55e" flood-opacity="0.8" result="glowColor"/>
                 <feComposite in="glowColor" in2="coloredBlur" operator="in" result="softGlow"/>
                 <feComposite in="softGlow" in2="SourceGraphic" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="glowOut"/>
             </filter>
             
             <filter id="starGlow2">
                 <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
-                <feFlood flood-color="#3b82f6" flood-opacity="0.6"/>
+                <feFlood flood-color="#16a34a" flood-opacity="0.6"/>
                 <feComposite in2="coloredBlur" operator="in"/>
             </filter>
         </defs>
         
-        <!-- BINTANG UTAMA - 5 ujung dengan efek 3D -->
         <path d="M60 10 L73 40 L106 43 L81 63 L89 96 L60 79 L31 96 L39 63 L14 43 L47 40 Z" 
-              fill="url(#starGradient)" stroke="#ffd700" stroke-width="2" filter="url(#starGlow)" opacity="0.95"/>
-        
-        <!-- BINTANG LAPISAN DALAM -->
+              fill="url(#starGradient)" stroke="#22c55e" stroke-width="2" filter="url(#starGlow)" opacity="0.95"/>
         <path d="M60 20 L69 42 L94 45 L75 61 L81 86 L60 73 L39 86 L45 61 L26 45 L51 42 Z" 
               fill="url(#starGradient2)" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
-        
-        <!-- INTI CAHAYA -->
         <circle cx="60" cy="53" r="12" fill="#ffffff" opacity="0.9" filter="url(#starGlow)"/>
-        <circle cx="60" cy="53" r="8" fill="#ffd700" opacity="0.95"/>
+        <circle cx="60" cy="53" r="8" fill="#22c55e" opacity="0.95"/>
         <circle cx="60" cy="53" r="4" fill="#ffffff" opacity="1"/>
-        
-        <!-- AURA BINTANG -->
         <circle cx="60" cy="53" r="30" fill="url(#starGradient)" opacity="0.15" filter="url(#starGlow2)"/>
-        
-        <!-- DETAIL SINAR -->
-        <line x1="60" y1="10" x2="60" y2="25" stroke="#ffd700" stroke-width="2" opacity="0.8" stroke-linecap="round"/>
-        <line x1="60" y1="81" x2="60" y2="96" stroke="#ffd700" stroke-width="2" opacity="0.8" stroke-linecap="round"/>
-        <line x1="14" y1="43" x2="29" y2="48" stroke="#ffd700" stroke-width="2" opacity="0.8" stroke-linecap="round"/>
-        <line x1="91" y1="48" x2="106" y2="43" stroke="#ffd700" stroke-width="2" opacity="0.8" stroke-linecap="round"/>
-        <line x1="31" y1="79" x2="39" y2="86" stroke="#ffd700" stroke-width="2" opacity="0.8" stroke-linecap="round"/>
-        <line x1="89" y1="86" x2="81" y2="79" stroke="#ffd700" stroke-width="2" opacity="0.8" stroke-linecap="round"/>
     </svg>`;
 
             const STAR_SIZE = 48;
-
             const cursor = document.createElement('div');
             cursor.className = 'star-cursor';
             cursor.innerHTML = starSVG;
@@ -950,22 +999,18 @@
             document.addEventListener('mousemove', (e) => {
                 mouseX = e.clientX;
                 mouseY = e.clientY;
-
                 velocityX = mouseX - currentX;
                 velocityY = mouseY - currentY;
-
                 positions.unshift({ x: mouseX, y: mouseY, time: Date.now() });
                 if (positions.length > trailCount + 2) positions.pop();
 
                 const hoverTarget = e.target.closest('a, button, [onclick], .cursor-pointer');
                 if (hoverTarget) {
                     cursor.style.transform = `translate(-50%, -50%) scale(1.4)`;
-                    cursor.style.filter = `drop-shadow(0 0 25px rgba(255, 215, 0, 1)) 
-                                           drop-shadow(0 0 50px rgba(59, 130, 246, 0.8))`;
+                    cursor.style.filter = `drop-shadow(0 0 25px rgba(34,197,94,1)) drop-shadow(0 0 50px rgba(22,163,74,0.8))`;
                 } else {
                     cursor.style.transform = `translate(-50%, -50%) scale(1)`;
-                    cursor.style.filter = `drop-shadow(0 0 15px rgba(255, 215, 0, 0.8)) 
-                                           drop-shadow(0 0 30px rgba(59, 130, 246, 0.5))`;
+                    cursor.style.filter = `drop-shadow(0 0 15px rgba(34,197,94,0.8)) drop-shadow(0 0 30px rgba(22,163,74,0.5))`;
                 }
             });
 
@@ -974,10 +1019,8 @@
                 const dy = mouseY - currentY;
                 currentX += dx * 0.15;
                 currentY += dy * 0.15;
-
                 cursor.style.left = currentX + 'px';
                 cursor.style.top = currentY + 'px';
-
                 trails.forEach((trail, i) => {
                     const pos = positions[i + 1];
                     if (pos) {
@@ -985,63 +1028,43 @@
                         trail.style.top = pos.y + 'px';
                     }
                 });
-
                 requestAnimationFrame(animateCursor);
             }
             animateCursor();
 
             let lastX = 0, lastY = 0;
-
             function updateRotation() {
                 const deltaX = currentX - lastX;
                 const deltaY = currentY - lastY;
                 const speed = Math.hypot(deltaX, deltaY);
-
                 if (speed > 0.3) {
                     let angle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
                     targetRotation = angle;
                 }
-
                 currentRotation += (targetRotation - currentRotation) * 0.12;
-
                 const scaleMatch = cursor.style.transform.includes('scale(1.4)') ? ' scale(1.4)' : ' scale(1)';
                 cursor.style.transform = `translate(-50%, -50%) rotate(${currentRotation}deg)${scaleMatch}`;
-
                 lastX = currentX;
                 lastY = currentY;
-
                 requestAnimationFrame(updateRotation);
             }
             updateRotation();
 
             let lastParticleTime = 0;
-
             function createDust(x, y) {
                 const dust = document.createElement('div');
                 dust.className = 'star-dust';
                 dust.style.left = x + 'px';
                 dust.style.top = y + 'px';
-
                 const angle = Math.random() * Math.PI * 2;
                 const distance = 20 + Math.random() * 50;
                 const tx = Math.cos(angle) * distance;
                 const ty = Math.sin(angle) * distance;
-
                 dust.style.setProperty('--tx', tx + 'px');
                 dust.style.setProperty('--ty', ty + 'px');
-
                 const size = 4 + Math.random() * 6;
                 dust.style.width = size + 'px';
                 dust.style.height = size + 'px';
-
-                dust.style.background = `radial-gradient(circle, 
-                    rgba(255, 215, 0, ${0.8 + Math.random() * 0.2}),
-                    rgba(255, 140, 0, ${0.5 + Math.random() * 0.3}),
-                    transparent)`;
-
-                dust.style.boxShadow = `0 0 ${6 + Math.random() * 6}px rgba(255, 215, 0, 0.8),
-                                        0 0 ${12 + Math.random() * 8}px rgba(59, 130, 246, 0.5)`;
-
                 document.body.appendChild(dust);
                 setTimeout(() => dust.remove(), 800);
             }
@@ -1050,7 +1073,6 @@
                 const now = Date.now();
                 const speed = Math.hypot(velocityX, velocityY);
                 const delay = Math.max(15, 40 - Math.min(25, speed));
-
                 if (now - lastParticleTime > delay) {
                     const particleCount = Math.min(3, Math.floor(speed / 8) + 1);
                     for (let i = 0; i < particleCount; i++) {
@@ -1060,106 +1082,8 @@
                 }
             });
 
-            document.addEventListener('click', (e) => {
-                const burstCount = 30;
-                for (let i = 0; i < burstCount; i++) {
-                    setTimeout(() => {
-                        const dust = document.createElement('div');
-                        dust.className = 'star-dust';
-                        dust.style.left = e.clientX + 'px';
-                        dust.style.top = e.clientY + 'px';
-
-                        const angle = (i * (360 / burstCount)) + (Math.random() * 30);
-                        const distance = 25 + Math.random() * 55;
-                        const tx = Math.cos(angle * Math.PI / 180) * distance;
-                        const ty = Math.sin(angle * Math.PI / 180) * distance;
-
-                        dust.style.setProperty('--tx', tx + 'px');
-                        dust.style.setProperty('--ty', ty + 'px');
-                        dust.style.width = (4 + Math.random() * 4) + 'px';
-                        dust.style.height = (4 + Math.random() * 4) + 'px';
-
-                        document.body.appendChild(dust);
-                        setTimeout(() => dust.remove(), 800);
-                    }, i * 6);
-                }
-
-                cursor.style.animation = 'starSpin 0.2s linear';
-                setTimeout(() => {
-                    cursor.style.animation = 'starTwinkle 1.5s ease-in-out infinite, starSpin 4s linear infinite';
-                }, 200);
-            });
-
             const heroSection = document.querySelector('#home');
             if (heroSection) heroSection.style.cursor = 'none';
-
-            document.addEventListener('mouseleave', () => {
-                cursor.style.opacity = '0';
-                trails.forEach(t => t.style.opacity = '0');
-            });
-
-            document.addEventListener('mouseenter', () => {
-                cursor.style.opacity = '1';
-                trails.forEach((t, i) => {
-                    const baseOpacity = 0.3 - (i * 0.03);
-                    t.style.opacity = baseOpacity;
-                });
-            });
-
-            function createFloatingStar() {
-                const fb = document.createElement('div');
-                fb.className = 'star-cursor';
-                fb.style.position = 'fixed';
-                fb.style.opacity = '0.25';
-                fb.style.pointerEvents = 'none';
-                fb.style.zIndex = '9995';
-                fb.style.width = STAR_SIZE + 'px';
-                fb.style.height = STAR_SIZE + 'px';
-                fb.style.filter = 'drop-shadow(0 0 15px rgba(255, 215, 0, 0.7))';
-                fb.innerHTML = starSVG;
-
-                let x = Math.random() * window.innerWidth;
-                let y = Math.random() * window.innerHeight;
-                let vx = (Math.random() - 0.5) * 1.5;
-                let vy = (Math.random() - 0.5) * 1.5;
-                let rot = Math.random() * 360;
-
-                fb.style.left = x + 'px';
-                fb.style.top = y + 'px';
-                document.body.appendChild(fb);
-
-                function moveFloating() {
-                    x += vx;
-                    y += vy;
-
-                    if (x < -30) { x = -30; vx = Math.abs(vx); }
-                    if (x > window.innerWidth + 30) { x = window.innerWidth + 30; vx = -Math.abs(vx); }
-                    if (y < -30) { y = -30; vy = Math.abs(vy); }
-                    if (y > window.innerHeight + 30) { y = window.innerHeight + 30; vy = -Math.abs(vy); }
-
-                    const targetRot = Math.atan2(vy, vx) * 180 / Math.PI;
-                    rot += (targetRot - rot) * 0.1;
-
-                    fb.style.left = x + 'px';
-                    fb.style.top = y + 'px';
-                    fb.style.transform = `translate(-50%, -50%) rotate(${rot}deg)`;
-
-                    requestAnimationFrame(moveFloating);
-                }
-                moveFloating();
-
-                setTimeout(() => fb.remove(), 35000);
-            }
-
-            setTimeout(() => {
-                createFloatingStar();
-                setTimeout(createFloatingStar, 2500);
-                setTimeout(createFloatingStar, 5000);
-            }, 1000);
-
-            setInterval(() => {
-                if (Math.random() > 0.7) createFloatingStar();
-            }, 10000);
         })();
 
         // ============================================
@@ -1167,9 +1091,9 @@
         // ============================================
         const profileContainer = document.querySelector('.profile-container');
         if (profileContainer) {
-            function createGoldParticle(x, y) {
+            function createGreenParticle(x, y) {
                 const p = document.createElement('div');
-                p.className = 'gold-particle';
+                p.className = 'green-particle';
                 p.style.left = x + 'px';
                 p.style.top = y + 'px';
                 const ang = Math.random() * Math.PI * 2;
@@ -1183,17 +1107,7 @@
                 const rect = profileContainer.getBoundingClientRect();
                 const x = e.clientX - rect.left, y = e.clientY - rect.top;
                 if (Math.random() > 0.75) {
-                    createGoldParticle(x + (Math.random() - 0.5) * 25, y + (Math.random() - 0.5) * 25);
-                }
-            });
-
-            profileContainer.addEventListener('click', (e) => {
-                const rect = profileContainer.getBoundingClientRect();
-                const x = e.clientX - rect.left, y = e.clientY - rect.top;
-                for (let i = 0; i < 15; i++) {
-                    setTimeout(() => {
-                        createGoldParticle(x + (Math.random() - 0.5) * 50, y + (Math.random() - 0.5) * 50);
-                    }, i * 25);
+                    createGreenParticle(x + (Math.random() - 0.5) * 25, y + (Math.random() - 0.5) * 25);
                 }
             });
         }
@@ -1228,12 +1142,11 @@
                     if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
                 }
                 draw() {
-                    ctx.fillStyle = 'rgba(255, 215, 0, 0.4)';
+                    ctx.fillStyle = 'rgba(34, 197, 94, 0.4)';
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                     ctx.fill();
-
-                    ctx.fillStyle = 'rgba(255, 215, 0, 0.1)';
+                    ctx.fillStyle = 'rgba(34, 197, 94, 0.1)';
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size * 2.5, 0, Math.PI * 2);
                     ctx.fill();
@@ -1249,7 +1162,7 @@
                         const dy = bgParticles[a].y - bgParticles[b].y;
                         const d = Math.hypot(dx, dy);
                         if (d < 100) {
-                            ctx.strokeStyle = `rgba(255, 215, 0, ${0.25 * (1 - d / 100)})`;
+                            ctx.strokeStyle = `rgba(34, 197, 94, ${0.25 * (1 - d / 100)})`;
                             ctx.lineWidth = 0.4;
                             ctx.beginPath();
                             ctx.moveTo(bgParticles[a].x, bgParticles[a].y);
