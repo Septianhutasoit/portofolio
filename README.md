@@ -1,4 +1,3 @@
-
 <p align="center">
     <strong>Software Engineer | Backend Developer | Fullstack Developer | AI/ML Enthusiast</strong>
   </p>
