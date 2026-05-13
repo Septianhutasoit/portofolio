@@ -8,7 +8,7 @@
     <title>Septian Hutasoit | Software Engineer & AI/ML Enthusiast</title>
 
     <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23000000%22/><path d=%22M30 35 L15 50 L30 65 M45 70 L55 30 M70 35 L85 50 L70 65%22 fill=%22none%22 stroke=%22%2316a34a%22 stroke-width=%2２ stroke-linecap=%２round%２ stroke-linejoin=%２round%２/></svg>">
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23000000%22/><path d=%22M30 35 L15 50 L30 65 M45 70 L55 30 M70 35 L85 50 L70 65%22 fill=%22none%22 stroke=%22%2316a34a%22 stroke-width=%228%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>">
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet" />
@@ -24,9 +24,8 @@
                 extend: {
                     fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
                     colors: {
-                        bgDark: '#000000',
-                        cardDark: '#000000',
-                        cardSoft: '#0a0a0a',
+                        bgDark: '#0a0a0a',
+                        cardDark: '#111111',
                         primary: '#16a34a',
                         secondary: '#15803d',
                         accent: '#22c55e',
@@ -34,14 +33,13 @@
                     animation: {
                         'blob': 'blob 18s infinite',
                         'float': 'float 16s ease-in-out infinite',
-                        'spin-slow': 'spin 18s linear infinite',
                         'slow-float': 'slowFloat 20s ease-in-out infinite',
                         'scroll-left': 'scroll-left 40s linear infinite',
                         'scroll-right': 'scroll-right 40s linear infinite',
-                        'drift': 'drift 8s ease-in-out infinite',
                         'starTwinkle': 'starTwinkle 1.5s ease-in-out infinite',
                         'starSpin': 'starSpin 4s linear infinite',
                         'likePop': 'likePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+                        'fadeInUp': 'fadeInUp 0.6s ease forwards',
                     },
                     keyframes: {
                         'scroll-left': { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
@@ -69,6 +67,10 @@
                             '0%': { transform: 'scale(1)', opacity: '1' },
                             '50%': { transform: 'scale(1.3)', opacity: '0.8' },
                             '100%': { transform: 'scale(0)', opacity: '0' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
                 }
@@ -78,96 +80,189 @@
 
     <style>
         * {
-            transition: background-color 0.5s ease, color 0.3s ease, border-color 0.5s ease;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
-            background-color: #000000;
+            background-color: #0a0a0a;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
 
         ::-webkit-scrollbar-track {
-            background: #000000;
+            background: #0a0a0a;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #16a34a;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
             background: #22c55e;
+            border-radius: 3px;
         }
 
         section[id] {
-            scroll-margin-top: 96px;
+            scroll-margin-top: 80px;
         }
 
-        .glass-nav {
-            background: rgba(0, 0, 0, 0.96);
+        /* ===== TOP NAVBAR - pill style like reference ===== */
+        .top-nav {
+            background: rgba(15, 15, 15, 0.92);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 100px;
+        }
+
+        .top-nav-link {
+            position: relative;
+            font-size: 14px;
+            font-weight: 500;
+            color: #9ca3af;
+            padding: 8px 18px;
+            border-radius: 100px;
+            transition: all 0.25s ease;
+        }
+
+        .top-nav-link:hover,
+        .top-nav-link.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .top-nav-link.active {
+            color: #22c55e;
+        }
+
+        .top-nav-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #9ca3af;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .top-nav-icon:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .top-nav-divider {
+            width: 1px;
+            height: 22px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 0 6px;
+        }
+
+        /* ===== BOTTOM FLOATING NAV (mobile/pages) ===== */
+        .bottom-nav {
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(34, 197, 94, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 100px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
         }
 
+        .bottom-nav-item {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #6b7280;
+            font-size: 16px;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+        }
+
+        .bottom-nav-item:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .bottom-nav-item.active {
+            color: #22c55e;
+            background: rgba(34, 197, 94, 0.12);
+        }
+
+        /* ===== GLASS CARD ===== */
         .glass-card {
-            background: linear-gradient(145deg, rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.94));
-            backdrop-filter: blur(18px);
-            border: 1px solid rgba(34, 197, 94, 0.28);
-            box-shadow: 0 22px 60px rgba(0, 0, 0, 0.95);
-            transition: all 0.6s ease;
+            background: linear-gradient(145deg, rgba(17, 17, 17, 0.95), rgba(12, 12, 12, 0.98));
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
         }
 
-        .soft-card {
-            background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.15), rgba(0, 0, 0, 0.95));
-            border: 1px solid rgba(34, 197, 94, 0.2);
-            transition: transform 0.7s ease, box-shadow 0.7s ease;
+        /* ===== PROJECT CARDS - like reference ===== */
+        .project-card {
+            background: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+            cursor: pointer;
         }
 
-        .soft-card:hover {
-            transform: translateY(-6px) scale(1.01);
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(34, 197, 94, 0.2);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(34, 197, 94, 0.1);
         }
 
+        .project-card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 14px;
+            transition: transform 0.6s ease;
+        }
+
+        .project-card:hover .project-card-img {
+            transform: scale(1.03);
+        }
+
+        .project-card-img-wrapper {
+            margin: 10px;
+            border-radius: 14px;
+            overflow: hidden;
+            height: 200px;
+            background: #1a1a1a;
+        }
+
+        /* ===== TECH TAG ===== */
+        .tech-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 100px;
+            font-size: 11px;
+            color: #9ca3af;
+            font-weight: 500;
+        }
+
+        /* ===== TEXT GRADIENT ===== */
         .text-gradient {
-            background: linear-gradient(135deg, #16a34a 0%, #22c55e 45%, #15803d 100%);
+            background: linear-gradient(135deg, #16a34a 0%, #22c55e 50%, #4ade80 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .portfolio-img-wrapper {
-            position: relative;
-            overflow: hidden;
-            border-radius: 1rem;
-            border: 1px solid rgba(34, 197, 94, 0.35);
-        }
-
-        .portfolio-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.9s ease, filter 0.9s ease;
-        }
-
-        .group:hover .portfolio-img {
-            transform: scale(1.12) rotate(0.6deg);
-            filter: saturate(1.18);
-        }
-
-        .profile-container {
-            position: relative;
-        }
-
-        .profile-green-glow {
+        /* ===== HERO ===== */
+        .profile-glow {
             position: absolute;
             inset: -20px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(34, 197, 94, 0.8) 0%, rgba(34, 197, 94, 0.2) 60%, transparent 80%);
-            filter: blur(25px);
-            opacity: 0.6;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.5) 0%, transparent 70%);
+            filter: blur(30px);
             animation: greenPulse 3s ease-in-out infinite;
-            z-index: -2;
+            z-index: -1;
         }
 
         @keyframes greenPulse {
@@ -180,56 +275,30 @@
 
             50% {
                 opacity: 0.8;
-                transform: scale(1.05);
+                transform: scale(1.08);
             }
         }
 
-        .profile-green-ring {
-            position: absolute;
-            inset: -12px;
-            border-radius: 50%;
-            border: 3px solid rgba(34, 197, 94, 0.5);
-            opacity: 0;
-            transition: all 0.5s ease;
-            pointer-events: none;
+        /* ===== SKILL ITEM ===== */
+        .skill-item {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .profile-container:hover .profile-green-glow {
-            opacity: 1;
-            transform: scale(1.15);
-            filter: blur(30px);
-            animation: none;
+        .skill-item:hover {
+            transform: translateY(-8px) scale(1.05);
         }
 
-        .profile-container:hover .profile-green-ring {
-            opacity: 1;
-            transform: scale(1.05);
-            border-color: rgba(34, 197, 94, 0.9);
-        }
-
-        .profile-container:hover img {
-            transform: scale(1.02);
-            filter: brightness(1.05);
-        }
-
-        /* ====== STAR CURSOR - GREEN STYLE ====== */
+        /* ===== STAR CURSOR ===== */
         .star-cursor {
             position: fixed;
-            width: 48px;
-            height: 48px;
             pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%);
-            filter: drop-shadow(0 0 15px rgba(34, 197, 94, 0.8)) drop-shadow(0 0 30px rgba(22, 163, 74, 0.5));
+            filter: drop-shadow(0 0 12px rgba(34, 197, 94, 0.9));
             will-change: transform, left, top;
-            transition: filter 0.15s ease;
         }
 
         .star-cursor svg {
-            width: 100%;
-            height: 100%;
-            transform-origin: center;
-            will-change: transform;
             animation: starTwinkle 1.5s ease-in-out infinite, starSpin 4s linear infinite;
         }
 
@@ -238,17 +307,7 @@
             pointer-events: none;
             z-index: 9998;
             transform: translate(-50%, -50%);
-            will-change: transform, left, top;
-            background: radial-gradient(circle, rgba(34, 197, 94, 0.3), transparent 70%);
             border-radius: 50%;
-        }
-
-        .star-trail svg {
-            width: 100%;
-            height: 100%;
-            transform-origin: center;
-            will-change: transform;
-            opacity: 0.6;
         }
 
         .star-dust {
@@ -256,9 +315,8 @@
             border-radius: 50%;
             pointer-events: none;
             z-index: 9997;
-            will-change: transform;
             background: radial-gradient(circle, #22c55e 0%, #16a34a 50%, transparent 100%);
-            box-shadow: 0 0 8px rgba(34, 197, 94, 0.8), 0 0 16px rgba(22, 163, 74, 0.5);
+            box-shadow: 0 0 6px rgba(34, 197, 94, 0.8);
             animation: dustFloat 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
         }
 
@@ -274,44 +332,24 @@
             }
         }
 
-        .green-particle {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: radial-gradient(circle, #22c55e, #16a34a);
+        .like-effect {
+            position: fixed;
             pointer-events: none;
-            animation: floatParticle 2.5s ease-out forwards;
-            z-index: 15;
-            box-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+            z-index: 10000;
+            font-size: 22px;
+            animation: likePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
 
-        @keyframes floatParticle {
-            0% {
-                transform: translate(0, 0) scale(1);
-                opacity: 1;
-            }
-
-            100% {
-                transform: translate(var(--tx, 60px), var(--ty, -60px)) scale(0);
-                opacity: 0;
-            }
+        /* ===== SECTIONS VISIBILITY ===== */
+        .page-section {
+            display: none;
         }
 
-        #hero-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
+        .page-section.active {
+            display: block;
         }
 
-        .role-wrapper {
-            display: inline-flex;
-            align-items: center;
-        }
-
+        /* ===== ROLE CURSOR ===== */
         .role-cursor {
             display: inline-block;
             width: 3px;
@@ -334,41 +372,51 @@
             }
         }
 
-        /* Navbar Hover Effect - Timbul satu persatu */
-        .nav-link {
-            position: relative;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        /* ===== CANVAS ===== */
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
         }
 
-        .nav-link:hover {
-            transform: translateY(-2px);
-            color: #22c55e !important;
+        /* ===== PROJECTS PAGE CARD ===== */
+        .project-full-card {
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .nav-link:active {
-            transform: translateY(1px);
+        .project-full-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(34, 197, 94, 0.25);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
         }
 
-        /* Skills Icon Hover Effect - Like LinkedIn */
-        .skill-item {
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        .project-full-card-img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            display: block;
         }
 
-        .skill-item:hover {
-            transform: translateY(-8px) scale(1.05);
+        /* Mobile nav */
+        #mobileMenu {
+            background: rgba(5, 5, 5, 0.98);
+            backdrop-filter: blur(24px);
         }
 
-        .skill-item:hover .skill-icon {
-            filter: drop-shadow(0 0 12px rgba(34, 197, 94, 0.8));
-        }
-
-        /* Like effect animation */
-        .like-effect {
-            position: fixed;
-            pointer-events: none;
-            z-index: 10000;
-            font-size: 24px;
-            animation: likePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        /* Spotify */
+        .spotify-widget {
+            background: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
         }
 
         @media (hover: none) and (pointer: coarse) {
@@ -378,10 +426,6 @@
             .star-dust {
                 display: none;
             }
-
-            #home {
-                cursor: auto !important;
-            }
         }
 
         #home {
@@ -390,263 +434,404 @@
     </style>
 </head>
 
-<body class="text-slate-300 antialiased overflow-x-hidden selection:bg-primary selection:text-bgDark">
+<body class="text-slate-300 antialiased overflow-x-hidden selection:bg-primary selection:text-black">
 
-    <!-- SPOTIFY PLAYER -->
-    <div class="fixed bottom-5 left-4 sm:left-6 z-50">
-        <div class="glass-card p-3 rounded-2xl bg-black/70 w-[280px] sm:w-[320px]">
+    <!-- ===== SPOTIFY PLAYER ===== -->
+    <div class="fixed bottom-6 left-4 sm:left-6 z-50">
+        <div class="spotify-widget p-3 w-[270px] sm:w-[300px]">
             <div class="flex items-center justify-between gap-3">
                 <div class="flex items-center gap-3">
-                    <div
-                        class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                        <i class="fab fa-spotify text-green-400 text-lg"></i>
+                    <div class="w-9 h-9 rounded-xl bg-[#1DB954]/10 flex items-center justify-center">
+                        <i class="fab fa-spotify text-[#1DB954] text-base"></i>
                     </div>
                     <div class="overflow-hidden">
-                        <p class="text-white font-semibold text-xs sm:text-sm truncate">La La Lost You</p>
-                        <p class="text-[11px] text-slate-400 truncate">NIKI • Spotify</p>
+                        <p class="text-white font-semibold text-xs truncate">La La Lost You</p>
+                        <p class="text-[11px] text-slate-500 truncate">NIKI • Spotify</p>
                     </div>
                 </div>
                 <button id="spotifyToggle"
-                    class="px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-primary hover:text-black transition">Buka</button>
+                    class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/8 text-white text-[11px] font-semibold hover:bg-accent/20 hover:text-accent transition-all">Buka</button>
             </div>
             <div id="spotifyWrap" class="mt-3 hidden">
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0e2wfbDK7ppotqyUWD7qs8"
+                <iframe style="border-radius:10px" src="https://open.spotify.com/embed/track/0e2wfbDK7ppotqyUWD7qs8"
                     width="100%" height="152" frameborder="0"
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                     loading="lazy"></iframe>
-                <p class="text-[10px] text-slate-500 mt-2">Spotify embed tidak bisa dikontrol play/pause via JS.</p>
             </div>
         </div>
     </div>
 
-    <!-- SCROLL TO TOP -->
-    <a href="#home"
-        class="fixed bottom-5 right-4 sm:right-6 z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full glass-card flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-lg shadow-black/60">
-        <i class="fas fa-arrow-up text-xs sm:text-sm"></i>
-    </a>
-
-    <!-- NAVBAR -->
-    <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 py-3">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center">
-            <a href="#home" class="flex items-center gap-2">
-                <span
-                    class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shadow-lg shadow-black/40">
-                    <i class="fas fa-laptop-code text-primary text-lg"></i>
-                </span>
-            </a>
-
-            <div class="hidden md:flex items-center gap-1 p-1 rounded-full bg-black/20 border border-white/10">
-                <a href="#home"
-                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-white transition-all">Beranda</a>
-                <a href="#portfolio"
-                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white transition-all">Proyek</a>
-                <a href="#skills"
-                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white transition-all">Skills</a>
-                <a href="#contact"
-                    class="nav-link px-4 py-2 text-[11px] font-medium rounded-full hover:bg-white/10 text-slate-300 hover:text-white transition-all">Kontak</a>
+    <!-- ===== TOP NAV (pill style like reference) ===== -->
+    <div class="fixed top-5 left-1/2 -translate-x-1/2 z-40 w-full max-w-xl px-4">
+        <nav class="top-nav px-2 py-1.5 flex items-center justify-between gap-2">
+            <!-- Left: nav links -->
+            <div class="flex items-center gap-0.5">
+                <a href="#" onclick="showPage('home'); return false;" class="top-nav-link active" id="nav-home">Home</a>
+                <a href="#" onclick="showPage('projects'); return false;" class="top-nav-link"
+                    id="nav-projects">Projects</a>
+                <a href="#" onclick="showPage('about'); return false;" class="top-nav-link" id="nav-about">About</a>
             </div>
 
-            <div class="hidden md:flex items-center gap-4">
-                <a href="#contact"
-                    class="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-white text-xs font-semibold hover:bg-primary hover:text-black transition-all">Hire
-                    Me</a>
+            <!-- Right: icons + theme -->
+            <div class="flex items-center gap-0">
+                <a href="https://github.com/Septianhutasoit" target="_blank" class="top-nav-icon" title="GitHub">
+                    <i class="fab fa-github text-base"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/septian-a-hutasoit/" target="_blank" class="top-nav-icon"
+                    title="LinkedIn">
+                    <i class="fab fa-linkedin-in text-base"></i>
+                </a>
+                <a href="mailto:septianhts95@gmail.com" class="top-nav-icon" title="Email">
+                    <i class="fas fa-envelope text-base"></i>
+                </a>
+                <div class="top-nav-divider"></div>
+                <button class="top-nav-icon" id="themeToggle" title="Toggle theme">
+                    <i class="fas fa-sun text-base" id="themeIcon"></i>
+                </button>
             </div>
-        </div>
-    </nav>
-
-    <!-- MOBILE MENU -->
-    <div id="mobileMenu"
-        class="fixed inset-0 bg-black/98 backdrop-blur-xl z-50 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center">
-        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-3xl text-white"><i
-                class="fas fa-times"></i></button>
-        <div class="flex flex-col space-y-6 text-center">
-            <a href="#home" onclick="toggleMenu()"
-                class="text-2xl font-bold text-white hover:text-primary transition-colors">Beranda</a>
-            <a href="#portfolio" onclick="toggleMenu()"
-                class="text-2xl font-bold text-white hover:text-primary transition-colors">Proyek</a>
-            <a href="#skills" onclick="toggleMenu()"
-                class="text-2xl font-bold text-white hover:text-primary transition-colors">Skills</a>
-            <a href="#contact" onclick="toggleMenu()" class="text-2xl font-bold text-primary">Kontak</a>
-        </div>
+        </nav>
     </div>
 
-    <!-- HERO SECTION -->
-    <section id="home" class="min-h-screen flex items-center pt-20 relative overflow-hidden">
-        <canvas id="hero-canvas"></canvas>
-        <div
-            class="absolute top-[15%] left-[5%] w-72 h-72 sm:w-96 sm:h-96 bg-primary/15 rounded-full mix-blend-screen blur-[110px] animate-blob">
-        </div>
-        <div
-            class="absolute bottom-[10%] right-[5%] w-72 h-72 sm:w-96 sm:h-96 bg-secondary/15 rounded-full mix-blend-screen blur-[110px] animate-blob">
-        </div>
-
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center relative z-10">
-            <div data-aos="fade-right">
-                <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] mb-5">
-                    <span class="relative flex h-2 w-2">
-                        <span
-                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                    </span>
-                    Available for Fullstack Projects
-                </div>
-                <h1
-                    class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 leading-[1.05] tracking-tight">
-                    Software Engineer <br />
-                    <span class="text-gradient">Fullstack Projects.</span>
-                </h1>
-                <p class="text-sm sm:text-base text-slate-400 mb-7 max-w-xl leading-relaxed">
-                    I'm <span class="text-white font-semibold">Septian Hutasoit</span>,
-                    <span class="text-slate-100 font-semibold role-wrapper">
-                        <span id="changing-role">Software Developer</span>
-                        <span class="role-cursor"></span>
-                    </span> a tech developer with a passion for Software Engineering, Web Development, Artificial
-                    Intelligence, Cloud Enthusiast and Backend Development. I'm passionate about building efficient, structured, and
-                    scalable systems, combining them with a clear interface for user-friendliness.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                    <a href="#portfolio"
-                        class="px-7 py-3.2 rounded-full bg-gradient-to-r from-primary to-secondary text-black font-semibold text-sm hover:shadow-[0_0_30px_rgba(34,197,94,0.75)] transition-all text-center">Lihat
-                        Proyek</a>
-                    <a href="https://github.com/Septianhutasoit" target="_blank"
-                        class="px-7 py-3.2 rounded-full bg-white/5 border border-white/10 font-semibold text-white text-sm hover:bg-white/10 transition-all flex items-center justify-center gap-2"><i
-                            class="fab fa-github text-lg"></i> GitHub</a>
-                </div>
+    <!-- ===== HOME PAGE ===== -->
+    <div id="page-home" class="page-section active">
+        <section id="home" class="min-h-screen flex items-center pt-28 pb-16 relative overflow-hidden">
+            <canvas id="hero-canvas"></canvas>
+            <div
+                class="absolute top-[10%] left-[5%] w-80 h-80 bg-primary/10 rounded-full mix-blend-screen blur-[100px] animate-blob">
+            </div>
+            <div
+                class="absolute bottom-[10%] right-[5%] w-80 h-80 bg-secondary/10 rounded-full mix-blend-screen blur-[100px] animate-blob">
             </div>
 
-            <div class="relative flex justify-center lg:justify-end" data-aos="fade-left">
-                <div
-                    class="profile-container relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[380px] lg:h-[380px] rounded-full overflow-hidden soft-card animate-slow-float">
-                    <div class="profile-green-glow"></div>
-                    <div class="profile-green-ring"></div>
+            <div
+                class="max-w-5xl mx-auto px-6 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10 w-full">
+                <!-- Left -->
+                <div data-aos="fade-right">
                     <div
-                        class="absolute -inset-10 bg-gradient-to-tr from-primary/40 via-secondary/40 to-accent/40 blur-3xl opacity-40">
+                        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] font-bold uppercase tracking-widest mb-6">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+                        </span>
+                        Available for Fullstack Projects
                     </div>
+                    <h1
+                        class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-5 leading-[1.05] tracking-tight">
+                        Software<br />
+                        <span class="text-gradient">Engineer.</span>
+                    </h1>
+                    <p class="text-sm sm:text-[15px] text-slate-400 mb-8 max-w-xl leading-relaxed">
+                        I'm <span class="text-white font-semibold">Septian Hutasoit</span>,
+                        <span class="text-slate-100 font-medium">
+                            <span id="changing-role">Software Developer</span><span class="role-cursor"></span>
+                        </span>
+                        — a tech developer passionate about building efficient, structured, and scalable systems with
+                        clean interfaces.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#" onclick="showPage('projects'); return false;"
+                            class="px-7 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-black font-semibold text-sm hover:shadow-[0_0_28px_rgba(34,197,94,0.6)] transition-all">
+                            View Projects
+                        </a>
+                        <a href="https://github.com/Septianhutasoit" target="_blank"
+                            class="px-7 py-3 rounded-full bg-white/5 border border-white/10 font-semibold text-white text-sm hover:bg-white/10 transition-all flex items-center gap-2">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+
+                    <!-- Stats row -->
+                    <div class="flex gap-8 mt-10 pt-8 border-t border-white/5">
+                        <div>
+                            <p class="text-2xl font-bold text-white">6+</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Projects Shipped</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold text-white">3+</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Years Coding</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold text-accent">Full</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Stack Dev</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: profile -->
+                <div class="relative flex justify-center lg:justify-end" data-aos="fade-left">
+                    <div class="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
+                        <div class="profile-glow"></div>
+                        <div
+                            class="absolute -inset-4 bg-gradient-to-tr from-primary/20 via-secondary/15 to-accent/20 blur-2xl opacity-60 rounded-full">
+                        </div>
+                        <img src="assets/img/profile.jpg" alt="Septian"
+                            class="relative w-full h-full object-cover rounded-full border border-white/10 shadow-2xl animate-slow-float" />
+                        <!-- Floating badge -->
+                        <div
+                            class="absolute -bottom-3 -right-3 bg-[#111] border border-white/10 rounded-2xl px-4 py-2.5 shadow-xl">
+                            <p class="text-xs text-slate-400">Status</p>
+                            <p class="text-sm font-semibold text-accent mt-0.5 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-accent animate-pulse inline-block"></span>
+                                Open to work
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOME: Featured Projects Preview -->
+        <section class="pb-24 relative bg-[#0a0a0a]">
+            <div class="max-w-5xl mx-auto px-6 sm:px-8">
+                <div class="flex items-end justify-between mb-10" data-aos="fade-up">
+                    <div>
+                        <p class="text-accent text-xs font-bold uppercase tracking-widest mb-2">Selected Work</p>
+                        <h2 class="text-3xl font-bold text-white">Check out my <br /><span class="text-gradient">latest
+                                work</span></h2>
+                        <p class="text-slate-400 text-sm mt-3 max-w-md">I've worked on a variety of projects, from
+                            simple websites to complex web apps. Click to see more.</p>
+                    </div>
+                    <a href="#" onclick="showPage('projects'); return false;"
+                        class="hidden sm:flex items-center gap-2 text-sm text-slate-400 hover:text-accent transition-colors font-medium">
+                        View all <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- 2-col featured grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="featured-grid"></div>
+
+                <div class="mt-6 flex sm:hidden justify-center">
+                    <a href="#" onclick="showPage('projects'); return false;"
+                        class="text-sm text-accent font-semibold flex items-center gap-2">View all projects <i
+                            class="fas fa-arrow-right text-xs"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOME: Skills Marquee -->
+        <section id="skills" class="py-20 bg-[#0a0a0a] border-t border-white/5 overflow-hidden">
+            <div class="max-w-5xl mx-auto px-6 mb-14 text-center" data-aos="fade-up">
+                <span class="text-accent font-semibold tracking-widest text-[10px] uppercase">Tech Stack</span>
+                <h2 class="text-2xl md:text-3xl font-bold text-white mt-3">Technology <span
+                        class="text-gradient">Used</span></h2>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div class="relative flex overflow-hidden group">
+                    <div id="row1"
+                        class="flex gap-8 py-2 animate-scroll-left whitespace-nowrap group-hover:[animation-play-state:paused]">
+                    </div>
+                </div>
+                <div class="relative flex overflow-hidden group">
+                    <div id="row2"
+                        class="flex gap-8 py-2 animate-scroll-right whitespace-nowrap group-hover:[animation-play-state:paused]">
+                    </div>
+                </div>
+                <div class="relative flex overflow-hidden group">
+                    <div id="row3"
+                        class="flex gap-8 py-2 animate-scroll-left whitespace-nowrap group-hover:[animation-play-state:paused]">
+                    </div>
+                </div>
+                <div class="relative flex overflow-hidden group">
+                    <div id="row4"
+                        class="flex gap-8 py-2 animate-scroll-right whitespace-nowrap group-hover:[animation-play-state:paused]">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOME: Contact -->
+        <section id="contact" class="py-24 relative overflow-hidden border-t border-white/5">
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] bg-primary/8 rounded-full blur-[120px] -z-10">
+            </div>
+            <div class="max-w-2xl mx-auto px-6 text-center" data-aos="fade-up">
+                <p class="text-accent text-xs font-bold uppercase tracking-widest mb-4">Contact</p>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Let's ship <span
+                        class="text-gradient">something real.</span></h2>
+                <p class="text-slate-400 text-sm sm:text-base mb-8 max-w-lg mx-auto">Punya ide produk atau sistem yang
+                    butuh kombinasi backend rapi & UI yang enak dipakai? Kirim konteksnya, kita breakdown bareng.</p>
+                <a href="mailto:septianhts95@gmail.com"
+                    class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-white text-black font-semibold text-sm hover:scale-105 transition-transform shadow-lg">
+                    <i class="fas fa-envelope"></i> Kirim Email
+                </a>
+                <div class="flex justify-center gap-4 mt-10">
+                    <a href="https://www.instagram.com/tianhts_/"
+                        class="top-nav-icon text-slate-500 hover:text-accent"><i
+                            class="fab fa-instagram text-lg"></i></a>
+                    <a href="https://www.linkedin.com/in/septian-a-hutasoit/"
+                        class="top-nav-icon text-slate-500 hover:text-accent"><i
+                            class="fab fa-linkedin-in text-lg"></i></a>
+                    <a href="https://github.com/Septianhutasoit"
+                        class="top-nav-icon text-slate-500 hover:text-accent"><i class="fab fa-github text-lg"></i></a>
+                </div>
+                <p class="mt-12 text-slate-600 text-xs">&copy; 2025 Septian Hutasoit. Built as a fullstack product, not
+                    a copy–paste template.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== PROJECTS PAGE ===== -->
+    <div id="page-projects" class="page-section">
+        <div class="min-h-screen pt-28 pb-24 px-6 sm:px-8">
+            <div class="max-w-5xl mx-auto">
+                <!-- Back + Header -->
+                <div class="flex items-center justify-between mb-12" data-aos="fade-up">
+                    <div>
+                        <a href="#" onclick="showPage('home'); return false;"
+                            class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors mb-5">
+                            <i class="fas fa-arrow-left text-xs"></i> Back to home
+                        </a>
+                        <p class="text-accent text-xs font-bold uppercase tracking-widest mb-2">PORTFOLIO</p>
+                        <h1 class="text-3xl sm:text-4xl font-bold text-white">Project Showcase</h1>
+                        <p class="text-slate-400 text-sm mt-2">A collection of projects I've worked on. Click to see
+                            them.</p>
+                    </div>
+                    <a href="https://github.com/Septianhutasoit" target="_blank"
+                        class="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-sm font-semibold hover:bg-white/10 transition-all">
+                        <i class="fab fa-github"></i> View GitHub
+                    </a>
+                </div>
+
+                <!-- All projects grid - 3 col like reference -->
+                <div id="all-projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ABOUT PAGE ===== -->
+    <div id="page-about" class="page-section">
+        <div class="min-h-screen pt-28 pb-24 px-6 sm:px-8">
+            <div class="max-w-3xl mx-auto">
+                <a href="#" onclick="showPage('home'); return false;"
+                    class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors mb-8">
+                    <i class="fas fa-arrow-left text-xs"></i> Back to home
+                </a>
+                <div class="flex items-start gap-6 mb-10" data-aos="fade-up">
                     <img src="assets/img/profile.jpg" alt="Septian"
-                        class="relative w-full h-full object-cover rounded-full border-2 border-white/20 shadow-2xl" />
+                        class="w-20 h-20 rounded-2xl object-cover border border-white/10 flex-shrink-0" />
+                    <div>
+                        <h1 class="text-3xl font-bold text-white">Septian Hutasoit</h1>
+                        <p class="text-accent text-sm mt-1">Software Engineer & AI/ML Enthusiast</p>
+                        <div class="flex gap-3 mt-3">
+                            <a href="https://github.com/Septianhutasoit" target="_blank"
+                                class="top-nav-icon text-slate-500 hover:text-white"><i
+                                    class="fab fa-github text-base"></i></a>
+                            <a href="https://www.linkedin.com/in/septian-a-hutasoit/" target="_blank"
+                                class="top-nav-icon text-slate-500 hover:text-white"><i
+                                    class="fab fa-linkedin-in text-base"></i></a>
+                            <a href="mailto:septianhts95@gmail.com"
+                                class="top-nav-icon text-slate-500 hover:text-white"><i
+                                    class="fas fa-envelope text-base"></i></a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- SKILLS MARQUEE -->
-    <section id="skills" class="py-20 bg-bgDark border-t border-white/5 overflow-hidden">
-        <div class="max-w-6xl mx-auto px-4 mb-16 text-center" data-aos="fade-up">
-            <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Tech Stack</span>
-            <h2 class="text-2xl md:text-3xl font-bold text-white mt-3">Technology Used <span
-                    class="text-gradient">Product Stack</span></h2>
-        </div>
-        <div class="flex flex-col gap-6 sm:gap-8">
-            <div class="relative flex overflow-hidden group">
-                <div id="row1"
-                    class="flex gap-8 py-2 animate-scroll-left whitespace-nowrap group-hover:[animation-play-state:paused]">
-                </div>
-            </div>
-            <div class="relative flex overflow-hidden group">
-                <div id="row2"
-                    class="flex gap-8 py-2 animate-scroll-right whitespace-nowrap group-hover:[animation-play-state:paused]">
-                </div>
-            </div>
-            <div class="relative flex overflow-hidden group">
-                <div id="row3"
-                    class="flex gap-8 py-2 animate-scroll-left whitespace-nowrap group-hover:[animation-play-state:paused]">
-                </div>
-            </div>
-            <div class="relative flex overflow-hidden group">
-                <div id="row4"
-                    class="flex gap-8 py-2 animate-scroll-right whitespace-nowrap group-hover:[animation-play-state:paused]">
-                </div>
-            </div>
-        </div>
-    </section>
+                <div class="space-y-8" data-aos="fade-up">
+                    <div class="glass-card rounded-2xl p-6">
+                        <h3 class="text-white font-semibold mb-3 flex items-center gap-2"><i
+                                class="fas fa-user text-accent text-sm"></i> About Me</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            I'm a tech developer with a passion for Software Engineering, Web Development, Artificial
+                            Intelligence, Cloud, and Backend Development. I love building efficient, structured, and
+                            scalable systems that combine clean architecture with user-friendly interfaces.
+                        </p>
+                    </div>
 
-    <!-- PROJECTS -->
-    <section id="portfolio" class="py-20 sm:py-24 relative bg-bgDark border-t border-white/5">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 sm:mb-12"
-                data-aos="fade-up">
-                <div>
-                    <span class="text-primary font-semibold tracking-[0.2em] text-[11px] uppercase">Selected
-                        Projects</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-3">End-to-End <span
-                            class="text-gradient">Product Work</span></h2>
-                    <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-xl">Proyek yang nunjukin cara ngerangkai
-                        backend, frontend, dan UX jadi satu alur yang masuk akal.</p>
+                    <div class="glass-card rounded-2xl p-6">
+                        <h3 class="text-white font-semibold mb-4 flex items-center gap-2"><i
+                                class="fas fa-code text-accent text-sm"></i> Tech Stack</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <div class="bg-white/3 border border-white/6 rounded-xl p-3 text-center">
+                                <i class="devicon-laravel-original colored text-2xl mb-2"></i>
+                                <p class="text-xs text-slate-400">Laravel</p>
+                            </div>
+                            <div class="bg-white/3 border border-white/6 rounded-xl p-3 text-center">
+                                <i class="devicon-react-original colored text-2xl mb-2"></i>
+                                <p class="text-xs text-slate-400">React</p>
+                            </div>
+                            <div class="bg-white/3 border border-white/6 rounded-xl p-3 text-center">
+                                <i class="devicon-nextjs-plain text-2xl mb-2 text-white"></i>
+                                <p class="text-xs text-slate-400">Next.js</p>
+                            </div>
+                            <div class="bg-white/3 border border-white/6 rounded-xl p-3 text-center">
+                                <i class="devicon-python-plain colored text-2xl mb-2"></i>
+                                <p class="text-xs text-slate-400">Python</p>
+                            </div>
+                            <div class="bg-white/3 border border-white/6 rounded-xl p-3 text-center">
+                                <i class="devicon-nodejs-plain colored text-2xl mb-2"></i>
+                                <p class="text-xs text-slate-400">Node.js</p>
+                            </div>
+                            <div class="bg-white/3 border border-white/6 rounded-xl p-3 text-center">
+                                <i class="devicon-docker-plain colored text-2xl mb-2"></i>
+                                <p class="text-xs text-slate-400">Docker</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-6">
+                        <h3 class="text-white font-semibold mb-4 flex items-center gap-2"><i
+                                class="fas fa-envelope text-accent text-sm"></i> Get in Touch</h3>
+                        <a href="mailto:septianhts95@gmail.com"
+                            class="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gradient-to-r from-primary to-secondary text-black font-semibold text-sm hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-all">
+                            <i class="fas fa-paper-plane"></i> septianhts95@gmail.com
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"></div>
         </div>
-    </section>
+    </div>
 
-    <!-- CONTACT -->
-    <section id="contact" class="py-20 sm:py-24 relative overflow-hidden border-t border-white/5">
-        <div
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] sm:w-[520px] h-[420px] sm:h-[520px] bg-primary/10 rounded-full blur-[120px] -z-10">
-        </div>
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center" data-aos="fade-up">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">Let's ship <span
-                    class="text-gradient">something real.</span></h2>
-            <p class="text-slate-400 text-sm sm:text-base mb-9 max-w-xl mx-auto">Punya ide produk atau sistem internal
-                yang butuh kombinasi backend rapi & UI yang enak dipakai? Kirim konteksnya, kita breakdown bareng.</p>
-            <a href="mailto:septianhts95@gmail.com"
-                class="inline-flex items-center gap-3 px-7 sm:px-8 py-3.5 rounded-full bg-white text-black font-semibold text-sm sm:text-base hover:scale-105 transition-transform"><i
-                    class="fas fa-envelope text-sm"></i> Kirim Email</a>
-            <div class="flex justify-center gap-5 mt-10">
-                <a href="https://www.instagram.com/tianhts_/"
-                    class="text-slate-400 hover:text-primary text-xl transition-colors"><i
-                        class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/septian-a-hutasoit/"
-                    class="text-slate-400 hover:text-primary text-xl transition-colors"><i
-                        class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Septianhutasoit"
-                    class="text-slate-400 hover:text-primary text-xl transition-colors"><i
-                        class="fab fa-github"></i></a>
-            </div>
-            <footer class="mt-14 pt-6 border-t border-white/5 text-slate-600 text-[11px] sm:text-xs">&copy; 2025 Septian
-                Hutasoit. Built as a fullstack product, not a copy–paste template.</footer>
-        </div>
-    </section>
-
-    <!-- MODAL -->
+    <!-- ===== MODAL ===== -->
     <div id="universalModal" class="fixed inset-0 z-[60] hidden">
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity opacity-0" id="modalBackdrop"
+        <div class="absolute inset-0 bg-black/85 backdrop-blur-sm transition-opacity opacity-0" id="modalBackdrop"
             onclick="closeModal()"></div>
-        <div class="absolute inset-0 flex items-center justify-center p-4">
+        <div class="absolute inset-0 flex items-center justify-center p-4 sm:p-6">
             <div id="modalContent"
-                class="bg-black border border-white/10 w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl transform scale-90 opacity-0 transition-all duration-500 flex flex-col md:flex-row max-h-[90vh]">
-                <div class="w-full md:w-1/2 h-60 md:h-auto bg-black relative flex items-center justify-center">
-                    <img id="mImage" src="" alt="" class="w-full h-full object-contain bg-black/80 rounded-2xl" />
+                class="bg-[#0f0f0f] border border-white/8 w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl transform scale-90 opacity-0 transition-all duration-400 flex flex-col md:flex-row max-h-[90vh]">
+                <!-- Image side -->
+                <div
+                    class="w-full md:w-1/2 bg-black relative flex items-center justify-center min-h-[240px] md:min-h-0">
+                    <img id="mImage" src="" alt=""
+                        class="w-full h-full object-contain rounded-none max-h-[300px] md:max-h-full" />
                     <button id="imgPrev"
-                        class="hidden absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md text-white flex items-center justify-center"><i
-                            class="fas fa-chevron-left"></i></button>
+                        class="hidden absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 backdrop-blur-md text-white flex items-center justify-center hover:bg-black/80 transition-all">
+                        <i class="fas fa-chevron-left text-xs"></i>
+                    </button>
                     <button id="imgNext"
-                        class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md text-white flex items-center justify-center"><i
-                            class="fas fa-chevron-right"></i></button>
+                        class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 backdrop-blur-md text-white flex items-center justify-center hover:bg-black/80 transition-all">
+                        <i class="fas fa-chevron-right text-xs"></i>
+                    </button>
                     <div id="imgDots" class="hidden absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
                     <button onclick="closeModal()"
-                        class="absolute top-4 left-4 md:hidden w-9 h-9 bg-black/60 rounded-full text-white"><i
-                            class="fas fa-arrow-left"></i></button>
+                        class="absolute top-3 left-3 md:hidden w-8 h-8 bg-black/60 rounded-full text-white text-sm flex items-center justify-center">
+                        <i class="fas fa-arrow-left text-xs"></i>
+                    </button>
                 </div>
-                <div class="w-full md:w-1/2 p-6 sm:p-8 flex flex-col overflow-y-auto">
+                <!-- Info side -->
+                <div class="w-full md:w-1/2 p-6 sm:p-7 flex flex-col overflow-y-auto">
                     <div class="flex justify-between items-start mb-4">
-                        <div><span id="mSubtitle"
-                                class="text-primary text-[11px] font-bold uppercase tracking-[0.2em]">Subtitle</span>
-                            <h3 id="mTitle" class="text-2xl sm:text-3xl font-bold text-white mt-2">Title</h3>
+                        <div>
+                            <span id="mSubtitle"
+                                class="text-accent text-[10px] font-bold uppercase tracking-widest">Subtitle</span>
+                            <h3 id="mTitle" class="text-xl sm:text-2xl font-bold text-white mt-1.5">Title</h3>
                         </div>
-                        <button onclick="closeModal()" class="hidden md:block text-slate-400 hover:text-white"><i
-                                class="fas fa-times text-xl"></i></button>
+                        <button onclick="closeModal()"
+                            class="hidden md:flex top-nav-icon text-slate-500 hover:text-white"><i
+                                class="fas fa-times"></i></button>
                     </div>
-                    <p id="mDesc" class="text-slate-300 text-sm sm:text-[15px] leading-relaxed mb-6">Description...</p>
-                    <div id="mTagsGroup" class="mb-6 hidden">
-                        <h4 class="text-white font-semibold mb-2 text-sm">Teknologi / Badge</h4>
+                    <p id="mDesc" class="text-slate-400 text-sm leading-relaxed mb-5">Description...</p>
+                    <div id="mTagsGroup" class="mb-5 hidden">
+                        <h4 class="text-white font-semibold mb-2.5 text-xs uppercase tracking-wider">Tech Stack</h4>
                         <div id="mTags" class="flex flex-wrap gap-2"></div>
                     </div>
-                    <div id="mActions" class="mt-auto flex gap-3 hidden"><a id="mDemo" href="#"
-                            class="flex-1 py-2.5 bg-primary text-black font-semibold rounded-xl text-center text-sm">Live
-                            Demo</a><a id="mCode" href="#"
-                            class="flex-1 py-2.5 bg-white/5 border border-white/10 text-white font-semibold rounded-xl text-center text-sm">Source
-                            Code</a></div>
+                    <div id="mActions" class="mt-auto flex gap-3 hidden">
+                        <a id="mDemo" href="#"
+                            class="flex-1 py-2.5 bg-gradient-to-r from-primary to-secondary text-black font-semibold rounded-xl text-center text-sm">Live
+                            Demo</a>
+                        <a id="mCode" href="#"
+                            class="flex-1 py-2.5 bg-white/5 border border-white/10 text-white font-semibold rounded-xl text-center text-sm hover:bg-white/10 transition-all">Source
+                            Code</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -654,8 +839,85 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1100, once: true, offset: 80 });
+        AOS.init({ duration: 900, once: true, offset: 60 });
 
+        // ===== DATA =====
+        const projectsData = [
+            {
+                cardTitle: "Nauli Dental Care",
+                title: "Website Klinik Nauli Dental Care",
+                subtitle: "Web App • Klinik",
+                categoryChip: "Klinik Gigi",
+                cover: "assets/img/klinik.png",
+                images: ["assets/img/galery.png", "assets/img/layanan.png", "assets/img/map.png", "assets/img/staff.png", "assets/img/visimisi.png", "assets/img/daftaradmin.png", "assets/img/dokter.png", "assets/img/testimoni.png"],
+                desc: "Website klinik untuk booking atau janji temu antara pasien dan dokter. Dilengkapi dengan manajemen dokter, jadwal, dan testimoni pasien.",
+                tags: ["Laravel", "MySQL", "Tailwind", "REST API"],
+                github: "https://github.com/Septianhutasoit/projectsep",
+                demo: ""
+            },
+            {
+                cardTitle: "Delshoop E-Commerce",
+                title: "Delshoop E-Commerce Platform",
+                subtitle: "E-Commerce • Web App",
+                categoryChip: "E-Commerce",
+                cover: "assets/img/Delshop Home.png",
+                images: ["assets/img/Produk2.png", "assets/img/Tersedia.png", "assets/img/cart.png", "assets/img/Barcode.png"],
+                desc: "Platform e-commerce dengan manajemen produk, cart real-time, dan sistem barcode untuk pengelolaan stok yang efisien.",
+                tags: ["Laravel", "MySQL", "Tailwind CSS", "REST API"],
+                github: "https://github.com/Septianhutasoit/Aplikasi",
+                demo: ""
+            },
+            {
+                cardTitle: "Website Aksara Batak",
+                title: "Website Aksara Batak",
+                subtitle: "Informasi • Multi Bahasa",
+                categoryChip: "Edukasi",
+                cover: "assets/img/Home.png",
+                images: ["assets/img/Home.png", "assets/img/Fitur.png", "assets/img/bahasa.png", "assets/img/Tentang.png"],
+                desc: "Website edukasi Aksara Batak dengan fitur multi-bahasa, menampilkan aksara dan transliterasi untuk pelestarian budaya Batak.",
+                tags: ["Laravel", "PHP", "MySQL"],
+                github: "https://github.com/bryansiagian/BoanAksara",
+                demo: ""
+            },
+            {
+                cardTitle: "Kawan Pulih",
+                title: "Kawan Pulih - Informasi Pasca Operasi",
+                subtitle: "Web App • Healthcare",
+                categoryChip: "Pasca Operasi",
+                cover: "assets/img/kawanpulih.png",
+                images: [],
+                desc: "Platform informasi dan pendampingan digital untuk pasien pasca operasi. Menyediakan panduan pemulihan dan monitoring kondisi pasien.",
+                tags: ["Next.js", "Tailwind"],
+                github: "https://github.com/Septianhutasoit/403",
+                demo: "https://www.caregiver-ai.my.id/"
+            },
+            {
+                cardTitle: "Project E-Commerce",
+                title: "Sistem E-Commerce App",
+                subtitle: "Web App • E-Commerce",
+                categoryChip: "Ecommerce",
+                cover: "assets/img/codealpha.png",
+                images: ["assets/img/codealpa2.png", "assets/img/codealpa3.png"],
+                desc: "Aplikasi website untuk pembelian online dengan fitur autentikasi, manajemen produk, dan keranjang belanja real-time.",
+                tags: ["Node.js", "React.js", "PostgreSQL"],
+                github: "https://github.com/Septianhutasoit/CodeAlpha",
+                demo: ""
+            },
+            {
+                cardTitle: "ChatBot AI Klinik",
+                title: "Sistem ChatBot AI Klinik Gigi",
+                subtitle: "Web App • AI",
+                categoryChip: "AI ChatBot",
+                cover: "assets/img/chatbot.png",
+                images: ["assets/img/kodinganchatbot.png", "assets/img/tanya1.png", "assets/img/lanjut1.png"],
+                desc: "Aplikasi ChatBot AI untuk Klinik Gigi yang dapat menjawab pertanyaan pasien, memberikan informasi layanan, dan membantu booking.",
+                tags: ["Node.js", "Next.js", "Python", "FastAPI", "AI"],
+                github: "",
+                demo: ""
+            }
+        ];
+
+        // ===== ICONS =====
         const ICONS = {
             laravel: { cls: "fa-brands fa-laravel", color: "text-primary" },
             php: { cls: "fa-brands fa-php", color: "text-primary" },
@@ -668,130 +930,133 @@
             tailwind: { cls: "fa-solid fa-wand-magic-sparkles", color: "text-primary" },
             bootstrap: { cls: "fa-brands fa-bootstrap", color: "text-primary" },
             api: { cls: "fa-solid fa-plug", color: "text-primary" },
-            postman: { cls: "fa-solid fa-paper-plane", color: "text-primary" },
-            github: { cls: "fa-brands fa-github", color: "text-primary" },
-            git: { cls: "fa-brands fa-git-alt", color: "text-primary" },
-            docker: { cls: "fa-brands fa-docker", color: "text-primary" },
-            figma: { cls: "fa-brands fa-figma", color: "text-primary" },
             python: { cls: "fa-brands fa-python", color: "text-primary" },
             fastapi: { cls: "fa-solid fa-bolt", color: "text-primary" },
+            docker: { cls: "fa-brands fa-docker", color: "text-primary" },
+            git: { cls: "fa-brands fa-git-alt", color: "text-primary" },
+            github: { cls: "fa-brands fa-github", color: "text-primary" },
+            figma: { cls: "fa-brands fa-figma", color: "text-primary" },
             ai: { cls: "fa-solid fa-brain", color: "text-primary" },
             code: { cls: "fa-solid fa-code", color: "text-primary" }
         };
 
-        function normKey(t) { return String(t || "").toLowerCase().replace(/\./g, "").replace(/\s+/g, ""); }
-
         function getIcon(tag) {
-            const key = normKey(tag);
-            if (key.includes("laravel")) return ICONS.laravel;
-            if (key.includes("php")) return ICONS.php;
-            if (key.includes("mysql")) return ICONS.mysql;
-            if (key.includes("postgres")) return ICONS.postgres;
-            if (key.includes("react")) return ICONS.react;
-            if (key.includes("next")) return ICONS.next;
-            if (key.includes("node")) return ICONS.node;
-            if (key.includes("express")) return ICONS.express;
-            if (key.includes("tailwind")) return ICONS.tailwind;
-            if (key.includes("bootstrap")) return ICONS.bootstrap;
-            if (key.includes("postman")) return ICONS.postman;
-            if (key.includes("python")) return ICONS.python;
-            if (key.includes("fastapi")) return ICONS.fastapi;
-            if (key.includes("rest") || key.includes("api")) return ICONS.api;
-            if (key.includes("docker")) return ICONS.docker;
-            if (key.includes("git")) return ICONS.git;
-            if (key.includes("github")) return ICONS.github;
-            if (key.includes("figma")) return ICONS.figma;
-            if (key.includes("ai")) return ICONS.ai;
+            const k = String(tag || "").toLowerCase().replace(/[\.\s]/g, "");
+            if (k.includes("laravel")) return ICONS.laravel;
+            if (k.includes("php")) return ICONS.php;
+            if (k.includes("mysql")) return ICONS.mysql;
+            if (k.includes("postgres")) return ICONS.postgres;
+            if (k.includes("react")) return ICONS.react;
+            if (k.includes("next")) return ICONS.next;
+            if (k.includes("node")) return ICONS.node;
+            if (k.includes("express")) return ICONS.express;
+            if (k.includes("tailwind")) return ICONS.tailwind;
+            if (k.includes("bootstrap")) return ICONS.bootstrap;
+            if (k.includes("python")) return ICONS.python;
+            if (k.includes("fastapi")) return ICONS.fastapi;
+            if (k.includes("api")) return ICONS.api;
+            if (k.includes("docker")) return ICONS.docker;
+            if (k.includes("github")) return ICONS.github;
+            if (k.includes("git")) return ICONS.git;
+            if (k.includes("figma")) return ICONS.figma;
+            if (k.includes("ai")) return ICONS.ai;
             return ICONS.code;
         }
 
-        const skillsRow1 = [
-            { name: "JavaScript", icon: "devicon-javascript-plain colored" },
-            { name: "TypeScript", icon: "devicon-typescript-plain colored" },
-            { name: "Python", icon: "devicon-python-plain colored" },
-            { name: "Java", icon: "devicon-java-plain colored" },
-            { name: "PHP", icon: "devicon-php-plain colored" },
-            { name: "FastAPI", icon: "devicon-fastapi-plain colored" },
-            { name: "C", icon: "devicon-c-plain colored" },
-            { name: "Node.js", icon: "devicon-nodejs-plain colored" }
-        ];
-        const skillsRow2 = [
-            { name: "React", icon: "devicon-react-original colored" },
-            { name: "Next.js", icon: "devicon-nextjs-plain text-white" },
-            { name: "Tailwind CSS", icon: "devicon-tailwindcss-original colored" },
-            { name: "Bootstrap", icon: "devicon-bootstrap-plain colored" },
-            { name: "HTML", icon: "devicon-html5-plain colored" },
-            { name: "CSS", icon: "devicon-css3-plain colored" },
-            { name: "Vite", icon: "devicon-vitejs-plain colored" },
-            { name: "Express.js", icon: "devicon-express-original text-white" }
-        ];
-        const skillsRow3 = [
-            { name: "MySQL", icon: "devicon-mysql-plain colored" },
-            { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
-            { name: "Laravel", icon: "devicon-laravel-original colored" },
-            { name: "WordPress", icon: "devicon-wordpress-plain colored" },
-            { name: "Postman", icon: "devicon-postman-plain colored" },
-            { name: "REST API", icon: "fa-solid fa-plug text-primary" },
-            { name: "NPM", icon: "devicon-npm-original-wordmark colored" },
-            { name: "Linux", icon: "devicon-linux-plain colored" }
-        ];
-        const skillsRow4 = [
-            { name: "Docker", icon: "devicon-docker-plain colored" },
-            { name: "Git", icon: "devicon-git-plain colored" },
-            { name: "GitHub", icon: "devicon-github-original" },
-            { name: "Figma", icon: "devicon-figma-plain colored" },
-            { name: "HuggingFace", icon: "fa-solid fa-face-smile text-primary" },
-            { name: "Langchain", icon: "fa-solid fa-link text-primary" },
-            { name: "Pinecone", icon: "fa-solid fa-tree text-primary" },
-            { name: "RAG", icon: "fa-solid fa-layer-group text-primary" }
-        ];
-
-        function createSkillItem(s) {
-            return `<div class="skill-item flex flex-col items-center justify-center min-w-[90px] transition-all duration-300 cursor-pointer" onclick="createLikeEffect(event)">
-                <div class="skill-icon w-14 h-14 mb-3 flex items-center justify-center bg-white/5 rounded-xl border border-white/10 transition-all duration-300 hover:bg-primary/20 hover:border-primary/50 hover:shadow-[0_0_20px_rgba(34,197,94,0.3)]">
-                    <i class="${s.icon} text-3xl"></i>
-                </div>
-                <span class="text-[11px] font-semibold text-slate-400 group-hover/item:text-white transition-colors uppercase tracking-wider">${s.name}</span>
-            </div>`;
+        // ===== PAGE SWITCHING =====
+        function showPage(page) {
+            ['home', 'projects', 'about'].forEach(p => {
+                document.getElementById('page-' + p).classList.remove('active');
+                const navEl = document.getElementById('nav-' + p);
+                if (navEl) navEl.classList.remove('active');
+            });
+            document.getElementById('page-' + page).classList.add('active');
+            const navEl = document.getElementById('nav-' + page);
+            if (navEl) navEl.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Like effect seperti LinkedIn
-        function createLikeEffect(event) {
-            const rect = event.currentTarget.getBoundingClientRect();
-            const x = rect.left + rect.width / 2;
-            const y = rect.top + rect.height / 2;
-
-            const likeElement = document.createElement('div');
-            likeElement.className = 'like-effect';
-            likeElement.innerHTML = '<i class="fas fa-heart text-primary"></i>';
-            likeElement.style.left = x + 'px';
-            likeElement.style.top = y + 'px';
-            likeElement.style.transform = 'translate(-50%, -50%)';
-            document.body.appendChild(likeElement);
-
-            setTimeout(() => likeElement.remove(), 400);
-        }
+        // ===== SKILLS MARQUEE =====
+        const skillRows = [
+            [{ name: "JavaScript", icon: "devicon-javascript-plain colored" }, { name: "TypeScript", icon: "devicon-typescript-plain colored" }, { name: "Python", icon: "devicon-python-plain colored" }, { name: "Java", icon: "devicon-java-plain colored" }, { name: "PHP", icon: "devicon-php-plain colored" }, { name: "FastAPI", icon: "devicon-fastapi-plain colored" }, { name: "C", icon: "devicon-c-plain colored" }, { name: "Node.js", icon: "devicon-nodejs-plain colored" }],
+            [{ name: "React", icon: "devicon-react-original colored" }, { name: "Next.js", icon: "devicon-nextjs-plain text-white" }, { name: "Tailwind CSS", icon: "devicon-tailwindcss-original colored" }, { name: "Bootstrap", icon: "devicon-bootstrap-plain colored" }, { name: "HTML", icon: "devicon-html5-plain colored" }, { name: "CSS", icon: "devicon-css3-plain colored" }, { name: "Vite", icon: "devicon-vitejs-plain colored" }, { name: "Express.js", icon: "devicon-express-original text-white" }],
+            [{ name: "MySQL", icon: "devicon-mysql-plain colored" }, { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" }, { name: "Laravel", icon: "devicon-laravel-original colored" }, { name: "WordPress", icon: "devicon-wordpress-plain colored" }, { name: "Postman", icon: "devicon-postman-plain colored" }, { name: "REST API", icon: "fa-solid fa-plug text-primary" }, { name: "NPM", icon: "devicon-npm-original-wordmark colored" }, { name: "Linux", icon: "devicon-linux-plain colored" }],
+            [{ name: "Docker", icon: "devicon-docker-plain colored" }, { name: "Git", icon: "devicon-git-plain colored" }, { name: "GitHub", icon: "devicon-github-original" }, { name: "Figma", icon: "devicon-figma-plain colored" }, { name: "HuggingFace", icon: "fa-solid fa-face-smile text-primary" }, { name: "Langchain", icon: "fa-solid fa-link text-primary" }, { name: "Pinecone", icon: "fa-solid fa-tree text-primary" }, { name: "RAG", icon: "fa-solid fa-layer-group text-primary" }]
+        ];
 
         function renderSkills() {
-            const rows = [{ id: "row1", data: skillsRow1 }, { id: "row2", data: skillsRow2 }, { id: "row3", data: skillsRow3 }, { id: "row4", data: skillsRow4 }];
-            rows.forEach(row => {
-                const container = document.getElementById(row.id);
-                if (container) {
-                    const items = row.data.map(createSkillItem).join("");
-                    container.innerHTML = items + items + items;
-                }
+            ['row1', 'row2', 'row3', 'row4'].forEach((id, i) => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                const items = skillRows[i].map(s => `
+                    <div class="skill-item flex flex-col items-center justify-center min-w-[90px] cursor-pointer" onclick="createLikeEffect(event)">
+                        <div class="w-14 h-14 mb-2.5 flex items-center justify-center bg-white/4 rounded-xl border border-white/8 hover:bg-primary/15 hover:border-primary/30 hover:shadow-[0_0_16px_rgba(34,197,94,0.25)] transition-all duration-300">
+                            <i class="${s.icon} text-2xl"></i>
+                        </div>
+                        <span class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">${s.name}</span>
+                    </div>`).join('');
+                el.innerHTML = items + items + items;
             });
         }
 
-        const projectsData = [
-            { cardTitle: "Nauli Dental Care", title: "Pembangunan Website klinik Nauli Dental Care", subtitle: "Web App • Project One", categoryChip: "Klinik Gigi", cover: "assets/img/klinik.png", images: ["assets/img/galery.png", "assets/img/layanan.png", "assets/img/map.png", "assets/img/staff.png", "assets/img/visimisi.png", "assets/img/daftaradmin.png", "assets/img/dokter.png", "assets/img/testimoni.png"], desc: "Website klinik untuk booking atau janji temu antara pasien dan dokter.", tags: ["Laravel", "MySQL", "Tailwind", "REST API"], badges: ["Clinic"], github: "https://github.com/Septianhutasoit/projectsep", demo: "" },
-            { cardTitle: "Delshoop E-Commerce", title: "Delshoop E-Commerce", subtitle: "E-Commerce", categoryChip: "E-Commerce", cover: "assets/img/Delshop Home.png", images: ["assets/img/Produk2.png", "assets/img/Tersedia.png", "assets/img/cart.png", "assets/img/Barcode.png"], desc: "Platform e-commerce dengan manajemen produk, cart real-time.", tags: ["Laravel", "Mysql", "Tailwind.css", "REST API"], badges: ["Informasi"], github: "https://github.com/Septianhutasoit/Aplikasi", demo: "" },
-            { cardTitle: "Website Aksara Batak", title: "Website Aksara Batak", subtitle: "Informasi • Multi Bahasa", categoryChip: "Informasi", cover: "assets/img/Home.png", images: ["assets/img/Home.png", "assets/img/Fitur.png", "assets/img/bahasa.png", "assets/img/Tentang.png"], desc: "Website edukasi Aksara Batak dengan fitur multi-bahasa.", tags: ["Laravel", "PHP", "MySQL"], badges: ["Product", "Multi Bahasa"], github: "https://github.com/bryansiagian/BoanAksara", demo: "" },
-            { cardTitle: "Kawan Pulih", title: "Informasi Pasca Operasi", subtitle: "Web App", categoryChip: "Pasca Operasi", cover: "assets/img/kawanpulih.png", desc: "Platform informasi dan pendampingan digital untuk pasien pasca operasi.", tags: ["Next.js", "Tailwind"], badges: ["Pasca Operasi"], github: "https://github.com/Septianhutasoit/403", demo: "https://www.caregiver-ai.my.id/" },
-            { cardTitle: "Project Ecommerce", title: "Sistem E-Commerce App", subtitle: "Web", categoryChip: "Ecommerce", cover: "assets/img/codealpha.png", images: ["assets/img/codealpa2.png", "assets/img/codealpa3.png"], desc: "Aplikasi Website Untuk Pembelian Online.", tags: ["Node.js", "React.js", "Postgresql"], badges: ["Web App"], github: "https://github.com/Septianhutasoit/CodeAlpha", demo: "" },
-            { cardTitle: "ChatBotAI Clinic", title: "Sistem ChatBotAI Klinik", subtitle: "Web", categoryChip: "AI ChatBot", cover: "assets/img/chatbot.png", images: ["assets/img/kodinganchatbot.png", "assets/img/tanya1.png", "assets/img/lanjut1.png"], desc: "Aplikasi ChatBotAI untuk Klinik Gigi.", tags: ["Node.js", "Next.js", "Python", "FastAPI", "AI"], badges: ["AI ChatBot"], github: "", demo: "" }
-        ];
+        function createLikeEffect(event) {
+            const rect = event.currentTarget.getBoundingClientRect();
+            const el = document.createElement('div');
+            el.className = 'like-effect';
+            el.innerHTML = '<i class="fas fa-heart text-accent"></i>';
+            el.style.cssText = `left:${rect.left + rect.width / 2}px;top:${rect.top + rect.height / 2}px;transform:translate(-50%,-50%)`;
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 400);
+        }
 
+        // ===== RENDER FEATURED (home 2-col) =====
+        function renderFeatured() {
+            const grid = document.getElementById('featured-grid');
+            if (!grid) return;
+            grid.innerHTML = projectsData.slice(0, 4).map((p, i) => {
+                const tags = (p.tags || []).slice(0, 3).map(t => {
+                    const ic = getIcon(t);
+                    return `<span class="tech-tag"><i class="${ic.cls} ${ic.color}"></i>${t}</span>`;
+                }).join('');
+                return `<div class="project-card group" onclick="openModal('project',${i})">
+                    <div class="project-card-img-wrapper">
+                        <img src="${p.cover}" class="project-card-img" alt="${p.cardTitle}" onerror="this.style.display='none'">
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-white font-bold text-base group-hover:text-accent transition-colors">${p.cardTitle}</h3>
+                            <i class="fas fa-arrow-right text-slate-600 group-hover:text-accent group-hover:translate-x-1 transition-all text-sm mt-0.5"></i>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-4 line-clamp-2">${p.desc}</p>
+                        <div class="flex flex-wrap gap-2">${tags}</div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        // ===== RENDER ALL PROJECTS PAGE =====
+        function renderAllProjects() {
+            const grid = document.getElementById('all-projects-grid');
+            if (!grid) return;
+            grid.innerHTML = projectsData.map((p, i) => `
+                <div class="project-full-card group" onclick="openModal('project',${i})">
+                    <div class="overflow-hidden">
+                        <img src="${p.cover}" class="project-full-card-img group-hover:scale-105 transition-transform duration-500" alt="${p.cardTitle}" onerror="this.style.background='#1a1a1a'">
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-start justify-between mb-1.5">
+                            <h3 class="text-white font-bold text-base group-hover:text-accent transition-colors">${p.cardTitle}</h3>
+                            <i class="fas fa-arrow-right text-slate-600 group-hover:text-accent group-hover:translate-x-1 transition-all text-sm mt-0.5"></i>
+                        </div>
+                        <p class="text-slate-400 text-xs leading-relaxed line-clamp-2">${p.desc}</p>
+                        <div class="flex flex-wrap gap-1.5 mt-3">
+                            ${(p.tags || []).slice(0, 3).map(t => `<span class="tech-tag">${t}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>`).join('');
+        }
+
+        // ===== MODAL =====
         const modal = document.getElementById('universalModal');
         const backdrop = document.getElementById('modalBackdrop');
         const modalContent = document.getElementById('modalContent');
@@ -807,73 +1072,60 @@
         const imgDots = document.getElementById('imgDots');
         const mDemo = document.getElementById('mDemo');
         const mCode = document.getElementById('mCode');
-
         let currentImages = [], currentImgIndex = 0;
 
         function renderDots() {
             if (!imgDots) return;
-            imgDots.innerHTML = "";
+            imgDots.innerHTML = '';
             currentImages.forEach((_, i) => {
-                const dot = document.createElement("button");
-                dot.className = "w-2 h-2 rounded-full transition-all " + (i === currentImgIndex ? "bg-primary" : "bg-white/30");
-                dot.onclick = (e) => { e.stopPropagation(); setModalImage(i); };
+                const dot = document.createElement('button');
+                dot.className = 'w-2 h-2 rounded-full transition-all ' + (i === currentImgIndex ? 'bg-accent' : 'bg-white/25');
+                dot.onclick = e => { e.stopPropagation(); setModalImage(i); };
                 imgDots.appendChild(dot);
             });
         }
-
         function setModalImage(i) {
             if (!currentImages.length) return;
             currentImgIndex = (i + currentImages.length) % currentImages.length;
             mImage.src = currentImages[currentImgIndex];
-            if (imgDots) {
-                [...imgDots.children].forEach((dot, idx) => {
-                    dot.className = "w-2 h-2 rounded-full transition-all " + (idx === currentImgIndex ? "bg-primary" : "bg-white/30");
-                });
-            }
+            if (imgDots) [...imgDots.children].forEach((d, idx) => {
+                d.className = 'w-2 h-2 rounded-full transition-all ' + (idx === currentImgIndex ? 'bg-accent' : 'bg-white/25');
+            });
         }
-
-        if (imgPrev) imgPrev.onclick = (e) => { e.stopPropagation(); setModalImage(currentImgIndex - 1); };
-        if (imgNext) imgNext.onclick = (e) => { e.stopPropagation(); setModalImage(currentImgIndex + 1); };
+        if (imgPrev) imgPrev.onclick = e => { e.stopPropagation(); setModalImage(currentImgIndex - 1); };
+        if (imgNext) imgNext.onclick = e => { e.stopPropagation(); setModalImage(currentImgIndex + 1); };
 
         window.openModal = function (type, index) {
-            let data;
+            let data = projectsData[index];
             mTagsGroup.classList.add('hidden');
             mActions.classList.add('hidden');
             if (imgPrev) imgPrev.classList.add('hidden');
             if (imgNext) imgNext.classList.add('hidden');
             if (imgDots) imgDots.classList.add('hidden');
 
-            if (type === 'project') {
-                data = projectsData[index];
-                mTagsGroup.classList.remove('hidden');
-                mTags.innerHTML = '';
-                (data.tags || []).forEach(tag => {
-                    const ic = getIcon(tag);
-                    const span = document.createElement('span');
-                    span.className = "px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-[11px] text-slate-200 flex items-center gap-2";
-                    span.innerHTML = `<i class="${ic.cls} ${ic.color}"></i><span>${tag}</span>`;
-                    mTags.appendChild(span);
-                });
-                (data.badges || []).forEach(b => {
-                    const ic = getIcon(b);
-                    const span = document.createElement('span');
-                    span.className = "px-3 py-1 bg-black/30 border border-white/10 rounded-lg text-[11px] text-slate-200 flex items-center gap-2";
-                    span.innerHTML = `<i class="${ic.cls} ${ic.color}"></i><span>${b}</span>`;
-                    mTags.appendChild(span);
-                });
-                mActions.classList.remove('hidden');
-                mCode.href = data.github || "#";
-                if (data.demo && data.demo.trim()) { mDemo.href = data.demo; mDemo.classList.remove("hidden"); }
-                else { mDemo.href = "#"; mDemo.classList.add("hidden"); }
-                currentImages = (data.images && data.images.length) ? data.images : [data.cover];
-                currentImgIndex = 0;
-                renderDots();
-                setModalImage(0);
-                if (currentImages.length > 1) {
-                    if (imgPrev) imgPrev.classList.remove('hidden');
-                    if (imgNext) imgNext.classList.remove('hidden');
-                    if (imgDots) imgDots.classList.remove('hidden');
-                }
+            mTagsGroup.classList.remove('hidden');
+            mTags.innerHTML = '';
+            (data.tags || []).forEach(tag => {
+                const ic = getIcon(tag);
+                const span = document.createElement('span');
+                span.className = 'tech-tag';
+                span.innerHTML = `<i class="${ic.cls} ${ic.color}"></i>${tag}`;
+                mTags.appendChild(span);
+            });
+
+            mActions.classList.remove('hidden');
+            mCode.href = data.github || '#';
+            if (data.demo && data.demo.trim()) { mDemo.href = data.demo; mDemo.classList.remove('hidden'); }
+            else { mDemo.href = '#'; mDemo.classList.add('hidden'); }
+
+            currentImages = (data.images && data.images.length) ? data.images : [data.cover];
+            currentImgIndex = 0;
+            renderDots();
+            setModalImage(0);
+            if (currentImages.length > 1) {
+                if (imgPrev) imgPrev.classList.remove('hidden');
+                if (imgNext) imgNext.classList.remove('hidden');
+                if (imgDots) imgDots.classList.remove('hidden');
             }
             mTitle.innerText = data.title;
             mSubtitle.innerText = data.subtitle;
@@ -895,356 +1147,151 @@
             document.body.style.overflow = 'auto';
         };
 
-        function renderProjects() {
-            const grid = document.getElementById('projectsGrid');
-            if (!grid) return;
-            grid.innerHTML = projectsData.map((p, i) => {
-                const tagIcons = (p.tags || []).slice(0, 3).map(t => {
-                    const ic = getIcon(t);
-                    return `<span class="inline-flex items-center gap-2 text-[12px] text-slate-300 bg-white/5 px-3 py-1 rounded-full"><i class="${ic.cls} ${ic.color}"></i>${t}</span>`;
-                }).join("");
-                return `<div class="group relative rounded-2xl overflow-hidden glass-card cursor-pointer flex flex-col hover:-translate-y-2 transition-all duration-500" onclick="openModal('project', ${i})" data-aos="fade-up">
-                    <div class="relative h-52 sm:h-60 portfolio-img-wrapper">
-                        <img src="${p.cover}" class="portfolio-img w-full h-full object-cover" alt="${p.cardTitle}">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                        <div class="absolute top-3 right-3"><span class="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-[11px] text-primary">${p.categoryChip}</span></div>
-                        <div class="absolute bottom-3 left-3"><p class="text-[11px] text-slate-300 uppercase tracking-[0.16em]">${p.subtitle}</p></div>
-                    </div>
-                    <div class="p-5 sm:p-6 bg-black/50 flex flex-col flex-1">
-                        <h3 class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">${p.cardTitle}</h3>
-                        <p class="text-slate-400 text-sm flex-1">${p.desc.substring(0, 100)}...</p>
-                        <div class="flex flex-wrap gap-2 mt-4">${tagIcons}</div>
-                    </div>
-                </div>`;
-            }).join("");
-        }
-
-        // ========================================
-        // STAR CURSOR - GREEN STYLE
-        // ========================================
+        // ===== STAR CURSOR =====
         (function () {
             const starSVG = `<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <linearGradient id="starGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
-                <stop offset="30%" stop-color="#22c55e" stop-opacity="0.9"/>
-                <stop offset="60%" stop-color="#16a34a" stop-opacity="0.7"/>
-                <stop offset="100%" stop-color="#14532d" stop-opacity="0.5"/>
-            </linearGradient>
-            
-            <linearGradient id="starGradient2" x1="100%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#4ade80" stop-opacity="0.8"/>
-                <stop offset="50%" stop-color="#22c55e" stop-opacity="0.9"/>
-                <stop offset="100%" stop-color="#ffffff" stop-opacity="1"/>
-            </linearGradient>
-            
-            <filter id="starGlow">
-                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                <feFlood flood-color="#22c55e" flood-opacity="0.8" result="glowColor"/>
-                <feComposite in="glowColor" in2="coloredBlur" operator="in" result="softGlow"/>
-                <feComposite in="softGlow" in2="SourceGraphic" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="glowOut"/>
-            </filter>
-            
-            <filter id="starGlow2">
-                <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
-                <feFlood flood-color="#16a34a" flood-opacity="0.6"/>
-                <feComposite in2="coloredBlur" operator="in"/>
-            </filter>
-        </defs>
-        
-        <path d="M60 10 L73 40 L106 43 L81 63 L89 96 L60 79 L31 96 L39 63 L14 43 L47 40 Z" 
-              fill="url(#starGradient)" stroke="#22c55e" stroke-width="2" filter="url(#starGlow)" opacity="0.95"/>
-        <path d="M60 20 L69 42 L94 45 L75 61 L81 86 L60 73 L39 86 L45 61 L26 45 L51 42 Z" 
-              fill="url(#starGradient2)" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
-        <circle cx="60" cy="53" r="12" fill="#ffffff" opacity="0.9" filter="url(#starGlow)"/>
-        <circle cx="60" cy="53" r="8" fill="#22c55e" opacity="0.95"/>
-        <circle cx="60" cy="53" r="4" fill="#ffffff" opacity="1"/>
-        <circle cx="60" cy="53" r="30" fill="url(#starGradient)" opacity="0.15" filter="url(#starGlow2)"/>
-    </svg>`;
-
-            const STAR_SIZE = 48;
+                <defs>
+                    <linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+                        <stop offset="50%" stop-color="#22c55e" stop-opacity="0.9"/>
+                        <stop offset="100%" stop-color="#14532d" stop-opacity="0.5"/>
+                    </linearGradient>
+                    <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/>
+                        <feComposite in="SourceGraphic" in2="blur" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/></filter>
+                </defs>
+                <path d="M60 10 L73 40 L106 43 L81 63 L89 96 L60 79 L31 96 L39 63 L14 43 L47 40 Z"
+                      fill="url(#sg)" stroke="#22c55e" stroke-width="2" filter="url(#glow)" opacity="0.95"/>
+                <circle cx="60" cy="53" r="10" fill="#ffffff" opacity="0.95"/>
+                <circle cx="60" cy="53" r="6" fill="#22c55e" opacity="1"/>
+            </svg>`;
+            const SIZE = 40;
             const cursor = document.createElement('div');
             cursor.className = 'star-cursor';
             cursor.innerHTML = starSVG;
-            cursor.style.width = STAR_SIZE + 'px';
-            cursor.style.height = STAR_SIZE + 'px';
+            cursor.style.cssText = `width:${SIZE}px;height:${SIZE}px`;
             document.body.appendChild(cursor);
 
             const trails = [];
-            const trailCount = 8;
-            for (let i = 0; i < trailCount; i++) {
-                const trail = document.createElement('div');
-                trail.className = 'star-trail';
-                trail.innerHTML = starSVG;
-                const scale = 1 - (i * 0.08);
-                const opacity = 0.3 - (i * 0.03);
-                trail.style.width = (STAR_SIZE * scale) + 'px';
-                trail.style.height = (STAR_SIZE * scale) + 'px';
-                trail.style.opacity = opacity;
-                trail.style.filter = `blur(${i * 0.5}px)`;
-                document.body.appendChild(trail);
-                trails.push(trail);
+            for (let i = 0; i < 6; i++) {
+                const t = document.createElement('div');
+                t.className = 'star-trail';
+                t.innerHTML = starSVG;
+                const s = 1 - (i * 0.1);
+                t.style.cssText = `width:${SIZE * s}px;height:${SIZE * s}px;opacity:${0.25 - (i * 0.03)};filter:blur(${i * 0.4}px)`;
+                document.body.appendChild(t);
+                trails.push(t);
             }
 
-            let mouseX = 0, mouseY = 0;
-            let currentX = 0, currentY = 0;
-            let positions = [];
-            let velocityX = 0, velocityY = 0;
-            let currentRotation = 0;
-            let targetRotation = 0;
+            let mx = 0, my = 0, cx = 0, cy = 0, positions = [];
+            let velX = 0, velY = 0;
 
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-                velocityX = mouseX - currentX;
-                velocityY = mouseY - currentY;
-                positions.unshift({ x: mouseX, y: mouseY, time: Date.now() });
-                if (positions.length > trailCount + 2) positions.pop();
-
-                const hoverTarget = e.target.closest('a, button, [onclick], .cursor-pointer');
-                if (hoverTarget) {
-                    cursor.style.transform = `translate(-50%, -50%) scale(1.4)`;
-                    cursor.style.filter = `drop-shadow(0 0 25px rgba(34,197,94,1)) drop-shadow(0 0 50px rgba(22,163,74,0.8))`;
-                } else {
-                    cursor.style.transform = `translate(-50%, -50%) scale(1)`;
-                    cursor.style.filter = `drop-shadow(0 0 15px rgba(34,197,94,0.8)) drop-shadow(0 0 30px rgba(22,163,74,0.5))`;
-                }
+            document.addEventListener('mousemove', e => {
+                velX = e.clientX - mx; velY = e.clientY - my;
+                mx = e.clientX; my = e.clientY;
+                positions.unshift({ x: mx, y: my });
+                if (positions.length > 8) positions.pop();
+                const hover = e.target.closest('a,button,[onclick],.cursor-pointer,.project-card,.project-full-card');
+                cursor.style.transform = hover ? 'translate(-50%,-50%) scale(1.35)' : 'translate(-50%,-50%) scale(1)';
             });
 
-            function animateCursor() {
-                const dx = mouseX - currentX;
-                const dy = mouseY - currentY;
-                currentX += dx * 0.15;
-                currentY += dy * 0.15;
-                cursor.style.left = currentX + 'px';
-                cursor.style.top = currentY + 'px';
-                trails.forEach((trail, i) => {
-                    const pos = positions[i + 1];
-                    if (pos) {
-                        trail.style.left = pos.x + 'px';
-                        trail.style.top = pos.y + 'px';
-                    }
+            function animate() {
+                cx += (mx - cx) * 0.15; cy += (my - cy) * 0.15;
+                cursor.style.left = cx + 'px'; cursor.style.top = cy + 'px';
+                trails.forEach((t, i) => {
+                    const p = positions[i + 1];
+                    if (p) { t.style.left = p.x + 'px'; t.style.top = p.y + 'px'; }
                 });
-                requestAnimationFrame(animateCursor);
+                requestAnimationFrame(animate);
             }
-            animateCursor();
+            animate();
 
-            let lastX = 0, lastY = 0;
-            function updateRotation() {
-                const deltaX = currentX - lastX;
-                const deltaY = currentY - lastY;
-                const speed = Math.hypot(deltaX, deltaY);
-                if (speed > 0.3) {
-                    let angle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
-                    targetRotation = angle;
-                }
-                currentRotation += (targetRotation - currentRotation) * 0.12;
-                const scaleMatch = cursor.style.transform.includes('scale(1.4)') ? ' scale(1.4)' : ' scale(1)';
-                cursor.style.transform = `translate(-50%, -50%) rotate(${currentRotation}deg)${scaleMatch}`;
-                lastX = currentX;
-                lastY = currentY;
-                requestAnimationFrame(updateRotation);
-            }
-            updateRotation();
-
-            let lastParticleTime = 0;
-            function createDust(x, y) {
-                const dust = document.createElement('div');
-                dust.className = 'star-dust';
-                dust.style.left = x + 'px';
-                dust.style.top = y + 'px';
-                const angle = Math.random() * Math.PI * 2;
-                const distance = 20 + Math.random() * 50;
-                const tx = Math.cos(angle) * distance;
-                const ty = Math.sin(angle) * distance;
-                dust.style.setProperty('--tx', tx + 'px');
-                dust.style.setProperty('--ty', ty + 'px');
-                const size = 4 + Math.random() * 6;
-                dust.style.width = size + 'px';
-                dust.style.height = size + 'px';
-                document.body.appendChild(dust);
-                setTimeout(() => dust.remove(), 800);
-            }
-
-            document.addEventListener('mousemove', (e) => {
+            let lastDust = 0;
+            document.addEventListener('mousemove', e => {
                 const now = Date.now();
-                const speed = Math.hypot(velocityX, velocityY);
-                const delay = Math.max(15, 40 - Math.min(25, speed));
-                if (now - lastParticleTime > delay) {
-                    const particleCount = Math.min(3, Math.floor(speed / 8) + 1);
-                    for (let i = 0; i < particleCount; i++) {
-                        setTimeout(() => createDust(e.clientX, e.clientY), i * 10);
-                    }
-                    lastParticleTime = now;
+                const speed = Math.hypot(velX, velY);
+                if (now - lastDust > 30 && speed > 3) {
+                    const dust = document.createElement('div');
+                    dust.className = 'star-dust';
+                    const ang = Math.random() * Math.PI * 2, dist = 15 + Math.random() * 35;
+                    dust.style.cssText = `left:${e.clientX}px;top:${e.clientY}px;width:${3 + Math.random() * 4}px;height:${3 + Math.random() * 4}px`;
+                    dust.style.setProperty('--tx', Math.cos(ang) * dist + 'px');
+                    dust.style.setProperty('--ty', Math.sin(ang) * dist + 'px');
+                    document.body.appendChild(dust);
+                    setTimeout(() => dust.remove(), 800);
+                    lastDust = now;
                 }
             });
-
-            const heroSection = document.querySelector('#home');
-            if (heroSection) heroSection.style.cursor = 'none';
         })();
 
-        // ============================================
-        // PROFILE EFFECTS
-        // ============================================
-        const profileContainer = document.querySelector('.profile-container');
-        if (profileContainer) {
-            function createGreenParticle(x, y) {
-                const p = document.createElement('div');
-                p.className = 'green-particle';
-                p.style.left = x + 'px';
-                p.style.top = y + 'px';
-                const ang = Math.random() * Math.PI * 2;
-                p.style.setProperty('--tx', Math.cos(ang) * (40 + Math.random() * 60) + 'px');
-                p.style.setProperty('--ty', Math.sin(ang) * (40 + Math.random() * 60) + 'px');
-                profileContainer.appendChild(p);
-                setTimeout(() => p.remove(), 2500);
-            }
-
-            profileContainer.addEventListener('mousemove', (e) => {
-                const rect = profileContainer.getBoundingClientRect();
-                const x = e.clientX - rect.left, y = e.clientY - rect.top;
-                if (Math.random() > 0.75) {
-                    createGreenParticle(x + (Math.random() - 0.5) * 25, y + (Math.random() - 0.5) * 25);
-                }
-            });
-        }
-
-        // ============================================
-        // BACKGROUND CANVAS
-        // ============================================
+        // ===== CANVAS BACKGROUND =====
         const canvas = document.getElementById('hero-canvas');
         if (canvas) {
             const ctx = canvas.getContext('2d');
-            let bgParticles = [];
-
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
+            let pts = [];
+            function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+            window.addEventListener('resize', resize); resize();
+            class Pt {
+                constructor() { this.reset(); }
+                reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.r = Math.random() * 1.5 + 0.5; this.vx = (Math.random() - .5) * .6; this.vy = (Math.random() - .5) * .6; }
+                update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > canvas.width) this.vx *= -1; if (this.y < 0 || this.y > canvas.height) this.vy *= -1; }
+                draw() { ctx.fillStyle = 'rgba(34,197,94,0.35)'; ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2); ctx.fill(); }
             }
-            window.addEventListener('resize', resizeCanvas);
-            resizeCanvas();
-
-            class BgParticle {
-                constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.size = Math.random() * 2 + 0.5;
-                    this.vx = (Math.random() - 0.5) * 0.8;
-                    this.vy = (Math.random() - 0.5) * 0.8;
-                }
-                update() {
-                    this.x += this.vx;
-                    this.y += this.vy;
-                    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-                }
-                draw() {
-                    ctx.fillStyle = 'rgba(34, 197, 94, 0.4)';
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.fillStyle = 'rgba(34, 197, 94, 0.1)';
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size * 2.5, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-
-            for (let i = 0; i < 200; i++) bgParticles.push(new BgParticle());
-
-            function connectParticles() {
-                for (let a = 0; a < bgParticles.length; a++) {
-                    for (let b = a + 1; b < bgParticles.length; b++) {
-                        const dx = bgParticles[a].x - bgParticles[b].x;
-                        const dy = bgParticles[a].y - bgParticles[b].y;
-                        const d = Math.hypot(dx, dy);
-                        if (d < 100) {
-                            ctx.strokeStyle = `rgba(34, 197, 94, ${0.25 * (1 - d / 100)})`;
-                            ctx.lineWidth = 0.4;
-                            ctx.beginPath();
-                            ctx.moveTo(bgParticles[a].x, bgParticles[a].y);
-                            ctx.lineTo(bgParticles[b].x, bgParticles[b].y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-            }
-
-            function animateBg() {
+            for (let i = 0; i < 150; i++) pts.push(new Pt());
+            function drawFrame() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                bgParticles.forEach(p => { p.update(); p.draw(); });
-                connectParticles();
-                requestAnimationFrame(animateBg);
+                pts.forEach(p => { p.update(); p.draw(); });
+                for (let a = 0; a < pts.length; a++) for (let b = a + 1; b < pts.length; b++) {
+                    const dx = pts[a].x - pts[b].x, dy = pts[a].y - pts[b].y, d = Math.hypot(dx, dy);
+                    if (d < 90) { ctx.strokeStyle = `rgba(34,197,94,${0.18 * (1 - d / 90)})`; ctx.lineWidth = 0.3; ctx.beginPath(); ctx.moveTo(pts[a].x, pts[a].y); ctx.lineTo(pts[b].x, pts[b].y); ctx.stroke(); }
+                }
+                requestAnimationFrame(drawFrame);
             }
-            animateBg();
+            drawFrame();
         }
 
-        // ============================================
-        // TYPING ANIMATIONS
-        // ============================================
-        const roleElement = document.getElementById('changing-role');
-        const roleOptions = ['Software Engineer', 'Fullstack Developer', 'AI/ML Enthusiast', 'Backend Developer'];
-        let roleIdx = 0, roleChar = 0, roleDeleting = false;
-
+        // ===== TYPING ANIMATION =====
+        const roleEl = document.getElementById('changing-role');
+        const roles = ['Software Engineer', 'Fullstack Developer', 'AI/ML Enthusiast', 'Backend Developer'];
+        let rIdx = 0, rChar = 0, rDel = false;
         function typeRole() {
-            if (!roleElement) return;
-            const current = roleOptions[roleIdx];
-            if (roleDeleting) {
-                roleElement.textContent = current.substring(0, roleChar - 1);
-                roleChar--;
-            } else {
-                roleElement.textContent = current.substring(0, roleChar + 1);
-                roleChar++;
-            }
-            let speed = roleDeleting ? 40 : 70;
-            if (!roleDeleting && roleChar === current.length) {
-                speed = 2000;
-                roleDeleting = true;
-            } else if (roleDeleting && roleChar === 0) {
-                roleDeleting = false;
-                roleIdx = (roleIdx + 1) % roleOptions.length;
-                speed = 500;
-            }
-            setTimeout(typeRole, speed);
+            if (!roleEl) return;
+            const cur = roles[rIdx];
+            if (rDel) { roleEl.textContent = cur.substring(0, rChar - 1); rChar--; }
+            else { roleEl.textContent = cur.substring(0, rChar + 1); rChar++; }
+            let spd = rDel ? 40 : 70;
+            if (!rDel && rChar === cur.length) { spd = 2000; rDel = true; }
+            else if (rDel && rChar === 0) { rDel = false; rIdx = (rIdx + 1) % roles.length; spd = 400; }
+            setTimeout(typeRole, spd);
         }
-        setTimeout(typeRole, 500);
+        setTimeout(typeRole, 600);
 
-        // ============================================
-        // DOM CONTENT LOADED
-        // ============================================
+        // ===== NAVBAR SCROLL =====
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.top-nav');
+            if (nav) {
+                if (window.scrollY > 20) nav.style.boxShadow = '0 8px 32px rgba(0,0,0,0.5)';
+                else nav.style.boxShadow = 'none';
+            }
+        });
+
+        // ===== SPOTIFY =====
         document.addEventListener('DOMContentLoaded', () => {
             renderSkills();
-            renderProjects();
+            renderFeatured();
+            renderAllProjects();
 
-            const spotifyToggle = document.getElementById('spotifyToggle');
-            const spotifyWrap = document.getElementById('spotifyWrap');
-            if (spotifyToggle && spotifyWrap) {
-                spotifyToggle.onclick = () => {
-                    spotifyWrap.classList.toggle('hidden');
-                    spotifyToggle.textContent = spotifyWrap.classList.contains('hidden') ? 'Buka' : 'Tutup';
+            const toggle = document.getElementById('spotifyToggle');
+            const wrap = document.getElementById('spotifyWrap');
+            if (toggle && wrap) {
+                toggle.onclick = () => {
+                    wrap.classList.toggle('hidden');
+                    toggle.textContent = wrap.classList.contains('hidden') ? 'Buka' : 'Tutup';
                 };
             }
 
-            window.toggleMenu = () => {
-                document.getElementById('mobileMenu').classList.toggle('translate-x-full');
-            };
-
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 20) navbar.classList.add('glass-nav');
-                else navbar.classList.remove('glass-nav');
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
             });
-
-            document.addEventListener("keydown", (e) => {
-                if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
-            });
-
-            const themeToggle = document.getElementById('themeToggle');
-            if (themeToggle) {
-                themeToggle.onclick = () => {
-                    document.documentElement.classList.toggle('dark');
-                };
-            }
         });
     </script>
 </body>
