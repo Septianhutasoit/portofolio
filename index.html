@@ -1519,9 +1519,9 @@
 
     // SHOW ALL 8 PROJECTS ON HOME (featured section)
     function renderFeat() {
-      const g = document.getElementById('feat-grid'); if (!g) return;
-      // Show all 8 projects on homepage (was only 4 before)
-      g.innerHTML = PJ.map((p, i) => `
+        const g = document.getElementById('feat-grid'); if (!g) return;
+        // HANYA 6 PROYEK PERTAMA YANG TAMPIL DI HOME
+        g.innerHTML = PJ.slice(0, 6).map((p, i) => `
     <div class="pcard" onclick="openM(${i})">
       <div class="pcard-iw"><img class="pcard-img" src="${p.cv}" alt="${p.c}" onerror="this.style.opacity='.3'"/></div>
       <div style="padding:15px 17px 18px;">
@@ -1533,7 +1533,7 @@
         <div style="display:flex;flex-wrap:wrap;gap:5px;">${(p.tg || []).slice(0, 3).map(tagHtml).join('')}</div>
       </div>
     </div>`).join('');
-    }
+      }
 
     function renderAll() {
       const g = document.getElementById('all-grid'); if (!g) return;
