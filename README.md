@@ -40,7 +40,6 @@ A modern, interactive portfolio website showcasing my journey as a Software Engi
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 ![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222222?style=for-the-badge&logo=githubpages&logoColor=white)
 </div>
-
 <div align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=Septianhutasoit&show_icons=true&theme=radical&hide_border=true&bg_color=000000&title_color=22c55e&icon_color=22c55e" alt="GitHub Stats" width="48%" />
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=Septianhutasoit&theme=radical&hide_border=true&background=000000&stroke=22c55e&ring=22c55e&fire=22c55e&currStreakLabel=22c55e" alt="GitHub Streak" width="48%" />
