@@ -115,50 +115,38 @@
       }
     }
 
-    /* ═══ TOP NAV — full width frosted glass blur ═══ */
+    /* ═══ TOP NAV — n8n style full-width floating bar ═══ */
     #top-nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 12px;
+      left: 50%;
       z-index: 700;
+      transform: translateX(-50%);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 12px 0 20px;
-      height: 60px;
-      /* frosted glass blur seperti screenshot — dark semi-transparent + blur kuat */
-      background: rgba(9, 9, 15, 0.60);
-      backdrop-filter: blur(32px) saturate(200%) brightness(0.95);
-      -webkit-backdrop-filter: blur(32px) saturate(200%) brightness(0.95);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-      box-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.04) inset,
-        0 4px 24px rgba(0, 0, 0, 0.4),
-        0 16px 48px rgba(0, 0, 0, 0.25);
-      /* smooth slide up/down transition */
-      transition:
-        transform 0.42s cubic-bezier(0.4, 0, 0.2, 1),
-        opacity 0.38s cubic-bezier(0.4, 0, 0.2, 1),
-        background 0.3s ease;
-      will-change: transform, opacity;
+      height: 54px;
+      width: min(960px, 96vw);
+      background: rgba(12, 12, 18, .75);
+      backdrop-filter: blur(32px) saturate(200%);
+      -webkit-backdrop-filter: blur(32px) saturate(200%);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 16px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, .3), 0 20px 60px rgba(0, 0, 0, .4), 0 1px 0 rgba(255, 255, 255, .06) inset;
+      transition: transform .5s cubic-bezier(.34, 1.2, .64, 1), opacity .4s;
     }
 
-    /* Slide up & fade out saat scroll turun */
     #top-nav.hidden {
-      transform: translateY(-110%);
+      transform: translateX(-50%) translateY(-130%);
       opacity: 0;
       pointer-events: none;
     }
 
     html.light #top-nav {
-      background: rgba(244, 244, 248, 0.72);
-      backdrop-filter: blur(32px) saturate(180%) brightness(1.02);
-      -webkit-backdrop-filter: blur(32px) saturate(180%) brightness(1.02);
-      border-bottom-color: rgba(0, 0, 0, 0.08);
-      box-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.6) inset,
-        0 4px 24px rgba(0, 0, 0, 0.08);
+      background: rgba(248, 248, 252, .8);
+      border-color: rgba(0, 0, 0, .1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, .08), 0 20px 60px rgba(0, 0, 0, .1);
     }
 
     /* logo */
@@ -328,34 +316,25 @@
       box-shadow: 0 4px 20px rgba(34, 197, 94, .5);
     }
 
-    /* ═══ BOTTOM PILL NAV ═══ */
+    /* ═══ BOTTOM PILL NAV — with label pop ═══ */
     #bot-nav {
       position: fixed;
       bottom: 24px;
       left: 50%;
       z-index: 700;
-      /* mulai dari bawah layar + invisible */
-      transform: translateX(-50%) translateY(110px);
+      transform: translateX(-50%) translateY(100px);
       opacity: 0;
       display: flex;
       align-items: center;
       gap: 2px;
       padding: 7px 10px;
-      /* frosted glass pill */
-      background: rgba(10, 10, 18, 0.78);
-      backdrop-filter: blur(32px) saturate(200%) brightness(0.92);
-      -webkit-backdrop-filter: blur(32px) saturate(200%) brightness(0.92);
-      border: 1px solid rgba(255, 255, 255, 0.11);
+      background: rgba(10, 10, 18, .88);
+      backdrop-filter: blur(32px) saturate(200%);
+      -webkit-backdrop-filter: blur(32px) saturate(200%);
+      border: 1px solid rgba(255, 255, 255, .13);
       border-radius: 100px;
-      box-shadow:
-        0 8px 48px rgba(0, 0, 0, .65),
-        0 1px 0 rgba(255, 255, 255, 0.07) inset,
-        0 0 0 1px rgba(34, 197, 94, 0.04);
-      /* spring bounce masuk dari bawah */
-      transition:
-        transform 0.52s cubic-bezier(0.34, 1.22, 0.64, 1),
-        opacity 0.38s cubic-bezier(0.4, 0, 0.2, 1);
-      will-change: transform, opacity;
+      box-shadow: 0 8px 48px rgba(0, 0, 0, .7), 0 1px 0 rgba(255, 255, 255, .07) inset;
+      transition: transform .5s cubic-bezier(.34, 1.2, .64, 1), opacity .4s;
     }
 
     #bot-nav.show {
@@ -364,11 +343,9 @@
     }
 
     html.light #bot-nav {
-      background: rgba(234, 234, 240, 0.88);
-      backdrop-filter: blur(32px) saturate(180%);
-      -webkit-backdrop-filter: blur(32px) saturate(180%);
-      border-color: rgba(0, 0, 0, 0.1);
-      box-shadow: 0 8px 40px rgba(0, 0, 0, .12);
+      background: rgba(234, 234, 240, .95);
+      border-color: rgba(0, 0, 0, .1);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, .15);
     }
 
     .bn-item {
@@ -413,7 +390,6 @@
       height: 4px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 6px var(--accent);
     }
 
     /* tooltip label */
@@ -436,7 +412,6 @@
       pointer-events: none;
       transition: opacity .18s, transform .2s;
       letter-spacing: .02em;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, .5);
     }
 
     .bn-item:hover::before {
@@ -456,48 +431,37 @@
       background: rgba(0, 0, 0, .1);
     }
 
-    /* ═══ SCROLL TO TOP ═══ */
+    /* SCROLL TOP */
     #scr-top {
       position: fixed;
       bottom: 90px;
       right: 18px;
       z-index: 500;
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      /* frosted glass dark */
-      background: rgba(12, 12, 20, 0.82);
-      backdrop-filter: blur(16px) saturate(180%);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--card-bg);
+      border: 1px solid var(--border);
       color: var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
+      font-size: 12px;
       text-decoration: none;
       cursor: none;
-      /* mulai invisible + sedikit di bawah + kecil */
       opacity: 0;
-      transform: translateY(12px) scale(0.8);
-      transition:
-        opacity 0.38s cubic-bezier(0.4, 0, 0.2, 1),
-        transform 0.42s cubic-bezier(0.34, 1.3, 0.64, 1),
-        background 0.2s ease,
-        box-shadow 0.2s ease;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, .4);
+      transform: translateY(8px);
+      transition: opacity .3s, transform .3s, background .2s;
     }
 
     #scr-top.show {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateY(0);
     }
 
     #scr-top:hover {
       background: var(--accent);
       color: #000;
-      box-shadow: 0 4px 24px rgba(34, 197, 94, .5);
-      transform: translateY(-2px) scale(1.1);
     }
 
     /* PAGES */
@@ -1036,36 +1000,50 @@
   <div id="c-dot"></div>
   <div id="c-ring"></div>
 
-  <!-- TOP NAV -->
+  <!-- TOP NAV — n8n style floating bar -->
   <nav id="top-nav">
     <a href="#" onclick="sp('home');return false;" class="tn-logo">
+      <!-- Hoodie hacker logo -->
       <div class="tn-logo-icon"
         style="width:38px;height:38px;border-radius:11px;overflow:hidden;padding:0;background:#0d1f0d;">
         <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" width="38" height="38">
           <rect width="64" height="64" rx="11" fill="#0d1f0d" />
+          <!-- bg code glow -->
           <text x="3" y="11" font-size="5" fill="#22c55e" opacity="0.3" font-family="monospace">01 10</text>
           <text x="38" y="11" font-size="5" fill="#22c55e" opacity="0.3" font-family="monospace">10 01</text>
           <text x="1" y="19" font-size="4.5" fill="#22c55e" opacity="0.2" font-family="monospace">1010 0101</text>
           <text x="1" y="56" font-size="4.5" fill="#22c55e" opacity="0.2" font-family="monospace">0110 1001</text>
+          <!-- hoodie body -->
           <path d="M13 64 Q13 46 32 46 Q51 46 51 64Z" fill="#1a3320" />
+          <!-- hoodie sleeves -->
           <path d="M13 64 Q8 52 10 42 Q14 36 20 38 Q18 46 18 52Z" fill="#162b1e" />
           <path d="M51 64 Q56 52 54 42 Q50 36 44 38 Q46 46 46 52Z" fill="#162b1e" />
+          <!-- hood outer -->
           <path d="M17 32 Q15 16 32 12 Q49 16 47 32 Q47 46 32 46 Q17 46 17 32Z" fill="#1a3320" />
+          <!-- hood shadow/depth -->
           <path d="M20 33 Q19 20 32 17 Q45 20 44 33 Q44 44 32 44 Q20 44 20 33Z" fill="#0f2415" />
+          <!-- face glow area -->
           <ellipse cx="32" cy="33" rx="9" ry="10" fill="#22c55e" opacity="0.08" />
+          <!-- eyes glowing -->
           <ellipse cx="28" cy="31" rx="2" ry="1.4" fill="#22c55e" opacity="0.9" />
           <ellipse cx="36" cy="31" rx="2" ry="1.4" fill="#22c55e" opacity="0.9" />
+          <!-- inner eye highlight -->
           <ellipse cx="28" cy="31" rx="1" ry=".7" fill="#6aff9e" opacity="0.7" />
           <ellipse cx="36" cy="31" rx="1" ry=".7" fill="#6aff9e" opacity="0.7" />
+          <!-- nose hint -->
           <path d="M31 34 Q32 36 33 34" stroke="#22c55e" stroke-width=".8" fill="none" opacity="0.5" />
+          <!-- laptop -->
           <rect x="18" y="48" width="28" height="14" rx="3" fill="#0a120a" />
           <rect x="20" y="50" width="24" height="10" rx="2" fill="#0f200f" />
           <rect x="22" y="52" width="20" height="6" rx="1" fill="#071507" />
+          <!-- laptop screen glow -->
           <rect x="22" y="52" width="20" height="6" rx="1" fill="#22c55e" opacity="0.12" />
+          <!-- screen code lines -->
           <line x1="24" y1="54" x2="34" y2="54" stroke="#22c55e" stroke-width=".8" opacity="0.7" />
           <line x1="24" y1="56" x2="30" y2="56" stroke="#22c55e" stroke-width=".8" opacity="0.5" />
         </svg>
       </div>
+
     </a>
     <div class="tn-links">
       <a href="#" onclick="sp('home');return false;" class="tn-link on" id="tn-home">
@@ -1120,9 +1098,8 @@
     </button>
   </div>
 
-  <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" id="scr-top">
-    <i class="fas fa-arrow-up"></i>
-  </a>
+  <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" id="scr-top"><i
+      class="fas fa-arrow-up"></i></a>
 
   <!-- SPOTIFY -->
   <div id="sp-widget">
@@ -1255,7 +1232,7 @@
       </div>
     </section>
 
-    <!-- SKILLS -->
+    <!-- SKILLS — with fade edges -->
     <section style="padding:72px 0;border-top:1px solid var(--border);">
       <div style="max-width:1000px;margin:0 auto;padding:0 32px;text-align:center;margin-bottom:44px;" data-aos>
         <p
@@ -1488,6 +1465,7 @@
   </div>
 
   <script>
+    // PROJECTS DATA - Added 2 new projects
     const PJ = [
       { c: "Nauli Dental Care", t: "Website Klinik Nauli Dental Care", s: "Web App • Klinik", cv: "assets/img/klinik.png", im: ["assets/img/galery.png", "assets/img/layanan.png", "assets/img/map.png", "assets/img/staff.png", "assets/img/daftaradmin.png", "assets/img/dokter.png"], d: "Website klinik untuk booking atau janji temu antara pasien dan dokter. Dilengkapi manajemen dokter, jadwal, dan testimoni pasien.", tg: ["Laravel", "MySQL", "Tailwind", "REST API"], gh: "https://github.com/Septianhutasoit/projectsep", dm: "" },
       { c: "Delshoop E-Commerce", t: "Delshoop E-Commerce Platform", s: "E-Commerce • Web App", cv: "assets/img/Delshop Home.png", im: ["assets/img/Produk2.png", "assets/img/Tersedia.png", "assets/img/cart.png", "assets/img/Barcode.png"], d: "Platform e-commerce dengan manajemen produk, cart real-time, dan sistem barcode untuk pengelolaan stok.", tg: ["Laravel", "MySQL", "Tailwind CSS", "REST API"], gh: "https://github.com/Septianhutasoit/Aplikasi", dm: "" },
@@ -1495,7 +1473,7 @@
       { c: "Kawan Pulih", t: "Kawan Pulih - Pasca Operasi", s: "Web App • Healthcare", cv: "assets/img/kawanpulih.png", im: [], d: "Platform informasi dan pendampingan digital untuk pasien pasca operasi.", tg: ["Next.js", "Tailwind"], gh: "https://github.com/Septianhutasoit/403", dm: "https://www.caregiver-ai.my.id/" },
       { c: "Project E-Commerce", t: "Sistem E-Commerce App", s: "Web App • E-Commerce", cv: "assets/img/codealpha.png", im: ["assets/img/codealpa2.png", "assets/img/codealpa3.png"], d: "Aplikasi website untuk pembelian online dengan autentikasi, manajemen produk, dan keranjang belanja.", tg: ["Node.js", "React.js", "PostgreSQL"], gh: "https://github.com/Septianhutasoit/CodeAlpha", dm: "" },
       { c: "ChatBot AI Klinik", t: "Sistem ChatBot AI Klinik", s: "Web App • AI", cv: "assets/img/chatbot.png", im: ["assets/img/kodinganchatbot.png", "assets/img/tanya1.png", "assets/img/lanjut1.png"], d: "Aplikasi ChatBot AI untuk klinik gigi: menjawab pertanyaan pasien dan membantu booking.", tg: ["Node.js", "Next.js", "Python", "FastAPI", "AI"], gh: "", dm: "" },
-      { c: "AI Support Ticket Triage", t: "AI-Powered Support Ticket Triage System", s: "AI • Automation • Fullstack", cv: "assets/img/ticket-triage.png", im: ["assets/img/triage-dashboard.png", "assets/img/triage-classify.png", "assets/img/triage-flow.png", "assets/img/triage-logging.png"], d: "Sistem triase tiket support otomatis berbasis AI yang mengklasifikasikan urgensi secara real-time. Menggunakan Cohere Command-R untuk klasifikasi urgency level, severity score, dan reasoning logis. Dilengkapi real-time dashboard, system logging, dan workflow automation dengan n8n.", tg: ["Next.js", "FastAPI", "MySQL", "n8n", "Cohere AI", "Docker", "Tailwind CSS", "TypeScript"], gh: "https://github.com/Septianhutasoit/ai-ticket-triage", dm: "" },
+      { c: "AI Support Ticket Triage", t: "AI-Powered Support Ticket Triage System",s: "AI • Automation • Fullstack",cv: "assets/img/ticket-triage.png",im: ["assets/img/triage-dashboard.png","assets/img/triage-classify.png", "assets/img/triage-flow.png",  "assets/img/triage-logging.png" ], d: "Sistem triase tiket support otomatis berbasis AI yang mengklasifikasikan urgensi secara real-time. Menggunakan Cohere Command-R untuk klasifikasi urgency level, severity score, dan reasoning logis. Dilengkapi real-time dashboard, system logging, dan workflow automation dengan n8n.", tg: ["Next.js", "FastAPI", "MySQL", "n8n", "Cohere AI", "Docker", "Tailwind CSS", "TypeScript"], gh: "https://github.com/Septianhutasoit/ai-ticket-triage",   dm: "" },
       { c: "Sistem Informasi Alumni", t: "Sistem Informasi Alumni (SIA)", s: "Web App • Alumni Management", cv: "assets/img/alumni.png", im: ["assets/img/alumni1.png", "assets/img/alumni2.png", "assets/img/alumni3.png"], d: "Platform untuk mengelola data alumni, tracer study, informasi lowongan kerja, dan komunikasi antar alumni. Dilengkapi dashboard admin dan fitur export data.", tg: ["Laravel", "MySQL", "Bootstrap", "Chart.js", "REST API"], gh: "https://github.com/Septianhutasoit/sia-alumni", dm: "" }
     ];
 
@@ -1529,46 +1507,48 @@
         const el = document.getElementById(id); if (!el) return;
         el.className = 's-track ' + dirs[ri];
         const h = SKL[ri].map(s => `
-          <div class="sbox" style="--sb-color:${s.c};--sb-border:${s.b};" onclick="likeAt(event)">
-            <i class="${s.i}" style="${s.i.includes('github-original') || s.i.includes('express-original') || s.i.includes('nextjs-plain') ? 'color:var(--text)' : ''}"></i>
-            <span>${s.n}</span>
-          </div>`).join('');
+      <div class="sbox" style="--sb-color:${s.c};--sb-border:${s.b};" onclick="likeAt(event)">
+        <i class="${s.i}" style="${s.i.includes('github-original') || s.i.includes('express-original') || s.i.includes('nextjs-plain') ? 'color:var(--text)' : ''}"></i>
+        <span>${s.n}</span>
+      </div>`).join('');
         el.innerHTML = h + h + h;
       });
     }
 
     function tagHtml(t) { return `<span class="tag"><i class="${ico(t)}" style="font-size:10px;color:var(--accent);"></i>${t}</span>`; }
 
+    // SHOW ALL 8 PROJECTS ON HOME (featured section)
     function renderFeat() {
-      const g = document.getElementById('feat-grid'); if (!g) return;
-      g.innerHTML = PJ.slice(0, 6).map((p, i) => `
-        <div class="pcard" onclick="openM(${i})">
-          <div class="pcard-iw"><img class="pcard-img" src="${p.cv}" alt="${p.c}" onerror="this.style.opacity='.3'"/></div>
-          <div style="padding:15px 17px 18px;">
-            <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:7px;">
-              <h3 style="font-size:14px;font-weight:700;color:var(--text);line-height:1.3;">${p.c}</h3>
-              <i class="fas fa-arrow-right" style="font-size:11px;color:var(--muted);flex-shrink:0;margin-left:8px;margin-top:2px;"></i>
-            </div>
-            <p style="font-size:12px;color:var(--muted);line-height:1.62;margin-bottom:11px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${p.d}</p>
-            <div style="display:flex;flex-wrap:wrap;gap:5px;">${(p.tg || []).slice(0, 3).map(tagHtml).join('')}</div>
-          </div>
-        </div>`).join('');
-    }
+        const g = document.getElementById('feat-grid'); if (!g) return;
+        // HANYA 6 PROYEK PERTAMA YANG TAMPIL DI HOME
+        g.innerHTML = PJ.slice(0, 6).map((p, i) => `
+    <div class="pcard" onclick="openM(${i})">
+      <div class="pcard-iw"><img class="pcard-img" src="${p.cv}" alt="${p.c}" onerror="this.style.opacity='.3'"/></div>
+      <div style="padding:15px 17px 18px;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:7px;">
+          <h3 style="font-size:14px;font-weight:700;color:var(--text);line-height:1.3;">${p.c}</h3>
+          <i class="fas fa-arrow-right" style="font-size:11px;color:var(--muted);flex-shrink:0;margin-left:8px;margin-top:2px;"></i>
+        </div>
+        <p style="font-size:12px;color:var(--muted);line-height:1.62;margin-bottom:11px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${p.d}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;">${(p.tg || []).slice(0, 3).map(tagHtml).join('')}</div>
+      </div>
+    </div>`).join('');
+      }
 
     function renderAll() {
       const g = document.getElementById('all-grid'); if (!g) return;
       g.innerHTML = PJ.map((p, i) => `
-        <div class="pfull" onclick="openM(${i})">
-          <div style="overflow:hidden;"><img src="${p.cv}" alt="${p.c}" onerror="this.style.opacity='.2'"/></div>
-          <div style="padding:14px 16px 18px;">
-            <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:5px;">
-              <h3 style="font-size:14px;font-weight:700;color:var(--text);line-height:1.3;">${p.c}</h3>
-              <i class="fas fa-arrow-right" style="font-size:11px;color:var(--muted);flex-shrink:0;margin-left:8px;margin-top:2px;"></i>
-            </div>
-            <p style="font-size:12px;color:var(--muted);line-height:1.62;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${p.d}</p>
-            <div style="display:flex;flex-wrap:wrap;gap:5px;">${(p.tg || []).slice(0, 3).map(t => `<span class="tag">${t}</span>`).join('')}</div>
-          </div>
-        </div>`).join('');
+    <div class="pfull" onclick="openM(${i})">
+      <div style="overflow:hidden;"><img src="${p.cv}" alt="${p.c}" onerror="this.style.opacity='.2'"/></div>
+      <div style="padding:14px 16px 18px;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:5px;">
+          <h3 style="font-size:14px;font-weight:700;color:var(--text);line-height:1.3;">${p.c}</h3>
+          <i class="fas fa-arrow-right" style="font-size:11px;color:var(--muted);flex-shrink:0;margin-left:8px;margin-top:2px;"></i>
+        </div>
+        <p style="font-size:12px;color:var(--muted);line-height:1.62;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${p.d}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;">${(p.tg || []).slice(0, 3).map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      </div>
+    </div>`).join('');
     }
 
     let mImgs = [], mIdx = 0;
@@ -1629,7 +1609,7 @@
       ['th-icon', 'bth-icon'].forEach(id => { const el = document.getElementById(id); if (el) el.className = 'fas ' + ic; });
     }
 
-    /* CURSOR */
+    // CURSOR
     const cdot = document.getElementById('c-dot'), cring = document.getElementById('c-ring');
     let rx = 0, ry = 0, mx_ = 0, my_ = 0, lastTr = 0;
     document.addEventListener('mousemove', e => {
@@ -1658,42 +1638,30 @@
       document.body.appendChild(el); setTimeout(() => el.remove(), 460);
     }
 
-    /* ═══ SCROLL NAV — top nav hilang, bottom pill + scr-top muncul ═══ */
+    // SCROLL NAV
     const topNav = document.getElementById('top-nav');
     const botNav = document.getElementById('bot-nav');
     const scrTop = document.getElementById('scr-top');
     let ticking = false;
-
     window.addEventListener('scroll', () => {
       if (!ticking) {
         requestAnimationFrame(() => {
           const y = window.scrollY;
-
-          if (y > 60) {
-            /* scroll melewati 60px → sembunyikan top nav, tampilkan pill + scr-top */
-            topNav.classList.add('hidden');
-            botNav.classList.add('show');
-            scrTop.classList.add('show');
-          } else {
-            /* kembali ke atas → tampilkan top nav, sembunyikan pill + scr-top */
-            topNav.classList.remove('hidden');
-            botNav.classList.remove('show');
-            scrTop.classList.remove('show');
-          }
-
+          if (y > 80) { topNav.classList.add('hidden'); botNav.classList.add('show'); scrTop.classList.add('show'); }
+          else { topNav.classList.remove('hidden'); botNav.classList.remove('show'); scrTop.classList.remove('show'); }
           ticking = false;
         });
         ticking = true;
       }
-    }, { passive: true });
+    });
 
-    /* CANVAS HERO */
+    // CANVAS
     const cv2 = document.getElementById('hero-cv');
     if (cv2) {
       const ctx2 = cv2.getContext('2d'); let pts2 = [];
       function rsz2() { cv2.width = window.innerWidth; cv2.height = window.innerHeight; }
       window.addEventListener('resize', rsz2); rsz2();
-      for (let i = 0; i < 120; i++) pts2.push({ x: Math.random() * cv2.width, y: Math.random() * cv2.height, vx: (Math.random() - .5) * .4, vy: (Math.random() - .5) * .4, r: Math.random() * 1.3 + .4 });
+      for (let i = 0; i < 120; i++)pts2.push({ x: Math.random() * cv2.width, y: Math.random() * cv2.height, vx: (Math.random() - .5) * .4, vy: (Math.random() - .5) * .4, r: Math.random() * 1.3 + .4 });
       function fr2() {
         ctx2.clearRect(0, 0, cv2.width, cv2.height);
         pts2.forEach(p => {
@@ -1703,7 +1671,7 @@
           ctx2.fillStyle = 'rgba(34,197,94,.25)';
           ctx2.beginPath(); ctx2.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx2.fill();
         });
-        for (let a = 0; a < pts2.length; a++) for (let b = a + 1; b < pts2.length; b++) {
+        for (let a = 0; a < pts2.length; a++)for (let b = a + 1; b < pts2.length; b++) {
           const dx = pts2[a].x - pts2[b].x, dy = pts2[a].y - pts2[b].y, d = Math.hypot(dx, dy);
           if (d < 80) { ctx2.strokeStyle = `rgba(34,197,94,${.13 * (1 - d / 80)})`; ctx2.lineWidth = .25; ctx2.beginPath(); ctx2.moveTo(pts2[a].x, pts2[a].y); ctx2.lineTo(pts2[b].x, pts2[b].y); ctx2.stroke(); }
         }
@@ -1712,7 +1680,7 @@
       fr2();
     }
 
-    /* TYPING */
+    // TYPING
     const roleEl = document.getElementById('role-txt');
     const roles = ['Software Engineer', 'Fullstack Developer', 'AI/ML Enthusiast', 'Backend Developer'];
     let ri = 0, rc = 0, rd = false;
