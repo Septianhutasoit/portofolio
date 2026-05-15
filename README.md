@@ -1,5 +1,5 @@
 <p align="center">
-    <strong>Software Engineer | Backend Developer | Fullstack Developer | AI/ML Enthusiast</strong>
+    <strong>Software Engineer | Backend Developer | Fullstack Developer | Cloud | AI/ML Enthusiast</strong>
   </p>
   
   <p align="center">
