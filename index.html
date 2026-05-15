@@ -3,16 +3,13 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Septian Hutasoit | Software Engineer</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
   <style>
-    /* ════════════════════════════════════════
-   ROOT / THEME
-════════════════════════════════════════ */
     :root {
       --bg: #09090f;
       --bg2: #111118;
@@ -21,9 +18,9 @@
       --muted: #6b7280;
       --accent: #22c55e;
       --accent2: #16a34a;
-      --nav-bg: rgba(9, 9, 15, .9);
+      --nav-bg: rgba(9, 9, 15, .72);
       --card-bg: rgba(16, 16, 22, .98);
-      --top-nav-h: 56px;
+      --top-nav-h: 60px;
     }
 
     html.light {
@@ -32,7 +29,7 @@
       --border: rgba(0, 0, 0, .08);
       --text: #111;
       --muted: #6b7280;
-      --nav-bg: rgba(244, 244, 248, .95);
+      --nav-bg: rgba(244, 244, 248, .82);
       --card-bg: rgba(255, 255, 255, .98);
     }
 
@@ -73,9 +70,7 @@
       border-radius: 3px;
     }
 
-    /* ════════════════════════════════════════
-   CURSOR  (dot + lag-ring)
-════════════════════════════════════════ */
+    /* CURSOR */
     #c-dot {
       position: fixed;
       z-index: 99999;
@@ -85,15 +80,15 @@
       border-radius: 50%;
       background: var(--accent);
       transform: translate(-50%, -50%);
-      transition: width .1s, height .1s, transform .08s;
+      transition: width .1s, height .1s;
     }
 
     #c-ring {
       position: fixed;
       z-index: 99998;
       pointer-events: none;
-      width: 26px;
-      height: 26px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       border: 1.5px solid rgba(34, 197, 94, .5);
       transform: translate(-50%, -50%);
@@ -118,37 +113,39 @@
       }
     }
 
-    /* ════════════════════════════════════════
-   TOP NAV  —  full-width bar like n8n
-════════════════════════════════════════ */
+    /* ═══ TOP NAV — floating pill like n8n ═══ */
     #top-nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 16px;
+      left: 50%;
       z-index: 700;
-      height: var(--top-nav-h);
+      transform: translateX(-50%);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 32px;
+      padding: 0 10px 0 16px;
+      height: 52px;
+      width: min(780px, 94vw);
       background: var(--nav-bg);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      transition: background .4s, border-color .4s,
-        transform .45s cubic-bezier(.34, 1.2, .64, 1),
-        opacity .35s,
-        top .45s cubic-bezier(.34, 1.2, .64, 1);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, .13);
+      border-radius: 100px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, .55), 0 1px 0 rgba(255, 255, 255, .07) inset;
+      transition: transform .45s cubic-bezier(.34, 1.2, .64, 1), opacity .35s, top .4s;
     }
 
-    /* when scrolled — slide upward and fade out */
     #top-nav.hidden {
-      transform: translateY(-100%);
+      transform: translateX(-50%) translateY(-130%);
       opacity: 0;
       pointer-events: none;
     }
 
-    /* logo mark */
+    html.light #top-nav {
+      border-color: rgba(0, 0, 0, .12);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, .12);
+    }
+
     .tn-logo {
       display: flex;
       align-items: center;
@@ -165,13 +162,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 13px;
       color: #000;
       font-weight: 800;
     }
 
     .tn-logo-txt {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 800;
       color: var(--text);
       letter-spacing: -.02em;
@@ -181,11 +178,7 @@
       color: var(--accent);
     }
 
-    /* center links */
     .tn-links {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
       display: flex;
       align-items: center;
       gap: 2px;
@@ -195,36 +188,32 @@
       font-size: 13px;
       font-weight: 500;
       color: var(--muted);
-      padding: 7px 16px;
-      border-radius: 8px;
+      padding: 7px 15px;
+      border-radius: 100px;
       text-decoration: none;
       cursor: none;
       transition: color .2s, background .2s;
-      display: flex;
-      align-items: center;
-      gap: 5px;
     }
 
     .tn-link:hover,
     .tn-link.on {
       color: var(--text);
-      background: rgba(255, 255, 255, .07);
+      background: rgba(255, 255, 255, .1);
     }
 
     html.light .tn-link:hover,
     html.light .tn-link.on {
-      background: rgba(0, 0, 0, .06);
+      background: rgba(0, 0, 0, .07);
     }
 
     .tn-link.on {
       color: var(--accent);
     }
 
-    /* right actions */
     .tn-right {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
       flex-shrink: 0;
     }
 
@@ -234,7 +223,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 8px;
+      border-radius: 50%;
       color: var(--muted);
       font-size: 13px;
       text-decoration: none;
@@ -246,56 +235,57 @@
 
     .tn-ico:hover {
       color: var(--text);
-      background: rgba(255, 255, 255, .08);
+      background: rgba(255, 255, 255, .1);
     }
 
     html.light .tn-ico:hover {
-      background: rgba(0, 0, 0, .07);
+      background: rgba(0, 0, 0, .08);
     }
 
     .tn-sep {
       width: 1px;
-      height: 20px;
+      height: 18px;
       background: var(--border);
-      margin: 0 3px;
+      margin: 0 2px;
     }
 
     .tn-cta {
-      padding: 7px 16px;
-      border-radius: 8px;
+      padding: 8px 18px;
+      border-radius: 100px;
       background: var(--accent);
       color: #000;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       text-decoration: none;
       cursor: none;
       transition: opacity .2s, transform .2s;
+      border: none;
+      font-family: inherit;
     }
 
     .tn-cta:hover {
       opacity: .88;
-      transform: scale(1.02);
+      transform: scale(1.03);
     }
 
-    /* ════════════════════════════════════════
-   BOTTOM PILL NAV  — appears on scroll
-════════════════════════════════════════ */
+    /* ═══ BOTTOM PILL NAV ═══ */
     #bot-nav {
       position: fixed;
       bottom: 22px;
       left: 50%;
       z-index: 700;
-      transform: translateX(-50%) translateY(90px);
+      transform: translateX(-50%) translateY(100px);
       opacity: 0;
       display: flex;
       align-items: center;
       gap: 3px;
       padding: 8px 14px;
-      background: rgba(10, 10, 16, .96);
-      backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, .11);
+      background: rgba(10, 10, 16, .9);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, .12);
       border-radius: 100px;
-      box-shadow: 0 8px 40px rgba(0, 0, 0, .7);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, .7), 0 1px 0 rgba(255, 255, 255, .08) inset;
       transition: transform .45s cubic-bezier(.34, 1.2, .64, 1), opacity .38s;
     }
 
@@ -305,19 +295,19 @@
     }
 
     html.light #bot-nav {
-      background: rgba(236, 236, 240, .97);
-      border-color: rgba(0, 0, 0, .09);
+      background: rgba(236, 236, 240, .95);
+      border-color: rgba(0, 0, 0, .1);
     }
 
     .bn-item {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
       color: #9ca3af;
-      font-size: 16px;
+      font-size: 15px;
       text-decoration: none;
       cursor: none;
       border: none;
@@ -328,17 +318,13 @@
 
     .bn-item:hover {
       color: #fff;
-      background: rgba(255, 255, 255, .1);
-      transform: scale(1.14);
-    }
-
-    html.light .bn-item {
-      color: #555;
+      background: rgba(255, 255, 255, .12);
+      transform: scale(1.16);
     }
 
     html.light .bn-item:hover {
       color: #111;
-      background: rgba(0, 0, 0, .07);
+      background: rgba(0, 0, 0, .08);
     }
 
     .bn-item.on {
@@ -351,23 +337,22 @@
       bottom: 4px;
       left: 50%;
       transform: translateX(-50%);
-      width: 5px;
-      height: 5px;
+      width: 4px;
+      height: 4px;
       border-radius: 50%;
       background: var(--accent);
     }
 
-    /* tooltip */
     .bn-item::before {
       content: attr(data-tip);
       position: absolute;
-      bottom: calc(100% + 8px);
+      bottom: calc(100% + 9px);
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(18, 18, 24, .96);
+      background: rgba(15, 15, 20, .97);
       border: 1px solid rgba(255, 255, 255, .1);
       color: #fff;
-      font-size: 11px;
+      font-size: 10px;
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 600;
       padding: 4px 10px;
@@ -384,7 +369,7 @@
 
     .bn-sep {
       width: 1px;
-      height: 22px;
+      height: 20px;
       background: rgba(255, 255, 255, .1);
       margin: 0 3px;
     }
@@ -393,9 +378,7 @@
       background: rgba(0, 0, 0, .1);
     }
 
-    /* ════════════════════════════════════════
-   SCROLL-TO-TOP
-════════════════════════════════════════ */
+    /* SCROLL TOP */
     #scr-top {
       position: fixed;
       bottom: 90px;
@@ -428,9 +411,7 @@
       color: #000;
     }
 
-    /* ════════════════════════════════════════
-   PAGES
-════════════════════════════════════════ */
+    /* PAGES */
     .pg {
       display: none;
     }
@@ -439,19 +420,14 @@
       display: block;
     }
 
-    .pg-pad {
-      padding-top: calc(var(--top-nav-h) + 40px);
-    }
-
-    /* ════════════════════════════════════════
-   GLASS / PROJECT CARDS
-════════════════════════════════════════ */
+    /* GLASS */
     .glass {
       background: var(--card-bg);
       border: 1px solid var(--border);
       transition: background .4s, border-color .4s;
     }
 
+    /* PROJECT CARDS */
     .pcard {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -513,9 +489,7 @@
       transform: scale(1.04);
     }
 
-    /* ════════════════════════════════════════
-   TAG
-════════════════════════════════════════ */
+    /* TAG */
     .tag {
       display: inline-flex;
       align-items: center;
@@ -539,27 +513,61 @@
       color: var(--accent);
     }
 
-    /* ════════════════════════════════════════
-   SKILL ROWS  —  3 rows, n8n-style icon boxes
-════════════════════════════════════════ */
+    /* ═══ SKILLS — fade edges ═══ */
+    .skills-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skills-wrap::before,
+    .skills-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 160px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .skills-wrap::before {
+      left: 0;
+      background: linear-gradient(to right, var(--bg) 0%, transparent 100%);
+    }
+
+    .skills-wrap::after {
+      right: 0;
+      background: linear-gradient(to left, var(--bg) 0%, transparent 100%);
+    }
+
+    html.light .skills-wrap::before {
+      background: linear-gradient(to right, #f4f4f8 0%, transparent 100%);
+    }
+
+    html.light .skills-wrap::after {
+      background: linear-gradient(to left, #f4f4f8 0%, transparent 100%);
+    }
+
     .s-row {
       display: flex;
       overflow: hidden;
+      mask-image: none;
+      -webkit-mask-image: none;
     }
 
     .s-track {
       display: flex;
       gap: 12px;
-      padding: 5px 0;
+      padding: 6px 0;
       will-change: transform;
     }
 
     .s-track.sl {
-      animation: sl 50s linear infinite;
+      animation: sl 45s linear infinite;
     }
 
     .s-track.sr {
-      animation: sr 50s linear infinite;
+      animation: sr 45s linear infinite;
     }
 
     .s-row:hover .s-track {
@@ -586,11 +594,10 @@
       }
     }
 
-    /* each icon box — square like n8n */
     .sbox {
       flex-shrink: 0;
-      width: 80px;
-      height: 80px;
+      width: 84px;
+      height: 84px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -620,9 +627,9 @@
     }
 
     .sbox:hover {
-      border-color: var(--sb-color, rgba(34, 197, 94, .4));
-      transform: translateY(-6px) scale(1.06);
-      box-shadow: 0 10px 28px rgba(0, 0, 0, .35);
+      border-color: var(--sb-border, rgba(34, 197, 94, .4));
+      transform: translateY(-7px) scale(1.07);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .35);
     }
 
     .sbox i {
@@ -647,9 +654,7 @@
       color: var(--text);
     }
 
-    /* ════════════════════════════════════════
-   TEXT GRADIENT
-════════════════════════════════════════ */
+    /* GRADIENT TEXT */
     .tg {
       background: linear-gradient(135deg, #16a34a 0%, #22c55e 55%, #4ade80 100%);
       -webkit-background-clip: text;
@@ -657,9 +662,7 @@
       background-clip: text;
     }
 
-    /* ════════════════════════════════════════
-   HERO
-════════════════════════════════════════ */
+    /* HERO */
     .p-glow {
       position: absolute;
       inset: -30px;
@@ -759,9 +762,7 @@
       }
     }
 
-    /* ════════════════════════════════════════
-   SPOTIFY
-════════════════════════════════════════ */
+    /* SPOTIFY */
     #sp-widget {
       position: fixed;
       bottom: 22px;
@@ -775,9 +776,7 @@
       width: 264px;
     }
 
-    /* ════════════════════════════════════════
-   MODAL
-════════════════════════════════════════ */
+    /* MODAL */
     #modal {
       position: fixed;
       inset: 0;
@@ -849,9 +848,7 @@
       flex-direction: column;
     }
 
-    /* ════════════════════════════════════════
-   LIKE POP
-════════════════════════════════════════ */
+    /* LIKE POP */
     .like-pop {
       position: fixed;
       pointer-events: none;
@@ -878,9 +875,7 @@
       }
     }
 
-    /* ════════════════════════════════════════
-   AOS (custom simple)
-════════════════════════════════════════ */
+    /* AOS */
     [data-aos] {
       opacity: 0;
       transform: translateY(22px);
@@ -892,9 +887,7 @@
       transform: translateY(0);
     }
 
-    /* ════════════════════════════════════════
-   MISC
-════════════════════════════════════════ */
+    /* MISC */
     @keyframes ping {
       0% {
         transform: scale(1);
@@ -951,44 +944,31 @@
 
 <body>
 
-  <!-- CURSOR -->
   <div id="c-dot"></div>
   <div id="c-ring"></div>
 
-  <!-- ══════════════════════════════════════════
-     TOP NAV  (n8n style, full-width bar)
-══════════════════════════════════════════ -->
+  <!-- TOP NAV — floating pill -->
   <nav id="top-nav">
-    <!-- logo -->
     <a href="#" onclick="sp('home');return false;" class="tn-logo">
       <div class="tn-logo-icon">&lt;/&gt;</div>
       <span class="tn-logo-txt">sep<span>tian</span></span>
     </a>
-
-    <!-- center links -->
     <div class="tn-links">
       <a href="#" onclick="sp('home');return false;" class="tn-link on" id="tn-home">Home</a>
       <a href="#" onclick="sp('projects');return false;" class="tn-link" id="tn-projects">Projects</a>
       <a href="#" onclick="sp('about');return false;" class="tn-link" id="tn-about">About</a>
     </div>
-
-    <!-- right -->
     <div class="tn-right">
-      <a href="https://github.com/Septianhutasoit" target="_blank" class="tn-ico" title="GitHub"><i
-          class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/septian-a-hutasoit/" target="_blank" class="tn-ico" title="LinkedIn"><i
+      <a href="https://github.com/Septianhutasoit" target="_blank" class="tn-ico"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/septian-a-hutasoit/" target="_blank" class="tn-ico"><i
           class="fab fa-linkedin-in"></i></a>
-      <a href="mailto:septianhts95@gmail.com" class="tn-ico" title="Email"><i class="fas fa-envelope"></i></a>
       <div class="tn-sep"></div>
-      <button class="tn-ico" onclick="toggleTheme()" title="Toggle theme"><i class="fas fa-sun"
-          id="th-icon"></i></button>
+      <button class="tn-ico" onclick="toggleTheme()"><i class="fas fa-sun" id="th-icon"></i></button>
       <a href="mailto:septianhts95@gmail.com" class="tn-cta" style="margin-left:4px;">Hire Me</a>
     </div>
   </nav>
 
-  <!-- ══════════════════════════════════════════
-     BOTTOM PILL NAV  (appears on scroll)
-══════════════════════════════════════════ -->
+  <!-- BOTTOM PILL NAV -->
   <div id="bot-nav">
     <a href="#" onclick="sp('home');return false;" class="bn-item on" id="bn-home" data-tip="Home"><i
         class="fas fa-house"></i></a>
@@ -1005,7 +985,6 @@
     <button onclick="toggleTheme()" class="bn-item" data-tip="Theme"><i class="fas fa-sun" id="bth-icon"></i></button>
   </div>
 
-  <!-- SCROLL TO TOP -->
   <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" id="scr-top"><i
       class="fas fa-arrow-up"></i></a>
 
@@ -1034,14 +1013,11 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════
-     HOME PAGE
-══════════════════════════════════════════ -->
+  <!-- ══ HOME ══ -->
   <div id="pg-home" class="pg on">
-
     <!-- HERO -->
     <section
-      style="min-height:100vh;display:flex;align-items:center;padding:calc(var(--top-nav-h) + 60px) 0 64px;position:relative;overflow:hidden;">
+      style="min-height:100vh;display:flex;align-items:center;padding:calc(var(--top-nav-h) + 70px) 0 64px;position:relative;overflow:hidden;">
       <canvas id="hero-cv"></canvas>
       <div class="blob"
         style="width:380px;height:380px;background:rgba(22,163,74,.08);filter:blur(110px);top:6%;left:1%;"></div>
@@ -1050,7 +1026,6 @@
       </div>
       <div style="max-width:1000px;margin:0 auto;padding:0 32px;width:100%;position:relative;z-index:1;">
         <div style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;" class="hero-g">
-
           <div data-aos>
             <div
               style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:100px;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);margin-bottom:24px;">
@@ -1066,8 +1041,7 @@
             </div>
             <h1
               style="font-size:clamp(2.5rem,5.5vw,4rem);font-weight:800;color:var(--text);line-height:1.04;letter-spacing:-.025em;margin-bottom:18px;">
-              Software<br /><span class="tg">Engineer.</span>
-            </h1>
+              Software<br /><span class="tg">Engineer.</span></h1>
             <p style="font-size:14px;color:var(--muted);line-height:1.8;max-width:440px;margin-bottom:30px;">
               I'm <strong style="color:var(--text);">Septian Hutasoit</strong>,
               <span style="color:var(--text);" id="role-txt">Software Developer</span><span class="rcursor"></span>
@@ -1098,7 +1072,6 @@
               </div>
             </div>
           </div>
-
           <div style="display:flex;justify-content:center;" class="hero-r">
             <div style="position:relative;width:220px;height:220px;" class="float">
               <div class="p-glow"></div>
@@ -1112,12 +1085,10 @@
                   style="font-size:12px;font-weight:700;color:var(--accent);display:flex;align-items:center;gap:5px;margin-top:2px;">
                   <span
                     style="width:7px;height:7px;border-radius:50%;background:var(--accent);animation:ping 1.5s infinite;display:block;flex-shrink:0;"></span>Open
-                  to work
-                </p>
+                  to work</p>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -1147,8 +1118,8 @@
       </div>
     </section>
 
-    <!-- ══ SKILLS ══ 3 ROWS, n8n-style icon boxes -->
-    <section style="padding:72px 0;border-top:1px solid var(--border);overflow:hidden;">
+    <!-- SKILLS — with fade edges -->
+    <section style="padding:72px 0;border-top:1px solid var(--border);">
       <div style="max-width:1000px;margin:0 auto;padding:0 32px;text-align:center;margin-bottom:44px;" data-aos>
         <p
           style="font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">
@@ -1156,16 +1127,17 @@
         <h2 style="font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;color:var(--text);">Technology <span
             class="tg">Used</span></h2>
       </div>
-      <!-- 3 rows with opposite directions -->
-      <div style="display:flex;flex-direction:column;gap:14px;">
-        <div class="s-row">
-          <div class="s-track sl" id="sr1"></div>
-        </div>
-        <div class="s-row">
-          <div class="s-track sr" id="sr2"></div>
-        </div>
-        <div class="s-row">
-          <div class="s-track sl" id="sr3"></div>
+      <div class="skills-wrap">
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div class="s-row">
+            <div class="s-track sl" id="sr1"></div>
+          </div>
+          <div class="s-row">
+            <div class="s-track sr" id="sr2"></div>
+          </div>
+          <div class="s-row">
+            <div class="s-track sl" id="sr3"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -1201,11 +1173,9 @@
           a fullstack product.</p>
       </div>
     </section>
-  </div><!-- /pg-home -->
+  </div>
 
-  <!-- ══════════════════════════════════════════
-     PROJECTS PAGE
-══════════════════════════════════════════ -->
+  <!-- ══ PROJECTS PAGE ══ -->
   <div id="pg-projects" class="pg">
     <div style="min-height:100vh;padding:calc(var(--top-nav-h) + 44px) 32px 120px;max-width:1000px;margin:0 auto;">
       <div
@@ -1232,9 +1202,7 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════
-     ABOUT PAGE
-══════════════════════════════════════════ -->
+  <!-- ══ ABOUT PAGE ══ -->
   <div id="pg-about" class="pg">
     <div style="min-height:100vh;padding:calc(var(--top-nav-h) + 44px) 32px 120px;max-width:700px;margin:0 auto;">
       <a href="#" onclick="sp('home');return false;"
@@ -1351,9 +1319,9 @@
           <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;">
             <div>
               <span id="m-sub"
-                style="font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);">Sub</span>
+                style="font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);"></span>
               <h3 id="m-title" style="font-size:1.2rem;font-weight:800;color:#fff;margin-top:5px;line-height:1.25;">
-                Title</h3>
+              </h3>
             </div>
             <button onclick="closeModal()" class="mi-d-close tn-ico"
               style="flex-shrink:0;margin-left:10px;color:#666;"><i class="fas fa-times"></i></button>
@@ -1379,9 +1347,6 @@
   </div>
 
   <script>
-    /* ══════════════════════════════════════
-       DATA
-    ══════════════════════════════════════ */
     const PJ = [
       { c: "Nauli Dental Care", t: "Website Klinik Nauli Dental Care", s: "Web App • Klinik", cv: "assets/img/klinik.png", im: ["assets/img/galery.png", "assets/img/layanan.png", "assets/img/map.png", "assets/img/staff.png", "assets/img/daftaradmin.png", "assets/img/dokter.png"], d: "Website klinik untuk booking atau janji temu antara pasien dan dokter. Dilengkapi manajemen dokter, jadwal, dan testimoni pasien.", tg: ["Laravel", "MySQL", "Tailwind", "REST API"], gh: "https://github.com/Septianhutasoit/projectsep", dm: "" },
       { c: "Delshoop E-Commerce", t: "Delshoop E-Commerce Platform", s: "E-Commerce • Web App", cv: "assets/img/Delshop Home.png", im: ["assets/img/Produk2.png", "assets/img/Tersedia.png", "assets/img/cart.png", "assets/img/Barcode.png"], d: "Platform e-commerce dengan manajemen produk, cart real-time, dan sistem barcode untuk pengelolaan stok.", tg: ["Laravel", "MySQL", "Tailwind CSS", "REST API"], gh: "https://github.com/Septianhutasoit/Aplikasi", dm: "" },
@@ -1391,44 +1356,12 @@
       { c: "ChatBot AI Klinik", t: "Sistem ChatBot AI Klinik", s: "Web App • AI", cv: "assets/img/chatbot.png", im: ["assets/img/kodinganchatbot.png", "assets/img/tanya1.png", "assets/img/lanjut1.png"], d: "Aplikasi ChatBot AI untuk klinik gigi: menjawab pertanyaan pasien dan membantu booking.", tg: ["Node.js", "Next.js", "Python", "FastAPI", "AI"], gh: "", dm: "" }
     ];
 
-    /* ── 3 skill rows with all 24 techs distributed ── */
     const SKL = [
-      /* row 1 → left */
-      [
-        { n: "JavaScript", i: "devicon-javascript-plain colored", c: "rgba(247,223,30,.15)" },
-        { n: "TypeScript", i: "devicon-typescript-plain colored", c: "rgba(49,120,198,.15)" },
-        { n: "Python", i: "devicon-python-plain colored", c: "rgba(53,114,165,.15)" },
-        { n: "Node.js", i: "devicon-nodejs-plain colored", c: "rgba(104,160,99,.15)" },
-        { n: "React", i: "devicon-react-original colored", c: "rgba(97,218,251,.15)" },
-        { n: "Next.js", i: "devicon-nextjs-plain", c: "rgba(255,255,255,.06)" },
-        { n: "PHP", i: "devicon-php-plain colored", c: "rgba(119,123,179,.15)" },
-        { n: "Java", i: "devicon-java-plain colored", c: "rgba(232,152,26,.15)" },
-      ],
-      /* row 2 → right */
-      [
-        { n: "Laravel", i: "devicon-laravel-original colored", c: "rgba(255,45,32,.15)" },
-        { n: "Tailwind", i: "devicon-tailwindcss-original colored", c: "rgba(56,189,248,.15)" },
-        { n: "MySQL", i: "devicon-mysql-plain colored", c: "rgba(0,117,143,.15)" },
-        { n: "PostgreSQL", i: "devicon-postgresql-plain colored", c: "rgba(51,103,145,.15)" },
-        { n: "FastAPI", i: "devicon-fastapi-plain colored", c: "rgba(5,150,105,.15)" },
-        { n: "Docker", i: "devicon-docker-plain colored", c: "rgba(29,99,237,.15)" },
-        { n: "Bootstrap", i: "devicon-bootstrap-plain colored", c: "rgba(121,82,179,.15)" },
-        { n: "HTML", i: "devicon-html5-plain colored", c: "rgba(227,79,38,.15)" },
-      ],
-      /* row 3 → left */
-      [
-        { n: "CSS", i: "devicon-css3-plain colored", c: "rgba(38,77,228,.15)" },
-        { n: "Git", i: "devicon-git-plain colored", c: "rgba(240,80,51,.15)" },
-        { n: "GitHub", i: "devicon-github-original", c: "rgba(255,255,255,.06)" },
-        { n: "Figma", i: "devicon-figma-plain colored", c: "rgba(162,89,255,.15)" },
-        { n: "Vite", i: "devicon-vitejs-plain colored", c: "rgba(189,52,254,.12)" },
-        { n: "Linux", i: "devicon-linux-plain colored", c: "rgba(255,220,100,.12)" },
-        { n: "Postman", i: "devicon-postman-plain colored", c: "rgba(255,108,55,.15)" },
-        { n: "Express", i: "devicon-express-original", c: "rgba(255,255,255,.06)" },
-      ]
+      [{ n: "JavaScript", i: "devicon-javascript-plain colored", c: "rgba(247,223,30,.15)", b: "rgba(247,223,30,.4)" }, { n: "TypeScript", i: "devicon-typescript-plain colored", c: "rgba(49,120,198,.15)", b: "rgba(49,120,198,.4)" }, { n: "Python", i: "devicon-python-plain colored", c: "rgba(53,114,165,.15)", b: "rgba(53,114,165,.4)" }, { n: "Node.js", i: "devicon-nodejs-plain colored", c: "rgba(104,160,99,.15)", b: "rgba(104,160,99,.4)" }, { n: "React", i: "devicon-react-original colored", c: "rgba(97,218,251,.15)", b: "rgba(97,218,251,.4)" }, { n: "Next.js", i: "devicon-nextjs-plain", c: "rgba(255,255,255,.06)", b: "rgba(255,255,255,.25)" }, { n: "PHP", i: "devicon-php-plain colored", c: "rgba(119,123,179,.15)", b: "rgba(119,123,179,.4)" }, { n: "Java", i: "devicon-java-plain colored", c: "rgba(232,152,26,.15)", b: "rgba(232,152,26,.4)" }],
+      [{ n: "Laravel", i: "devicon-laravel-original colored", c: "rgba(255,45,32,.15)", b: "rgba(255,45,32,.4)" }, { n: "Tailwind", i: "devicon-tailwindcss-original colored", c: "rgba(56,189,248,.15)", b: "rgba(56,189,248,.4)" }, { n: "MySQL", i: "devicon-mysql-plain colored", c: "rgba(0,117,143,.15)", b: "rgba(0,117,143,.4)" }, { n: "PostgreSQL", i: "devicon-postgresql-plain colored", c: "rgba(51,103,145,.15)", b: "rgba(51,103,145,.4)" }, { n: "FastAPI", i: "devicon-fastapi-plain colored", c: "rgba(5,150,105,.15)", b: "rgba(5,150,105,.4)" }, { n: "Docker", i: "devicon-docker-plain colored", c: "rgba(29,99,237,.15)", b: "rgba(29,99,237,.4)" }, { n: "Bootstrap", i: "devicon-bootstrap-plain colored", c: "rgba(121,82,179,.15)", b: "rgba(121,82,179,.4)" }, { n: "HTML", i: "devicon-html5-plain colored", c: "rgba(227,79,38,.15)", b: "rgba(227,79,38,.4)" }],
+      [{ n: "CSS", i: "devicon-css3-plain colored", c: "rgba(38,77,228,.15)", b: "rgba(38,77,228,.4)" }, { n: "Git", i: "devicon-git-plain colored", c: "rgba(240,80,51,.15)", b: "rgba(240,80,51,.4)" }, { n: "GitHub", i: "devicon-github-original", c: "rgba(255,255,255,.06)", b: "rgba(255,255,255,.25)" }, { n: "Figma", i: "devicon-figma-plain colored", c: "rgba(162,89,255,.15)", b: "rgba(162,89,255,.4)" }, { n: "Vite", i: "devicon-vitejs-plain colored", c: "rgba(189,52,254,.12)", b: "rgba(189,52,254,.35)" }, { n: "Linux", i: "devicon-linux-plain colored", c: "rgba(255,220,100,.12)", b: "rgba(255,220,100,.35)" }, { n: "Postman", i: "devicon-postman-plain colored", c: "rgba(255,108,55,.15)", b: "rgba(255,108,55,.4)" }, { n: "Express", i: "devicon-express-original", c: "rgba(255,255,255,.06)", b: "rgba(255,255,255,.25)" }]
     ];
 
-    /* ══ icon lookup ══ */
     function ico(t) {
       const k = String(t || "").toLowerCase().replace(/[\.\s]/g, "");
       if (k.includes("laravel")) return "fa-brands fa-laravel";
@@ -1447,27 +1380,22 @@
       return "fa-solid fa-code";
     }
 
-    /* ══ Render skills ══ */
     function renderSkills() {
       const dirs = ['sl', 'sr', 'sl'];
       ['sr1', 'sr2', 'sr3'].forEach((id, ri) => {
         const el = document.getElementById(id); if (!el) return;
         el.className = 's-track ' + dirs[ri];
         const h = SKL[ri].map(s => `
-      <div class="sbox" style="--sb-color:${s.c};" onclick="likeAt(event)">
-        <i class="${s.i}" style="${s.i.includes('github-original') || s.i.includes('express-original') || s.i.includes('nextjs-plain')
-            ? 'color:var(--text)' : s.i.startsWith('fa-') ? 'color:var(--accent)' : ''
-          }"></i>
+      <div class="sbox" style="--sb-color:${s.c};--sb-border:${s.b};" onclick="likeAt(event)">
+        <i class="${s.i}" style="${s.i.includes('github-original') || s.i.includes('express-original') || s.i.includes('nextjs-plain') ? 'color:var(--text)' : ''}"></i>
         <span>${s.n}</span>
       </div>`).join('');
         el.innerHTML = h + h + h;
       });
     }
 
-    /* ══ Tag html ══ */
     function tagHtml(t) { return `<span class="tag"><i class="${ico(t)}" style="font-size:10px;color:var(--accent);"></i>${t}</span>`; }
 
-    /* ══ Featured grid ══ */
     function renderFeat() {
       const g = document.getElementById('feat-grid'); if (!g) return;
       g.innerHTML = PJ.slice(0, 4).map((p, i) => `
@@ -1476,7 +1404,7 @@
       <div style="padding:15px 17px 18px;">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:7px;">
           <h3 style="font-size:14px;font-weight:700;color:var(--text);line-height:1.3;">${p.c}</h3>
-          <i class="fas fa-arrow-right" style="font-size:11px;color:var(--muted);flex-shrink:0;margin-left:8px;margin-top:2px;transition:transform .2s,color .2s;"></i>
+          <i class="fas fa-arrow-right" style="font-size:11px;color:var(--muted);flex-shrink:0;margin-left:8px;margin-top:2px;"></i>
         </div>
         <p style="font-size:12px;color:var(--muted);line-height:1.62;margin-bottom:11px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${p.d}</p>
         <div style="display:flex;flex-wrap:wrap;gap:5px;">${(p.tg || []).slice(0, 3).map(tagHtml).join('')}</div>
@@ -1484,7 +1412,6 @@
     </div>`).join('');
     }
 
-    /* ══ All projects grid ══ */
     function renderAll() {
       const g = document.getElementById('all-grid'); if (!g) return;
       g.innerHTML = PJ.map((p, i) => `
@@ -1501,7 +1428,6 @@
     </div>`).join('');
     }
 
-    /* ══ Modal ══ */
     let mImgs = [], mIdx = 0;
     function openM(i) {
       const p = PJ[i];
@@ -1539,7 +1465,6 @@
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-    /* ══ Page switch ══ */
     function sp(p) {
       ['home', 'projects', 'about'].forEach(n => {
         const pg = document.getElementById('pg-' + n); if (pg) pg.classList.remove('on');
@@ -1553,7 +1478,6 @@
       setTimeout(obsAOS, 100);
     }
 
-    /* ══ Theme ══ */
     let dark = true;
     function toggleTheme() {
       dark = !dark;
@@ -1562,7 +1486,7 @@
       ['th-icon', 'bth-icon'].forEach(id => { const el = document.getElementById(id); if (el) el.className = 'fas ' + ic; });
     }
 
-    /* ══ Cursor ══ */
+    // CURSOR
     const cdot = document.getElementById('c-dot'), cring = document.getElementById('c-ring');
     let rx = 0, ry = 0, mx_ = 0, my_ = 0, lastTr = 0;
     document.addEventListener('mousemove', e => {
@@ -1584,7 +1508,6 @@
     document.addEventListener('mouseup', () => { cdot.style.transform = 'translate(-50%,-50%) scale(1)'; });
     (function animR() { rx += (mx_ - rx) * .12; ry += (my_ - ry) * .12; cring.style.left = rx + 'px'; cring.style.top = ry + 'px'; requestAnimationFrame(animR); })();
 
-    /* ══ Like effect ══ */
     function likeAt(e) {
       const el = document.createElement('div'); el.className = 'like-pop';
       el.innerHTML = '<i class="fas fa-heart" style="color:var(--accent);"></i>';
@@ -1592,33 +1515,24 @@
       document.body.appendChild(el); setTimeout(() => el.remove(), 460);
     }
 
-    /* ══ Scroll: top nav hides → bottom nav shows ══ */
+    // SCROLL NAV
     const topNav = document.getElementById('top-nav');
     const botNav = document.getElementById('bot-nav');
     const scrTop = document.getElementById('scr-top');
-    let lastY = 0, ticking = false;
-
+    let ticking = false;
     window.addEventListener('scroll', () => {
       if (!ticking) {
         requestAnimationFrame(() => {
           const y = window.scrollY;
-          /* hide top nav after 80px */
-          if (y > 80) {
-            topNav.classList.add('hidden');
-            botNav.classList.add('show');
-            scrTop.classList.add('show');
-          } else {
-            topNav.classList.remove('hidden');
-            botNav.classList.remove('show');
-            scrTop.classList.remove('show');
-          }
-          lastY = y; ticking = false;
+          if (y > 80) { topNav.classList.add('hidden'); botNav.classList.add('show'); scrTop.classList.add('show'); }
+          else { topNav.classList.remove('hidden'); botNav.classList.remove('show'); scrTop.classList.remove('show'); }
+          ticking = false;
         });
         ticking = true;
       }
     });
 
-    /* ══ Canvas particles ══ */
+    // CANVAS
     const cv2 = document.getElementById('hero-cv');
     if (cv2) {
       const ctx2 = cv2.getContext('2d'); let pts2 = [];
@@ -1643,7 +1557,7 @@
       fr2();
     }
 
-    /* ══ Typing ══ */
+    // TYPING
     const roleEl = document.getElementById('role-txt');
     const roles = ['Software Engineer', 'Fullstack Developer', 'AI/ML Enthusiast', 'Backend Developer'];
     let ri = 0, rc = 0, rd = false;
@@ -1659,14 +1573,12 @@
     }
     setTimeout(type, 700);
 
-    /* ══ Spotify ══ */
     function toggleSpotify() {
       const w = document.getElementById('sp-wrap'), b = document.getElementById('sp-btn');
       w.style.display = w.style.display === 'none' ? 'block' : 'none';
       b.textContent = w.style.display === 'none' ? 'Buka' : 'Tutup';
     }
 
-    /* ══ Simple AOS ══ */
     function obsAOS() {
       document.querySelectorAll('[data-aos]').forEach(el => {
         if (!el.classList.contains('aon')) {
@@ -1676,10 +1588,7 @@
       });
     }
 
-    /* ══ Init ══ */
-    document.addEventListener('DOMContentLoaded', () => {
-      renderSkills(); renderFeat(); renderAll(); obsAOS();
-    });
+    document.addEventListener('DOMContentLoaded', () => { renderSkills(); renderFeat(); renderAll(); obsAOS(); });
   </script>
 </body>
 
