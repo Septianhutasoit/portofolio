@@ -1465,7 +1465,6 @@
   </div>
 
   <script>
-    // PROJECTS DATA - Added 2 new projects
     const PJ = [
       { c: "Nauli Dental Care", t: "Website Klinik Nauli Dental Care", s: "Web App • Klinik", cv: "assets/img/klinik.png", im: ["assets/img/galery.png", "assets/img/layanan.png", "assets/img/map.png", "assets/img/staff.png", "assets/img/daftaradmin.png", "assets/img/dokter.png"], d: "Website klinik untuk booking atau janji temu antara pasien dan dokter. Dilengkapi manajemen dokter, jadwal, dan testimoni pasien.", tg: ["Laravel", "MySQL", "Tailwind", "REST API"], gh: "https://github.com/Septianhutasoit/projectsep", dm: "" },
       { c: "Delshoop E-Commerce", t: "Delshoop E-Commerce Platform", s: "E-Commerce • Web App", cv: "assets/img/Delshop Home.png", im: ["assets/img/Produk2.png", "assets/img/Tersedia.png", "assets/img/cart.png", "assets/img/Barcode.png"], d: "Platform e-commerce dengan manajemen produk, cart real-time, dan sistem barcode untuk pengelolaan stok.", tg: ["Laravel", "MySQL", "Tailwind CSS", "REST API"], gh: "https://github.com/Septianhutasoit/Aplikasi", dm: "" },
@@ -1473,23 +1472,48 @@
       { c: "Kawan Pulih", t: "Kawan Pulih - Pasca Operasi", s: "Web App • Healthcare", cv: "assets/img/kawanpulih.png", im: [], d: "Platform informasi dan pendampingan digital untuk pasien pasca operasi.", tg: ["Next.js", "Tailwind"], gh: "https://github.com/Septianhutasoit/403", dm: "https://www.caregiver-ai.my.id/" },
       { c: "Project E-Commerce", t: "Sistem E-Commerce App", s: "Web App • E-Commerce", cv: "assets/img/codealpha.png", im: ["assets/img/codealpa2.png", "assets/img/codealpa3.png"], d: "Aplikasi website untuk pembelian online dengan autentikasi, manajemen produk, dan keranjang belanja.", tg: ["Node.js", "React.js", "PostgreSQL"], gh: "https://github.com/Septianhutasoit/CodeAlpha", dm: "" },
       { c: "ChatBot AI Klinik", t: "Sistem ChatBot AI Klinik", s: "Web App • AI", cv: "assets/img/chatbot.png", im: ["assets/img/kodinganchatbot.png", "assets/img/tanya1.png", "assets/img/lanjut1.png"], d: "Aplikasi ChatBot AI untuk klinik gigi: menjawab pertanyaan pasien dan membantu booking.", tg: ["Node.js", "Next.js", "Python", "FastAPI", "AI"], gh: "", dm: "" },
-      { c: "AI Support Ticket Triage", t: "AI-Powered Support Ticket Triage System",s: "AI • Automation • Fullstack",cv: "assets/img/ticket-triage.png",im: ["assets/img/triage-dashboard.png","assets/img/triage-classify.png", "assets/img/triage-flow.png",  "assets/img/triage-logging.png" ], d: "Sistem triase tiket support otomatis berbasis AI yang mengklasifikasikan urgensi secara real-time. Menggunakan Cohere Command-R untuk klasifikasi urgency level, severity score, dan reasoning logis. Dilengkapi real-time dashboard, system logging, dan workflow automation dengan n8n.", tg: ["Next.js", "FastAPI", "MySQL", "n8n", "Cohere AI", "Docker", "Tailwind CSS", "TypeScript"], gh: "https://github.com/Septianhutasoit/ai-ticket-triage",   dm: "" },
-      { c: "Sistem Informasi Klinik Gigi dengan Fitur Chatbot Ai dan Automation n8n", t: "Sistem Informasi Klinik Nauli Dental Care", s: "Next.js • FastAPI • NeonCloud • n8n • RAG AI", cv: "assets/img/smart-dashboard.png", im: ["assets/img/smart-db-1.png", "assets/img/smart-db-2.png", "assets/img/smart-db-3.png", "assets/img/smart-db-4.png","assets/img/dokter1.png","assets/img/perawat.png"], "Sistem terintegrasi yang menggabungkan Dashboard User responsif dengan automasi workflow dan chatbot AI cerdas berbasis RAG (Retrieval-Augmented Generation). Menggunakan Next.js untuk frontend, FastAPI sebagai backend, NeonCloud sebagai database serverless, n8n untuk workflow automation, dan pipeline RAG untuk respons AI yang akurat berdasarkan konteks klinik. Dikembangkan untuk Nauli Dental Care Systems.", tg: ["Next.js", "FastAPI", "NeonCloud", "n8n", "RAG AI", "TypeScript", "Tailwind CSS"], gh: "https://github.com/Septianhutasoit/sia-alumni", dm: "" }
+      { c: "AI Support Ticket Triage", t: "AI-Powered Support Ticket Triage System", s: "AI • Automation • Fullstack", cv: "assets/img/ticket-triage.png", im: ["assets/img/triage-dashboard.png", "assets/img/triage-classify.png", "assets/img/triage-flow.png", "assets/img/triage-logging.png"], d: "Sistem triase tiket support otomatis berbasis AI yang mengklasifikasikan urgensi secara real-time. Menggunakan Cohere Command-R untuk klasifikasi urgency level, severity score, dan reasoning logis. Dilengkapi real-time dashboard, system logging, dan workflow automation dengan n8n.", tg: ["Next.js", "FastAPI", "MySQL", "n8n", "Cohere AI", "Docker", "Tailwind CSS", "TypeScript"], gh: "https://github.com/Septianhutasoit/ai-ticket-triage", dm: "" },
+      { c: "Smart Dashboard & AI Chatbot", t: "Sistem Informasi Klinik Nauli Dental Care", s: "Next.js • FastAPI • NeonCloud • n8n • RAG AI", cv: "assets/img/smart-dashboard.png", im: ["assets/img/smart-db-1.png", "assets/img/smart-db-2.png", "assets/img/smart-db-3.png", "assets/img/smart-db-4.png", "assets/img/dokter1.png", "assets/img/perawat.png"], d: "Sistem terintegrasi yang menggabungkan Dashboard User responsif dengan automasi workflow dan chatbot AI cerdas berbasis RAG (Retrieval-Augmented Generation). Menggunakan Next.js untuk frontend, FastAPI sebagai backend, NeonCloud sebagai database serverless, n8n untuk workflow automation, dan pipeline RAG untuk respons AI yang akurat berdasarkan konteks klinik. Dikembangkan untuk Nauli Dental Care Systems.", tg: ["Next.js", "FastAPI", "NeonCloud", "n8n", "RAG AI", "TypeScript", "Tailwind CSS"], gh: "https://github.com/Septianhutasoit/smart-dashboard-chatbot", dm: "" }
     ];
 
     const SKL = [
-      [{ n: "JavaScript", i: "devicon-javascript-plain colored", c: "rgba(247,223,30,.15)", b: "rgba(247,223,30,.4)" }, { n: "TypeScript", i: "devicon-typescript-plain colored", c: "rgba(49,120,198,.15)", b: "rgba(49,120,198,.4)" }, { n: "Python", i: "devicon-python-plain colored", c: "rgba(53,114,165,.15)", b: "rgba(53,114,165,.4)" }, { n: "Node.js", i: "devicon-nodejs-plain colored", c: "rgba(104,160,99,.15)", b: "rgba(104,160,99,.4)" }, { n: "React", i: "devicon-react-original colored", c: "rgba(97,218,251,.15)", b: "rgba(97,218,251,.4)" }, { n: "Next.js", i: "devicon-nextjs-plain", c: "rgba(255,255,255,.06)", b: "rgba(255,255,255,.25)" }, { n: "PHP", i: "devicon-php-plain colored", c: "rgba(119,123,179,.15)", b: "rgba(119,123,179,.4)" }, { n: "Java", i: "devicon-java-plain colored", c: "rgba(232,152,26,.15)", b: "rgba(232,152,26,.4)" }],
-      [{ n: "Laravel", i: "devicon-laravel-original colored", c: "rgba(255,45,32,.15)", b: "rgba(255,45,32,.4)" }, { n: "Tailwind", i: "devicon-tailwindcss-original colored", c: "rgba(56,189,248,.15)", b: "rgba(56,189,248,.4)" }, { n: "MySQL", i: "devicon-mysql-plain colored", c: "rgba(0,117,143,.15)", b: "rgba(0,117,143,.4)" }, { n: "PostgreSQL", i: "devicon-postgresql-plain colored", c: "rgba(51,103,145,.15)", b: "rgba(51,103,145,.4)" }, { n: "FastAPI", i: "devicon-fastapi-plain colored", c: "rgba(5,150,105,.15)", b: "rgba(5,150,105,.4)" }, { n: "Docker", i: "devicon-docker-plain colored", c: "rgba(29,99,237,.15)", b: "rgba(29,99,237,.4)" }, { n: "Bootstrap", i: "devicon-bootstrap-plain colored", c: "rgba(121,82,179,.15)", b: "rgba(121,82,179,.4)" }, { n: "HTML", i: "devicon-html5-plain colored", c: "rgba(227,79,38,.15)", b: "rgba(227,79,38,.4)" }],
-      [{ n: "CSS", i: "devicon-css3-plain colored", c: "rgba(38,77,228,.15)", b: "rgba(38,77,228,.4)" }, { n: "Git", i: "devicon-git-plain colored", c: "rgba(240,80,51,.15)", b: "rgba(240,80,51,.4)" }, { n: "GitHub", i: "devicon-github-original", c: "rgba(255,255,255,.06)", b: "rgba(255,255,255,.25)" }, { n: "Figma", i: "devicon-figma-plain colored", c: "rgba(162,89,255,.15)", b: "rgba(162,89,255,.4)" }, { n: "Vite", i: "devicon-vitejs-plain colored", c: "rgba(189,52,254,.12)", b: "rgba(189,52,254,.35)" }, { n: "Linux", i: "devicon-linux-plain colored", c: "rgba(255,220,100,.12)", b: "rgba(255,220,100,.35)" }, { n: "Postman", i: "devicon-postman-plain colored", c: "rgba(255,108,55,.15)", b: "rgba(255,108,55,.4)" }, { n: "Express", i: "devicon-express-original", c: "rgba(255,255,255,.06)", b: "rgba(255,255,255,.25)" }],
-      { n: "n8n", i: "fa-solid fa-bolt", c: "rgba(234,98,46,.15)", b: "rgba(234,98,46,.4)" },
-      { n: "NeonDB", i: "fa-solid fa-database", c: "rgba(0,230,130,.12)", b: "rgba(0,230,130,.35)" }
+      [
+        { n: "JavaScript", i: "devicon-javascript-plain colored", c: "rgba(247,223,30,.15)", b: "rgba(247,223,30,.4)" },
+        { n: "TypeScript", i: "devicon-typescript-plain colored", c: "rgba(49,120,198,.15)", b: "rgba(49,120,198,.4)" },
+        { n: "Python", i: "devicon-python-plain colored", c: "rgba(53,114,165,.15)", b: "rgba(53,114,165,.4)" },
+        { n: "Node.js", i: "devicon-nodejs-plain colored", c: "rgba(104,160,99,.15)", b: "rgba(104,160,99,.4)" },
+        { n: "React", i: "devicon-react-original colored", c: "rgba(97,218,251,.15)", b: "rgba(97,218,251,.4)" },
+        { n: "Next.js", i: "devicon-nextjs-plain", c: "rgba(255,255,255,.06)", b: "rgba(255,255,255,.25)" },
+        { n: "PHP", i: "devicon-php-plain colored", c: "rgba(119,123,179,.15)", b: "rgba(119,123,179,.4)" },
+        { n: "Java", i: "devicon-java-plain colored", c: "rgba(232,152,26,.15)", b: "rgba(232,152,26,.4)" }
+      ],
+      [
+        { n: "Laravel", i: "devicon-laravel-original colored", c: "rgba(255,45,32,.15)", b: "rgba(255,45,32,.4)" },
+        { n: "Tailwind", i: "devicon-tailwindcss-original colored", c: "rgba(56,189,248,.15)", b: "rgba(56,189,248,.4)" },
+        { n: "MySQL", i: "devicon-mysql-plain colored", c: "rgba(0,117,143,.15)", b: "rgba(0,117,143,.4)" },
+        { n: "PostgreSQL", i: "devicon-postgresql-plain colored", c: "rgba(51,103,145,.15)", b: "rgba(51,103,145,.4)" },
+        { n: "FastAPI", i: "devicon-fastapi-plain colored", c: "rgba(5,150,105,.15)", b: "rgba(5,150,105,.4)" },
+        { n: "Docker", i: "devicon-docker-plain colored", c: "rgba(29,99,237,.15)", b: "rgba(29,99,237,.4)" },
+        { n: "Bootstrap", i: "devicon-bootstrap-plain colored", c: "rgba(121,82,179,.15)", b: "rgba(121,82,179,.4)" },
+        { n: "HTML", i: "devicon-html5-plain colored", c: "rgba(227,79,38,.15)", b: "rgba(227,79,38,.4)" }
+      ],
+      [
+        { n: "CSS", i: "devicon-css3-plain colored", c: "rgba(38,77,228,.15)", b: "rgba(38,77,228,.4)" },
+        { n: "Git", i: "devicon-git-plain colored", c: "rgba(240,80,51,.15)", b: "rgba(240,80,51,.4)" },
+        { n: "GitHub", i: "devicon-github-original", c: "rgba(255,255,255,.06)", b: "rgba(255,255,255,.25)" },
+        { n: "Figma", i: "devicon-figma-plain colored", c: "rgba(162,89,255,.15)", b: "rgba(162,89,255,.4)" },
+        { n: "Vite", i: "devicon-vitejs-plain colored", c: "rgba(189,52,254,.12)", b: "rgba(189,52,254,.35)" },
+        { n: "Linux", i: "devicon-linux-plain colored", c: "rgba(255,220,100,.12)", b: "rgba(255,220,100,.35)" },
+        { n: "n8n", i: "fa-solid fa-bolt", c: "rgba(234,98,46,.15)", b: "rgba(234,98,46,.4)" },
+        { n: "NeonDB", i: "fa-solid fa-database", c: "rgba(0,230,130,.12)", b: "rgba(0,230,130,.35)" }
+      ]
     ];
 
     function ico(t) {
       const k = String(t || "").toLowerCase().replace(/[\.\s]/g, "");
       if (k.includes("laravel")) return "fa-brands fa-laravel";
       if (k.includes("php")) return "fa-brands fa-php";
-      if (k.includes("mysql") || k.includes("postgres") || k.includes("sql")) return "fa-solid fa-database";
+      if (k.includes("mysql") || k.includes("postgres") || k.includes("neon") || k.includes("sql")) return "fa-solid fa-database";
       if (k.includes("react")) return "fa-brands fa-react";
       if (k.includes("next")) return "fa-solid fa-layer-group";
       if (k.includes("node")) return "fa-brands fa-node-js";
@@ -1497,9 +1521,11 @@
       if (k.includes("bootstrap")) return "fa-brands fa-bootstrap";
       if (k.includes("python")) return "fa-brands fa-python";
       if (k.includes("fastapi")) return "fa-solid fa-bolt";
-      if (k.includes("api")) return "fa-solid fa-plug";
+      if (k.includes("n8n")) return "fa-solid fa-diagram-project";
+      if (k.includes("rag") || k.includes("cohere") || k.includes("ai")) return "fa-solid fa-brain";
       if (k.includes("docker")) return "fa-brands fa-docker";
-      if (k.includes("ai")) return "fa-solid fa-brain";
+      if (k.includes("typescript")) return "fa-brands fa-js";
+      if (k.includes("api")) return "fa-solid fa-plug";
       return "fa-solid fa-code";
     }
 
@@ -1509,48 +1535,46 @@
         const el = document.getElementById(id); if (!el) return;
         el.className = 's-track ' + dirs[ri];
         const h = SKL[ri].map(s => `
-      <div class="sbox" style="--sb-color:${s.c};--sb-border:${s.b};" onclick="likeAt(event)">
-        <i class="${s.i}" style="${s.i.includes('github-original') || s.i.includes('express-original') || s.i.includes('nextjs-plain') ? 'color:var(--text)' : ''}"></i>
-        <span>${s.n}</span>
-      </div>`).join('');
+          <div class="sbox" style="--sb-color:${s.c};--sb-border:${s.b};" onclick="likeAt(event)">
+            <i class="${s.i}" style="${s.i.includes('github-original') || s.i.includes('express-original') || s.i.includes('nextjs-plain') ? 'color:var(--text)' : ''}"></i>
+            <span>${s.n}</span>
+          </div>`).join('');
         el.innerHTML = h + h + h;
       });
     }
 
     function tagHtml(t) { return `<span class="tag"><i class="${ico(t)}" style="font-size:10px;color:var(--accent);"></i>${t}</span>`; }
 
-    // SHOW ALL 8 PROJECTS ON HOME (featured section)
     function renderFeat() {
-        const g = document.getElementById('feat-grid'); if (!g) return;
-        // HANYA 6 PROYEK PERTAMA YANG TAMPIL DI HOME
-        g.innerHTML = PJ.slice(0, 7).map((p, i) => `
-    <div class="pcard" onclick="openM(${i})">
-      <div class="pcard-iw"><img class="pcard-img" src="${p.cv}" alt="${p.c}" onerror="this.style.opacity='.3'"/></div>
-      <div style="padding:15px 17px 18px;">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:7px;">
-          <h3 style="font-size:14px;font-weight:700;color:var(--text);line-height:1.3;">${p.c}</h3>
-          <i class="fas fa-arrow-right" style="font-size:11px;color:var(--muted);flex-shrink:0;margin-left:8px;margin-top:2px;"></i>
-        </div>
-        <p style="font-size:12px;color:var(--muted);line-height:1.62;margin-bottom:11px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${p.d}</p>
-        <div style="display:flex;flex-wrap:wrap;gap:5px;">${(p.tg || []).slice(0, 3).map(tagHtml).join('')}</div>
-      </div>
-    </div>`).join('');
-      }
+      const g = document.getElementById('feat-grid'); if (!g) return;
+      g.innerHTML = PJ.slice(0, 6).map((p, i) => `
+        <div class="pcard" onclick="openM(${i})">
+          <div class="pcard-iw"><img class="pcard-img" src="${p.cv}" alt="${p.c}" onerror="this.style.opacity='.3'"/></div>
+          <div style="padding:15px 17px 18px;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:7px;">
+              <h3 style="font-size:14px;font-weight:700;color:var(--text);line-height:1.3;">${p.c}</h3>
+              <i class="fas fa-arrow-right" style="font-size:11px;color:var(--muted);flex-shrink:0;margin-left:8px;margin-top:2px;"></i>
+            </div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.62;margin-bottom:11px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${p.d}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">${(p.tg || []).slice(0, 3).map(tagHtml).join('')}</div>
+          </div>
+        </div>`).join('');
+    }
 
     function renderAll() {
       const g = document.getElementById('all-grid'); if (!g) return;
       g.innerHTML = PJ.map((p, i) => `
-    <div class="pfull" onclick="openM(${i})">
-      <div style="overflow:hidden;"><img src="${p.cv}" alt="${p.c}" onerror="this.style.opacity='.2'"/></div>
-      <div style="padding:14px 16px 18px;">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:5px;">
-          <h3 style="font-size:14px;font-weight:700;color:var(--text);line-height:1.3;">${p.c}</h3>
-          <i class="fas fa-arrow-right" style="font-size:11px;color:var(--muted);flex-shrink:0;margin-left:8px;margin-top:2px;"></i>
-        </div>
-        <p style="font-size:12px;color:var(--muted);line-height:1.62;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${p.d}</p>
-        <div style="display:flex;flex-wrap:wrap;gap:5px;">${(p.tg || []).slice(0, 3).map(t => `<span class="tag">${t}</span>`).join('')}</div>
-      </div>
-    </div>`).join('');
+        <div class="pfull" onclick="openM(${i})">
+          <div style="overflow:hidden;"><img src="${p.cv}" alt="${p.c}" onerror="this.style.opacity='.2'"/></div>
+          <div style="padding:14px 16px 18px;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:5px;">
+              <h3 style="font-size:14px;font-weight:700;color:var(--text);line-height:1.3;">${p.c}</h3>
+              <i class="fas fa-arrow-right" style="font-size:11px;color:var(--muted);flex-shrink:0;margin-left:8px;margin-top:2px;"></i>
+            </div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.62;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${p.d}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">${(p.tg || []).slice(0, 3).map(t => `<span class="tag">${t}</span>`).join('')}</div>
+          </div>
+        </div>`).join('');
     }
 
     let mImgs = [], mIdx = 0;
@@ -1611,7 +1635,6 @@
       ['th-icon', 'bth-icon'].forEach(id => { const el = document.getElementById(id); if (el) el.className = 'fas ' + ic; });
     }
 
-    // CURSOR
     const cdot = document.getElementById('c-dot'), cring = document.getElementById('c-ring');
     let rx = 0, ry = 0, mx_ = 0, my_ = 0, lastTr = 0;
     document.addEventListener('mousemove', e => {
@@ -1640,7 +1663,6 @@
       document.body.appendChild(el); setTimeout(() => el.remove(), 460);
     }
 
-    // SCROLL NAV
     const topNav = document.getElementById('top-nav');
     const botNav = document.getElementById('bot-nav');
     const scrTop = document.getElementById('scr-top');
@@ -1657,13 +1679,12 @@
       }
     });
 
-    // CANVAS
     const cv2 = document.getElementById('hero-cv');
     if (cv2) {
       const ctx2 = cv2.getContext('2d'); let pts2 = [];
       function rsz2() { cv2.width = window.innerWidth; cv2.height = window.innerHeight; }
       window.addEventListener('resize', rsz2); rsz2();
-      for (let i = 0; i < 120; i++)pts2.push({ x: Math.random() * cv2.width, y: Math.random() * cv2.height, vx: (Math.random() - .5) * .4, vy: (Math.random() - .5) * .4, r: Math.random() * 1.3 + .4 });
+      for (let i = 0; i < 120; i++) pts2.push({ x: Math.random() * cv2.width, y: Math.random() * cv2.height, vx: (Math.random() - .5) * .4, vy: (Math.random() - .5) * .4, r: Math.random() * 1.3 + .4 });
       function fr2() {
         ctx2.clearRect(0, 0, cv2.width, cv2.height);
         pts2.forEach(p => {
@@ -1673,7 +1694,7 @@
           ctx2.fillStyle = 'rgba(34,197,94,.25)';
           ctx2.beginPath(); ctx2.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx2.fill();
         });
-        for (let a = 0; a < pts2.length; a++)for (let b = a + 1; b < pts2.length; b++) {
+        for (let a = 0; a < pts2.length; a++) for (let b = a + 1; b < pts2.length; b++) {
           const dx = pts2[a].x - pts2[b].x, dy = pts2[a].y - pts2[b].y, d = Math.hypot(dx, dy);
           if (d < 80) { ctx2.strokeStyle = `rgba(34,197,94,${.13 * (1 - d / 80)})`; ctx2.lineWidth = .25; ctx2.beginPath(); ctx2.moveTo(pts2[a].x, pts2[a].y); ctx2.lineTo(pts2[b].x, pts2[b].y); ctx2.stroke(); }
         }
@@ -1682,7 +1703,6 @@
       fr2();
     }
 
-    // TYPING
     const roleEl = document.getElementById('role-txt');
     const roles = ['Software Engineer', 'Fullstack Developer', 'AI/ML Enthusiast', 'Backend Developer'];
     let ri = 0, rc = 0, rd = false;
